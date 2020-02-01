@@ -123,6 +123,9 @@
   <data name="Commands" xml:space="preserve">
     <value>Parancsok</value>
   </data>
+  <data name="Edit Torrc file" xml:space="preserve">
+    <value>Torrc fájl szerkesztése</value>
+  </data>
   <data name="Hi" xml:space="preserve">
     <value>Szia</value>
   </data>
@@ -150,11 +153,17 @@
   <data name="Save" xml:space="preserve">
     <value>Mentés</value>
   </data>
+  <data name="Services settings" xml:space="preserve">
+    <value>Szolgáltatás beállítása</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>Statisztika</value>
   </data>
   <data name="Streams" xml:space="preserve">
     <value>Közvetítések</value>
+  </data>
+  <data name="Tor settings" xml:space="preserve">
+    <value>Tor beállítások</value>
   </data>
   <data name="User settings" xml:space="preserve">
     <value>Felhasználó beállításai</value>

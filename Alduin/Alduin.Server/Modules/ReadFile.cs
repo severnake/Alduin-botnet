@@ -7,7 +7,7 @@ namespace Alduin.Server.Modules
 {
     internal partial class ReadFile
     {
-        private static object filereader(string file)
+        private static object FileReader(string file)
         {
             return File.ReadAllText(file, Encoding.UTF8);
         }

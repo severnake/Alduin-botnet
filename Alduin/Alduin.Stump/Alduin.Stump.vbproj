@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{69635829-576F-439D-AA64-45668B9328D3}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <StartupObject>Alduin.Stump.Module1</StartupObject>
+    <StartupObject>Alduin.Stump.Main</StartupObject>
     <RootNamespace>Alduin.Stump</RootNamespace>
     <AssemblyName>Alduin.Stump</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -48,6 +48,12 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Org.Mentalis">
+      <HintPath>C:\Users\Mate\source\repos\ModuleConnect\ModuleConnect\bin\Debug\Org.Mentalis.dll</HintPath>
+    </Reference>
+    <Reference Include="SocksWebProxy">
+      <HintPath>C:\Users\Mate\source\repos\ModuleConnect\ModuleConnect\bin\Debug\SocksWebProxy.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -69,7 +75,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Module1.vb" />
+    <Compile Include="Main.vb" />
+    <Compile Include="Moduls\ConfigTor.vb" />
+    <Compile Include="Moduls\GetPathes.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

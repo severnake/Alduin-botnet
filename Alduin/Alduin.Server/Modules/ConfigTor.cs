@@ -7,12 +7,12 @@ using System.Threading;
 
 namespace Alduin.Server.Modules
 {
-    internal static partial class ConfigTor
+    public class ConfigTor
     {
         public static string Tor = "tor";
-        public static string TorrcPath = GetPathes.get_LocalPath() + @"\Tor\Data\Tor\torrc";
-        public static string TorFolder = GetPathes.get_LocalPath() + @"\Tor";
-        public static string TorPath = GetPathes.get_LocalPath() + @"\Tor\tor.exe";
+        public static string TorrcPath = GetPathes.get_TorPath() + @"\Data\Tor\torrc";
+        public static string TorFolder = GetPathes.get_TorPath();
+        public static string TorPath = GetPathes.get_TorPath() + @"\tor.exe";
         public static string AlduinWebPort = "50371";
         public static void StartTor()
         {

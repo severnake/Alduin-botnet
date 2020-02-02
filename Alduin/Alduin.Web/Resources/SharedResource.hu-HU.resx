@@ -144,6 +144,9 @@
   <data name="Remember me" xml:space="preserve">
     <value>Emlékez rám</value>
   </data>
+  <data name="Torch file" xml:space="preserve">
+    <value>Torch fájl</value>
+  </data>
   <data name="Type" xml:space="preserve">
     <value>Típus</value>
   </data>

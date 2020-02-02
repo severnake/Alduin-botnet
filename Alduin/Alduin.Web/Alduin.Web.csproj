@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Alduin.Logic\Alduin.Logic.csproj" />
+    <ProjectReference Include="..\Alduin.Server\Alduin.Server.csproj" />
   </ItemGroup>
 
 </Project>

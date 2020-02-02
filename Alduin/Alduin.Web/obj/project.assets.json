@@ -3310,6 +3310,15 @@
           }
         }
       },
+      "starksoft.aspen/1.1.6": {
+        "type": "package",
+        "compile": {
+          "lib/net45/starksoft.aspen.dll": {}
+        },
+        "runtime": {
+          "lib/net45/starksoft.aspen.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -5013,6 +5022,19 @@
         },
         "runtime": {
           "bin/placeholder/Alduin.Logic.dll": {}
+        }
+      },
+      "Alduin.Server/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "starksoft.aspen": "1.1.6"
+        },
+        "compile": {
+          "bin/placeholder/Alduin.Server.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Alduin.Server.dll": {}
         }
       },
       "Alduin.Shared/1.0.0": {
@@ -8981,6 +9003,19 @@
         "runtimes/win-x86/native/sni.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "starksoft.aspen/1.1.6": {
+      "sha512": "3rTfu+htxPasYZmBD15Xy/Xy8KlS2ABvCrFxtlDcQUpX1+1lhUndhhbsyP0e5Zgr+UXdTPLjIryeX/MU1SvUZg==",
+      "type": "package",
+      "path": "starksoft.aspen/1.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/starksoft.aspen.dll",
+        "lib/net45/starksoft.aspen.pdb",
+        "starksoft.aspen.1.1.6.nupkg.sha512",
+        "starksoft.aspen.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -13671,6 +13706,11 @@
       "path": "../Alduin.Logic/Alduin.Logic.csproj",
       "msbuildProject": "../Alduin.Logic/Alduin.Logic.csproj"
     },
+    "Alduin.Server/1.0.0": {
+      "type": "project",
+      "path": "../Alduin.Server/Alduin.Server.csproj",
+      "msbuildProject": "../Alduin.Server/Alduin.Server.csproj"
+    },
     "Alduin.Shared/1.0.0": {
       "type": "project",
       "path": "../Alduin.Shared/Alduin.Shared.csproj",
@@ -13680,6 +13720,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Alduin.Logic >= 1.0.0",
+      "Alduin.Server >= 1.0.0",
       "BuildBundlerMinifier >= 3.2.435",
       "FluentValidation >= 8.5.1",
       "FluentValidation.AspNetCore >= 8.5.1",
@@ -13721,6 +13762,9 @@
           "projectReferences": {
             "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Logic\\Alduin.Logic.csproj": {
               "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Logic\\Alduin.Logic.csproj"
+            },
+            "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Server\\Alduin.Server.csproj": {
+              "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Server\\Alduin.Server.csproj"
             }
           }
         }
@@ -13781,5 +13825,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'starksoft.aspen 1.1.6' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v2.2'. This package may not be fully compatible with your project.",
+      "libraryId": "starksoft.aspen",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    }
+  ]
 }

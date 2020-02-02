@@ -65,6 +65,7 @@ namespace Alduin.Web.Infrastructure
             services.AddTransient<IValidator<LoginModel>, LoginModelValidator>();
             services.AddTransient<IValidator<RegisterModel>, RegisterModelValidator>();
             services.AddTransient<IValidator<ChangePasswordModel>, ChangePasswordModelValidator>();
+            services.AddTransient<IValidator<EditTorchFileModel>, EditTorchFileValidator>();
         }
     }
 }

@@ -1,0 +1,28 @@
+﻿@model EditTorchFileModel
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<div class="container d-flex justify-content-center">
+    <div class="wide-board">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="text-center">@Localizer["Edit torch file"]</h1>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center text-center">
+                <form asp-controller="Tor" class="lg-auth-form" asp-action="EditTorch" method="post">
+                    <div class="form-group">
+                        <label asp-for="Torch"></label>
+                        <textarea asp-for="Torch"></textarea>
+                        <span asp-validation-for="Torch"></span>
+                    </div>
+                    <button class="btn btn-primary mt-2 w-100">@Localizer["Save"]</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

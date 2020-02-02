@@ -5,11 +5,15 @@ using System.Text;
 
 namespace Alduin.Server.Modules
 {
-    internal partial class ReadFile
+    public class ServerFile
     {
-        private static object FileReader(string file)
+        public static string FileReader(string file)
         {
             return File.ReadAllText(file, Encoding.UTF8);
+        }
+        public static void FileWriter(string path, string data)
+        {
+            File.WriteAllText(path, data, Encoding.UTF8);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore;
+﻿using Alduin.Server.Modules;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -12,6 +13,7 @@ namespace Alduin.Web
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
+            ConfigTor.StartTor();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

@@ -2,6 +2,7 @@
 @import "variables";
 @import "media";
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Cousine);
 $text-color: #d4d6d9;
 $menu-bg-color: #272A31;
 $menu-bd-color: #131418;
@@ -9,10 +10,16 @@ $active-color: #15A0BF;
 $body-bg-color: #1C1E23;
 $menu-hv-color: rgba(21, 159, 190, 0.5);
 $head-color: rgb(21, 159, 190);
+$console-color: #C0C0C0;
+$console-bg-color: #343434;
+
 $font-family: 'Roboto', sans-serif;
+$console-font-family: 'Cousine', 'monospace';
+
 $default-border: 1px solid $menu-bd-color;
 $invitation-border: 2px solid white;
 $border-left: 3px solid $active-color;
+
 $break-small: 768px;
 $break-large: 1200px;
 
@@ -33,8 +40,6 @@ button.accept-policy {
     font-size: 1rem;
     line-height: inherit;
 }
-
-
 html {
     //position: relative;
     min-height: 100%;
@@ -311,4 +316,12 @@ body {
 }
 .list-line{
     padding: 10px 0px;
+}
+.tor-console {
+    color: $console-color;
+    font-family: $console-font-family;
+    background-color: $console-bg-color;
+    width: 100%;
+    height: auto;
+    border: $default-border;
 }

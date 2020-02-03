@@ -1,4 +1,5 @@
 ﻿@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+@import url(https://fonts.googleapis.com/css?family=Cousine);
 @media (min-width: 768px) {
   html {
     font-size: 16px; } }
@@ -239,3 +240,11 @@ body {
 
 .list-line {
   padding: 10px 0px; }
+
+.tor-console {
+  color: #C0C0C0;
+  font-family: "Cousine", "monospace";
+  background-color: #343434;
+  width: 100%;
+  height: auto;
+  border: 1px solid #131418; }

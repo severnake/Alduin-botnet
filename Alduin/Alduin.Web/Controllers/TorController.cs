@@ -5,12 +5,17 @@ using System.Threading.Tasks;
 using Alduin.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Alduin.Server.Modules;
+using AutoMapper.Configuration;
+using Alduin.Server.Models;
+
 namespace Alduin.Web.Controllers
 {
-    public class TorController : Controller
+    public class TorController : ControllerBase
     {
         public IActionResult Index()
         {
+            var OnionAddress = ServerFile.FileReader(ConfigTor.TorBaseFolder + @"/hostname");
+            ViewData["OnionAddress"] = OnionAddress.Replace("\r\n", "");
             return View();
         }
         public IActionResult EditTorch()
@@ -20,6 +25,11 @@ namespace Alduin.Web.Controllers
                 Torch = ServerFile.FileReader(ConfigTor.TorrcPath)
             };
             return View(model);
+        }
+        public IActionResult Logger()
+        {
+            var log = TorLogModel.Log;
+            return Content(log);
         }
         [HttpPost]
         public IActionResult EditTorch(EditTorchFileModel model)

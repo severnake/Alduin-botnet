@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Alduin.Server.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -9,11 +10,13 @@ namespace Alduin.Server.Modules
 {
     public class ConfigTor
     {
-        public static string Tor = "tor";
-        public static string TorrcPath = GetPathes.get_TorPath() + @"\Data\Tor\torrc";
-        public static string TorFolder = GetPathes.get_TorPath();
-        public static string TorPath = GetPathes.get_TorPath() + @"\tor.exe";
-        public static string AlduinWebPort = "50371";
+        private static string Tor = "tor";
+        public static string AlduinWebPort = "44359";
+
+        public static string TorBaseFolder = GetPathes.get_TorPath();
+        public static string TorrcPath = TorBaseFolder + @"\Data\Tor\torrc";
+        public static string TorPath = TorBaseFolder + @"\tor.exe";
+        
         public static void StartTor()
         {
             foreach (Process proc in Process.GetProcessesByName(Tor))
@@ -39,14 +42,15 @@ namespace Alduin.Server.Modules
             Process.StartInfo.UseShellExecute = false;
             Process.StartInfo.RedirectStandardOutput = true;
             Process.StartInfo.CreateNoWindow = true;
-            Process.StartInfo.WorkingDirectory = TorFolder;
+            Process.StartInfo.WorkingDirectory = TorBaseFolder;
             Process.StartInfo.RedirectStandardOutput = true;
             Process.Start();
             Process.PriorityClass = ProcessPriorityClass.BelowNormal;
 
             while (!Process.StandardOutput.EndOfStream)
             {
-                Console.WriteLine(Process.StandardOutput.ReadLine());
+                //Console.WriteLine(Process.StandardOutput.ReadLine());
+                TorLogModel.Log += Process.StandardOutput.ReadLine();
             }
         }
         public static int ToSec(int sec)
@@ -56,25 +60,25 @@ namespace Alduin.Server.Modules
         public static void CreateTorrc()
         {
             string filestring = @"
-                        ControlPort 9151
-                        DataDirectory " + TorFolder + @"
-                        DirPort 9030
-                        ExitPolicy reject *:*
-                        HashedControlPassword 16:4E1F1599005EB8F3603C046EF402B00B6F74C008765172A774D2853FD4
-                        HiddenServiceDir " + TorFolder + @"
-                        HiddenServicePort " + AlduinWebPort + @" 127.0.0.1:5557
-                        Log notice stdout
-                        Nickname Alduin
-                        SocksPort 9150";
+ControlPort 9151
+DataDirectory " + TorBaseFolder + @"
+DirPort 9030
+ExitPolicy reject *:*
+HashedControlPassword 16:4E1F1599005EB8F3603C046EF402B00B6F74C008765172A774D2853FD4
+HiddenServiceDir " + TorBaseFolder + @"
+HiddenServicePort " + AlduinWebPort + @" 127.0.0.1:5557
+Log notice stdout
+Nickname Alduin
+SocksPort 9150";
             FileStream fs = File.Create(TorrcPath);
-            var info = new UTF8Encoding(true).GetBytes(filestring);
+            var info = new UTF8Encoding(false).GetBytes(filestring);
             fs.Write(info, 0, info.Length);
             fs.Close();
         }
         public static void CreateTorrc(string data)
         {
             FileStream fs = File.Create(TorrcPath);
-            var info = new UTF8Encoding(true).GetBytes(data);
+            var info = new UTF8Encoding(false).GetBytes(data);
             fs.Write(info, 0, info.Length);
             fs.Close();
         }

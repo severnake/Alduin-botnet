@@ -1,5 +1,4 @@
-﻿using Alduin.Server.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -13,7 +12,7 @@ namespace Alduin.Server.Modules
         private static string Tor = "tor";
         public static string AlduinWebPort = "44359";
 
-        public static string TorBaseFolder = GetPathes.get_TorPath();
+        public static string TorBaseFolder = GetPathes.Get_TorPath();
         public static string TorrcPath = TorBaseFolder + @"\Data\Tor\torrc";
         public static string TorPath = TorBaseFolder + @"\tor.exe";
         
@@ -36,6 +35,7 @@ namespace Alduin.Server.Modules
         private static void StartTorProccess()
         {
             Console.WriteLine("Starting tor...");
+            ServerFileManager.FileAppendTextWithDate(GetPathes.Get_LogPath() + @"\Log.txt", "Starting tor...\r\n");
             var Process = new Process();
             Process.StartInfo.FileName = TorPath;
             Process.StartInfo.Arguments = "-f " + TorrcPath;
@@ -49,9 +49,13 @@ namespace Alduin.Server.Modules
 
             while (!Process.StandardOutput.EndOfStream)
             {
-                //Console.WriteLine(Process.StandardOutput.ReadLine());
-                TorLogModel.Log += Process.StandardOutput.ReadLine();
+                WriteOutput(Process.StandardOutput.ReadLine());
             }
+        }
+        private static void WriteOutput(string data)
+        {
+            Console.WriteLine(data);
+            ServerFileManager.FileAppendTextWithDate(GetPathes.Get_LogPath() + @"\Log.txt", data + "<br>");
         }
         public static int ToSec(int sec)
         {

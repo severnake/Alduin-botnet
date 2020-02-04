@@ -1,4 +1,5 @@
-﻿ControlPort 9151
+
+ControlPort 9151
 DataDirectory E:\project\Alduin-botnet\Alduin\Tor
 DirPort 9030
 ExitPolicy reject *:*

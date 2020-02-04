@@ -13,7 +13,6 @@ namespace Alduin.Web
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
-            ConfigTor.StartTor();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

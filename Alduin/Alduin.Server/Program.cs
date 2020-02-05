@@ -8,6 +8,7 @@ namespace Alduin.Server
         {
             Console.WriteLine("Starting...");
             ConfigTor.StartTor();
+           
         }
     }
 }

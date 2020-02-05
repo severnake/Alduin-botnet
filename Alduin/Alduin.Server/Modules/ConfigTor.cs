@@ -34,8 +34,8 @@ namespace Alduin.Server.Modules
 
         private static void StartTorProccess()
         {
-            Console.WriteLine("Starting tor...");
-            ServerFileManager.FileAppendTextWithDate(GetPathes.Get_LogPath() + @"\Log.txt", "Starting tor...\r\n");
+            Console.WriteLine("Starting tor...<br>\r\n");
+            ServerFileManager.FileAppendTextWithDate(GetPathes.Get_LogPath() + @"\Log.txt", "Starting tor...<br>\r\n");
             var Process = new Process();
             Process.StartInfo.FileName = TorPath;
             Process.StartInfo.Arguments = "-f " + TorrcPath;
@@ -55,7 +55,7 @@ namespace Alduin.Server.Modules
         private static void WriteOutput(string data)
         {
             Console.WriteLine(data);
-            ServerFileManager.FileAppendTextWithDate(GetPathes.Get_LogPath() + @"\Log.txt", data + "<br>");
+            ServerFileManager.FileAppendTextWithDate(GetPathes.Get_LogPath() + @"\Log.txt", data + "<br>\r\n");
         }
         public static int ToSec(int sec)
         {

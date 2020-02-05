@@ -189,7 +189,7 @@
             @RenderBody()
         </main>
     </div>
-
+    <button class="footer-btn"><i class="fas fa-chevron-up"></i></button>
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -218,6 +218,7 @@
         </script>
     </environment>
     <script src="~/js/site.min.js" asp-append-version="true"></script>
+    <script src="~/js/js.cookie.min.js" asp-append-version="true"></script>
     <script>
         function setUrlactive() {
             var url = window.location.pathname;
@@ -229,8 +230,21 @@
                 }
             }
         }
+        function hidder() {
+            if (Cookies.get('hidden') == 'true') {
+                $('.footer').css('bottom', '-50px');
+                $('.footer-btn').css('transform', 'rotate(0deg)');
+            } else if (Cookies.get('hidden') == 'false') {
+                $('.footer').css('bottom', '0');
+                $('.footer-btn').css('transform', 'rotate(180deg)');
+            } else {
+                Cookies.set('hidden', 'false');
+                $('.footer-btn').css('transform', 'rotate(180deg)');
+            }
+        }
         $(document).ready(function () {
             setUrlactive();
+            hidder();
         });
         $(".mini-menu-btn").click(function () {
             if ($(".menu-container").width() < 100) {
@@ -241,6 +255,15 @@
                 $(".mini-menu").css("visibility", "hidden");
             }
 
+        });
+        $(".footer-btn").click(function () {
+            if (Cookies.get('hidden') == 'true') {
+                Cookies.set('hidden', 'false');
+                hidder();
+            } else {
+                Cookies.set('hidden', 'true');
+                hidder();
+            }
         });
     </script>
     @RenderSection("Scripts", required: false)

@@ -3,6 +3,8 @@
 @import "media";
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url(https://fonts.googleapis.com/css?family=Cousine);
+
+//Colors
 $text-color: #d4d6d9;
 $menu-bg-color: #272A31;
 $menu-bd-color: #131418;
@@ -13,16 +15,20 @@ $head-color: rgb(21, 159, 190);
 $console-color: #C0C0C0;
 $console-bg-color: #343434;
 
+//Fonts
 $font-family: 'Roboto', sans-serif;
 $console-font-family: 'Cousine', 'monospace';
 
+//Borders
 $default-border: 1px solid $menu-bd-color;
 $invitation-border: 2px solid white;
 $border-left: 3px solid $active-color;
 
+//Responsives limit
 $break-small: 768px;
 $break-large: 1200px;
 
+//Responsives
 @media (min-width: $break-small) {
     html {
         font-size: 16px;
@@ -36,12 +42,10 @@ $break-large: 1200px;
         visibility: hidden;
     }
 }
-button.accept-policy {
-    font-size: 1rem;
-    line-height: inherit;
-}
+//Responsives end
+
+
 html {
-    //position: relative;
     min-height: 100%;
     max-width: 99%;
     padding: 0 !important;
@@ -54,7 +58,6 @@ body {
     font-family: $font-family;
     color: $text-color;
     background-color: $body-bg-color;
-    //margin-bottom: 60px;
     padding: 0 !important;
     margin: 0 !important;
     width: 101% !important;
@@ -62,13 +65,17 @@ body {
 
 .footer {
     border-top: $default-border;
-    position: absolute;
     max-height: 50px;
-    bottom: 0;
     width: 100%;
     line-height: 60px;
+    background-color: $menu-bg-color;
+    position: fixed;
+    bottom: 0;
+    transition: .2s;
 }
 
+
+//Menu
 .menu-container {
     position: fixed;
     height: auto;
@@ -97,7 +104,7 @@ body {
         border-left: $border-left;
     }
 }
-.menu-row-content{
+.menu-row-content {
     padding: 5px 15px;
 }
 .header-menu {
@@ -105,19 +112,14 @@ body {
     background-color: $menu-bg-color;
     border-bottom: $default-border;
 }
+.mini-menu {
+    transition: .2s;
+    overflow: hidden;
+    margin-left: 5px;
+}
+//Menu End
 
-.select-language {
-    background-color: $menu-bg-color;
-    color: $text-color;
-    border-radius: 5px;
-}
-.active{
-  color: $active-color !important;
-  border-left: $border-left;
-}
-.logo {
-    width: 10%;
-}
+//Forms
 .auth-form {
     padding: 20px;
     margin: 20px;
@@ -160,6 +162,13 @@ body {
         margin-left: 5px;
     }
 }
+//Forms end
+
+//Buttons
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
 .invitation-btn {
     text-decoration: none;
     background-color: transparent;
@@ -175,10 +184,44 @@ body {
         color: black;
     }
 }
-.refresh {
-    font-size: .9em;
-    padding: 5px 10px;
+.footer-btn {
+    @extend .invitation-btn;
+    padding: 5px 5px;
+    line-height: 5px;
+    transform: rotate(180deg);
+    bottom: 10px;
+    right: 150px;
+    position: fixed;
+    z-index: 2;
+    transition: .4s;
 }
+.logclear-btn {
+    @extend .invitation-btn;
+    padding: 10px 25px;
+    line-height: 10px;
+}
+.mini-menu-btn {
+    padding: 2px;
+    background-color: transparent;
+    color: $text-color;
+    text-decoration: none;
+    border: none;
+    transition: .2s;
+
+    &:hover {
+        color: $active-color;
+    }
+
+    &:active {
+        background-color: $active-color;
+        color: $text-color;
+    }
+}
+//Buttons ends
+
+
+
+//Boards
 .medium-board {
     padding: 20px;
     margin: 20px;
@@ -201,54 +244,6 @@ body {
             text-align: center;
         }
     }
-}
-.command-select {
-    width: 100%;
-    background-color: $active-color;
-    color: $text-color;
-    padding: 5px 10px;
-    border: $default-border;
-
-    option {
-        font-size: 1.1em;
-        color: $text-color;
-        padding: 2px;
-        border: $default-border;
-    }
-
-    optgroup {
-        color: $text-color !important;
-        font-weight: bold;
-    }
-}
-.listing-select{
-    @extend .command-select;
-    width: 150px;
-}
-.mini-menu {
-    transition: .2s;
-    overflow: hidden;
-    margin-left: 5px;
-}
-.mini-menu-btn {
-    padding: 2px;
-    background-color: transparent;
-    color: $text-color;
-    text-decoration: none;
-    border: none;
-    transition: .2s;
-
-    &:hover {
-        color: $active-color;
-    }
-
-    &:active {
-        background-color: $active-color;
-        color: $text-color;
-    }
-}
-.nobreak {
-    white-space: nowrap;
 }
 .wide-board {
     padding: 20px;
@@ -273,8 +268,66 @@ body {
         }
     }
 }
+.tor-console {
+    color: $console-color;
+    font-family: $console-font-family;
+    background-color: $console-bg-color;
+    width: 100%;
+    height: auto;
+    border: $default-border;
+    text-align: left;
+}
+//Boards end
+
+//Selects
+.command-select {
+    width: 100%;
+    background-color: $active-color;
+    color: $text-color;
+    padding: 5px 10px;
+    border: $default-border;
+
+    option {
+        font-size: 1.1em;
+        color: $text-color;
+        padding: 2px;
+        border: $default-border;
+    }
+
+    optgroup {
+        color: $text-color !important;
+        font-weight: bold;
+    }
+}
+.listing-select{
+    @extend .command-select;
+    width: 150px;
+}
+.select-language {
+    background-color: $menu-bg-color;
+    color: $text-color;
+    border-radius: 5px;
+}
+//Selects end
+
+//Functions
+.nobreak {
+    white-space: nowrap;
+}
+
 .bg-head-color {
     background-color: $head-color;
+}
+.list-line {
+    padding: 10px 0px;
+}
+.refresh {
+    font-size: .9em;
+    padding: 5px 10px;
+}
+.active {
+    color: $active-color !important;
+    border-left: $border-left;
 }
 .ajax-loading {
     width: 25px;
@@ -305,6 +358,9 @@ body {
         }
     }
 }
+//Functions end
+
+//Charts
 .Large-chart{
     width: 100%;
     height: 50%;
@@ -314,15 +370,6 @@ body {
     height: 80%;
     color: white;
 }
-.list-line{
-    padding: 10px 0px;
-}
-.tor-console {
-    color: $console-color;
-    font-family: $console-font-family;
-    background-color: $console-bg-color;
-    width: 100%;
-    height: auto;
-    border: $default-border;
-    text-align: left;
-}
+//Charts End
+
+

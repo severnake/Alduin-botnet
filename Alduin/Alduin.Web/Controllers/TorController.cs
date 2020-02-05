@@ -30,6 +30,18 @@ namespace Alduin.Web.Controllers
             var log = ServerFileManager.FileReader(GetPathes.Get_LogPath() + @"\Log.txt");
             return Content(log);
         }
+        public IActionResult DeleteLog()
+        {
+            ServerFileManager.FileWriter(GetPathes.Get_LogPath() + @"\Log.txt", "");
+            return Content("Ok");
+        }
+        public IActionResult GenerateNewAddress()
+        {
+            ServerFileManager.FileDelete(ConfigTor.TorBaseFolder + @"\hostname");
+            ServerFileManager.FileDelete(ConfigTor.TorBaseFolder + @"\private_key");
+            ConfigTor.StartTor();
+            return RedirectToAction(nameof(TorController.Index), "Index");
+        }
         [HttpPost]
         public IActionResult EditTorch(EditTorchFileModel model)
         {

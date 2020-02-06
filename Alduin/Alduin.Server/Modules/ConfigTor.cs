@@ -16,7 +16,7 @@ namespace Alduin.Server.Modules
         public static string TorrcPath = TorBaseFolder + @"\Data\Tor\torrc";
         public static string TorPath = TorBaseFolder + @"\tor.exe";
         
-        public static void StartTor()
+        public static async void StartTor()
         {
             foreach (Process proc in Process.GetProcessesByName(Tor))
             {

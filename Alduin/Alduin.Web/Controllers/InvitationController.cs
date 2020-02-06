@@ -10,6 +10,7 @@ using Alduin.Logic.Identity;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Alduin.Logic.Mediator.Queries;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Alduin.Web.Controllers
 {
@@ -26,10 +27,12 @@ namespace Alduin.Web.Controllers
             _mediator = mediator;
             _localizer = localizer;
         }
+        [Authorize]
         public IActionResult Index()
         {
             return View();
         }
+        [Authorize]
         public async Task<IActionResult> GenerateNew()
         {
             var user = await _userManager.FindByEmailAsync(User.Identity.Name);
@@ -50,6 +53,7 @@ namespace Alduin.Web.Controllers
                 return Content(_localizer["Invitation generate unsuccess"]);
             }
         }
+        [Authorize]
         public async Task<IActionResult> GetUserInvitation()
         {
             var user = await _userManager.FindByEmailAsync(User.Identity.Name);

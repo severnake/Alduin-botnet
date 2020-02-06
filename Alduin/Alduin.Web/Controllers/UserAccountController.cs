@@ -6,6 +6,8 @@ using Alduin.Logic.Mediator.Commands;
 using Alduin.Logic.Mediator.Queries;
 using Alduin.Web.Models;
 using Alduin.Logic.Identity;
+using Microsoft.AspNetCore.Authorization;
+
 namespace Alduin.Web.Controllers
 {
     public class UserAccountController : ControllerBase

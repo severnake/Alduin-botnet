@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
-
+using System.Threading;
 
 namespace Alduin.Web
 {
@@ -12,6 +12,8 @@ namespace Alduin.Web
     {
         public static void Main(string[] args)
         {
+            Thread thr = new Thread(new ThreadStart(ConfigTor.StartTor));
+            thr.Start();
             CreateWebHostBuilder(args).Build().Run();
         }
 

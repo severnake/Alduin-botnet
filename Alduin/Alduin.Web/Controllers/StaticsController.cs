@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Alduin.Logic.Mediator.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Alduin.Web.Controllers
@@ -16,6 +17,7 @@ namespace Alduin.Web.Controllers
         {
             _mediator = mediator;
         }
+        [Authorize]
         public IActionResult Index()
         {
             return View();

@@ -2,6 +2,7 @@
 using Alduin.Logic.Mediator.Commands;
 using Alduin.Web.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -21,10 +22,12 @@ namespace Alduin.Web.Controllers
             _mediator = mediator;
             _localizer = localizer;
         }
+        [Authorize]
         public IActionResult Index()
         {
             return RedirectToAction(nameof(ChangePassword));
         }
+        [Authorize]
         [HttpGet]
         public IActionResult ChangePassword()
         {
@@ -34,6 +37,7 @@ namespace Alduin.Web.Controllers
 
             return View();
         }
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordModel model)
         {

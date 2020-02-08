@@ -9,7 +9,7 @@ namespace Alduin.Server.Modules
 {
     public class ConfigTor
     {
-        private static string Tor = "tor";
+        public static string Tor = "tor";
         public static string AlduinWebPort = "44359";
 
         public static string TorBaseFolder = GetPathes.Get_TorPath();

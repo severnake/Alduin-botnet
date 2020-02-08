@@ -7,27 +7,24 @@ using Microsoft.AspNetCore.Mvc;
 using Alduin.Server.Modules;
 using System.Threading;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Localization;
+using System.Diagnostics;
 
 namespace Alduin.Web.Controllers
 {
     public class TorController : ControllerBase
     {
+        private readonly IStringLocalizer<HomeController> _localizer;
+
+        public TorController(IStringLocalizer<HomeController> localizer)
+        {
+            _localizer = localizer;
+        }
+
         [Authorize]
         public IActionResult Index()
         {
-            var OnionAddress = "";
-            try
-            {
-               OnionAddress = ServerFileManager.FileReader(ConfigTor.TorBaseFolder + @"/hostname");
-            }
-            catch
-            {
-                Thread thr = new Thread(new ThreadStart(ConfigTor.StartTor));
-                thr.Start();
-                OnionAddress = "Read error! Please reload page!";
-            };
-            
-            ViewData["OnionAddress"] = OnionAddress.Replace("\r\n", "");
+            ViewData["OnionAddress"] = readTorch().Replace("\r\n", "");
             return View();
         }
         [Authorize]
@@ -62,17 +59,8 @@ namespace Alduin.Web.Controllers
             catch {};
             Thread thr = new Thread(new ThreadStart(ConfigTor.StartTor));
             thr.Start();
-            var OnionAddress = "";
-            try
-            {
-                OnionAddress = ServerFileManager.FileReader(ConfigTor.TorBaseFolder + @"/hostname");
-            }
-            catch
-            {
-                OnionAddress = "Read error! Please reload page!";
-            };
             Thread.Sleep(5000);
-            return Content(OnionAddress);
+            return Content(readTorch());
         }
         [Authorize]
         [HttpPost]
@@ -81,5 +69,25 @@ namespace Alduin.Web.Controllers
             ServerFileManager.FileWriter(ConfigTor.TorrcPath, model.Torch);
             return View(model);
         }
+        private string readTorch()
+        {
+            var OnionAddress = "";
+            try
+            {
+                OnionAddress = ServerFileManager.FileReader(ConfigTor.TorBaseFolder + @"/hostname");
+            }
+            catch
+            {
+                Process[] p;
+                p = Process.GetProcessesByName(ConfigTor.Tor);
+                if (!(p.Length > 0))
+                {
+                    Thread thr = new Thread(new ThreadStart(ConfigTor.StartTor));
+                    thr.Start();
+                }
+                OnionAddress = _localizer["Read error! Please reload page!"];
+            };
+            return OnionAddress;
+        } 
     }
 }

@@ -7,6 +7,7 @@ using Alduin.Logic.DTOs;
 using Alduin.Logic.Identity;
 using Alduin.Logic.Mediator.Commands;
 using Alduin.Shared.Interfaces.UnitOfWork;
+using Alduin.Logic.Managers;
 
 namespace Alduin.Logic.Mediator.Handlers.CommandHandlers
 {
@@ -33,7 +34,6 @@ namespace Alduin.Logic.Mediator.Handlers.CommandHandlers
 
             var appUser = _mapper.Map<AppIdentityUser>(request.User);
             var result = await _identityUserManager.CreateAsync(appUser, request.Password);
-            
             if (result.Succeeded)
             {
                 var userPrincipal = await _signInManager.CreateUserPrincipalAsync(appUser);

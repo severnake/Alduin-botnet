@@ -12,5 +12,29 @@ namespace Alduin.Logic.Managers
     {
         public InvitationManager(ISession session, IMapper mapper, IUnitOfWork unitOfWork) : base(session, mapper, unitOfWork)
         {}
+        protected override TransactionResult ValidateSaving(InvitationEntity entity)
+        {
+            var result = base.ValidateSaving(entity);
+
+            if (string.IsNullOrEmpty(entity.invitationKey))
+            {
+                result.ErrorMessages.Add(new TransactionErrorMessage
+                {
+                    IsPublic = true,
+                    Message = "Invitation Key is required!"
+                });
+                result.Succeeded = false;
+            }
+            if (entity.Used)
+            {
+                result.ErrorMessages.Add(new TransactionErrorMessage
+                {
+                    IsPublic = true,
+                    Message = "Key is Used!"
+                });
+                result.Succeeded = false;
+            }
+            return result;
+        }
     }
 }

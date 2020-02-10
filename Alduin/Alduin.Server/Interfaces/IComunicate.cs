@@ -6,6 +6,6 @@ namespace Alduin.Server.Interfaces
 {
     public interface IComunicate
     {
-        string TCPSend();
+        string TCPSend(object model);
     }
 }

@@ -33,7 +33,7 @@ namespace Alduin.Logic.Mediator.Handlers.CommandHandlers
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            //_unitOfWork.BeginTransaction();
+            _unitOfWork.BeginTransaction();
             var user = _session.Load<UserEntity>(request.UserId);
             using (var trans = _session.BeginTransaction())
             {

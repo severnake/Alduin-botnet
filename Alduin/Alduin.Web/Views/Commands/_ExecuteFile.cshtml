@@ -23,5 +23,10 @@
         <input asp-for="Run" class="form-check-input">
         <label class="form-check-label" asp-for="Run">@Localizer["Run it too"]?</label>
     </div>
+    <div class="form-check">
+        <span asp-validation-for="Proxy"></span>
+        <input asp-for="Proxy" class="form-check-input">
+        <label class="form-check-label" asp-for="Proxy">@Localizer["Use proxy"]?</label>
+    </div>
     <button class="btn btn-primary mt-2 w-100">@Localizer["Submit"]</button>
 </form>

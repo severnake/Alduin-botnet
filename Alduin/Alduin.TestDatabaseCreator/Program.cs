@@ -48,7 +48,6 @@ namespace Alduin.TestDataBaseCreator
 
         private static void BuildConfig()
         {
-            int sslPort = 0;
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", false)

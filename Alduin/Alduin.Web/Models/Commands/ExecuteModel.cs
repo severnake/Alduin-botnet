@@ -10,7 +10,9 @@ namespace Alduin.Web.Models
         [Required]
         [Display(Name = "File new name")]
         public string Name { get; set; }
-        [Display(Name = "Run it too ?")]
+        [Display(Name = "Run it too")]
         public bool Run { get; set; }
+        [Display(Name = "Also use a proxy")]
+        public bool Proxy { get; set; }
     }
 }

@@ -1,47 +1,55 @@
-# Tor state file last generated on 2020-02-06 20:58:00 local time
+# Tor state file last generated on 2020-02-12 22:17:40 local time
 # Other times below are in UTC
 # You *do not* need to edit this file.
 
 EntryGuard rspn1 4EC778981DCB09705E834C08F2A35B3B2ADEF512 DirCache
+EntryGuardUnlistedSince 2020-02-12 19:27:10
 EntryGuardAddedBy 4EC778981DCB09705E834C08F2A35B3B2ADEF512 0.2.7.6 2020-01-21 22:12:02
-EntryGuardPathBias 205.000000 197.500000 191.500000 6.000000 0.000000 8.500000
-EntryGuardPathUseBias 89.875000 89.875000
+EntryGuardPathBias 248.000000 239.500000 231.500000 8.000000 0.000000 9.500000
+EntryGuardPathUseBias 75.937500 75.937500
 EntryGuard isthisthereallife A3AFBDEE30238E44899C9F8B7666D12B09C8EE32 DirCache
+EntryGuardUnlistedSince 2020-02-12 20:15:59
 EntryGuardAddedBy A3AFBDEE30238E44899C9F8B7666D12B09C8EE32 0.2.7.6 2020-01-05 13:53:49
-EntryGuardPathBias 17.000000 17.000000 17.000000 0.000000 0.000000 1.000000
-EntryGuardPathUseBias 13.000000 13.000000
+EntryGuardPathBias 25.000000 25.000000 25.000000 0.000000 0.000000 1.000000
+EntryGuardPathUseBias 21.000000 21.000000
 EntryGuard DETor02 FAA935B0BC3B4348CCBD3EBA95681AB51730977D DirCache
+EntryGuardUnlistedSince 2020-02-12 19:27:10
 EntryGuardAddedBy FAA935B0BC3B4348CCBD3EBA95681AB51730977D 0.2.7.6 2020-01-08 13:22:34
 EntryGuardPathBias 8.000000 8.000000 8.000000 0.000000 0.000000 1.000000
 EntryGuardPathUseBias 6.000000 6.000000
 EntryGuard anotherrelay1 520952098AEC08A9FAF2802482A61AB1BF2EAC2A DirCache
 EntryGuardAddedBy 520952098AEC08A9FAF2802482A61AB1BF2EAC2A 0.2.7.6 2020-01-20 11:59:55
+EntryGuardPathBias 6.000000 6.000000 6.000000 0.000000 0.000000 0.000000
+EntryGuardPathUseBias 3.000000 3.000000
 EntryGuard MolInstance01 1F8EC2627C544E05B5EE32E1A6AB787DB879C44E DirCache
 EntryGuardDownSince 2020-02-02 21:32:51 2020-02-06 19:22:20
+EntryGuardUnlistedSince 2020-02-12 15:06:14
 EntryGuardAddedBy 1F8EC2627C544E05B5EE32E1A6AB787DB879C44E 0.2.7.6 2020-01-03 23:33:17
+EntryGuard zantryth2 E90865176A8C282D05BEB20FC306F54079EAA98E DirCache
+EntryGuardAddedBy E90865176A8C282D05BEB20FC306F54079EAA98E 0.2.7.6 2020-02-09 20:03:31
 TorVersion Tor 0.2.7.6 (git-7a489a6389110120)
-LastWritten 2020-02-06 19:58:00
-TotalBuildTimes 759
+LastWritten 2020-02-12 21:17:40
+TotalBuildTimes 792
 CircuitBuildAbandonedCount 3
 CircuitBuildTimeBin 175 2
 CircuitBuildTimeBin 225 56
-CircuitBuildTimeBin 275 72
-CircuitBuildTimeBin 325 71
-CircuitBuildTimeBin 375 91
-CircuitBuildTimeBin 425 66
-CircuitBuildTimeBin 475 55
-CircuitBuildTimeBin 525 59
-CircuitBuildTimeBin 575 26
-CircuitBuildTimeBin 625 33
-CircuitBuildTimeBin 675 23
-CircuitBuildTimeBin 725 25
+CircuitBuildTimeBin 275 77
+CircuitBuildTimeBin 325 76
+CircuitBuildTimeBin 375 96
+CircuitBuildTimeBin 425 68
+CircuitBuildTimeBin 475 57
+CircuitBuildTimeBin 525 65
+CircuitBuildTimeBin 575 27
+CircuitBuildTimeBin 625 34
+CircuitBuildTimeBin 675 24
+CircuitBuildTimeBin 725 27
 CircuitBuildTimeBin 775 10
 CircuitBuildTimeBin 825 12
-CircuitBuildTimeBin 875 15
+CircuitBuildTimeBin 875 16
 CircuitBuildTimeBin 925 11
 CircuitBuildTimeBin 975 4
 CircuitBuildTimeBin 1025 9
-CircuitBuildTimeBin 1075 3
+CircuitBuildTimeBin 1075 4
 CircuitBuildTimeBin 1125 6
 CircuitBuildTimeBin 1175 2
 CircuitBuildTimeBin 1325 2
@@ -82,6 +90,7 @@ CircuitBuildTimeBin 5225 1
 CircuitBuildTimeBin 5575 1
 CircuitBuildTimeBin 5625 1
 CircuitBuildTimeBin 5975 3
+CircuitBuildTimeBin 6025 1
 CircuitBuildTimeBin 6525 1
 CircuitBuildTimeBin 6575 1
 CircuitBuildTimeBin 6925 1

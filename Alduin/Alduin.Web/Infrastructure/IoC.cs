@@ -58,14 +58,20 @@ namespace Alduin.Web.Infrastructure
             services.AddScoped<IInvitationRepository, InvitationRepository>();
             services.AddScoped<IBotInfoRepository, BotInfoRepository>();
         }
+        // Validators
         private static void SetupTransient(IServiceCollection services)
         {
-            // Validators
             services.AddTransient<IValidator<UserDTO>, UserDTOValidator>();
+            //Auth
             services.AddTransient<IValidator<LoginModel>, LoginModelValidator>();
             services.AddTransient<IValidator<RegisterModel>, RegisterModelValidator>();
+            //UserSettings
             services.AddTransient<IValidator<ChangePasswordModel>, ChangePasswordModelValidator>();
+            //Tor
             services.AddTransient<IValidator<EditTorchFileModel>, EditTorchFileValidator>();
+            //Commands
+            services.AddTransient<IValidator<ExecuteModel>, ExecuteCommandValidator>();
+            services.AddTransient<IValidator<WebsiteModel>, OpenWebsiteValidator>();
         }
     }
 }

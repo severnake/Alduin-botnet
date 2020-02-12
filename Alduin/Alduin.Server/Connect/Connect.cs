@@ -22,7 +22,6 @@ public class Connect : IComunicate
     }
     public string TCPSend(object model)
     {
-        
         try
         {
             proxyClient = new Socks5ProxyClient("127.0.0.1", 9150);

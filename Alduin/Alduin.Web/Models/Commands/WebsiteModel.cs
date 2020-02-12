@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Alduin.Web.Models.Commands;
+using System.ComponentModel.DataAnnotations;
 
 namespace Alduin.Web.Models
 {
-    public class WebsiteModel
+    public class WebsiteModel : CommandBaseModel
     {
         [Display(Name = "Website Url")]
         public string Url { get; set; }

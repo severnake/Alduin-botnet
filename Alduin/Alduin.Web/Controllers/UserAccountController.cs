@@ -7,6 +7,7 @@ using Alduin.Logic.Mediator.Queries;
 using Alduin.Web.Models;
 using Alduin.Logic.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Alduin.Logic.Services;
 
 namespace Alduin.Web.Controllers
 {
@@ -14,11 +15,13 @@ namespace Alduin.Web.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IStringLocalizer<UserAccountController> _localizer;
+        private readonly RegisterService _registerService;
 
-        public UserAccountController(IMediator mediator, IStringLocalizer<UserAccountController> localizer)
+        public UserAccountController(IMediator mediator, IStringLocalizer<UserAccountController> localizer, RegisterService registerService)
         {
             _mediator = mediator;
             _localizer = localizer;
+            _registerService = registerService;
         }
 
         public IActionResult Index()
@@ -108,26 +111,9 @@ namespace Alduin.Web.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            var query = new GetInvitationByKeyQuery { invitationKey = model.Key };
-            var resultKey = await _mediator.Send(query);
-            if (resultKey.Used)
-            {
-                return View(model);
-            }
-            
-            var registerCommand = new RegisterCommand
-            {
-                User = model.User,
-                Password = model.Password
-            };
-            var UpdateInvitationCommand = new UpdateInvitationCommand
-            {
-                id = resultKey.Id,
-            };
-            var result = await _mediator.Send(registerCommand);
+            var result = await _registerService.Register(model.User, model.Password, model.Key);
             if (result.Suceeded)
             {
-                var confirm = await _mediator.Send(UpdateInvitationCommand);
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             } 
             else

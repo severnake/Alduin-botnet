@@ -20,6 +20,7 @@ using Alduin.Logic.Mapping;
 using Alduin.Logic.Mediator.Handlers.QueryHandlers;
 using Alduin.Web.Infrastructure;
 using Alduin.Web.SharedResource;
+using Alduin.Logic.Services;
 
 namespace Alduin.Web
 {
@@ -122,6 +123,7 @@ namespace Alduin.Web
             services.AddMediatR(typeof(GetUserByIdQueryHandler)); // handlers are stored in the Alduin.Logic assembly
 
             services.AddAutoMapper(cfg => SetupAutoMapperConfiguration(cfg), GetAutoMapperProfileAssemblies());
+            services.AddScoped<RegisterService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

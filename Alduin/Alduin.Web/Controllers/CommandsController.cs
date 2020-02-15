@@ -7,11 +7,18 @@ using Alduin.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Alduin.Server.Handler;
+using MediatR;
+using Alduin.Server.Interfaces;
+using Alduin.Logic.Mediator.Queries;
+using Alduin.Shared.DTOs;
 
 namespace Alduin.Web.Controllers
 {
     public class CommandsController : ControllerBase
     {
+        private readonly IMediator _mediator;
+        private readonly ICommand _commandexecute;
         [Authorize]
         public IActionResult Index()
         {
@@ -42,9 +49,12 @@ namespace Alduin.Web.Controllers
                 Name = model.Name,
                 Proxy = model.Proxy,
                 Run = model.Run,
-                Force = model.Force
             };
-
+            var bots = new GetBotsByStatusQuery { 
+                status = model.Force
+            };
+            var botlist = _mediator.Send(bots);
+            _commandexecute.Send(botlist, command);
             return Json(true);
         }
         [Authorize]

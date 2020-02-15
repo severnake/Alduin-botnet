@@ -97,12 +97,6 @@ namespace Alduin.Logic.Test.Repositories
             var invitationRepository = new Mock<IInvitationRepository>();
 
             // Arrange
-            var invitationDto = new InvitationDTO
-            {
-                UserId = 1,
-                invitationKey = "fsdfsdfsdf",
-                Used = false
-            };
 
             invitationRepository
                 .Setup(x => x.FindByUserId(It.Is<int>(i => i != 1)))

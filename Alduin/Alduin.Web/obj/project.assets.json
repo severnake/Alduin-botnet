@@ -5028,6 +5028,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
+          "Alduin.Logic": "1.0.0",
+          "MediatR": "7.0.0",
           "starksoft.aspen": "1.1.6"
         },
         "compile": {

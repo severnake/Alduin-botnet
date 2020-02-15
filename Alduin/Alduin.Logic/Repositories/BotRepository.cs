@@ -4,8 +4,6 @@ using Alduin.Shared.DTOs;
 using AutoMapper;
 using NHibernate;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Alduin.Logic.Repositories
 {
@@ -13,6 +11,21 @@ namespace Alduin.Logic.Repositories
     {
         public BotRepository(ISession session, IMapper mapper) : base(session, mapper)
         {
+            
+        }
+        public BotDTO[] FindAddressByAvailable(bool force)
+        {
+            var query = _session.QueryOver<BotEntity>();
+            DateTime DateNowUTC = DateTime.UtcNow;
+            DateNowUTC = DateNowUTC.AddMinutes(-5);
+
+            if (!force)
+            {
+               query = query.Where(x => x.LastLoggedInUTC >= DateNowUTC);
+            }
+            var entities = query.List();
+            var dto = _mapper.Map<BotDTO[]>(entities);
+            return dto;
         }
     }
 }

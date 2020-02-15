@@ -269,7 +269,11 @@
         },
         "frameworks": {
           "netcoreapp2.2": {
-            "projectReferences": {}
+            "projectReferences": {
+              "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Logic\\Alduin.Logic.csproj": {
+                "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Logic\\Alduin.Logic.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -281,6 +285,10 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",

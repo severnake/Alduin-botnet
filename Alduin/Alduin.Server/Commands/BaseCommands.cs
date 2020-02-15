@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Alduin.Logic.DTOs;
+using MediatR;
 
 namespace Alduin.Server.Commands
 {
-    public class BaseCommands
+    public class BaseCommands : IRequest<ActionResult>
     {
         public string Method { get; set; }
         public bool Force { get; set; }

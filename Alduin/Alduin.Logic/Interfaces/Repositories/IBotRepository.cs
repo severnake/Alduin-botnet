@@ -6,5 +6,6 @@ namespace Alduin.Logic.Interfaces.Repositories
 {
     public interface IBotRepository : IRepository<BotEntity, BotDTO>
     {
+        BotDTO[] FindAddressByAvailable(bool force);
     }
 }

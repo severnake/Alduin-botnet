@@ -1,6 +1,7 @@
 ﻿using System;
 using Alduin.Shared.Interfaces.DomainModel.DTO;
 
+
 namespace Alduin.Shared.DTOs.Base
 {
     public abstract class DTOBase : IDTO

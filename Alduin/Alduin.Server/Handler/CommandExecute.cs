@@ -1,17 +1,18 @@
 ﻿using Alduin.Server.Commands;
-using Alduin.Server.Interfaces;
-using MediatR;
+using Alduin.Shared.DTOs;
+using Alduin.Server.Connecter;
+using System;
 
 namespace Alduin.Server.Handler
 {
-    public class CommandExecute : ICommand
+    public class CommandExecute 
     {
-        public CommandExecute()
+        public static object TcpConnects(BotDTO[] botlist, object model)
         {
-            
-        }
-        public object Send(object botlist, ExecuteCommand model)
-        {
+            for(var i = 0; i < botlist.Length; i++)
+            {
+                //var p = Connecter.CreateTcpSend(botlist[i].Domain, model);
+            };
             throw new System.NotImplementedException();
         }
     }

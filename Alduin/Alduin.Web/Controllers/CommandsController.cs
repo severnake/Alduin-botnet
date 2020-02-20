@@ -59,7 +59,7 @@ namespace Alduin.Web.Controllers
                 status = model.Force
             };
             var botlist = await _mediator.Send(bots);
-            CommandExecute.TcpConnects(botlist, command);
+            var response = CommandExecute.TcpConnects(botlist, command);
             return Json(true);
         }
         [Authorize]

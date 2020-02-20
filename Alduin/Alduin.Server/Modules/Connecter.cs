@@ -2,23 +2,18 @@
 using System.IO;
 using Starksoft.Aspen.Proxy;
 using System.Net.Sockets;
-namespace Alduin.Server.Connecter
+namespace Alduin.Server.Modules
 {
     public class Connecter
     {
         public static TcpClient TCP;
         public static StreamWriter Write;
         public static StreamReader Reader;
-        private readonly int port = 44359;
-        private delegate void MessageReceived(string msg);
         private static Socks5ProxyClient proxyClient;
 
-        public Connecter()
+        public static string CreateTcpSend(string Address, object MSG)
         {
-        }
-
-        public string CreateTcpSend(string Address, object MSG)
-        {
+            int port = 44359;
             try
             {
                 proxyClient = new Socks5ProxyClient("127.0.0.1", 9150);
@@ -31,7 +26,6 @@ namespace Alduin.Server.Connecter
             }
             catch (Exception ex)
             {
-                //Log
                 return "Error: " + ex;
             }
         }

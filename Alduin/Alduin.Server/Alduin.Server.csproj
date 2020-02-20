@@ -8,12 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Connect\Get\**" />
-    <EmbeddedResource Remove="Connect\Get\**" />
-    <None Remove="Connect\Get\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MediatR" Version="7.0.0" />
     <PackageReference Include="starksoft.aspen" Version="1.1.6" />
   </ItemGroup>

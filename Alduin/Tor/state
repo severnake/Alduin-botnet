@@ -1,11 +1,11 @@
-# Tor state file last generated on 2020-02-19 20:33:18 local time
+# Tor state file last generated on 2020-02-20 14:41:01 local time
 # Other times below are in UTC
 # You *do not* need to edit this file.
 
 EntryGuard rspn1 4EC778981DCB09705E834C08F2A35B3B2ADEF512 DirCache
 EntryGuardAddedBy 4EC778981DCB09705E834C08F2A35B3B2ADEF512 0.2.7.6 2020-01-21 22:12:02
-EntryGuardPathBias 263.000000 255.250000 248.250000 7.000000 0.000000 18.250000
-EntryGuardPathUseBias 80.734375 80.734375
+EntryGuardPathBias 291.000000 283.250000 276.250000 7.000000 0.000000 18.250000
+EntryGuardPathUseBias 55.367188 55.367188
 EntryGuard isthisthereallife A3AFBDEE30238E44899C9F8B7666D12B09C8EE32 DirCache
 EntryGuardAddedBy A3AFBDEE30238E44899C9F8B7666D12B09C8EE32 0.2.7.6 2020-01-05 13:53:49
 EntryGuardPathBias 51.000000 43.000000 42.000000 1.000000 0.000000 17.000000
@@ -37,27 +37,27 @@ EntryGuardPathUseBias 7.000000 7.000000
 EntryGuard UenoStation54 235D3444236ABC28F412E93814F6B783200D4630 DirCache
 EntryGuardAddedBy 235D3444236ABC28F412E93814F6B783200D4630 0.2.7.6 2020-01-29 08:08:01
 TorVersion Tor 0.2.7.6 (git-7a489a6389110120)
-LastWritten 2020-02-19 19:33:18
-TotalBuildTimes 924
+LastWritten 2020-02-20 13:41:01
+TotalBuildTimes 941
 CircuitBuildAbandonedCount 4
 CircuitBuildTimeBin 175 2
 CircuitBuildTimeBin 225 59
 CircuitBuildTimeBin 275 89
-CircuitBuildTimeBin 325 88
-CircuitBuildTimeBin 375 113
-CircuitBuildTimeBin 425 82
-CircuitBuildTimeBin 475 71
-CircuitBuildTimeBin 525 77
+CircuitBuildTimeBin 325 89
+CircuitBuildTimeBin 375 115
+CircuitBuildTimeBin 425 85
+CircuitBuildTimeBin 475 73
+CircuitBuildTimeBin 525 79
 CircuitBuildTimeBin 575 34
 CircuitBuildTimeBin 625 39
 CircuitBuildTimeBin 675 32
-CircuitBuildTimeBin 725 34
-CircuitBuildTimeBin 775 15
-CircuitBuildTimeBin 825 15
-CircuitBuildTimeBin 875 18
+CircuitBuildTimeBin 725 35
+CircuitBuildTimeBin 775 16
+CircuitBuildTimeBin 825 16
+CircuitBuildTimeBin 875 19
 CircuitBuildTimeBin 925 14
-CircuitBuildTimeBin 975 6
-CircuitBuildTimeBin 1025 9
+CircuitBuildTimeBin 975 7
+CircuitBuildTimeBin 1025 11
 CircuitBuildTimeBin 1075 5
 CircuitBuildTimeBin 1125 6
 CircuitBuildTimeBin 1175 3

@@ -214,6 +214,16 @@ button.accept-policy {
   color: #d4d6d9;
   border-radius: 5px; }
 
+.select-list {
+  left: 15px;
+  margin-top: 1px;
+  cursor: pointer;
+  transition: .2s; }
+  .select-list:hover {
+    background-color: #15A0BF; }
+  .select-list:active {
+    background-color: #d4d6d9; }
+
 .nobreak {
   white-space: nowrap; }
 

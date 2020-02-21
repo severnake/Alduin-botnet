@@ -54,7 +54,7 @@
             <div class="col-3">@Localizer["Last seen"]</div>
         </div>
         <!--List Head end-->
-        <div class="row text-center" id="botlist">
+        <div class="row text-center" id="bot-list">
 
         </div>
     </div>
@@ -76,7 +76,7 @@
             url: '/List/BotList',
             dataType: 'json',
             beforeSend: function () {
-                $('#botlist').append("<div class='ajax-loading'></div>");
+                $('#bot-list').append("<div class='ajax-loading'></div>");
             },
             complete: function () {
                 $('.ajax-loading').remove();
@@ -104,65 +104,75 @@
     $("#sorter").click(function () {
         switch ($(this).val()) {
             case "id-sort-normal":
-                ListArray.sort((a, b) => (a.Id > b.Id) ? 1 : -1);
-                break;
-            case "id-sort-desc":
                 ListArray.sort((a, b) => (a.Id > b.Id) ? -1 : 1);
                 break;
-            case "date-sort-normal":
-                ListArray.sort((a, b) => (a.LastLogin > b.LastLogin) ? 1 : -1);
+            case "id-sort-desc":
+                ListArray.sort((a, b) => (a.Id > b.Id) ? 1 : -1);
                 break;
-            case "date-sort-desc":
+            case "date-sort-normal":
                 ListArray.sort((a, b) => (a.LastLogin > b.LastLogin) ? -1 : 1);
                 break;
-            case "name-sort-normal":
-                ListArray.sort((a, b) => (a.Name > b.Name) ? 1 : -1);
+            case "date-sort-desc":
+                ListArray.sort((a, b) => (a.LastLogin > b.LastLogin) ? 1 : -1);
                 break;
-            case "name-sort-desc":
+            case "name-sort-normal":
                 ListArray.sort((a, b) => (a.Name > b.Name) ? -1 : 1);
                 break;
-            case "domain-sort-normal":
-                ListArray.sort((a, b) => (a.Domain > b.Domain) ? 1 : -1);
+            case "name-sort-desc":
+                ListArray.sort((a, b) => (a.Name > b.Name) ? 1 : -1);
                 break;
-            case "domain-sort-desc":
+            case "domain-sort-normal":
                 ListArray.sort((a, b) => (a.Domain > b.Domain) ? -1 : 1);
                 break;
+            case "domain-sort-desc":
+                ListArray.sort((a, b) => (a.Domain > b.Domain) ? 1 : -1);
+                break;
             case "country-sort-normal":
-                ListArray.sort((a, b) => (a.Country > b.Country) ? 1 : -1);
+                ListArray.sort((a, b) => (a.Country > b.Country) ? -1 : 1);
                 break;
             case "country-sort-desc":
-                ListArray.sort((a, b) => (a.Country > b.Country) ? -1 : 1);
+                ListArray.sort((a, b) => (a.Country > b.Country) ? 1 : -1);
                 break;
         }
         listing();
     });
     function listing() {
-        $("#botlist").text("");
+        $("#bot-list").text("");
         for (var i = 0; i < ListArray.length; i++) {
+            var listText = "<div class='col-12 select-list row' data-value='" + ListArray[i].Id + "'>" +
+                                "<div class='col-1 list-line' > " + ListArray[i].Id + "</div > " +
+                                "<div class='col-2 list-line'>" + ListArray[i].Name + "</div>" +
+                                "<div class='col-3 list-line'>" + ListArray[i].Domain + "</div>" +
+                                "<div class='col-1 list-line'>" + ListArray[i].Country + "</div>" +
+                                "<div class='col-2 list-line'>" + ListArray[i].Online + "</div>" +
+                                "<div class='col-3 list-line'>" + ListArray[i].LastLogin + "</div>" +
+                            "</div>";
             if ($("#status").prop("checked")) {
                 if (ListArray[i].Online == yes) {
-                    $("#botlist").append(
-                        "<div class='col-1 list-line'>" + ListArray[i].Id + "</div>" +
-                        "<div class='col-2 list-line'>" + ListArray[i].Name + "</div>" +
-                        "<div class='col-3 list-line'>" + ListArray[i].Domain + "</div>" +
-                        "<div class='col-1 list-line'>" + ListArray[i].Country + "</div>" +
-                        "<div class='col-2 list-line'>" + ListArray[i].Online + "</div>" +
-                        "<div class='col-3 list-line'>" + ListArray[i].LastLogin + "</div>"
-                    );
+                    $("#bot-list").append(listText);
                 }
-
             } else {
-                $("#botlist").append(
-                    "<div class='col-1 list-line'>" + ListArray[i].Id + "</div>" +
-                    "<div class='col-2 list-line'>" + ListArray[i].Name + "</div>" +
-                    "<div class='col-3 list-line'>" + ListArray[i].Domain + "</div>" +
-                    "<div class='col-1 list-line'>" + ListArray[i].Country + "</div>" +
-                    "<div class='col-2 list-line'>" + ListArray[i].Online + "</div>" +
-                    "<div class='col-3 list-line'>" + ListArray[i].LastLogin + "</div>"
-                );
+                $("#bot-list").append(listText);
             }
         }
     }
+    $(document).on('click', '.select-list', function () {
+        window.open('/List/Bot?=' + $(this).data("value"), '_blank');
+        /*$.ajax({
+            type: 'GET',
+            url: '/List/Bot?=' + $(this).data("value"),
+            dataType: 'json',
+            beforeSend: function () {
+                $('#bot-list').append("<div class='ajax-loading'></div>");
+            },
+            complete: function () {
+                $('.ajax-loading').remove();
+            },
+            success: function (data) {
+
+            }
+        });*/
+     });
 </script>
 
 

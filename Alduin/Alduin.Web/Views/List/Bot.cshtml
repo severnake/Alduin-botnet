@@ -1,0 +1,32 @@
+﻿@model BotDeatilsModel
+@{
+    ViewData["Title"] = Localizer["Bot Deatils"];
+}
+<div class="container d-flex justify-content-center">
+    <div class="wide-board">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="text-center">@Localizer["Bot Deatils"]</h1>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12"><h1><u>@Model.Name :</u></h1></div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3>@Model.Status </h3>
+            </div>
+        </div>
+        <div class="row bg-head-color mb-2 font-weight-bold">
+            <div class="col-4 text-center">@Localizer["Domain"]</div>
+            <div class="col-4 text-center">@Localizer["Last IP address"]</div>
+            <div class="col-4 text-center">@Localizer["Last Loged in UTC"]</div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-center">@Model.Domain</div> 
+            <div class="col-4 text-center">@Model.LastIPAddress</div>
+            <div class="col-4 text-center">@Model.LastLoggedInUTC</div>
+        </div>
+    </div>
+</div>

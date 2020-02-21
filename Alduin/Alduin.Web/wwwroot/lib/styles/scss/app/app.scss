@@ -308,8 +308,21 @@ button.accept-policy {
     color: $text-color;
     border-radius: 5px;
 }
-//Selects end
+.select-list {
+    left: 15px;
+    margin-top: 1px;
+    cursor: pointer;
+    transition: .2s;
 
+    &:hover {
+        background-color: $active-color;
+    }
+
+    &:active {
+        background-color: $text-color;
+    }
+}
+//Selects end
 //Functions
 .nobreak {
     white-space: nowrap;

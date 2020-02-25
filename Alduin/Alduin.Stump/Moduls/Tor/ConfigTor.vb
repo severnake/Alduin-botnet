@@ -48,16 +48,16 @@ Namespace Alduin.Server.Modules
 
         Sub CreateTorrc()
             Dim filestring = "
-                        ControlPort 9151
-                        DataDirectory " & TorFolder & "
-                        DirPort 9030
-                        ExitPolicy reject *:*
-                        HashedControlPassword 16:4E1F1599005EB8F3603C046EF402B00B6F74C008765172A774D2853FD4
-                        HiddenServiceDir " & TorFolder & "
-                        HiddenServicePort " & AlduinWebPort & " 127.0.0.1:5557
-                        Log notice stdout
-                        Nickname Alduin
-                        SocksPort 9150"
+ControlPort 9151
+DataDirectory " & TorFolder & "
+DirPort 9030
+ExitPolicy reject *:*
+HashedControlPassword 16:4E1F1599005EB8F3603C046EF402B00B6F74C008765172A774D2853FD4
+HiddenServiceDir " & TorFolder & "
+HiddenServicePort " & AlduinWebPort & " 127.0.0.1:5557
+Log notice stdout
+Nickname Alduin
+SocksPort 9150"
             Dim fs As FileStream = File.Create(TorrcPath)
             Dim info = New UTF8Encoding(True).GetBytes(filestring)
             fs.Write(info, 0, info.Length)

@@ -13,16 +13,24 @@ namespace Alduin.Server.Modules
 
         public static string CreateTcpSend(string Address, object MSG)
         {
-            int port = 44359;
+            int port = 25999;
             try
             {
                 proxyClient = new Socks5ProxyClient("127.0.0.1", 9150);
+                proxyClient.ProxyUserName = "";
+                proxyClient.ProxyPassword = "";
                 TCP = proxyClient.CreateConnection(Address, port);
                 Write = new StreamWriter(TCP.GetStream());
-                Write.WriteLine(MSG);
+                Write.Write(MSG);
                 Write.Flush();
                 Reader = new StreamReader(TCP.GetStream());
-                return Reader.ToString();
+                var ResultMessage = "";
+
+                while (Reader.Peek() > -1)
+                {
+                    ResultMessage += Convert.ToChar(Reader.Read()).ToString();
+                }
+                return ResultMessage;
             }
             catch (Exception ex)
             {

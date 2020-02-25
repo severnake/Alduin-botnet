@@ -77,3 +77,5 @@ E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\T
 E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Alduin.Web.Resources.Controllers.TorController.hu-HU.resources
 E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Alduin.Web.Resources.Views.Tor.Index.hu-HU.resources
 E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\List\Bot.cshtml.g.cs
+E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Alduin.Web.Resources.Controllers.ListController.hu-HU.resources
+E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Alduin.Web.Resources.Views.List.Bot.hu-HU.resources

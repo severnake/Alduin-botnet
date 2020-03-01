@@ -2,6 +2,8 @@
 Imports System.Environment
 Imports System.IO
 Imports System.Net
+Imports System.Text
+
 Module IOModule
     Private appData As String = GetFolderPath(SpecialFolder.ApplicationData)
     Private exePath As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase)
@@ -18,6 +20,12 @@ Module IOModule
         Dim local_path As String = exePath.Replace("file:\", "")
         Return local_path
     End Function
+    Public Sub Write_file(ByVal pathwithfile As String, ByVal text As String)
+        Dim fs As FileStream = File.Create(pathwithfile)
+        Dim info As Byte() = New UTF8Encoding(True).GetBytes(text)
+        fs.Write(info, 0, info.Length)
+        fs.Close()
+    End Sub
     Public Sub CreateDirectory(ByVal path As String)
         Directory.CreateDirectory(path)
     End Sub

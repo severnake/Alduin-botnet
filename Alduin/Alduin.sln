@@ -16,10 +16,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alduin.TestDatabaseCreator", "Alduin.TestDatabaseCreator\Alduin.TestDatabaseCreator.csproj", "{C4502686-D3CA-4C9B-9A9A-411F946F415E}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Alduin.Stump", "Alduin.Stump\Alduin.Stump.vbproj", "{69635829-576F-439D-AA64-45668B9328D3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{66951BBA-F913-4310-91DC-166AB1920724} = {66951BBA-F913-4310-91DC-166AB1920724}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alduin.Server", "Alduin.Server\Alduin.Server.csproj", "{66951BBA-F913-4310-91DC-166AB1920724}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alduin.Logic.Test", "Alduin.Logic.Test\Alduin.Logic.Test.csproj", "{41818F36-B594-4086-99E4-E0D04C6B84C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alduin.Logic.Test", "Alduin.Logic.Test\Alduin.Logic.Test.csproj", "{41818F36-B594-4086-99E4-E0D04C6B84C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

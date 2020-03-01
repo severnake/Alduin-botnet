@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Text
 Imports System.Threading
+Imports Alduin.Stump.Alduin.Server.Modules.IO
 
 Namespace Alduin.Server.Modules
     Partial Friend Module ConfigTor

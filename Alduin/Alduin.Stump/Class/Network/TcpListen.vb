@@ -2,17 +2,15 @@
 Imports System.Net.Sockets
 Namespace Alduin.Stump.Class.Network
     Public Class TcpListen
-        Private adr As Net.IPAddress = Net.IPAddress.Parse("127.0.0.1")
-        Private port As Integer = 25999
+        Private adr As Net.IPAddress = Net.IPAddress.Parse(LocalIP)
         Private client As TcpClient
         Private listener As TcpListener
         Private ReadOnly _command As ICommand
-        Public Sub New(ByVal command As ICommand)
-            listener = New TcpListener(adr, port)
-            _command = command
+        Public Sub New()
+            listener = New TcpListener(adr, ListenerPort)
         End Sub
 
-        Public Async Function TcpAsync() As Task
+        Public Sub TcpAsync()
             listener.Start()
             Dim Message
             Dim Result
@@ -24,11 +22,12 @@ Namespace Alduin.Stump.Class.Network
                     Message = Message + Convert.ToChar(Reader.Read())
                 End While
                 'Call commands and wait result
-                Result = Await _command.Handle(Message)
-                Moduls.Network.StreamWrite.StreamWrite(client, Message)
+                Console.WriteLine(Message)
+                Result = _command.Handle(Message)
+                Moduls.Network.StreamWrite.StreamWrite(client, Result)
                 client.Close()
             End If
-        End Function
+        End Sub
     End Class
 End Namespace
 

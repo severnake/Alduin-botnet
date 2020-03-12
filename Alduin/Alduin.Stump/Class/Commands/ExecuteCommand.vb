@@ -1,14 +1,7 @@
-﻿
-Namespace Alduin.Stump.Class.Handlers
-    Public Class ExecuteCommandHandler
-        Implements ICommand
-        Public Sub New()
+﻿Imports Alduin.Stump.Alduin.Stump.Class.Commands
+Namespace Alduin.Stump.Class.Commands
+    Public Class ExecuteCommand
+        Inherits CommandBase
 
-        End Sub
-        Private Function ICommand_Handle(model As Object) As Task(Of Object) Implements ICommand.Handle
-            Throw New NotImplementedException()
-        End Function
     End Class
 End Namespace
-
-

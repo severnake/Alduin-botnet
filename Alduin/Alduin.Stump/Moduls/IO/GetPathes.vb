@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Reflection
 
-Namespace Alduin.Server.Modules.IO
+Namespace Alduin.Stump.Moduls.IO
     Partial Friend Class GetPathes
         Private Shared MainPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase)
         Private Shared MainJson = "MainJson.json"
@@ -11,7 +11,7 @@ Namespace Alduin.Server.Modules.IO
             Return local_path
         End Function
         Public Shared Function get_JsonFilewithPath() As String
-            Return get_LocalPath() & "\" & MainJson
+            Return getAppdata() & "\" & MainJson
         End Function
     End Class
 End Namespace

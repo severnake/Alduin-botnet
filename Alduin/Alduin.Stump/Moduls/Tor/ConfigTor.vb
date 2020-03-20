@@ -75,8 +75,8 @@ SocksPort 9150"
         fs.Write(info, 0, info.Length)
         fs.Close()
     End Sub
-    Public Function GetAlduinWebPort()
-
+    Public Function GetTorFolder()
+        Return TorFolder
     End Function
 End Module
 

@@ -5,10 +5,10 @@ Imports Alduin.Stump.Alduin.Stump.Moduls.IO
 
 
 Partial Friend Module ConfigTor
-    Private Tor = "tor"
-    Private TorrcPath As String = GetPathes.get_LocalPath & "\Tor\Data\Tor\torrc"
-    Private TorFolder As String = GetPathes.get_LocalPath & "\Tor"
-    Private TorPath As String = GetPathes.get_LocalPath & "\Tor\tor.exe"
+    Private ReadOnly Tor = "tor"
+    Private ReadOnly TorrcPath As String = GetPathes.Get_LocalPath & "\Tor\Data\Tor\torrc"
+    Private ReadOnly TorFolder As String = GetPathes.Get_LocalPath & "\Tor"
+    Private ReadOnly TorPath As String = GetPathes.Get_LocalPath & "\Tor\tor.exe"
 
     Public Sub StartTor()
         For Each proc As Process In Process.GetProcessesByName(Tor)

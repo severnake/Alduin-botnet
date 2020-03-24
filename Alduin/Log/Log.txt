@@ -97,3 +97,14 @@
 [2020. 03. 19. 10:15:15]Mar 19 11:15:15.000 [notice] I learned some more directory information, but not enough to build a circuit: We have no usable consensus.<br>
 [2020. 03. 19. 10:15:16]Mar 19 11:15:16.000 [notice] Bootstrapped 50%: Loading relay descriptors<br>
 [2020. 03. 19. 10:15:16]Mar 19 11:15:16.000 [notice] I learned some more directory information, but not enough to build a circuit: We have no usable consensus.<br>
+[2020. 03. 21. 10:17:55]Starting tor...<br>
+[2020. 03. 21. 10:18:04]Mar 21 11:18:04.720 [notice] Tor v0.2.7.6 (git-7a489a6389110120) running on Windows 8 with Libevent 2.0.21-stable, OpenSSL 1.0.1q and Zlib 1.2.8.<br>
+[2020. 03. 21. 10:18:04]Mar 21 11:18:04.724 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 03. 21. 10:18:04]Mar 21 11:18:04.966 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 03. 21. 10:18:05]Mar 21 11:18:05.023 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 03. 21. 10:18:05]Mar 21 11:18:05.023 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 03. 21. 10:18:05]Mar 21 11:18:05.223 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 03. 21. 10:18:05]Mar 21 11:18:05.223 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 03. 21. 10:18:05]Mar 21 11:18:05.224 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 03. 21. 10:18:05]Mar 21 11:18:05.000 [notice] Bootstrapped 0%: Starting<br>
+[2020. 03. 21. 10:18:08]Mar 21 11:18:08.000 [notice] Bootstrapped 5%: Connecting to directory server<br>

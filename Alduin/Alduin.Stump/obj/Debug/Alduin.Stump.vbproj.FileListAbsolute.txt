@@ -12,3 +12,7 @@ E:\project\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.vbproj.CopyC
 E:\project\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.exe
 E:\project\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.xml
 E:\project\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.pdb
+E:\project\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\starksoft.aspen.dll
+E:\project\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\starksoft.aspen.pdb
+E:\project\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\starksoft.aspen.xml
+E:\project\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.vbprojAssemblyReference.cache

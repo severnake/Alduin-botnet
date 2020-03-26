@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Alduin.Web.Models.Bot
 {
@@ -13,6 +14,11 @@ namespace Alduin.Web.Models.Bot
         [Required]
         public string Domain { get; set; }
         [Required]
+        public string CountryCode { get; set; }
+        [Required]
         public string LastIPAddress { get; set; }
+        [Required]
+        public string City { get; set; }
+        public DateTime? LastLoggedInUTC { get; set; }
     }
 }

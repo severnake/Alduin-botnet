@@ -1,13 +1,14 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace Alduin.Web.Models
+namespace Alduin.Web.Models.Bot
 {
     public class BotDeatilsModel
     {
-        public string Name { get; set; }
-        public string Domain { get; set; }
-        public DateTime? LastLoggedInUTC { get; set; }
-        public string LastIPAddress { get; set; }
-        public string Status { get; set; }
+        public string KeyUnique { get; set; }
+        public string HardwareName { get; set; }
+        public string HardwareType { get; set; }
+        public string Performance { get; set; }
+        public string OtherInformation { get; set; }
     }
 }

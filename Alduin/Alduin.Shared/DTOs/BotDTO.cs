@@ -12,6 +12,7 @@ namespace Alduin.Shared.DTOs
         public string KeyCertified { get; set; }
         public string CountryCode { get; set; }
         public string Domain { get; set; }
+        public string City { get; set; }
         public string LastIPAddress { get; set; }
         public DateTime? LastLoggedInUTC { get; set; }
     }

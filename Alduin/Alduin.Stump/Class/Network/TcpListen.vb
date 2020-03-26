@@ -7,10 +7,10 @@ Namespace Alduin.Stump.Class.Network
         Private client As TcpClient
         Private ReadOnly listener As TcpListener
         Private ReadOnly _command As ICommand
-        Public TCP As TcpClient
-        Public Write As StreamWriter
+
+
         Public Reader As StreamReader
-        Private proxyClient As Socks5ProxyClient
+
         Public Sub New()
             listener = New TcpListener(adr, ListenerPort)
         End Sub
@@ -33,25 +33,7 @@ Namespace Alduin.Stump.Class.Network
                 client.Close()
             End If
         End Sub
-        Public Sub TalkChannelHTTP(ByVal msg As String)
-            Try
-                Dim header As String = "POST /gate HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
-Content-Length: " & msg.Length & "
 
-" & msg
-                proxyClient = New Socks5ProxyClient(LocalIP, SocketPort) With {
-                    .ProxyUserName = "",
-                    .ProxyPassword = ""
-                }
-                TCP = proxyClient.CreateConnection(ServerDomain, ReachPort)
-                Write = New StreamWriter(TCP.GetStream())
-                Write.Write(msg)
-                Write.Flush()
-            Catch ex As Exception
-                Console.WriteLine(ex)
-            End Try
-        End Sub
     End Class
 End Namespace
 

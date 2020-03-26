@@ -14,6 +14,7 @@ using Alduin.Shared.Interfaces.UnitOfWork;
 using Alduin.Web.Models;
 using Alduin.Web.Services;
 using Alduin.Web.Validators;
+using Alduin.Web.Models.Bot;
 
 namespace Alduin.Web.Infrastructure
 {
@@ -72,6 +73,9 @@ namespace Alduin.Web.Infrastructure
             //Commands
             services.AddTransient<IValidator<ExecuteModel>, ExecuteCommandValidator>();
             services.AddTransient<IValidator<WebsiteModel>, OpenWebsiteValidator>();
+            //Bot
+            services.AddTransient<IValidator<BotRegisterModel>, BotRegistrationModelValidator>();
+            services.AddTransient<IValidator<BotDeatilsModel>, BotDeatilsModelValidator>();
         }
     }
 }

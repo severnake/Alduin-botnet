@@ -108,3 +108,125 @@
 [2020. 03. 21. 10:18:05]Mar 21 11:18:05.224 [notice] Opening Directory listener on 0.0.0.0:9030<br>
 [2020. 03. 21. 10:18:05]Mar 21 11:18:05.000 [notice] Bootstrapped 0%: Starting<br>
 [2020. 03. 21. 10:18:08]Mar 21 11:18:08.000 [notice] Bootstrapped 5%: Connecting to directory server<br>
+[2020. 03. 26. 11:17:53]Starting tor...<br>
+[2020. 03. 26. 11:17:58]Mar 26 12:17:58.154 [notice] Tor v0.2.7.6 (git-7a489a6389110120) running on Windows 8 with Libevent 2.0.21-stable, OpenSSL 1.0.1q and Zlib 1.2.8.<br>
+[2020. 03. 26. 11:17:58]Mar 26 12:17:58.174 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 03. 26. 11:17:58]Mar 26 12:17:58.338 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 03. 26. 11:17:58]Mar 26 12:17:58.354 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 03. 26. 11:17:58]Mar 26 12:17:58.354 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 03. 26. 11:17:58]Mar 26 12:17:58.484 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 03. 26. 11:17:58]Mar 26 12:17:58.485 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 03. 26. 11:17:58]Mar 26 12:17:58.485 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 03. 26. 11:17:59]Mar 26 12:17:59.000 [notice] Bootstrapped 0%: Starting<br>
+[2020. 03. 26. 11:18:03]Mar 26 12:18:03.000 [notice] Bootstrapped 5%: Connecting to directory server<br>
+[2020. 03. 26. 11:19:05]Mar 26 12:19:05.000 [notice] Bootstrapped 10%: Finishing handshake with directory server<br>
+[2020. 03. 26. 11:19:06]Mar 26 12:19:06.000 [notice] Bootstrapped 15%: Establishing an encrypted directory connection<br>
+[2020. 03. 26. 11:19:06]Mar 26 12:19:06.000 [notice] Bootstrapped 20%: Asking for networkstatus consensus<br>
+[2020. 03. 26. 11:19:06]Mar 26 12:19:06.000 [warn] Received http status code 404 ("Not found") from server '95.216.197.82:443' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
+[2020. 03. 26. 11:19:07]Mar 26 12:19:07.000 [notice] Bootstrapped 25%: Loading networkstatus consensus<br>
+[2020. 03. 26. 11:19:08]Mar 26 12:19:08.000 [warn] Please upgrade! This version of Tor (0.2.7.6) is obsolete, according to the directory authorities. Recommended versions are: 0.3.5.7,0.3.5.8,0.3.5.9,0.3.5.10,0.4.1.2-alpha,0.4.1.3-alpha,0.4.1.4-rc,0.4.1.5,0.4.1.6,0.4.1.7,0.4.1.8,0.4.1.9,0.4.2.1-alpha,0.4.2.2-alpha,0.4.2.3-alpha,0.4.2.4-rc,0.4.2.5,0.4.2.6,0.4.2.7,0.4.3.1-alpha,0.4.3.2-alpha,0.4.3.3-alpha<br>
+[2020. 03. 26. 11:19:08]Mar 26 12:19:08.000 [notice] I learned some more directory information, but not enough to build a circuit: We have no recent usable consensus.<br>
+[2020. 03. 26. 11:19:09]Mar 26 12:19:09.000 [notice] Bootstrapped 45%: Asking for relay descriptors<br>
+[2020. 03. 26. 11:19:09]Mar 26 12:19:09.000 [notice] I learned some more directory information, but not enough to build a circuit: We need more microdescriptors: we have 5149/6879, and can only build 45% of likely paths. (We have 82% of guards bw, 82% of midpoint bw, and 67% of exit bw = 45% of path bw.)<br>
+[2020. 03. 26. 11:19:09]Mar 26 12:19:09.000 [notice] Bootstrapped 72%: Loading relay descriptors<br>
+[2020. 03. 26. 11:19:10]Mar 26 12:19:10.000 [notice] Bootstrapped 78%: Loading relay descriptors<br>
+[2020. 03. 26. 11:19:33]Mar 26 12:19:33.000 [notice] Bootstrapped 80%: Connecting to the Tor network<br>
+[2020. 03. 26. 11:19:33]Mar 26 12:19:33.000 [notice] Bootstrapped 90%: Establishing a Tor circuit<br>
+[2020. 03. 26. 11:19:58]Mar 26 12:19:58.000 [notice] Tor has successfully opened a circuit. Looks like client functionality is working.<br>
+[2020. 03. 26. 11:19:58]Mar 26 12:19:58.000 [notice] Bootstrapped 100%: Done<br>
+[2020. 03. 26. 11:20:08]Mar 26 12:20:08.000 [warn] Received http status code 404 ("Not found") from server '212.51.153.165:9001' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
+[2020. 03. 26. 11:30:19]Mar 26 12:30:19.000 [warn] Received http status code 404 ("Not found") from server '89.163.225.7:443' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
+[2020. 03. 26. 11:58:04]Starting tor...<br>
+[2020. 03. 26. 11:58:16]Mar 26 12:58:16.165 [notice] Tor v0.2.7.6 (git-7a489a6389110120) running on Windows 8 with Libevent 2.0.21-stable, OpenSSL 1.0.1q and Zlib 1.2.8.<br>
+[2020. 03. 26. 11:58:16]Mar 26 12:58:16.168 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 03. 26. 11:58:16]Mar 26 12:58:16.574 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 03. 26. 11:58:16]Mar 26 12:58:16.746 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 03. 26. 11:58:16]Mar 26 12:58:16.746 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 03. 26. 11:58:16]Mar 26 12:58:16.869 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 03. 26. 11:58:16]Mar 26 12:58:16.878 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 03. 26. 11:58:16]Mar 26 12:58:16.878 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 03. 26. 11:58:17]Mar 26 12:58:17.000 [notice] Bootstrapped 0%: Starting<br>
+[2020. 03. 26. 11:58:21]Mar 26 12:58:21.000 [notice] Bootstrapped 5%: Connecting to directory server<br>
+[2020. 03. 26. 11:58:21]Mar 26 12:58:21.000 [warn] Please upgrade! This version of Tor (0.2.7.6) is obsolete, according to the directory authorities. Recommended versions are: 0.3.5.7,0.3.5.8,0.3.5.9,0.3.5.10,0.4.1.2-alpha,0.4.1.3-alpha,0.4.1.4-rc,0.4.1.5,0.4.1.6,0.4.1.7,0.4.1.8,0.4.1.9,0.4.2.1-alpha,0.4.2.2-alpha,0.4.2.3-alpha,0.4.2.4-rc,0.4.2.5,0.4.2.6,0.4.2.7,0.4.3.1-alpha,0.4.3.2-alpha,0.4.3.3-alpha<br>
+[2020. 03. 26. 11:58:51]Mar 26 12:58:51.000 [notice] Bootstrapped 80%: Connecting to the Tor network<br>
+[2020. 03. 26. 11:58:51]Mar 26 12:58:51.000 [notice] Bootstrapped 85%: Finishing handshake with first hop<br>
+[2020. 03. 26. 11:58:51]Mar 26 12:58:51.000 [warn] Received http status code 404 ("Not found") from server '89.163.225.7:443' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
+[2020. 03. 26. 11:58:52]Mar 26 12:58:52.000 [notice] Bootstrapped 90%: Establishing a Tor circuit<br>
+[2020. 03. 26. 11:58:53]Mar 26 12:58:53.000 [notice] Tor has successfully opened a circuit. Looks like client functionality is working.<br>
+[2020. 03. 26. 11:58:53]Mar 26 12:58:53.000 [notice] Bootstrapped 100%: Done<br>
+[2020. 03. 26. 12:01:18]Starting tor...<br>
+[2020. 03. 26. 12:01:23]Mar 26 13:01:23.105 [notice] Tor v0.2.7.6 (git-7a489a6389110120) running on Windows 8 with Libevent 2.0.21-stable, OpenSSL 1.0.1q and Zlib 1.2.8.<br>
+[2020. 03. 26. 12:01:23]Mar 26 13:01:23.119 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 03. 26. 12:01:23]Mar 26 13:01:23.204 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 03. 26. 12:01:23]Mar 26 13:01:23.210 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 03. 26. 12:01:23]Mar 26 13:01:23.210 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 03. 26. 12:01:23]Mar 26 13:01:23.213 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 03. 26. 12:01:23]Mar 26 13:01:23.213 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 03. 26. 12:01:23]Mar 26 13:01:23.213 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 03. 26. 12:01:23]Mar 26 13:01:23.000 [notice] Bootstrapped 0%: Starting<br>
+[2020. 03. 26. 12:01:27]Mar 26 13:01:27.000 [notice] Bootstrapped 5%: Connecting to directory server<br>
+[2020. 03. 26. 12:01:27]Mar 26 13:01:27.000 [warn] Please upgrade! This version of Tor (0.2.7.6) is obsolete, according to the directory authorities. Recommended versions are: 0.3.5.7,0.3.5.8,0.3.5.9,0.3.5.10,0.4.1.2-alpha,0.4.1.3-alpha,0.4.1.4-rc,0.4.1.5,0.4.1.6,0.4.1.7,0.4.1.8,0.4.1.9,0.4.2.1-alpha,0.4.2.2-alpha,0.4.2.3-alpha,0.4.2.4-rc,0.4.2.5,0.4.2.6,0.4.2.7,0.4.3.1-alpha,0.4.3.2-alpha,0.4.3.3-alpha<br>
+[2020. 03. 26. 12:02:01]Mar 26 13:02:01.000 [notice] Bootstrapped 80%: Connecting to the Tor network<br>
+[2020. 03. 26. 12:02:01]Mar 26 13:02:01.000 [notice] Bootstrapped 85%: Finishing handshake with first hop<br>
+[2020. 03. 26. 12:02:01]Mar 26 13:02:01.000 [warn] Received http status code 404 ("Not found") from server '89.163.225.7:443' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
+[2020. 03. 26. 12:02:02]Mar 26 13:02:02.000 [notice] Bootstrapped 90%: Establishing a Tor circuit<br>
+[2020. 03. 26. 12:02:02]Mar 26 13:02:02.000 [notice] Tor has successfully opened a circuit. Looks like client functionality is working.<br>
+[2020. 03. 26. 12:02:02]Mar 26 13:02:02.000 [notice] Bootstrapped 100%: Done<br>
+[2020. 03. 26. 12:03:03]Mar 26 13:03:03.000 [warn] Received http status code 404 ("Not found") from server '144.76.118.86:9001' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
+[2020. 03. 26. 12:11:48]Starting tor...<br>
+[2020. 03. 26. 12:11:52]Mar 26 13:11:52.539 [notice] Tor v0.2.7.6 (git-7a489a6389110120) running on Windows 8 with Libevent 2.0.21-stable, OpenSSL 1.0.1q and Zlib 1.2.8.<br>
+[2020. 03. 26. 12:11:52]Mar 26 13:11:52.557 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 03. 26. 12:11:52]Mar 26 13:11:52.685 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 03. 26. 12:11:52]Mar 26 13:11:52.691 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 03. 26. 12:11:52]Mar 26 13:11:52.691 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 03. 26. 12:11:52]Mar 26 13:11:52.696 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 03. 26. 12:11:52]Mar 26 13:11:52.696 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 03. 26. 12:11:52]Mar 26 13:11:52.696 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 03. 26. 12:11:52]Mar 26 13:11:52.000 [notice] Bootstrapped 0%: Starting<br>
+[2020. 03. 26. 12:11:54]Mar 26 13:11:54.000 [notice] Bootstrapped 5%: Connecting to directory server<br>
+[2020. 03. 26. 12:11:54]Mar 26 13:11:54.000 [warn] Please upgrade! This version of Tor (0.2.7.6) is obsolete, according to the directory authorities. Recommended versions are: 0.3.5.7,0.3.5.8,0.3.5.9,0.3.5.10,0.4.1.2-alpha,0.4.1.3-alpha,0.4.1.4-rc,0.4.1.5,0.4.1.6,0.4.1.7,0.4.1.8,0.4.1.9,0.4.2.1-alpha,0.4.2.2-alpha,0.4.2.3-alpha,0.4.2.4-rc,0.4.2.5,0.4.2.6,0.4.2.7,0.4.3.1-alpha,0.4.3.2-alpha,0.4.3.3-alpha<br>
+[2020. 03. 26. 12:12:37]Mar 26 13:12:37.000 [notice] Bootstrapped 80%: Connecting to the Tor network<br>
+[2020. 03. 26. 12:12:37]Mar 26 13:12:37.000 [notice] Bootstrapped 85%: Finishing handshake with first hop<br>
+[2020. 03. 26. 12:12:38]Mar 26 13:12:38.000 [warn] Received http status code 404 ("Not found") from server '144.76.118.86:9001' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
+[2020. 03. 26. 12:12:39]Mar 26 13:12:39.000 [notice] Bootstrapped 90%: Establishing a Tor circuit<br>
+[2020. 03. 26. 12:12:39]Mar 26 13:12:39.000 [notice] Tor has successfully opened a circuit. Looks like client functionality is working.<br>
+[2020. 03. 26. 12:12:39]Mar 26 13:12:39.000 [notice] Bootstrapped 100%: Done<br>
+[2020. 03. 26. 12:26:01]Starting tor...<br>
+[2020. 03. 26. 12:26:08]Mar 26 13:26:08.579 [notice] Tor v0.2.7.6 (git-7a489a6389110120) running on Windows 8 with Libevent 2.0.21-stable, OpenSSL 1.0.1q and Zlib 1.2.8.<br>
+[2020. 03. 26. 12:26:08]Mar 26 13:26:08.582 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 03. 26. 12:26:08]Mar 26 13:26:08.682 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 03. 26. 12:26:08]Mar 26 13:26:08.686 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 03. 26. 12:26:08]Mar 26 13:26:08.686 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 03. 26. 12:26:08]Mar 26 13:26:08.691 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 03. 26. 12:26:08]Mar 26 13:26:08.691 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 03. 26. 12:26:08]Mar 26 13:26:08.691 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 03. 26. 12:26:08]Mar 26 13:26:08.000 [notice] Bootstrapped 0%: Starting<br>
+[2020. 03. 26. 12:26:12]Mar 26 13:26:12.000 [notice] Bootstrapped 5%: Connecting to directory server<br>
+[2020. 03. 26. 12:26:12]Mar 26 13:26:12.000 [warn] Please upgrade! This version of Tor (0.2.7.6) is obsolete, according to the directory authorities. Recommended versions are: 0.3.5.7,0.3.5.8,0.3.5.9,0.3.5.10,0.4.1.2-alpha,0.4.1.3-alpha,0.4.1.4-rc,0.4.1.5,0.4.1.6,0.4.1.7,0.4.1.8,0.4.1.9,0.4.2.1-alpha,0.4.2.2-alpha,0.4.2.3-alpha,0.4.2.4-rc,0.4.2.5,0.4.2.6,0.4.2.7,0.4.3.1-alpha,0.4.3.2-alpha,0.4.3.3-alpha<br>
+[2020. 03. 26. 12:26:49]Mar 26 13:26:49.000 [notice] Bootstrapped 80%: Connecting to the Tor network<br>
+[2020. 03. 26. 12:26:49]Mar 26 13:26:49.000 [notice] Bootstrapped 85%: Finishing handshake with first hop<br>
+[2020. 03. 26. 12:26:49]Mar 26 13:26:49.000 [warn] Received http status code 404 ("Not found") from server '95.216.197.82:443' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
+[2020. 03. 26. 12:26:50]Mar 26 13:26:50.000 [notice] Bootstrapped 90%: Establishing a Tor circuit<br>
+[2020. 03. 26. 12:26:51]Mar 26 13:26:51.000 [notice] Tor has successfully opened a circuit. Looks like client functionality is working.<br>
+[2020. 03. 26. 12:26:51]Mar 26 13:26:51.000 [notice] Bootstrapped 100%: Done<br>
+[2020. 03. 26. 12:27:51]Mar 26 13:27:51.000 [warn] Received http status code 404 ("Not found") from server '89.163.225.7:443' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
+[2020. 03. 26. 12:38:01]Mar 26 13:38:01.000 [warn] Received http status code 404 ("Not found") from server '89.163.225.7:443' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
+[2020. 03. 26. 12:48:38]Starting tor...<br>
+[2020. 03. 26. 12:48:43]Mar 26 13:48:43.199 [notice] Tor v0.2.7.6 (git-7a489a6389110120) running on Windows 8 with Libevent 2.0.21-stable, OpenSSL 1.0.1q and Zlib 1.2.8.<br>
+[2020. 03. 26. 12:48:43]Mar 26 13:48:43.203 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 03. 26. 12:48:43]Mar 26 13:48:43.394 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 03. 26. 12:48:43]Mar 26 13:48:43.403 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 03. 26. 12:48:43]Mar 26 13:48:43.403 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 03. 26. 12:48:43]Mar 26 13:48:43.411 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 03. 26. 12:48:43]Mar 26 13:48:43.411 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 03. 26. 12:48:43]Mar 26 13:48:43.411 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 03. 26. 12:48:43]Mar 26 13:48:43.000 [notice] Bootstrapped 0%: Starting<br>
+[2020. 03. 26. 12:48:47]Mar 26 13:48:47.000 [notice] Bootstrapped 5%: Connecting to directory server<br>
+[2020. 03. 26. 12:48:48]Mar 26 13:48:48.000 [warn] Please upgrade! This version of Tor (0.2.7.6) is obsolete, according to the directory authorities. Recommended versions are: 0.3.5.7,0.3.5.8,0.3.5.9,0.3.5.10,0.4.1.2-alpha,0.4.1.3-alpha,0.4.1.4-rc,0.4.1.5,0.4.1.6,0.4.1.7,0.4.1.8,0.4.1.9,0.4.2.1-alpha,0.4.2.2-alpha,0.4.2.3-alpha,0.4.2.4-rc,0.4.2.5,0.4.2.6,0.4.2.7,0.4.3.1-alpha,0.4.3.2-alpha,0.4.3.3-alpha<br>
+[2020. 03. 26. 12:49:20]Mar 26 13:49:20.000 [notice] Bootstrapped 80%: Connecting to the Tor network<br>
+[2020. 03. 26. 12:49:20]Mar 26 13:49:20.000 [notice] Bootstrapped 85%: Finishing handshake with first hop<br>
+[2020. 03. 26. 12:49:20]Mar 26 13:49:20.000 [warn] Received http status code 404 ("Not found") from server '212.51.153.165:9001' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
+[2020. 03. 26. 12:49:21]Mar 26 13:49:21.000 [notice] Bootstrapped 90%: Establishing a Tor circuit<br>
+[2020. 03. 26. 12:49:22]Mar 26 13:49:22.000 [notice] Tor has successfully opened a circuit. Looks like client functionality is working.<br>
+[2020. 03. 26. 12:49:22]Mar 26 13:49:22.000 [notice] Bootstrapped 100%: Done<br>
+[2020. 03. 26. 12:50:24]Mar 26 13:50:22.000 [warn] Received http status code 404 ("Not found") from server '89.163.225.7:443' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>

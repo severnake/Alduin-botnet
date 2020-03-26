@@ -108,6 +108,7 @@
     <Compile Include="Class\Commands\CommandBase.vb" />
     <Compile Include="Class\Commands\CommandHandler.vb" />
     <Compile Include="Class\Commands\ExecuteCommand.vb" />
+    <Compile Include="Class\Network\SendHTTPonTor.vb" />
     <Compile Include="Class\Network\TcpListen.vb" />
     <Compile Include="Interfaces\ICommand.vb" />
     <Compile Include="Main.vb" />

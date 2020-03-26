@@ -4,19 +4,28 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Alduin.Web.Controllers
 {
-    public class GateController : Controller
+    [Produces("application/json")]
+    [Route("api/gate")]
+    public class GateController : ControllerBase
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
         [HttpPost]
-        public IActionResult Regbot(BotRegisterModel model)
+        [Route("botregistration")]
+        public JsonResult Regbot([FromBody]BotRegisterModel model)
         {
             if (!ModelState.IsValid)
-                return NotFound();
+                return Json(new { success = false, result = "" });
 
-            return Json("");
+            return Json(new { success = true, result = "Work"});
+        }
+        [HttpPost]
+        [Route("botDeatils")]
+        public JsonResult BotDeatils([FromBody]BotDeatilsModel model)
+        {
+            if (!ModelState.IsValid)
+                return Json(new { success = false, result = "" });
+            //return NotFound();
+
+            return Json(new { success = true, result = "Work" });
         }
     }
 }

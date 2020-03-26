@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Alduin.Logic.Mediator.Queries;
 using Alduin.Web.Models;
+using Alduin.Web.Models.Bot;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -49,7 +50,7 @@ namespace Alduin.Web.Controllers
                 var status = _localizer["Offline"];
                 if (bot.LastLoggedInUTC >= DateNowUTC)
                     status = _localizer["Online"];
-                var botDeatils = new BotDeatilsModel
+                var botDeatils = new BotDeatilsInquiryModel
                 {
                     Name = bot.UserName,
                     Domain = bot.Domain,

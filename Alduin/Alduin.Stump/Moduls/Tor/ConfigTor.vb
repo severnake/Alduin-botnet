@@ -1,8 +1,5 @@
 ﻿Imports System.IO
 Imports System.Text
-Imports System.Threading
-Imports Alduin.Stump.Alduin.Stump.Moduls.IO
-
 
 Partial Friend Module ConfigTor
     Private ReadOnly Tor = "tor"

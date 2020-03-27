@@ -32,10 +32,13 @@ Module Main
                 .Address = GetOnionAddress(),
                 .LastIPAddress = GetMyIPAddress(),
                 .CountryCode = GetCountyCode(GetMyIPAddress()),
-                .City = GetCity(GetMyIPAddress())
+                .City = GetCity(GetMyIPAddress()),
+                .KeyUnique = GetConfigJson().KeyUnique,
+                .KeyCertified = SavedKeyCertified,
+                .Domain = GetOnionAddress()
             }
             Dim http As New SendHTTPonTor
-            http.TalkChannelHTTP(model.ToString)
+            http.TalkChannelHTTP(model.ToString, RegistrationUrl)
             Thread.Sleep(SectoMs(200))
         End While
     End Sub

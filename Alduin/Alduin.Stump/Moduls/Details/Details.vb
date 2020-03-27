@@ -1,6 +1,7 @@
 ﻿Imports System.Globalization
 Imports System.IO
 Imports System.Net
+Imports Alduin.Stump.Alduin.Stump.Models
 Imports Newtonsoft.Json
 
 Module Details
@@ -30,11 +31,11 @@ Module Details
         Return disc
     End Function
     Public Function GetCounty(ByVal ip As String)
-        Dim ipInfo As IpInfo = New IpInfo()
+        Dim ipInfo As IpInfoModel = New IpInfoModel()
 
         Try
             Dim info As String = New WebClient().DownloadString("http://ipinfo.io/" & ip)
-            ipInfo = JsonConvert.DeserializeObject(Of IpInfo)(info)
+            ipInfo = JsonConvert.DeserializeObject(Of IpInfoModel)(info)
             Dim myRI1 As RegionInfo = New RegionInfo(ipInfo.Country)
             ipInfo.Country = myRI1.EnglishName
         Catch __unusedException1__ As Exception
@@ -44,11 +45,11 @@ Module Details
         Return ipInfo.Country
     End Function
     Public Function GetCountyCode(ByVal ip As String)
-        Dim ipInfo As IpInfo = New IpInfo()
+        Dim ipInfo As IpInfoModel = New IpInfoModel()
 
         Try
             Dim info As String = New WebClient().DownloadString("http://ipinfo.io/" & ip)
-            ipInfo = JsonConvert.DeserializeObject(Of IpInfo)(info)
+            ipInfo = JsonConvert.DeserializeObject(Of IpInfoModel)(info)
         Catch __unusedException1__ As Exception
             ipInfo.Country = Nothing
         End Try
@@ -56,15 +57,18 @@ Module Details
         Return ipInfo.Country
     End Function
     Public Function GetCity(ByVal ip As String)
-        Dim ipInfo As IpInfo = New IpInfo()
+        Dim ipInfo As IpInfoModel = New IpInfoModel()
 
         Try
             Dim info As String = New WebClient().DownloadString("http://ipinfo.io/" & ip)
-            ipInfo = JsonConvert.DeserializeObject(Of IpInfo)(info)
+            ipInfo = JsonConvert.DeserializeObject(Of IpInfoModel)(info)
         Catch __unusedException1__ As Exception
             ipInfo.City = Nothing
         End Try
 
         Return ipInfo.City
+    End Function
+    Public Function GetConfigJson() As ConfigModel
+        Return JsonConvert.DeserializeAnonymousType(Get_JsonFilewithPath(), New ConfigModel)
     End Function
 End Module

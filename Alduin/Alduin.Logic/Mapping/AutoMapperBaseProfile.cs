@@ -11,7 +11,7 @@ namespace Alduin.Logic.Mapping
         public AutoMapperBaseProfile()
         {
             
-
+            //User
             CreateMap<UserEntity, UserDTO>();
             CreateMap<UserDTO, UserEntity>()
                 .ForMember(dest => dest.UserName, m => m.MapFrom(src => src.Email))
@@ -38,17 +38,17 @@ namespace Alduin.Logic.Mapping
 
             //BOT
             CreateMap<BotEntity, BotDTO>().ReverseMap();
+            CreateMap<BotInfoEntity, BotInfoDTO>()
+                .ForMember(dest => dest.BotId, m => m.MapFrom(src => src.Bot != null ? src.Bot.Id : (int?)null));
+            CreateMap<BotInfoDTO, BotInfoEntity>()
+                .ForMember(dest => dest.Bot, m => m.MapFrom(src => src.BotId.HasValue ? new BotEntity { Id = src.BotId.Value } : null));
 
             //Invitation
             CreateMap<InvitationEntity, InvitationDTO>()
                 .ForMember(dest => dest.UserId, m => m.MapFrom(src => src.User != null ? src.User.Id : (int?)null));
             CreateMap<InvitationDTO, InvitationEntity>()
                 .ForMember(dest => dest.User, m => m.MapFrom(src => src.UserId.HasValue ? new UserEntity { Id = src.UserId.Value } : null));
-            //BotInfo
-            CreateMap<BotInfoEntity, BotInfoDTO>()
-                .ForMember(dest => dest.BotId, m => m.MapFrom(src => src.Bot != null ? src.Bot.Id : (int?)null));
-            CreateMap<BotInfoDTO, BotInfoEntity>()
-                .ForMember(dest => dest.Bot, m => m.MapFrom(src => src.BotId.HasValue ? new BotEntity { Id = src.BotId.Value } : null));
+            
         }
     }
 }

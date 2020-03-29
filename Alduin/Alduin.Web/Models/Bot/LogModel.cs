@@ -7,7 +7,7 @@ namespace Alduin.Web.Models.Bot
 {
     public class LogModel
     {
-        public string KeyKeyUnique { get; set; }
+        public string KeyUnique { get; set; }
         public string Message { get; set; }
         public string Type { get; set; }
     }

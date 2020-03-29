@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Alduin.Logic.Mediator.Commands;
+using Alduin.Logic.Mediator.Queries;
 using Alduin.Server.Modules;
 using Alduin.Web.Models;
 using Alduin.Web.Models.Bot;
@@ -15,7 +16,6 @@ namespace Alduin.Web.Controllers
     public class GateController : ControllerBase
     {
         private readonly IMediator _mediator;
-
         public GateController(IMediator mediator)
         {
             _mediator = mediator;
@@ -44,25 +44,54 @@ namespace Alduin.Web.Controllers
                 LastLoggedInUTC = DateTime.UtcNow
             };
             var result = await _mediator.Send(command);
-            return Json(new { success = true, result = "Work"});
+            if (result.Suceeded)
+                return Json(new { success = true, result = "Work"});
+            return Json(new { success = false, result = "Registration not success" });
         }
         [HttpPost]
         [Route("botDeatils")]
-        public JsonResult BotDeatils([FromBody]BotDeatilsModel model)
+        public async Task<JsonResult> BotDeatilsAsync([FromBody]BotDeatilsModel model)
         {
             if (!ModelState.IsValid)
-                return Json(new { success = false, result = "" });
-
-            return Json(new { success = true, result = "Work" });
+                return Json(new { success = false, result = "Invalid Model" });
+            var Keyquery = new GetBotByKeyUniqueQuery { KeyUnique = model.KeyUnique };
+            var botresult = _mediator.Send(Keyquery);
+            if (botresult == null)
+                return Json(new { success = false, result = "Bot is not exist" });
+            var Botquery = new BotInfoCommand
+            {
+                BotId = botresult.Result.Id,
+                HardwareName = model.HardwareName,
+                HardwareType = model.HardwareType,
+                OtherInformation = model.OtherInformation,
+                Performance = model.Performance
+        };
+            var result = await _mediator.Send(Botquery);
+            if (result.Suceeded)
+                return Json(new { success = true, result = "Work" });
+            return Json(new { success = false, result = "Save not success" });
         }
         [HttpPost]
         [Route("log")]
-        public JsonResult Botlog([FromBody]LogModel model)
+        public async Task<JsonResult> BotlogAsync([FromBody]LogModel model)
         {
             if (!ModelState.IsValid)
-                return Json(new { success = false, result = "" });
+                return Json(new { success = false, result = "Invalid Model" });
 
-            return Json(new { success = true, result = "Work" });
+            var Keyquery = new GetBotByKeyUniqueQuery { KeyUnique = model.KeyUnique };
+            var botresult = _mediator.Send(Keyquery);
+            if (botresult == null)
+                return Json(new { success = false, result = "Bot is not exist" });
+            var query = new BotLogCommand
+            {
+                BotId = botresult.Result.Id,
+                Message = model.Message,
+                Type = model.Type
+            };
+            var result = await _mediator.Send(query);
+            if (result.Suceeded)
+                return Json(new { success = true, result = "Work" });
+            return Json(new { success = false, result = "Save not success" });
         }
     }
 }

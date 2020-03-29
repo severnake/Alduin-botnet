@@ -16,17 +16,12 @@ namespace Alduin.Logic.Mediator.Handlers.CommandHandlers
 {
     public class RegInvitationCommandHandler : IRequestHandler<RegInvitationCommand, ActionResult>
     {
-        private readonly IInvitationRepository _invitationRepository;
-        private readonly IInvitationManager _invitationManager;
+
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
         internal static ISession _session;
-        public RegInvitationCommandHandler(IMapper mapper,IUnitOfWork unitOfWork, IInvitationRepository accountRepository, IInvitationManager invitationManager, ISession session)
+        public RegInvitationCommandHandler(IUnitOfWork unitOfWork, ISession session)
         {
             _unitOfWork = unitOfWork;
-            _invitationRepository = accountRepository;
-            _mapper = mapper;
-            _invitationManager = invitationManager;
             _session = session;
         }
         public async Task<ActionResult> Handle(RegInvitationCommand request, CancellationToken cancellationToken)

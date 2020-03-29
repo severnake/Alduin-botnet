@@ -110,6 +110,7 @@
     <Compile Include="Class\Commands\ExecuteCommand.vb" />
     <Compile Include="Class\Network\SendHTTPonTor.vb" />
     <Compile Include="Class\Network\TcpListen.vb" />
+    <Compile Include="Models\BotDeatilsModel.vb" />
     <Compile Include="Models\LogModel.vb" />
     <Compile Include="Variables\UrlVariable.vb" />
     <Compile Include="Interfaces\ICommand.vb" />

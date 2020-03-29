@@ -38,10 +38,17 @@ namespace Alduin.Logic.Mapping
 
             //BOT
             CreateMap<BotEntity, BotDTO>().ReverseMap();
+            //BOT Info
             CreateMap<BotInfoEntity, BotInfoDTO>()
                 .ForMember(dest => dest.BotId, m => m.MapFrom(src => src.Bot != null ? src.Bot.Id : (int?)null));
             CreateMap<BotInfoDTO, BotInfoEntity>()
                 .ForMember(dest => dest.Bot, m => m.MapFrom(src => src.BotId.HasValue ? new BotEntity { Id = src.BotId.Value } : null));
+            //Bot Log
+            CreateMap<BotLogEntity, BotLogDTO>()
+                .ForMember(dest => dest.BotId, m => m.MapFrom(src => src.Bot != null ? src.Bot.Id : (int?)null));
+            CreateMap<BotLogDTO, BotLogEntity>()
+                .ForMember(dest => dest.Bot, m => m.MapFrom(src => src.BotId.HasValue ? new BotEntity { Id = src.BotId.Value } : null));
+
 
             //Invitation
             CreateMap<InvitationEntity, InvitationDTO>()

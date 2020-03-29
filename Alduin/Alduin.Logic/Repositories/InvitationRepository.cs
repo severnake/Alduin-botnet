@@ -17,27 +17,27 @@ namespace Alduin.Logic.Repositories
         }
         public InvitationDTO FindByInvitationKey(string InvitationKey)
         {
-            var query = _session.QueryOver<InvitationEntity>()
+            var result = _session.QueryOver<InvitationEntity>()
                 .Where(x => x.invitationKey == InvitationKey)
                 .List()
                 .FirstOrDefault();
 
-            if (query == null)
+            if (result == null)
                 return null;
 
-            var dto = _mapper.Map<InvitationDTO>(query);
+            var dto = _mapper.Map<InvitationDTO>(result);
             return dto;
         }
         public InvitationDTO[] FindByUserId(int userId)
         {
-            var query = _session.QueryOver<InvitationEntity>()
+            var result = _session.QueryOver<InvitationEntity>()
                 .Where(x => x.User.Id == userId)
                 .List();
 
-            if (query == null)
+            if (result == null)
                 return null;
 
-            var dto = _mapper.Map<InvitationDTO[]>(query);
+            var dto = _mapper.Map<InvitationDTO[]>(result);
             return dto;
         }
     }

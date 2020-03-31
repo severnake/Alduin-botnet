@@ -12,7 +12,7 @@ USBSpread,
 Tor Communication,
 Multi-language,
 
-planned mezhods:
+Planned methods:
 Multi Layers floods.
 .git grab and source code searcher,
 Mine monero,

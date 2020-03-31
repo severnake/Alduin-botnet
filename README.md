@@ -2,8 +2,10 @@
 (Not ready yet) :)
 
 This is HTTP and TCP Tor based System management software.
-Support Multi-language. 
+Support Multi-language.
+
 Developed: C#/VB (.Net Core), SCSS, Jquery, PostgreSQL (ORM)
+
 Wiki: https://github.com/mogyiii/Alduin-botnet/wiki
 
 Ready methods: 

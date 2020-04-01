@@ -71,20 +71,20 @@ body {
   overflow: hidden;
   margin-left: 5px; }
 
-.auth-form, .lg-auth-form {
+.auth-form, .lg-auth-form, .md-auth-form {
   padding: 20px;
   margin: 20px;
   width: 250px;
   border: 1px solid #131418;
   background-color: #272A31; }
-  .auth-form input, .lg-auth-form input {
+  .auth-form input, .lg-auth-form input, .md-auth-form input {
     border: none;
     border-radius: 0px;
     background-color: #1C1E23;
     color: white;
     width: 100%;
     padding: 5px; }
-  .auth-form textarea, .lg-auth-form textarea {
+  .auth-form textarea, .lg-auth-form textarea, .md-auth-form textarea {
     border: none;
     border-radius: 0px;
     background-color: #1C1E23;
@@ -95,6 +95,11 @@ body {
 .lg-auth-form {
   width: 100%; }
   .lg-auth-form textarea {
+    height: 500px; }
+
+.md-auth-form {
+  width: 300px; }
+  .md-auth-form textarea {
     height: 500px; }
 
 .form-check {

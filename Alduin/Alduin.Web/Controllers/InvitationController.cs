@@ -30,11 +30,22 @@ namespace Alduin.Web.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            return View();
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value != "User")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
         }
         [Authorize]
         public async Task<IActionResult> GenerateNew()
         {
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "User")
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
             var user = await _userManager.FindByEmailAsync(User.Identity.Name);
             var key = RandomString(10);
             var InvitationCommand = new RegInvitationCommand
@@ -56,6 +67,10 @@ namespace Alduin.Web.Controllers
         [Authorize]
         public async Task<IActionResult> GetUserInvitation()
         {
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "User")
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
             var user = await _userManager.FindByEmailAsync(User.Identity.Name);
             var query = new GetInvitationByUserQuery { UserId = user.Id };
             var result = await _mediator.Send(query);

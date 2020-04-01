@@ -112,6 +112,7 @@
     <Compile Include="Class\Network\TcpListen.vb" />
     <Compile Include="Models\BotDeatilsModel.vb" />
     <Compile Include="Models\LogModel.vb" />
+    <Compile Include="Models\WebsiteModel.vb" />
     <Compile Include="Variables\UrlVariable.vb" />
     <Compile Include="Interfaces\ICommand.vb" />
     <Compile Include="Main.vb" />

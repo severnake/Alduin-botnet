@@ -1,5 +1,6 @@
 ﻿using Alduin.DataAccess.Entities;
 using Alduin.Shared.DTOs;
+using Alduin.Shared.Interfaces.DomainModel.DTO;
 using Alduin.Shared.Interfaces.Repositories;
 
 namespace Alduin.Logic.Interfaces.Repositories
@@ -9,5 +10,6 @@ namespace Alduin.Logic.Interfaces.Repositories
         UserClaimDTO[] GetByUserId(int userId);
 
         UserClaimDTO[] GetSpecificClaimsByUserId(int userId, string claimType = null, string claimValue = null);
+        UserClaimDTO GetSpecificClaimByUserId(int userId, string claimType = null);
     }
 }

@@ -25,11 +25,22 @@ namespace Alduin.Web.Controllers
         public IActionResult Index()
         {
             ViewData["OnionAddress"] = readTorch().Replace("\r\n", "");
-            return View();
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value != "User")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
         }
         [Authorize]
         public IActionResult EditTorch()
         {
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "User")
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
             var model = new EditTorchFileModel
             {
                 Torch = ServerFileManager.FileReader(ConfigTor.TorrcPath)
@@ -45,12 +56,20 @@ namespace Alduin.Web.Controllers
         [Authorize]
         public IActionResult DeleteLog()
         {
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "User")
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
             ServerFileManager.FileWriter(GetPathes.Get_LogPath() + @"\Log.txt", "");
             return Content("Ok");
         }
         [Authorize]
         public IActionResult GenerateNewAddress()
         {
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "User")
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
             try
             {
                 ServerFileManager.FileDelete(ConfigTor.TorBaseFolder + @"\hostname");
@@ -66,6 +85,10 @@ namespace Alduin.Web.Controllers
         [HttpPost]
         public IActionResult EditTorch(EditTorchFileModel model)
         {
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "User")
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
             ServerFileManager.FileWriter(ConfigTor.TorrcPath, model.Torch);
             return View(model);
         }

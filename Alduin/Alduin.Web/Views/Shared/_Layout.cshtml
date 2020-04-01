@@ -71,16 +71,19 @@
                         </div>
                     </a>
                 </div>
-                <div class="row mt-3">
-                    <a href="/Commands/" class="menu-row w-100">
-                        <div class="menu-row-content nobreak">
-                            <i class="fas fa-terminal h6"></i>
-                            <span class="p-1 mini-menu">
-                                @Localizer["Commands"]
-                            </span>
-                        </div>
-                    </a>
-                </div>
+                if (@User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value != "User")
+                {
+                    <div class="row mt-3">
+                        <a href="/Commands/" class="menu-row w-100">
+                            <div class="menu-row-content nobreak">
+                                <i class="fas fa-terminal h6"></i>
+                                <span class="p-1 mini-menu">
+                                    @Localizer["Commands"]
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                }
                 <div class="row mt-3">
                     <a href="#" class="menu-row w-100">
                         <div class="menu-row-content nobreak">
@@ -101,34 +104,37 @@
                         </div>
                     </a>
                 </div>
-                <div class="row mt-3">
-                    <div class="w-100 menu-row-content nobreak">
-                        <i class="fas fa-sitemap"></i>
-                        <span class="p-0 font-weight-bold mini-menu">
-                            <u>@Localizer["Tor settings"]</u>:
-                        </span>
+                if (@User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value != "User")
+                {
+                    <div class="row mt-3">
+                        <div class="w-100 menu-row-content nobreak">
+                            <i class="fas fa-sitemap"></i>
+                            <span class="p-0 font-weight-bold mini-menu">
+                                <u>@Localizer["Tor settings"]</u>:
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div class="row mt-3">
-                    <a href="/Tor/Index" class="menu-row w-100">
-                        <div class="menu-row-content nobreak">
-                            <i class="fas fa-server"></i>
-                            <span class="p-1 mini-menu">
-                                @Localizer["Services settings"]
-                            </span>
-                        </div>
-                    </a>
-                </div>
-                <div class="row mt-3">
-                    <a href="/Tor/EditTorch" class="menu-row w-100">
-                        <div class="menu-row-content nobreak">
-                            <i class="far fa-file-alt"></i>
-                            <span class="p-1 mini-menu">
-                                @Localizer["Edit Torrc file"]
-                            </span>
-                        </div>
-                    </a>
-                </div>
+                    <div class="row mt-3">
+                        <a href="/Tor/Index" class="menu-row w-100">
+                            <div class="menu-row-content nobreak">
+                                <i class="fas fa-server"></i>
+                                <span class="p-1 mini-menu">
+                                    @Localizer["Services settings"]
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="row mt-3">
+                        <a href="/Tor/EditTorch" class="menu-row w-100">
+                            <div class="menu-row-content nobreak">
+                                <i class="far fa-file-alt"></i>
+                                <span class="p-1 mini-menu">
+                                    @Localizer["Edit Torrc file"]
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                }
                 <div class="row mt-3">
                     <div class="w-100 menu-row-content nobreak">
                         <i class="fas fa-users-cog h6"></i>
@@ -147,16 +153,32 @@
                         </div>
                     </a>
                 </div>
-                <div class="row mt-3">
-                    <a href="/Invitation/" class="menu-row w-100">
-                        <div class="menu-row-content nobreak">
-                            <i class="fas fa-envelope-open-text h6"></i>
-                            <span class="p-1 mini-menu">
-                                @Localizer["Invitation"]
-                            </span>
-                        </div>
-                    </a>
-                </div>
+                if (@User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value != "User")
+                {
+                    <div class="row mt-3">
+                        <a href="/Invitation/" class="menu-row w-100">
+                            <div class="menu-row-content nobreak">
+                                <i class="fas fa-envelope-open-text h6"></i>
+                                <span class="p-1 mini-menu">
+                                    @Localizer["Invitation"]
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                }
+                if (@User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "Admin")
+                {
+                    <div class="row mt-3">
+                        <a href="/UserSettings/UsersSettings" class="menu-row w-100">
+                            <div class="menu-row-content nobreak">
+                                <i class="fas fa-envelope-open-text h6"></i>
+                                <span class="p-1 mini-menu">
+                                    @Localizer["Users settings"]
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                }
                 <div class="row mt-3 mb-3">
                     <a href="/UserAccount/Logout" class="menu-row w-100">
                         <div class="menu-row-content nobreak">
@@ -218,6 +240,7 @@
         </script>
     </environment>
     <script src="~/js/site.min.js" asp-append-version="true"></script>
+    <script src="~/js/notify.min.js" asp-append-version="true"></script>
     <script src="~/js/js.cookie.min.js" asp-append-version="true"></script>
     <script>
         function setUrlactive() {

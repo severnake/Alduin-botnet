@@ -11,13 +11,13 @@ using Alduin.Server.Handler;
 using MediatR;
 using Alduin.Logic.Mediator.Queries;
 using Alduin.Shared.DTOs;
+using Alduin.Logic.Identity;
 
 namespace Alduin.Web.Controllers
 {
     public class CommandsController : ControllerBase
     {
         private readonly IMediator _mediator;
-
 
         public CommandsController(IMediator mediator)
         {
@@ -27,7 +27,15 @@ namespace Alduin.Web.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            return View();
+            if(User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value != "User")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+            
         }
         [Authorize]
         [HttpGet]
@@ -47,6 +55,10 @@ namespace Alduin.Web.Controllers
         {
             if (!ModelState.IsValid)
                 return View(model);
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "User")
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
             var command = new ExecuteCommand
             {
                 Method = "Execute",
@@ -68,7 +80,10 @@ namespace Alduin.Web.Controllers
         {
             if (!ModelState.IsValid)
                 return View(model);
-
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "User")
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
             return Json(true);
         }
     }

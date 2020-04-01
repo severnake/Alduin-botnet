@@ -21,4 +21,12 @@
     <ProjectReference Include="..\Alduin.Logic\Alduin.Logic.csproj" />
     <ProjectReference Include="..\Alduin.Server\Alduin.Server.csproj" />
   </ItemGroup>
+
+
+  <ItemGroup>
+    <Content Update="wwwroot\js\notify.min.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

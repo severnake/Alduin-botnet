@@ -158,20 +158,6 @@
     }
     $(document).on('click', '.select-list', function () {
         window.open('/List/Bot?=' + $(this).data("value"), '_blank');
-        /*$.ajax({
-            type: 'GET',
-            url: '/List/Bot?=' + $(this).data("value"),
-            dataType: 'json',
-            beforeSend: function () {
-                $('#bot-list').append("<div class='ajax-loading'></div>");
-            },
-            complete: function () {
-                $('.ajax-loading').remove();
-            },
-            success: function (data) {
-
-            }
-        });*/
      });
 </script>
 

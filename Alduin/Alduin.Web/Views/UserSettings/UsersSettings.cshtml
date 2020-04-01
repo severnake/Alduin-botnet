@@ -1,0 +1,101 @@
+﻿@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+<div class="container d-flex justify-content-center">
+    <div class="row">
+        <div class="col-12">
+            <div class="md-auth-form">
+                <div class="row mb-5">
+                    <div class="col-12 text-center">
+                        <h2>@Localizer["Change Users Role"]</h2>
+                    </div>
+                    <hr />
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div id="list">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    var ListArray = [];
+    var roleType = ['User', 'Member', 'Admin']
+    $(document).ready(function () {
+        List();
+    });
+    function List() {
+        $.ajax({
+            type: 'GET',
+            url: '/UserSettings/UsersRoleList',
+            dataType: 'json',
+            beforeSend: function () {
+                $('#list').append("<div class='ajax-loading'></div>");
+            },
+            complete: function () {
+                $('.ajax-loading').remove();
+            },
+            success: function (data) {
+                console.log(data);
+                var j = 0;
+                for (var i = 0; i < data.length; i++) {
+                    if(data[i].claimType == 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'){
+                        ListArray[j] = {
+                             id: data[i].userId,
+                             name: data[i].user.name,
+                             role: data[i].claimValue
+                        }
+                        j++;
+                    }
+                }
+                console.log(ListArray);
+                listing();
+            }
+        });
+    }
+    function listing() {
+        $("#list").text("");
+        for (var i = 0; i < ListArray.length; i++) {
+            var listText = "<div class='row mb-3 border' data-value='" + ListArray[i].id + "'>" +
+                "<p>Id: " + ListArray[i].id + "</p>" +
+                "<h2>" + ListArray[i].name + "</h2>" +
+                "<select class='command-select' id='select" + i + "'>";
+                for (var j = 0; j < roleType.length; j++) {
+                    listText = listText.concat("<option data-userid='" + ListArray[i].id + "' value='" + roleType[j] + "' >" + roleType[j] + "</option>");
+                }
+                listText = listText.concat("</select><hr></div>");
+
+            $("#list").append(listText);
+            
+        }
+        for (var i = 0; i < ListArray.length; i++) {
+            $("#select" + i + " option[value='" + ListArray[i].role + "']").prop('selected',true);
+        }
+    }
+    $(document).on('change', 'select', function () {
+        var value = $('option:selected', this).attr('value');
+        var userId = $('option:selected',this).data('userid');
+        $.ajax({
+            type: 'POST',
+            url: '/ChangeRole',
+            contentType: 'application/json',
+            dataType: 'json',
+            data: '{"UserId" : "' + userId + '", "Role" : "' + value + '"}',
+            success: function (data) {
+                if (data) {
+                    $.notify("Ok!", "success");
+                } else {
+                    $.notify("Fail! Settings not saved!", "error");
+                }
+            },
+            error: function(error){
+                $.notify("500 Error!", "error");
+            }
+        });
+    });
+</script>

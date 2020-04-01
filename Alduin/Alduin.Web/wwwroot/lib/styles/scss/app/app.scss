@@ -153,6 +153,14 @@ body {
         height: 500px;
     }
 }
+.md-auth-form {
+    @extend .auth-form;
+    width: 300px;
+
+    textarea {
+        height: 500px;
+    }
+}
 .form-check {
     background-color: $body-bg-color;
     padding: 5px;

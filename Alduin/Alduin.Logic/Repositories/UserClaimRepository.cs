@@ -5,6 +5,7 @@ using System.Linq;
 using Alduin.DataAccess.Entities;
 using Alduin.Logic.Interfaces.Repositories;
 using Alduin.Shared.DTOs;
+using Alduin.Shared.Interfaces.DomainModel.DTO;
 
 namespace Alduin.Logic.Repositories
 {
@@ -38,6 +39,20 @@ namespace Alduin.Logic.Repositories
 
             var dtos = _mapper.Map<IList<UserClaimDTO>>(claims);
             return dtos.ToArray();
+        }
+        public UserClaimDTO GetSpecificClaimByUserId(int userId, string claimType)
+        {
+            var query = _session.QueryOver<UserClaimEntity>()
+                .Where(x => x.User.Id == userId);
+
+            if (string.IsNullOrEmpty(claimType) == false)
+                query = query.Where(x => x.ClaimType == claimType);
+
+
+            var claims = query.List();
+
+            var dtos = _mapper.Map<UserClaimDTO>(claims);
+            return dtos;
         }
     }
 }

@@ -85,7 +85,7 @@ namespace Alduin.Web.Controllers
         [Route("ChangeRole")]
         public async Task<JsonResult> UsersSettingsAsync([FromBody] RoleChangeModel model)
         {
-            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "Admin")
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value != "Admin")
             {
                 return Json(false);
             }

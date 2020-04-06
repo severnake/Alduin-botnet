@@ -25,7 +25,9 @@
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script>
     var ListArray = [];
-    var roleType = ['User', 'Member', 'Admin']
+    var roleType = ['User', 'Member', 'Admin'];
+    var success = '@Localizer["Success"]' + '!';
+    var fail = '@Localizer["Fail! Settings not saved"]' + '!';
     $(document).ready(function () {
         List();
     });
@@ -88,9 +90,9 @@
             data: '{"UserId" : "' + userId + '", "Role" : "' + value + '"}',
             success: function (data) {
                 if (data) {
-                    $.notify("Ok!", "success");
+                    $.notify(success, "success");
                 } else {
-                    $.notify("Fail! Settings not saved!", "error");
+                    $.notify(fail, "error");
                 }
             },
             error: function(error){

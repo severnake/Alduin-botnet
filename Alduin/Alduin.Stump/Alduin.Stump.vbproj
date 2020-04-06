@@ -108,11 +108,18 @@
     <Compile Include="Class\Commands\CommandBase.vb" />
     <Compile Include="Class\Commands\CommandHandler.vb" />
     <Compile Include="Class\Commands\ExecuteCommand.vb" />
+    <Compile Include="Class\Floods\Floodsbase.vb" />
     <Compile Include="Class\Network\SendHTTPonTor.vb" />
     <Compile Include="Class\Network\TcpListen.vb" />
     <Compile Include="Models\BotDeatilsModel.vb" />
+    <Compile Include="Models\FloodModel\BaseFloodModel.vb" />
+    <Compile Include="Models\FloodModel\ICMPModel.vb" />
     <Compile Include="Models\LogModel.vb" />
     <Compile Include="Models\WebsiteModel.vb" />
+    <Compile Include="Class\Floods\Floods\3. Layer\ICMP.vb" />
+    <Compile Include="Class\Floods\Floods\4. Layer\TCP.vb" />
+    <Compile Include="Class\Floods\Floods\4. Layer\UDP.vb" />
+    <Compile Include="Class\Floods\Floods\7. Layer\SlowLoris.vb" />
     <Compile Include="Variables\UrlVariable.vb" />
     <Compile Include="Interfaces\ICommand.vb" />
     <Compile Include="Main.vb" />
@@ -190,5 +197,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

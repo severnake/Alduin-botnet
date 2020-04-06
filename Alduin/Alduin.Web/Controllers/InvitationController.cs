@@ -20,7 +20,7 @@ namespace Alduin.Web.Controllers
         private readonly IStringLocalizer<InvitationController> _localizer;
         private static Random random = new Random();
         private readonly UserManager<AppIdentityUser> _userManager;
-
+        private readonly string microsoftPage = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
         public InvitationController(IMediator mediator, IStringLocalizer<InvitationController> localizer, UserManager<AppIdentityUser> userManager)
         {
             _userManager = userManager;
@@ -30,7 +30,7 @@ namespace Alduin.Web.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value != "User")
+            if (User.Claims.FirstOrDefault(c => c.Type == microsoftPage).Value != "User")
             {
                 return View();
             }
@@ -42,7 +42,7 @@ namespace Alduin.Web.Controllers
         [Authorize]
         public async Task<IActionResult> GenerateNew()
         {
-            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "User")
+            if (User.Claims.FirstOrDefault(c => c.Type == microsoftPage).Value == "User")
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
@@ -67,7 +67,7 @@ namespace Alduin.Web.Controllers
         [Authorize]
         public async Task<IActionResult> GetUserInvitation()
         {
-            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "User")
+            if (User.Claims.FirstOrDefault(c => c.Type == microsoftPage).Value == "User")
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }

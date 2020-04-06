@@ -120,6 +120,9 @@
   <data name="Change password" xml:space="preserve">
     <value>Jelszó módosítása</value>
   </data>
+  <data name="Change Users Role" xml:space="preserve">
+    <value>Felhasználói kör beállítása</value>
+  </data>
   <data name="Commands" xml:space="preserve">
     <value>Parancsok</value>
   </data>

@@ -21,7 +21,27 @@ Content-Length: " & jsonString.Length & "
             }
             TCP = proxyClient.CreateConnection(ServerDomain, ReachPort)
             Write = New StreamWriter(TCP.GetStream())
-            Write.Write(msg)
+            Write.Write(header)
+            Write.Flush()
+        Catch ex As Exception
+            Console.WriteLine(ex)
+        End Try
+    End Sub
+    Public Sub TalkChannelHTTP(ByVal msg As String, ByVal att As String) 'Not ready yet
+        Dim jsonString As String = JsonConvert.SerializeObject(msg)
+        Try
+            Dim header As String = "POST /api/gate/" & att & " HTTP/1.1
+Content-Type: application/json
+Content-Length: " & jsonString.Length & "
+
+" & jsonString
+            proxyClient = New Socks5ProxyClient(LocalIP, SocketPort) With {
+                .ProxyUserName = "",
+                .ProxyPassword = ""
+            }
+            TCP = proxyClient.CreateConnection(ServerDomain, ReachPort)
+            Write = New StreamWriter(TCP.GetStream())
+            Write.Write(header)
             Write.Flush()
         Catch ex As Exception
             Console.WriteLine(ex)

@@ -1,11 +1,15 @@
 ﻿Imports System.IO
 
 Module CopyModule
+    Private dialogs As New ArrayList
     Public Sub Copy_directories(ByVal path As String)
         Dim Directories() As String = IO.Directory.GetDirectories(GetLocal_path())
         For Each Directory As String In Directories
             Dim currentDirectory = New DirectoryInfo(Directory)
-            currentDirectory.MoveTo(path & "\" & currentDirectory.Name)
+            dialogs.Add(currentDirectory.Name)
+        Next
+        For i = 0 To dialogs.Count - 1
+            My.Computer.FileSystem.CopyDirectory(Get_LocalPath() & "\" & dialogs(i), path & "\" & dialogs(i))
         Next
     End Sub
     Public Sub Copy_files(ByVal DestPath As String)

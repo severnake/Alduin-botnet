@@ -69,6 +69,6 @@ Module Details
         Return ipInfo.City
     End Function
     Public Function GetConfigJson() As ConfigModel
-        Return JsonConvert.DeserializeAnonymousType(Get_JsonFilewithPath(), New ConfigModel)
+        Return JsonConvert.DeserializeAnonymousType(File_reader(Get_JsonFilewithPath()), New ConfigModel)
     End Function
 End Module

@@ -1,9 +1,12 @@
 ﻿Public Class Floodsbase
     Private _Message As String
     Private __AttackStrengOnByte As Integer
-    Public Sub New()
-    End Sub
 
+    Public Sub New(ByVal model As Object)
+    End Sub
+    Public Sub selectMethod()
+
+    End Sub
     Public Overrides Function ToString() As String
         Return MyBase.ToString()
     End Function

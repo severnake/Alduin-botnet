@@ -3,11 +3,14 @@ Imports System.Text
 
 Partial Friend Module ConfigTor
     Private ReadOnly Tor = "tor"
-    Private ReadOnly TorrcPath As String = GetPathes.Get_LocalPath & "\Tor\Data\Tor\torrc"
-    Private ReadOnly TorFolder As String = GetPathes.Get_LocalPath & "\Tor"
-    Private ReadOnly TorPath As String = GetPathes.Get_LocalPath & "\Tor\tor.exe"
+    Private Property TorrcPath As String
+    Private Property TorFolder As String
+    Private Property TorPath As String
 
     Public Sub StartTor()
+        TorrcPath = GetConfigJson().MainPath & "\Tor\Data\Tor\torrc"
+        TorFolder = GetConfigJson().MainPath & "\Tor"
+        TorPath = GetConfigJson().MainPath & "\Tor\tor.exe"
         For Each proc As Process In Process.GetProcessesByName(Tor)
             proc.Kill()
         Next

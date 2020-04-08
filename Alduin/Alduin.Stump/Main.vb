@@ -38,7 +38,7 @@ Module Main
                 .Domain = GetOnionAddress()
             }
             Dim http As New SendHTTPonTor
-            http.TalkChannelHTTP(model.ToString, RegistrationUrl)
+            http.TalkChannelHTTP(model, RegistrationUrl)
             Thread.Sleep(SectoMs(200))
         End While
     End Sub

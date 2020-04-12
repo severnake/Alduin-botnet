@@ -23,7 +23,7 @@ namespace Alduin.Web.Controllers
 
         [HttpPost]
         [Route("botregistration")]
-        public async Task<JsonResult> RegbotAsync([FromBody]BotRegisterModel model)
+        public async Task<JsonResult> RegbotAsync([FromBody] BotRegisterModel model)
         {
             if (!ModelState.IsValid)
                 return Json(new { success = false, result = "Invalid Model" });

@@ -10,7 +10,9 @@ namespace Alduin.Web.Validators
     public class BotRegistrationModelValidator : AbstractValidator<BotRegisterModel>
     {
         public BotRegistrationModelValidator()
-        {      
+        {
+            RuleFor(x => x.UserName)
+                .NotEmpty().WithMessage("UserName is required!");
         }
     }
 }

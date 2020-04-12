@@ -19,6 +19,5 @@ namespace Alduin.Web.Models.Bot
         public string LastIPAddress { get; set; }
         [Required]
         public string City { get; set; }
-        public DateTime? LastLoggedInUTC { get; set; }
     }
 }

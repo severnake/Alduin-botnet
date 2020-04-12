@@ -1,6 +1,5 @@
 ﻿Public Class DefaultRegistrationModel
-    Public Property Username As String
-    Public Property Address As String
+    Public Property UserName As String
     Public Property KeyUnique As String
     Public Property KeyCertified As String
     Public Property Domain As String

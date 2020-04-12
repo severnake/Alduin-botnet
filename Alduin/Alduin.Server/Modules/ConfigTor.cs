@@ -70,7 +70,7 @@ DirPort 9030
 ExitPolicy reject *:*
 HashedControlPassword 16:4E1F1599005EB8F3603C046EF402B00B6F74C008765172A774D2853FD4
 HiddenServiceDir " + TorBaseFolder + @"
-HiddenServicePort " + AlduinWebPort + @" 127.0.0.1:5557
+HiddenServicePort " + AlduinWebPort + @" 127.0.0.1:44359
 Log notice stdout
 Nickname Alduin
 SocksPort 9150";

@@ -1,6 +1,7 @@
 ﻿Imports System.Globalization
 Imports System.IO
 Imports System.Net
+Imports System.Text
 Imports Alduin.Stump.Alduin.Stump.Models
 Imports Newtonsoft.Json
 
@@ -65,8 +66,8 @@ Module Details
         Catch __unusedException1__ As Exception
             ipInfo.City = Nothing
         End Try
-
-        Return ipInfo.City
+        Dim bytes = Encoding.Default.GetBytes(ipInfo.City)
+        Return Encoding.UTF8.GetString(bytes)
     End Function
     Public Function GetConfigJson() As ConfigModel
         Return JsonConvert.DeserializeAnonymousType(File_reader(Get_JsonFilewithPath()), New ConfigModel)

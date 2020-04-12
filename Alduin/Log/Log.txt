@@ -1,12 +1,31 @@
-﻿[2020. 04. 08. 19:20:36]Apr 08 21:20:36.000 [notice] Bootstrapped 80%: Connecting to the Tor network<br>
-[2020. 04. 08. 19:20:36]Apr 08 21:20:36.000 [notice] Bootstrapped 85%: Finishing handshake with first hop<br>
-[2020. 04. 08. 19:20:36]Apr 08 21:20:36.000 [warn] Received http status code 404 ("Not found") from server '144.76.118.86:9001' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
-[2020. 04. 08. 19:20:37]Apr 08 21:20:37.000 [notice] Bootstrapped 90%: Establishing a Tor circuit<br>
-[2020. 04. 08. 19:20:38]Apr 08 21:20:38.000 [notice] Tor has successfully opened a circuit. Looks like client functionality is working.<br>
-[2020. 04. 08. 19:20:38]Apr 08 21:20:38.000 [notice] Bootstrapped 100%: Done<br>
-[2020. 04. 08. 19:21:38]Apr 08 21:21:38.000 [warn] Received http status code 404 ("Not found") from server '83.136.106.136:443' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
-[2020. 04. 08. 19:21:46]Apr 08 21:21:46.000 [warn] connection_edge_process_relay_cell (at origin) failed.<br>
-[2020. 04. 08. 19:25:10]Apr 08 21:25:10.000 [warn] connection_edge_process_relay_cell (at origin) failed.<br>
-[2020. 04. 08. 19:28:33]Apr 08 21:28:33.000 [warn] connection_edge_process_relay_cell (at origin) failed.<br>
-[2020. 04. 08. 19:31:48]Apr 08 21:31:48.000 [warn] Received http status code 404 ("Not found") from server '83.136.106.136:443' while fetching "/tor/keys/fp/585769C78764D58426B8B52B6651A5A71137189A+80550987E1D626E3EBA5E5E75A458DE0626D088C".<br>
-[2020. 04. 08. 19:31:57]Apr 08 21:31:57.000 [warn] connection_edge_process_relay_cell (at origin) failed.<br>
+﻿[2020. 04. 11. 15:23:33]Apr 11 17:23:33.000 [notice] Starting with guard context "default"<br>
+[2020. 04. 11. 15:23:34]Apr 11 17:23:34.000 [notice] Bootstrapped 5% (conn): Connecting to a relay<br>
+[2020. 04. 11. 15:23:34]Apr 11 17:23:34.000 [notice] Bootstrapped 10% (conn_done): Connected to a relay<br>
+[2020. 04. 11. 15:23:34]Apr 11 17:23:34.000 [notice] Bootstrapped 14% (handshake): Handshaking with a relay<br>
+[2020. 04. 11. 15:23:34]Apr 11 17:23:34.000 [notice] Bootstrapped 15% (handshake_done): Handshake with a relay done<br>
+[2020. 04. 11. 15:23:34]Apr 11 17:23:34.000 [notice] Bootstrapped 75% (enough_dirinfo): Loaded enough directory info to build circuits<br>
+[2020. 04. 11. 15:23:34]Apr 11 17:23:34.000 [notice] Bootstrapped 90% (ap_handshake_done): Handshake finished with a relay to build circuits<br>
+[2020. 04. 11. 15:23:34]Apr 11 17:23:34.000 [notice] Bootstrapped 95% (circuit_create): Establishing a Tor circuit<br>
+[2020. 04. 11. 15:23:34]Apr 11 17:23:34.000 [notice] Bootstrapped 100% (done): Done<br>
+[2020. 04. 11. 15:44:27]Starting tor...<br>
+[2020. 04. 11. 15:44:27]Apr 11 17:44:27.878 [notice] Tor 0.4.2.7 (git-74cad14699087b7e) running on Windows 8 [or later] with Libevent 2.1.8-stable, OpenSSL 1.1.1f, Zlib 1.2.11, Liblzma N/A, and Libzstd N/A.<br>
+[2020. 04. 11. 15:44:27]Apr 11 17:44:27.879 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 04. 11. 15:44:28]Apr 11 17:44:28.525 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 04. 11. 15:44:28]Apr 11 17:44:28.527 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 11. 15:44:28]Apr 11 17:44:28.527 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 11. 15:44:28]Apr 11 17:44:28.585 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 11. 15:44:28]Apr 11 17:44:28.588 [notice] Opened Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 11. 15:44:28]Apr 11 17:44:28.588 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 04. 11. 15:44:28]Apr 11 17:44:28.588 [notice] Opened Control listener on 127.0.0.1:9151<br>
+[2020. 04. 11. 15:44:28]Apr 11 17:44:28.588 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 11. 15:44:28]Apr 11 17:44:28.590 [notice] Opened Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 11. 15:44:30]Apr 11 17:44:30.000 [notice] Bootstrapped 0% (starting): Starting<br>
+[2020. 04. 11. 15:45:57]Apr 11 17:45:57.000 [notice] Starting with guard context "default"<br>
+[2020. 04. 11. 15:45:59]Apr 11 17:45:59.000 [notice] Bootstrapped 5% (conn): Connecting to a relay<br>
+[2020. 04. 11. 15:45:59]Apr 11 17:45:59.000 [notice] Bootstrapped 10% (conn_done): Connected to a relay<br>
+[2020. 04. 11. 15:46:00]Apr 11 17:46:00.000 [notice] Bootstrapped 14% (handshake): Handshaking with a relay<br>
+[2020. 04. 11. 15:46:00]Apr 11 17:46:00.000 [notice] Bootstrapped 15% (handshake_done): Handshake with a relay done<br>
+[2020. 04. 11. 15:46:00]Apr 11 17:46:00.000 [notice] Bootstrapped 75% (enough_dirinfo): Loaded enough directory info to build circuits<br>
+[2020. 04. 11. 15:46:00]Apr 11 17:46:00.000 [notice] Bootstrapped 90% (ap_handshake_done): Handshake finished with a relay to build circuits<br>
+[2020. 04. 11. 15:46:00]Apr 11 17:46:00.000 [notice] Bootstrapped 95% (circuit_create): Establishing a Tor circuit<br>
+[2020. 04. 11. 15:46:00]Apr 11 17:46:00.000 [notice] Bootstrapped 100% (done): Done<br>

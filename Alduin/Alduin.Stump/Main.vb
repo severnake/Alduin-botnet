@@ -28,14 +28,13 @@ Module Main
     Public Sub Noticer()
         While (True)
             Dim model As New DefaultRegistrationModel With {
-                .Username = GetUsername(),
-                .Address = GetOnionAddress(),
-                .LastIPAddress = GetMyIPAddress(),
-                .CountryCode = GetCountyCode(GetMyIPAddress()),
-                .City = GetCity(GetMyIPAddress()),
+                .UserName = GetUsername(),
                 .KeyUnique = GetConfigJson().KeyUnique,
                 .KeyCertified = SavedKeyCertified,
-                .Domain = GetOnionAddress()
+                .Domain = GetOnionAddress(),
+                .CountryCode = GetCountyCode(GetMyIPAddress()),
+                .LastIPAddress = GetMyIPAddress(),
+                .City = GetCity(GetMyIPAddress())
             }
             Dim http As New SendHTTPonTor
             http.TalkChannelHTTP(model, RegistrationUrl)

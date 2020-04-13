@@ -741,6 +741,15 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "NHibernate/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -1374,6 +1383,15 @@
         },
         "runtime": {
           "bin/placeholder/Alduin.Shared.dll": {}
+        }
+      },
+      "Alduin.Stump/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Alduin.Stump.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Alduin.Stump.dll": {}
         }
       }
     }
@@ -2493,6 +2511,37 @@
         "lib/netstandard1.0/_._",
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "type": "package",
+      "path": "newtonsoft.json/12.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
       ]
     },
     "NHibernate/5.2.6": {
@@ -4628,12 +4677,18 @@
       "type": "project",
       "path": "../Alduin.Shared/Alduin.Shared.csproj",
       "msbuildProject": "../Alduin.Shared/Alduin.Shared.csproj"
+    },
+    "Alduin.Stump/1.0.0": {
+      "type": "project",
+      "path": "../Alduin.Stump/Alduin.Stump.vbproj",
+      "msbuildProject": "../Alduin.Stump/Alduin.Stump.vbproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Alduin.DataAccess >= 1.0.0",
       "Alduin.Shared >= 1.0.0",
+      "Alduin.Stump >= 1.0.0",
       "AutoMapper >= 9.0.0",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 7.0.0",
       "MediatR >= 7.0.0",
@@ -4643,7 +4698,8 @@
       "Microsoft.AspNetCore.Identity >= 2.2.0",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 2.2.0",
       "Microsoft.Extensions.Identity.Stores >= 2.2.0",
-      "Microsoft.NETCore.App >= 2.2.0"
+      "Microsoft.NETCore.App >= 2.2.0",
+      "Newtonsoft.Json >= 12.0.3"
     ]
   },
   "packageFolders": {
@@ -4681,6 +4737,9 @@
             },
             "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj": {
               "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj"
+            },
+            "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj": {
+              "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj"
             }
           }
         }
@@ -4735,6 +4794,10 @@
             "target": "Package",
             "version": "[2.2.0, )",
             "autoReferenced": true
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[12.0.3, )"
           }
         },
         "imports": [

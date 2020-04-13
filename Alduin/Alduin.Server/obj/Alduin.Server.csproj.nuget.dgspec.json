@@ -174,6 +174,9 @@
               },
               "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj": {
                 "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj"
+              },
+              "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj": {
+                "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj"
               }
             }
           }
@@ -228,6 +231,10 @@
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
             }
           },
           "imports": [
@@ -374,6 +381,17 @@
           "warn": true,
           "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj",
+        "projectName": "Alduin.Stump",
+        "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj"
+      },
+      "frameworks": {
+        "net472": {}
       }
     }
   }

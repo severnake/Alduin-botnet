@@ -2998,7 +2998,7 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/11.0.2": {
+      "Newtonsoft.Json/12.0.3": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -5007,6 +5007,7 @@
         "dependencies": {
           "Alduin.DataAccess": "1.0.0",
           "Alduin.Shared": "1.0.0",
+          "Alduin.Stump": "1.0.0",
           "AutoMapper": "9.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "7.0.0",
           "MediatR": "7.0.0",
@@ -5015,7 +5016,8 @@
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0",
-          "Microsoft.Extensions.Identity.Stores": "2.2.0"
+          "Microsoft.Extensions.Identity.Stores": "2.2.0",
+          "Newtonsoft.Json": "12.0.3"
         },
         "compile": {
           "bin/placeholder/Alduin.Logic.dll": {}
@@ -5050,6 +5052,15 @@
         },
         "runtime": {
           "bin/placeholder/Alduin.Shared.dll": {}
+        }
+      },
+      "Alduin.Stump/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Alduin.Stump.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Alduin.Stump.dll": {}
         }
       }
     }
@@ -8576,10 +8587,10 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/11.0.2": {
-      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+    "Newtonsoft.Json/12.0.3": {
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
       "type": "package",
-      "path": "newtonsoft.json/11.0.2",
+      "path": "newtonsoft.json/12.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -8602,8 +8613,9 @@
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.11.0.2.nupkg.sha512",
-        "newtonsoft.json.nuspec"
+        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
       ]
     },
     "Newtonsoft.Json.Bson/1.0.1": {
@@ -13717,6 +13729,11 @@
       "type": "project",
       "path": "../Alduin.Shared/Alduin.Shared.csproj",
       "msbuildProject": "../Alduin.Shared/Alduin.Shared.csproj"
+    },
+    "Alduin.Stump/1.0.0": {
+      "type": "project",
+      "path": "../Alduin.Stump/Alduin.Stump.vbproj",
+      "msbuildProject": "../Alduin.Stump/Alduin.Stump.vbproj"
     }
   },
   "projectFileDependencyGroups": {

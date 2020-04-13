@@ -31,21 +31,34 @@ namespace Alduin.Web.Controllers
             appsettingsModel JsonString = JsonConvert.DeserializeAnonymousType(ServerFileManager.FileReader(GetPathes.Get_SolutionMainPath() + "/Alduin.Web/appsettings.json"), new appsettingsModel());
             if (JsonString.Stump.KeyCertified != model.KeyCertified)
                 return Json(new { success = false, result = "Key does not match" });
-
-            var command = new RegbotCommand
+            var Keyquery = new GetBotByKeyUniqueQuery { KeyUnique = model.KeyUnique };
+            var botresult = _mediator.Send(Keyquery);
+            if (botresult == null)
             {
-                UserName = model.UserName,
-                Domain = model.Domain,
-                City = model.City,
-                CountryCode = model.CountryCode,
-                KeyUnique = model.KeyUnique,
-                LastIPAddress = model.LastIPAddress,
-                CreationDateUTC = DateTime.UtcNow,
-                LastLoggedInUTC = DateTime.UtcNow
-            };
-            var result = await _mediator.Send(command);
-            if (result.Suceeded)
-                return Json(new { success = true, result = "Work"});
+                var command = new RegbotCommand
+                {
+                    UserName = model.UserName,
+                    Domain = model.Domain,
+                    City = model.City,
+                    CountryCode = model.CountryCode,
+                    KeyUnique = model.KeyUnique,
+                    LastIPAddress = model.LastIPAddress,
+                    CreationDateUTC = DateTime.UtcNow,
+                    LastLoggedInUTC = DateTime.UtcNow
+                };
+                var result = await _mediator.Send(command);
+                if (result.Suceeded)
+                    return Json(new { success = true, result = "Work"});
+            }
+            else
+            {
+                var BotUpdateCommand = new UpdateBotStatusCommand
+                {
+                    id = botresult.Result.Id
+                };
+                var result = await _mediator.Send(BotUpdateCommand);
+
+            }
             return Json(new { success = false, result = "Registration not success" });
         }
         [HttpPost]

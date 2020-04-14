@@ -10,6 +10,7 @@
         "dependencies": {
           "Alduin.DataAccess": "1.0.0",
           "Alduin.Shared": "1.0.0",
+          "Alduin.Stump": "1.0.0",
           "AutoMapper": "9.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "7.0.0",
           "MediatR": "7.0.0",
@@ -18,7 +19,8 @@
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0",
-          "Microsoft.Extensions.Identity.Stores": "2.2.0"
+          "Microsoft.Extensions.Identity.Stores": "2.2.0",
+          "Newtonsoft.Json": "12.0.3"
         },
         "runtime": {
           "Alduin.Logic.dll": {}
@@ -489,6 +491,14 @@
           "System.Security.Principal.Windows": "4.5.0"
         }
       },
+      "Newtonsoft.Json/12.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
+          }
+        }
+      },
       "NHibernate/5.2.6": {
         "dependencies": {
           "Antlr3.Runtime": "3.5.1",
@@ -864,6 +874,22 @@
             "locale": "hu-HU"
           }
         }
+      },
+      "Alduin.Stump/1.0.0": {
+        "dependencies": {
+          "starksoft.aspen": "1.1.8.0"
+        },
+        "runtime": {
+          "Alduin.Stump.exe": {}
+        }
+      },
+      "starksoft.aspen.Reference/1.1.8.0": {
+        "runtime": {
+          "starksoft.aspen.dll": {
+            "assemblyVersion": "1.1.8.0",
+            "fileVersion": "1.1.8.0"
+          }
+        }
       }
     }
   },
@@ -1159,6 +1185,13 @@
       "sha512": "sha512-+FWlwd//+Tt56316p00hVePBCouXyEzT86Jb3+AuRotTND0IYn0OO3obs1gnQEs/txEnt+rF2JBGLItTG+Be6A==",
       "path": "microsoft.win32.registry/4.5.0",
       "hashPath": "microsoft.win32.registry.4.5.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
     },
     "NHibernate/5.2.6": {
       "type": "package",
@@ -1473,6 +1506,16 @@
     },
     "Alduin.Shared/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Alduin.Stump/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "starksoft.aspen.Reference/1.1.8.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

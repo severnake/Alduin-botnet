@@ -51,3 +51,34 @@
 [2020. 04. 12. 9:24:04]Apr 12 11:24:04.000 [notice] Bootstrapped 90% (ap_handshake_done): Handshake finished with a relay to build circuits<br>
 [2020. 04. 12. 9:24:04]Apr 12 11:24:04.000 [notice] Bootstrapped 95% (circuit_create): Establishing a Tor circuit<br>
 [2020. 04. 12. 9:24:04]Apr 12 11:24:04.000 [notice] Bootstrapped 100% (done): Done<br>
+[2020. 04. 14. 10:09:58]Starting tor...<br>
+[2020. 04. 14. 10:10:01]Apr 14 12:10:01.839 [notice] Tor 0.4.2.7 (git-74cad14699087b7e) running on Windows 8 [or later] with Libevent 2.1.8-stable, OpenSSL 1.1.1f, Zlib 1.2.11, Liblzma N/A, and Libzstd N/A.<br>
+[2020. 04. 14. 10:10:01]Apr 14 12:10:01.851 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 04. 14. 10:10:02]Apr 14 12:10:02.609 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 04. 14. 10:10:02]Apr 14 12:10:02.704 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 14. 10:10:02]Apr 14 12:10:02.704 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 14. 10:10:04]Apr 14 12:10:04.069 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 14. 10:10:04]Apr 14 12:10:04.106 [notice] Opened Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 14. 10:10:04]Apr 14 12:10:04.106 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 04. 14. 10:10:04]Apr 14 12:10:04.106 [notice] Opened Control listener on 127.0.0.1:9151<br>
+[2020. 04. 14. 10:10:04]Apr 14 12:10:04.106 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 14. 10:10:04]Apr 14 12:10:04.145 [notice] Opened Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 14. 10:10:04]Apr 14 12:10:04.000 [notice] Bootstrapped 0% (starting): Starting<br>
+[2020. 04. 14. 10:10:06]Apr 14 12:10:06.000 [warn] ISO time "2020-04-12 15:00:00\r" was unparseable<br>
+[2020. 04. 14. 10:10:06]Apr 14 12:10:06.000 [warn] Unable to parse networkstatus consensus<br>
+[2020. 04. 14. 10:10:06]Apr 14 12:10:06.000 [notice] Looks like the above failures are probably because of a CRLF in consensus file "E:\\project\\Alduin-botnet\\Alduin\\Tor\\cached-consensus"; falling back to read_file_to_string. Nothing to worry about: this file was probably saved by an earlier version of Tor.<br>
+[2020. 04. 14. 10:10:16]Apr 14 12:10:16.000 [warn] ISO time "2020-04-12 15:00:00\r" was unparseable<br>
+[2020. 04. 14. 10:10:17]Apr 14 12:10:17.000 [warn] Unable to parse networkstatus consensus<br>
+[2020. 04. 14. 10:10:17]Apr 14 12:10:17.000 [notice] Looks like the above failures are probably because of a CRLF in consensus file "E:\\project\\Alduin-botnet\\Alduin\\Tor\\cached-microdesc-consensus"; falling back to read_file_to_string. Nothing to worry about: this file was probably saved by an earlier version of Tor.<br>
+[2020. 04. 14. 10:10:20]Apr 14 12:10:20.000 [notice] Starting with guard context "default"<br>
+[2020. 04. 14. 10:10:22]Apr 14 12:10:22.000 [notice] Bootstrapped 5% (conn): Connecting to a relay<br>
+[2020. 04. 14. 10:10:22]Apr 14 12:10:22.000 [notice] Bootstrapped 10% (conn_done): Connected to a relay<br>
+[2020. 04. 14. 10:10:22]Apr 14 12:10:22.000 [notice] Bootstrapped 14% (handshake): Handshaking with a relay<br>
+[2020. 04. 14. 10:10:22]Apr 14 12:10:22.000 [notice] Bootstrapped 15% (handshake_done): Handshake with a relay done<br>
+[2020. 04. 14. 10:10:22]Apr 14 12:10:22.000 [notice] Bootstrapped 20% (onehop_create): Establishing an encrypted directory connection<br>
+[2020. 04. 14. 10:10:22]Apr 14 12:10:22.000 [notice] Bootstrapped 25% (requesting_status): Asking for networkstatus consensus<br>
+[2020. 04. 14. 10:10:22]Apr 14 12:10:22.000 [notice] Bootstrapped 30% (loading_status): Loading networkstatus consensus<br>
+[2020. 04. 14. 10:10:24]Apr 14 12:10:24.000 [notice] I learned some more directory information, but not enough to build a circuit: We have no recent usable consensus.<br>
+[2020. 04. 14. 10:10:26]Apr 14 12:10:26.000 [notice] Bootstrapped 75% (enough_dirinfo): Loaded enough directory info to build circuits<br>
+[2020. 04. 14. 10:10:26]Apr 14 12:10:26.000 [notice] Bootstrapped 95% (circuit_create): Establishing a Tor circuit<br>
+[2020. 04. 14. 10:10:26]Apr 14 12:10:26.000 [notice] Bootstrapped 100% (done): Done<br>

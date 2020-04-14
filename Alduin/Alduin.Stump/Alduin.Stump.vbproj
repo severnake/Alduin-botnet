@@ -114,22 +114,21 @@
     <Compile Include="Models\BotDeatilsModel.vb" />
     <Compile Include="Models\FloodModel\BaseFloodModel.vb" />
     <Compile Include="Models\FloodModel\ICMPModel.vb" />
+    <Compile Include="Models\Json\ConfigBotModel.vb" />
     <Compile Include="Models\LogModel.vb" />
     <Compile Include="Models\WebsiteModel.vb" />
     <Compile Include="Class\Floods\Floods\3. Layer\ICMP.vb" />
     <Compile Include="Class\Floods\Floods\4. Layer\TCP.vb" />
     <Compile Include="Class\Floods\Floods\4. Layer\UDP.vb" />
     <Compile Include="Class\Floods\Floods\7. Layer\SlowLoris.vb" />
-    <Compile Include="Variables\UrlVariable.vb" />
     <Compile Include="Interfaces\ICommand.vb" />
     <Compile Include="Main.vb" />
-    <Compile Include="Models\ConfigModel.vb" />
+    <Compile Include="Models\Json\ConfigModel.vb" />
     <Compile Include="Models\DefaultRegistrationModel.vb" />
     <Compile Include="Models\ExecuteModel.vb" />
-    <Compile Include="Models\IpInfoModel.vb" />
+    <Compile Include="Models\Json\IpInfoModel.vb" />
     <Compile Include="Moduls\Converter\FileSize.vb" />
     <Compile Include="Moduls\Converter\TimeConverter.vb" />
-    <Compile Include="Variables\CommunicationDetails.vb" />
     <Compile Include="Moduls\Details\Details.vb" />
     <Compile Include="Moduls\Grabs\ImageGrab.vb" />
     <Compile Include="Moduls\Installers\CopyModule.vb" />
@@ -169,6 +168,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -197,6 +199,8 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Variables\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

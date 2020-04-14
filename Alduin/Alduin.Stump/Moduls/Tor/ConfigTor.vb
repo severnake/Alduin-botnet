@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Net
 Imports System.Text
 
 Partial Friend Module ConfigTor
@@ -36,15 +37,16 @@ Partial Friend Module ConfigTor
         Process.StartInfo.RedirectStandardOutput = True
         Process.Start()
         Process.PriorityClass = ProcessPriorityClass.BelowNormal
-
-        While Not Process.StandardOutput.EndOfStream 'Debugging
-            Dim result As String = Process.StandardOutput.ReadLine()
-            Console.WriteLine(result)
-            If result.IndexOf("Done") >= 0 Then
-                Exit While
-                Exit Sub
-            End If
-        End While
+        If Config.Variables.Debug Then
+            While Not Process.StandardOutput.EndOfStream 'Debugging
+                Dim result As String = Process.StandardOutput.ReadLine()
+                Console.WriteLine(result)
+                If result.IndexOf("Done") >= 0 Then
+                    Exit While
+                    Exit Sub
+                End If
+            End While
+        End If
     End Sub
 
     Function ToSec(ByVal sec As Integer) As Integer
@@ -59,7 +61,7 @@ DirPort 9030
 ExitPolicy reject *:*
 HashedControlPassword 16:4E1F1599005EB8F3603C046EF402B00B6F74C008765172A774D2853FD4
 HiddenServiceDir " & TorFolder & "
-HiddenServicePort " & ReachPort & " " & LocalIP & ":" & ListenerPort & "
+HiddenServicePort " & Config.Variables.ReachPort & " " & IPAddress.Loopback.ToString() & ":" & Config.Variables.ListenerPort & "
 Log notice stdout
 Nickname " & GetUsername() & "
 SocksPort 9150"

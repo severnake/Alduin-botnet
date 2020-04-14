@@ -1,9 +1,10 @@
 ﻿Imports System.IO
+Imports System.Net
 Imports System.Net.Sockets
 Imports Starksoft.Aspen.Proxy
 Namespace Alduin.Stump.Class.Network
     Public Class TcpListen
-        Private ReadOnly adr As Net.IPAddress = Net.IPAddress.Parse(LocalIP)
+        Private ReadOnly adr As Net.IPAddress = Net.IPAddress.Parse(IPAddress.Loopback.ToString())
         Private client As TcpClient
         Private ReadOnly listener As TcpListener
         Private ReadOnly _command As ICommand
@@ -12,7 +13,7 @@ Namespace Alduin.Stump.Class.Network
         Public Reader As StreamReader
 
         Public Sub New()
-            listener = New TcpListener(adr, ListenerPort)
+            listener = New TcpListener(adr, Config.Variables.ListenerPort)
         End Sub
 
         Public Sub TcpAsync()

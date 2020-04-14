@@ -14,3 +14,11 @@ E:\project\Alduin-botnet\Alduin\Alduin.Logic\obj\Debug\netcoreapp2.2\Alduin.Logi
 E:\project\Alduin-botnet\Alduin\Alduin.Logic\obj\Debug\netcoreapp2.2\Alduin.Logic.csproj.CopyComplete
 E:\project\Alduin-botnet\Alduin\Alduin.Logic\obj\Debug\netcoreapp2.2\Alduin.Logic.dll
 E:\project\Alduin-botnet\Alduin\Alduin.Logic\obj\Debug\netcoreapp2.2\Alduin.Logic.pdb
+E:\project\Alduin-botnet\Alduin\Alduin.Logic\bin\Debug\netcoreapp2.2\Alduin.Stump.exe
+E:\project\Alduin-botnet\Alduin\Alduin.Logic\bin\Debug\netcoreapp2.2\starksoft.aspen.dll
+E:\project\Alduin-botnet\Alduin\Alduin.Logic\bin\Debug\netcoreapp2.2\Alduin.Stump.pdb
+E:\project\Alduin-botnet\Alduin\Alduin.Logic\bin\Debug\netcoreapp2.2\Alduin.Stump.xml
+E:\project\Alduin-botnet\Alduin\Alduin.Logic\bin\Debug\netcoreapp2.2\Alduin.Stump.exe.config
+E:\project\Alduin-botnet\Alduin\Alduin.Logic\bin\Debug\netcoreapp2.2\starksoft.aspen.pdb
+E:\project\Alduin-botnet\Alduin\Alduin.Logic\bin\Debug\netcoreapp2.2\starksoft.aspen.xml
+E:\project\Alduin-botnet\Alduin\Alduin.Logic\bin\Debug\netcoreapp2.2\Config.json

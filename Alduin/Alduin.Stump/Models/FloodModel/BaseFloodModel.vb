@@ -1,4 +1,4 @@
-﻿Public Class BaseFloodModel
+﻿Public Class BaseFloodModel : Inherits BaseCommandHandlerModel
     Public Property Host As String
     Public Property TimetoAttack As Integer
     Public Property ThreadstoUse As Integer

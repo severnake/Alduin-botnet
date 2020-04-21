@@ -12,6 +12,7 @@ using MediatR;
 using Alduin.Logic.Mediator.Queries;
 using Alduin.Shared.DTOs;
 using Alduin.Logic.Identity;
+using Newtonsoft.Json;
 
 namespace Alduin.Web.Controllers
 {
@@ -71,7 +72,7 @@ namespace Alduin.Web.Controllers
                 status = model.Force
             };
             var botlist = await _mediator.Send(bots);
-            var response = CommandExecute.TcpConnects(botlist, command);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(command));
             return Json(response);
         }
         [Authorize]

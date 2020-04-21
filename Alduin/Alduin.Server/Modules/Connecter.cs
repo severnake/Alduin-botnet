@@ -11,7 +11,7 @@ namespace Alduin.Server.Modules
         public static StreamReader Reader;
         private static Socks5ProxyClient proxyClient;
 
-        public static string CreateTcpSend(string Address, object MSG)
+        public static string CreateTcpSend(string Address, string model)
         {
             int ReachPort = 50371; //ReachPort
             try
@@ -21,7 +21,7 @@ namespace Alduin.Server.Modules
                 proxyClient.ProxyPassword = "";
                 TCP = proxyClient.CreateConnection(Address, ReachPort);
                 Write = new StreamWriter(TCP.GetStream());
-                Write.Write(MSG);
+                Write.Write(model);
                 Write.Flush();
                 Reader = new StreamReader(TCP.GetStream());
                 var ResultMessage = "";

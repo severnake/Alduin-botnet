@@ -8,7 +8,7 @@ namespace Alduin.Server.Handler
 {
     public class CommandExecute 
     {
-        public static List<string> TcpConnects(BotDTO[] botlist, object model)
+        public static List<string> TcpConnects(BotDTO[] botlist, string model)
         {
             List<string> response = new List<string>();
             for (var i = 0; i < botlist.Length; i++)

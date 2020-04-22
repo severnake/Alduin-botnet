@@ -6,20 +6,22 @@ Namespace Alduin.Stump.Class.Commands
         Public Sub New()
 
         End Sub
-
-        Public Async Function JsonDes(model As String) As Task(Of String)
-            Dim ModelDes As BaseCommandHandlerModel = JsonConvert.DeserializeAnonymousType(model, CommandModel(model))
-
-            Return "ok" 'not ready yet
-            Throw New NotImplementedException()
-        End Function
-        Public Function CommandModel(ByVal model As String) As Object
-            Dim Modeldes As BaseCommandHandlerModel = JsonConvert.DeserializeAnonymousType(model, New BaseCommandHandlerModel)
-            Select Case Modeldes.Method
+        Public Function CommandJsonToObject(ByVal model As String) As String
+            Dim method As String = ""
+            For i = model.IndexOf("Method") To model.Length - 1
+                If model.Chars(i) = "}" Or model.Chars(i) = "," Then
+                    Exit For
+                End If
+                method += model.Chars(i)
+            Next
+            method = method.Replace("""", "").Replace(":", "").Replace(" ", "").Replace(",", "").Replace("Method", "")
+            Select Case method
                 Case "Execute"
-                    Return New ExecuteModel()
+                    Dim ModelDes As ExecuteModel = JsonConvert.DeserializeAnonymousType(model, New ExecuteModel)
+                    Return Handler(ModelDes)
+                Case "Website"
             End Select
-            Throw New NotImplementedException()
+            Return "Command execute Failed!"
         End Function
     End Class
 End Namespace

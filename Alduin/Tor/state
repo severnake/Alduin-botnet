@@ -1,4 +1,4 @@
-# Tor state file last generated on 2020-04-14 12:40:16 local time
+# Tor state file last generated on 2020-04-23 22:08:34 local time
 # Other times below are in UTC
 # You *do not* need to edit this file.
 
@@ -194,7 +194,6 @@ Guard in=default rsa_id=4FDDFAD51B24DDABB62FB59071F4DC421E76C685 nickname=Fissio
 Guard in=default rsa_id=EBE76802D098FF6FA226F60C2D0B0C098F367AF1 nickname=JdMtOrReLaY2 sampled_on=2020-03-31T23:56:09 sampled_by=0.4.2.7 listed=1
 Guard in=default rsa_id=7D31D5118D47BF86C550ABB79EDDE865EC31B67F nickname=21b sampled_on=2020-04-02T01:28:23 sampled_by=0.4.2.7 listed=1
 Guard in=default rsa_id=C680718A6F51A8F7C5D4E68269ED5B2C07FE531B nickname=badgercomb sampled_on=2020-03-30T11:34:36 sampled_by=0.4.2.7 listed=1
-LastWritten 2020-04-14 10:40:16
-MinutesSinceUserActivity 4
+LastWritten 2020-04-23 20:08:34
 TorVersion Tor 0.4.2.7 (git-74cad14699087b7e)
 TotalBuildTimes 1000

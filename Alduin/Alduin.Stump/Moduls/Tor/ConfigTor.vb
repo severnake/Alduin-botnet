@@ -12,9 +12,6 @@ Partial Friend Module ConfigTor
         TorrcPath = GetConfigJson().MainPath & "\Tor\Data\Tor\torrc"
         TorFolder = GetConfigJson().MainPath & "\Tor"
         TorPath = GetConfigJson().MainPath & "\Tor\tor.exe"
-        For Each proc As Process In Process.GetProcessesByName(Tor)
-            proc.Kill()
-        Next
 
         If Not File.Exists(TorrcPath) Then
             CreateTorrc()
@@ -24,7 +21,11 @@ Partial Friend Module ConfigTor
         p = Process.GetProcessesByName(Tor)
         If Not (p.Length > 0) Then StartTorProccess()
     End Sub
-
+    Public Sub KillTor()
+        For Each proc As Process In Process.GetProcessesByName(Tor)
+            proc.Kill()
+        Next
+    End Sub
     Private Sub StartTorProccess()
         Console.WriteLine("Starting tor...")
         Dim Process = New Process()

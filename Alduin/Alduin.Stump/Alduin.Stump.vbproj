@@ -114,6 +114,7 @@
     <Compile Include="Class\Floods\Floods\7. Layer\TorLois.vb" />
     <Compile Include="Class\Network\SendHTTPonTor.vb" />
     <Compile Include="Class\Network\TcpListen.vb" />
+    <Compile Include="CloseDetect.vb" />
     <Compile Include="Models\BaseCommandHandlerModel.vb" />
     <Compile Include="Models\BotDeatilsModel.vb" />
     <Compile Include="Models\FloodModel\ArmeModel.vb" />
@@ -138,7 +139,7 @@
     <Compile Include="Models\DefaultRegistrationModel.vb" />
     <Compile Include="Models\ExecuteModel.vb" />
     <Compile Include="Models\Json\IpInfoModel.vb" />
-    <Compile Include="Moduls\Commands\Execute.vb" />
+    <Compile Include="Moduls\Commands\ExecuteCommand.vb" />
     <Compile Include="Moduls\Converter\FileSize.vb" />
     <Compile Include="Moduls\Converter\TimeConverter.vb" />
     <Compile Include="Moduls\Details\Details.vb" />
@@ -211,8 +212,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Variables\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

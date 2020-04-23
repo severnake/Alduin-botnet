@@ -745,11 +745,31 @@
         }
       },
       "Alduin.Stump/1.0.0": {
+        "dependencies": {
+          "SocksWebProxy": "1.0.0.0",
+          "Org.Mentalis": "1.0.0.0"
+        },
         "runtime": {
           "Alduin.Stump.exe": {}
         },
         "compile": {
           "Alduin.Stump.exe": {}
+        }
+      },
+      "SocksWebProxy.Reference/1.0.0.0": {
+        "runtime": {
+          "SocksWebProxy.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Org.Mentalis.Reference/1.0.0.0": {
+        "runtime": {
+          "Org.Mentalis.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -4257,6 +4277,16 @@
     },
     "Alduin.Stump/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SocksWebProxy.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Org.Mentalis.Reference/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     },

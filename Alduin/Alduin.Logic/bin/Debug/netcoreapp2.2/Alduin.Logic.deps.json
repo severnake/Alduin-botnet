@@ -877,7 +877,9 @@
       },
       "Alduin.Stump/1.0.0": {
         "dependencies": {
-          "starksoft.aspen": "1.1.8.0"
+          "starksoft.aspen": "1.1.8.0",
+          "SocksWebProxy": "1.0.0.0",
+          "Org.Mentalis": "1.0.0.0"
         },
         "runtime": {
           "Alduin.Stump.exe": {}
@@ -888,6 +890,22 @@
           "starksoft.aspen.dll": {
             "assemblyVersion": "1.1.8.0",
             "fileVersion": "1.1.8.0"
+          }
+        }
+      },
+      "SocksWebProxy.Reference/1.0.0.0": {
+        "runtime": {
+          "SocksWebProxy.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Org.Mentalis.Reference/1.0.0.0": {
+        "runtime": {
+          "Org.Mentalis.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       }
@@ -1515,6 +1533,16 @@
       "sha512": ""
     },
     "starksoft.aspen.Reference/1.1.8.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SocksWebProxy.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Org.Mentalis.Reference/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

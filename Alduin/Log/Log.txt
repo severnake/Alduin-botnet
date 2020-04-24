@@ -13153,3 +13153,65 @@
 [2020. 04. 23. 20:09:59]Apr 23 22:09:59.000 [warn] Failed to unlink E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1138.tmp: Permission denied<br>
 [2020. 04. 23. 20:10:06]Apr 23 22:10:06.000 [notice] Bootstrapped 68% (loading_descriptors): Loading relay descriptors<br>
 [2020. 04. 23. 20:10:08]Apr 23 22:10:08.000 [notice] Bootstrapped 75% (enough_dirinfo): Loaded enough directory info to build circuits<br>
+[2020. 04. 24. 16:41:29]Starting tor...<br>
+[2020. 04. 24. 16:41:37]Apr 24 18:41:37.358 [notice] Tor 0.4.2.7 (git-74cad14699087b7e) running on Windows 8 [or later] with Libevent 2.1.8-stable, OpenSSL 1.1.1f, Zlib 1.2.11, Liblzma N/A, and Libzstd N/A.<br>
+[2020. 04. 24. 16:41:37]Apr 24 18:41:37.366 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 04. 24. 16:41:37]Apr 24 18:41:37.882 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 04. 24. 16:41:38]Apr 24 18:41:38.467 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 24. 16:41:38]Apr 24 18:41:38.484 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 24. 16:41:39]Apr 24 18:41:39.234 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 24. 16:41:39]Apr 24 18:41:39.277 [notice] Opened Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 24. 16:41:39]Apr 24 18:41:39.283 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 04. 24. 16:41:39]Apr 24 18:41:39.283 [notice] Opened Control listener on 127.0.0.1:9151<br>
+[2020. 04. 24. 16:41:39]Apr 24 18:41:39.283 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 24. 16:41:39]Apr 24 18:41:39.299 [notice] Opened Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 24. 16:41:42]Apr 24 18:41:42.000 [notice] Bootstrapped 0% (starting): Starting<br>
+[2020. 04. 24. 16:42:09]Apr 24 18:42:09.000 [notice] Starting with guard context "default"<br>
+[2020. 04. 24. 16:42:09]Apr 24 18:42:09.000 [notice] Bootstrapped 5% (conn): Connecting to a relay<br>
+[2020. 04. 24. 16:42:09]Apr 24 18:42:09.000 [notice] Bootstrapped 10% (conn_done): Connected to a relay<br>
+[2020. 04. 24. 16:42:10]Apr 24 18:42:10.000 [notice] Bootstrapped 14% (handshake): Handshaking with a relay<br>
+[2020. 04. 24. 16:42:10]Apr 24 18:42:10.000 [notice] Bootstrapped 15% (handshake_done): Handshake with a relay done<br>
+[2020. 04. 24. 16:42:10]Apr 24 18:42:10.000 [notice] Bootstrapped 45% (requesting_descriptors): Asking for relay descriptors<br>
+[2020. 04. 24. 16:42:11]Apr 24 18:42:11.000 [notice] Bootstrapped 59% (loading_descriptors): Loading relay descriptors<br>
+[2020. 04. 24. 16:42:21]Apr 24 18:42:21.000 [notice] Bootstrapped 64% (loading_descriptors): Loading relay descriptors<br>
+[2020. 04. 24. 16:42:22]Apr 24 18:42:22.000 [notice] Bootstrapped 69% (loading_descriptors): Loading relay descriptors<br>
+[2020. 04. 24. 16:42:24]Apr 24 18:42:24.000 [notice] Bootstrapped 75% (enough_dirinfo): Loaded enough directory info to build circuits<br>
+[2020. 04. 24. 16:42:24]Apr 24 18:42:24.000 [notice] Bootstrapped 80% (ap_conn): Connecting to a relay to build circuits<br>
+[2020. 04. 24. 16:42:25]Apr 24 18:42:25.000 [notice] Bootstrapped 85% (ap_conn_done): Connected to a relay to build circuits<br>
+[2020. 04. 24. 16:42:25]Apr 24 18:42:25.000 [notice] Bootstrapped 89% (ap_handshake): Finishing handshake with a relay to build circuits<br>
+[2020. 04. 24. 16:42:25]Apr 24 18:42:25.000 [notice] Bootstrapped 90% (ap_handshake_done): Handshake finished with a relay to build circuits<br>
+[2020. 04. 24. 16:42:25]Apr 24 18:42:25.000 [notice] Bootstrapped 95% (circuit_create): Establishing a Tor circuit<br>
+[2020. 04. 24. 16:42:32]Apr 24 18:42:32.000 [notice] Bootstrapped 100% (done): Done<br>
+[2020. 04. 24. 16:49:52]Apr 24 18:49:52.000 [notice] Extremely large value for circuit build timeout: 154s. Assuming clock jump. Purpose 14 (Measuring circuit timeout)<br>
+[2020. 04. 24. 16:50:13]Apr 24 18:50:13.000 [notice] Your network connection speed appears to have changed. Resetting timeout to 60s after 18 timeouts and 1000 buildtimes.<br>
+[2020. 04. 24. 16:55:08]Apr 24 18:55:08.000 [warn] Hidden service u3pnecjj63qycnhl exceeded launch limit with 10 intro points in the last 300 seconds. Intro circuit launches are limited to 10 per 300 seconds. [15 similar message(s) suppressed in last 300 seconds]<br>
+[2020. 04. 24. 16:55:08]Apr 24 18:55:08.000 [warn] Service configured in "E:\\project\\Alduin-botnet\\Alduin\\Tor":<br>
+[2020. 04. 24. 16:55:08]Apr 24 18:55:08.000 [warn]   Intro point 0 at [scrubbed]: circuit is open<br>
+[2020. 04. 24. 16:55:08]Apr 24 18:55:08.000 [warn]   Intro point 1 at [scrubbed]: circuit is open<br>
+[2020. 04. 24. 16:55:08]Apr 24 18:55:08.000 [warn]   Intro point 2 at [scrubbed]: circuit is open<br>
+[2020. 04. 24. 17:59:49]Starting tor...<br>
+[2020. 04. 24. 17:59:52]Apr 24 19:59:52.849 [notice] Tor 0.4.2.7 (git-74cad14699087b7e) running on Windows 8 [or later] with Libevent 2.1.8-stable, OpenSSL 1.1.1f, Zlib 1.2.11, Liblzma N/A, and Libzstd N/A.<br>
+[2020. 04. 24. 17:59:52]Apr 24 19:59:52.908 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 04. 24. 17:59:55]Apr 24 19:59:55.102 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 04. 24. 17:59:55]Apr 24 19:59:55.136 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 24. 17:59:55]Apr 24 19:59:55.136 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 24. 17:59:55]Apr 24 19:59:55.202 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 24. 17:59:55]Apr 24 19:59:55.232 [notice] Opened Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 24. 17:59:55]Apr 24 19:59:55.232 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 04. 24. 17:59:55]Apr 24 19:59:55.232 [notice] Opened Control listener on 127.0.0.1:9151<br>
+[2020. 04. 24. 17:59:55]Apr 24 19:59:55.232 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 24. 17:59:55]Apr 24 19:59:55.237 [notice] Opened Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 24. 17:59:56]Apr 24 19:59:56.000 [notice] Bootstrapped 0% (starting): Starting<br>
+[2020. 04. 24. 19:17:34]Starting tor...<br>
+[2020. 04. 24. 19:17:36]Apr 24 21:17:36.047 [notice] Tor 0.4.2.7 (git-74cad14699087b7e) running on Windows 8 [or later] with Libevent 2.1.8-stable, OpenSSL 1.1.1f, Zlib 1.2.11, Liblzma N/A, and Libzstd N/A.<br>
+[2020. 04. 24. 19:17:36]Apr 24 21:17:36.049 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 04. 24. 19:17:37]Apr 24 21:17:36.984 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 04. 24. 19:17:37]Apr 24 21:17:37.054 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 24. 19:17:37]Apr 24 21:17:37.054 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 24. 19:17:37]Apr 24 21:17:37.340 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 24. 19:17:37]Apr 24 21:17:37.340 [notice] Opened Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 24. 19:17:37]Apr 24 21:17:37.340 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 04. 24. 19:17:37]Apr 24 21:17:37.340 [notice] Opened Control listener on 127.0.0.1:9151<br>
+[2020. 04. 24. 19:17:37]Apr 24 21:17:37.340 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 24. 19:17:37]Apr 24 21:17:37.365 [notice] Opened Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 24. 19:17:38]Apr 24 21:17:38.000 [notice] Bootstrapped 0% (starting): Starting<br>

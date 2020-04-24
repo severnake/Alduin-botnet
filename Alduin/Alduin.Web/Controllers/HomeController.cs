@@ -31,6 +31,10 @@ namespace Alduin.Web.Controllers
         {
             return View();
         }
+        public IActionResult Monero()
+        {
+            return View();
+        }
         public async Task<IActionResult> Test(int id)
         {
             var result = await _mediator.Send(new DeleteUserCommand

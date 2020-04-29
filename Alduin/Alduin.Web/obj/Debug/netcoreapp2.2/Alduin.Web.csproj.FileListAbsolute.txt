@@ -89,3 +89,5 @@ E:\project\Alduin-botnet\Alduin\Alduin.Web\bin\Debug\netcoreapp2.2\Config.json
 E:\project\Alduin-botnet\Alduin\Alduin.Web\bin\Debug\netcoreapp2.2\SocksWebProxy.dll
 E:\project\Alduin-botnet\Alduin\Alduin.Web\bin\Debug\netcoreapp2.2\Org.Mentalis.dll
 E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\Monero.cshtml.g.cs
+E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\Settings.cshtml.g.cs
+E:\project\Alduin-botnet\Alduin\Alduin.Web\bin\Debug\netcoreapp2.2\NAudio.dll

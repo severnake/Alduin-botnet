@@ -26,7 +26,7 @@ Namespace Alduin.Stump.Class.Network
                 End While
                 'Call commands and wait result
                 Console.WriteLine(Message)
-                Result = Command.CommandJsonToObject(Message)
+                Result = Command.CommandHandler(Message, client)
                 Moduls.Network.StreamWrite.StreamWrite(client, Result)
                 client.Close()
             End If

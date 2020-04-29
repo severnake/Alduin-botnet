@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Alduin.Server.Commands
 {
-    public class BaseCommands : IRequest<ActionResult>
+    public class BaseCommands
     {
         public string Method { get; set; }
     }

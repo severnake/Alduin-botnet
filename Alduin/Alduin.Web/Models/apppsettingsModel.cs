@@ -23,11 +23,17 @@ namespace Alduin.Web.Models
     {
         public string KeyCertified { get; set; }
     }
+    public class Tor
+    {
+        public bool RunItStart { get; set; }
+    }
+
     public class appsettingsModel
     {
         public ConnectionStrings ConnectionStrings { get; set; }
         public Logging Logging { get; set; }
         public string AllowedHosts { get; set; }
+        public Tor Tor { get; set; }
         public Stump Stump { get; set; }
     }
     

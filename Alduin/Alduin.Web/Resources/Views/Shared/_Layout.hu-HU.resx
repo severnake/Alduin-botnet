@@ -159,6 +159,9 @@
   <data name="Services settings" xml:space="preserve">
     <value>Szolgáltatás beállítása</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Beállítások</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>Statisztika</value>
   </data>

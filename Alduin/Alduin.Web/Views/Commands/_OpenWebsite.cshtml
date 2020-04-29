@@ -16,25 +16,33 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <div class="form-check">
-                <span asp-validation-for="Closed"></span>
-                <input asp-for="Closed" class="form-check-input">
-                <label class="form-check-label" asp-for="Closed">@Localizer["Cannot be closed"]</label>
+            <div class="ondisplay">
+                <section title="@Localizer["Cannot be closed"]">
+                    <div class="form-check slideTwo">
+                        <span asp-validation-for="Closed"></span>
+                        <input asp-for="Closed" class="form-check-input" type="checkbox" id="slideTwo">
+                        <label class="form-check-label" for="slideTwo"></label>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-12 mt-2">
-            <div class="form-check">
-                <span asp-validation-for="Hidde"></span>
-                <input asp-for="Hidde" class="form-check-input">
-                <label class="form-check-label" asp-for="Hidde">@Localizer["Hidden"]</label>
+            <div class="ondisplay">
+                <section title="@Localizer["Hidden"]">
+                    <div class="form-check slideTwo">
+                        <span asp-validation-for="Hidde"></span>
+                        <input asp-for="Hidde" class="form-check-input" type="checkbox" id="slideTwo">
+                        <label class="form-check-label" for="slideTwo"></label>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <button class="btn btn-primary mt-2 w-100">@Localizer["Submit"]</button>
+            <button>@Localizer["Submit"]</button>
         </div>
     </div>
 </form>

@@ -1,7 +1,9 @@
 ﻿using Alduin.Server.Modules;
+using Alduin.Web.Models;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Threading;
@@ -12,8 +14,12 @@ namespace Alduin.Web
     {
         public static void Main(string[] args)
         {
-            Thread thr = new Thread(new ThreadStart(ConfigTor.StartTor));
-            thr.Start();
+            appsettingsModel appsettings = JsonConvert.DeserializeAnonymousType(ServerFileManager.FileReader(GetPathes.Get_SolutionMainPath() + "/Alduin.Web/appsettings.json"), new appsettingsModel());
+            if (appsettings.Tor.RunItStart)
+            {
+                Thread thr = new Thread(new ThreadStart(ConfigTor.StartTor));
+                thr.Start();
+            } 
             CreateWebHostBuilder(args).Build().Run();
         }
 

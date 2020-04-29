@@ -1,17 +1,52 @@
-﻿@{
-    ViewData["Title"] = ViewData["Settings"];
+﻿@model appsettingsModel 
+@{
+    ViewData["Title"] = @Localizer["Settings"];
 }
-    <div class="contatiner d-flex justify-content-center">
-        <div class="wide-board">
-            <div class="text-center">
-                <div class="row">
-                    <div class="col-12 overflow-auto">
-                        <h2>@ViewData["Settings"]:</h2>
-                    </div>
-                    <div class="col-12">
-                        
-                    </div>
+<div class="contatiner">
+    <div class="wide-board  d-flex justify-content-center">
+        <div class="text-center">
+            <div class="row">
+                <div class="col-12 overflow-auto">
+                    <h2>@Localizer["Settings"]:</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <form class="md-auth-form" asp-controller="Home" asp-action="Settings" method="post">
+                        <h2>@Localizer["Website Settings"]</h2>
+                        <hr />
+                        <div asp-validation-summary="ModelOnly"></div>
+
+                        <div class="form-group">
+                            <label asp-for="ConnectionStrings.ConnectDataBase"></label>
+                            <input asp-for="ConnectionStrings.ConnectDataBase" class="form-control" />
+                            <span asp-validation-for="ConnectionStrings.ConnectDataBase"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Stump.KeyCertified"></label>
+                            <input asp-for="Stump.KeyCertified" class="form-control" />
+                            <span asp-validation-for="Stump.KeyCertified"></span>
+                        </div>
+                        <div class="ondisplay">
+                            <section title="@Localizer["Run Tor for Website"]">
+                                <div class="form-check slideTwo">
+                                    <span asp-validation-for="Tor.RunItStart"></span>
+                                    <input asp-for="Tor.RunItStart" class="form-check-input" type="checkbox" id="slideTwo">
+                                    <label class="form-check-label" for="slideTwo"></label>
+                                </div>
+                            </section>
+                        </div>
+
+                        <button>@Localizer["Save"]</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<script>
+    var success = '@Localizer["Success"]' + '!';
+    if ("@ViewData["Result"]" == "ok") {
+        $.notify(success, "success");
+    }
+</script>

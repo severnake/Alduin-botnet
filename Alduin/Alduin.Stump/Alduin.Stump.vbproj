@@ -120,7 +120,7 @@
     <Compile Include="Class\Network\SendHTTPonTor.vb" />
     <Compile Include="Class\Network\TcpListen.vb" />
     <Compile Include="CloseDetect.vb" />
-    <Compile Include="Models\BaseModel.vb" />
+    <Compile Include="Models\BaseCommands.vb" />
     <Compile Include="Models\BotDeatilsModel.vb" />
     <Compile Include="Models\FloodModel\ArmeModel.vb" />
     <Compile Include="Models\FloodModel\BaseFloodModel.vb" />

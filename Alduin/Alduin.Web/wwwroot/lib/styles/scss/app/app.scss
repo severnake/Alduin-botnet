@@ -128,12 +128,39 @@ body {
     background-color: $menu-bg-color;
 
     input {
-        border: none;
+        height: 40px;
+        border: $default-border;
         border-radius: 0px;
-        background-color: $body-bg-color;
+        background-color: $menu-bg-color;
         color: white;
         width: 100%;
         padding: 5px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+        &:hover {
+            background-color: $menu-bg-color;
+        }
+
+        &:after {
+            background-color: $menu-bg-color;
+        }
+    }
+
+    button {
+        color: $text-color;
+        transition: .3s;
+        padding: 10px;
+        width: 100%;
+        border: $default-border;
+        background: linear-gradient(-45deg, $menu-bg-color 51%, $active-color 51%);
+        background-position: 0% 0%;
+        background-size: 150% 150%;
+        background-repeat: no-repeat;
+
+        &:hover {
+            color: $active-color;
+            background-position: 100% 100%;
+        }
     }
 
     textarea {
@@ -436,5 +463,99 @@ button.accept-policy {
         transition: .2s;
     }
 }
+//CheckBox
+.slideTwo {
+    width: 80px;
+    height: 30px;
+    background: #333;
+    margin: 20px auto;
+    position: relative;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        height: 2px;
+        width: 52px;
+        background: #111;
+        border-radius: 50px;
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    }
+
+    label {
+        display: block;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+        position: absolute;
+        top: 4px;
+        z-index: 1;
+        left: 4px;
+        background: #ccf2ff;
+        border-radius: 50px;
+        transition: all 0.4s ease;
+        box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+        background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+
+        &:after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            background: #333;
+            border-radius: 50px;
+            box-shadow: inset 0px 1px 1px rgba(0,0,0,1), 0px 1px 0px rgba(255,255,255,0.9);
+        }
+    }
+
+    input[type=checkbox] {
+        visibility: hidden;
+
+        &:checked + label {
+            left: 54px;
+
+            &:after {
+                background: $active-color; /*activeColor*/
+            }
+        }
+    }
+}
+.ondisplay {
+    text-align: center;
+    padding: 20px 0;
+
+    section {
+        width: 100%;
+        height: 100px;
+        background-color: $menu-bg-color;
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        margin-top: 5px;
+        border: $default-border;
+        border-radius: 5px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+        &:after {
+            /*         visibility: hidden; */
+            content: attr(title);
+            position: absolute;
+            width: 100%;
+            left: 0;
+            bottom: 3px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            text-shadow: 0px 1px #000;
+        }
+    }
+}
+//Checkbox End
 
 

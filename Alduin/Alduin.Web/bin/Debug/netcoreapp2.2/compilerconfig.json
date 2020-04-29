@@ -18,5 +18,9 @@
   {
     "outputFile": "wwwroot/lib/styles/scss/app/app.css",
     "inputFile": "wwwroot/lib/styles/scss/app/app.scss"
+  },
+  {
+    "outputFile": "wwwroot/lib/styles/scss/app/CheckBox.css",
+    "inputFile": "wwwroot/lib/styles/scss/app/CheckBox.scss"
   }
 ]

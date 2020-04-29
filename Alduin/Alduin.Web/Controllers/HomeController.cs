@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using Alduin.Logic.Mediator.Commands;
 using Alduin.Logic.Mediator.Queries;
 using Alduin.Web.Models;
+using Newtonsoft.Json;
+using Alduin.Server.Modules;
+using Microsoft.AspNetCore.Authorization;
+using System.Linq;
 
 namespace Alduin.Web.Controllers
 {
@@ -26,10 +30,35 @@ namespace Alduin.Web.Controllers
             ViewData["Welcome"] = _localizer["Welcome"];
             return View();
         }
+        [Authorize]
         public IActionResult Settings()
         {
-            ViewData["Settings"] = _localizer["Settings"];
-            return View();
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "Admin")
+            {
+                appsettingsModel appsettings = JsonConvert.DeserializeAnonymousType(ServerFileManager.FileReader(GetPathes.Get_SolutionMainPath() + "/Alduin.Web/appsettings.json"), new appsettingsModel());
+                return View(appsettings);
+            }
+            else
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+            
+        }
+        [Authorize]
+        [HttpPost]
+        public IActionResult Settings(appsettingsModel model)
+        {
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "Admin")
+            {
+                var json = JsonConvert.SerializeObject(model);
+                ServerFileManager.FileWriter(GetPathes.Get_SolutionMainPath() + "/Alduin.Web/appsettings.json", json);
+                ViewData["Result"] = "ok";
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
         }
         public IActionResult Privacy()
         {
@@ -38,15 +67,6 @@ namespace Alduin.Web.Controllers
         public IActionResult Monero()
         {
             return View();
-        }
-        public async Task<IActionResult> Test(int id)
-        {
-            var result = await _mediator.Send(new DeleteUserCommand
-            {
-                UserId = id
-            });
-
-            return Json(result);
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

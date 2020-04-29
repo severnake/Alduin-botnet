@@ -25,3 +25,133 @@
 [2020. 04. 28. 19:54:32]Apr 28 21:54:32.000 [notice] Bootstrapped 90% (ap_handshake_done): Handshake finished with a relay to build circuits<br>
 [2020. 04. 28. 19:54:32]Apr 28 21:54:32.000 [notice] Bootstrapped 95% (circuit_create): Establishing a Tor circuit<br>
 [2020. 04. 28. 19:54:37]Apr 28 21:54:37.000 [notice] Bootstrapped 100% (done): Done<br>
+[2020. 04. 29. 13:19:52]Starting tor...<br>
+[2020. 04. 29. 13:19:59]Apr 29 15:19:59.245 [notice] Tor 0.4.2.7 (git-74cad14699087b7e) running on Windows 8 [or later] with Libevent 2.1.8-stable, OpenSSL 1.1.1f, Zlib 1.2.11, Liblzma N/A, and Libzstd N/A.<br>
+[2020. 04. 29. 13:19:59]Apr 29 15:19:59.544 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 04. 29. 13:20:00]Apr 29 15:20:00.747 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 04. 29. 13:20:01]Apr 29 15:20:01.479 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 29. 13:20:01]Apr 29 15:20:01.503 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 29. 13:20:03]Apr 29 15:20:03.918 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 29. 13:20:04]Apr 29 15:20:04.143 [notice] Opened Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 29. 13:20:04]Apr 29 15:20:04.856 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 04. 29. 13:20:04]Apr 29 15:20:04.912 [notice] Opened Control listener on 127.0.0.1:9151<br>
+[2020. 04. 29. 13:20:04]Apr 29 15:20:04.912 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 29. 13:20:05]Apr 29 15:20:04.917 [notice] Opened Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 29. 13:20:11]Apr 29 15:20:11.000 [notice] Bootstrapped 0% (starting): Starting<br>
+[2020. 04. 29. 13:20:16]Apr 29 15:20:16.000 [warn] ISO time "2020-04-28 20:00:00\r" was unparseable<br>
+[2020. 04. 29. 13:20:17]Apr 29 15:20:17.000 [warn] Unable to parse networkstatus consensus<br>
+[2020. 04. 29. 13:20:17]Apr 29 15:20:17.000 [notice] Looks like the above failures are probably because of a CRLF in consensus file "E:\\project\\Alduin-botnet\\Alduin\\Tor\\cached-consensus"; falling back to read_file_to_string. Nothing to worry about: this file was probably saved by an earlier version of Tor.<br>
+[2020. 04. 29. 13:20:30]Apr 29 15:20:30.000 [warn] ISO time "2020-04-28 19:00:00\r" was unparseable<br>
+[2020. 04. 29. 13:20:30]Apr 29 15:20:30.000 [warn] Unable to parse networkstatus consensus<br>
+[2020. 04. 29. 13:20:30]Apr 29 15:20:30.000 [notice] Looks like the above failures are probably because of a CRLF in consensus file "E:\\project\\Alduin-botnet\\Alduin\\Tor\\cached-microdesc-consensus"; falling back to read_file_to_string. Nothing to worry about: this file was probably saved by an earlier version of Tor.<br>
+[2020. 04. 29. 13:20:35]Apr 29 15:20:35.000 [notice] Starting with guard context "default"<br>
+[2020. 04. 29. 13:20:36]Apr 29 15:20:36.000 [notice] Bootstrapped 5% (conn): Connecting to a relay<br>
+[2020. 04. 29. 13:20:36]Apr 29 15:20:36.000 [notice] Bootstrapped 10% (conn_done): Connected to a relay<br>
+[2020. 04. 29. 13:20:37]Apr 29 15:20:37.000 [notice] Bootstrapped 14% (handshake): Handshaking with a relay<br>
+[2020. 04. 29. 13:20:37]Apr 29 15:20:37.000 [notice] Bootstrapped 15% (handshake_done): Handshake with a relay done<br>
+[2020. 04. 29. 13:20:37]Apr 29 15:20:37.000 [notice] Bootstrapped 75% (enough_dirinfo): Loaded enough directory info to build circuits<br>
+[2020. 04. 29. 13:20:37]Apr 29 15:20:37.000 [notice] Bootstrapped 90% (ap_handshake_done): Handshake finished with a relay to build circuits<br>
+[2020. 04. 29. 13:20:37]Apr 29 15:20:37.000 [notice] Bootstrapped 95% (circuit_create): Establishing a Tor circuit<br>
+[2020. 04. 29. 13:20:38]Apr 29 15:20:38.000 [notice] Bootstrapped 100% (done): Done<br>
+[2020. 04. 29. 17:22:44]Starting tor...<br>
+[2020. 04. 29. 17:22:50]Apr 29 19:22:50.247 [notice] Tor 0.4.2.7 (git-74cad14699087b7e) running on Windows 8 [or later] with Libevent 2.1.8-stable, OpenSSL 1.1.1f, Zlib 1.2.11, Liblzma N/A, and Libzstd N/A.<br>
+[2020. 04. 29. 17:22:50]Apr 29 19:22:50.253 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 04. 29. 17:22:53]Apr 29 19:22:53.730 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 04. 29. 17:22:53]Apr 29 19:22:53.737 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 29. 17:22:53]Apr 29 19:22:53.737 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 29. 17:22:54]Apr 29 19:22:54.016 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 29. 17:22:54]Apr 29 19:22:54.016 [notice] Opened Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 29. 17:22:54]Apr 29 19:22:54.016 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 04. 29. 17:22:54]Apr 29 19:22:54.016 [notice] Opened Control listener on 127.0.0.1:9151<br>
+[2020. 04. 29. 17:22:54]Apr 29 19:22:54.016 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 29. 17:22:54]Apr 29 19:22:54.020 [notice] Opened Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 29. 17:22:56]Apr 29 19:22:56.000 [notice] Bootstrapped 0% (starting): Starting<br>
+[2020. 04. 29. 17:24:06]Apr 29 19:24:06.000 [notice] Starting with guard context "default"<br>
+[2020. 04. 29. 17:24:08]Apr 29 19:24:08.000 [notice] Bootstrapped 5% (conn): Connecting to a relay<br>
+[2020. 04. 29. 17:24:08]Apr 29 19:24:08.000 [notice] Bootstrapped 10% (conn_done): Connected to a relay<br>
+[2020. 04. 29. 17:24:08]Apr 29 19:24:08.000 [notice] Bootstrapped 14% (handshake): Handshaking with a relay<br>
+[2020. 04. 29. 17:24:08]Apr 29 19:24:08.000 [notice] Bootstrapped 15% (handshake_done): Handshake with a relay done<br>
+[2020. 04. 29. 17:24:08]Apr 29 19:24:08.000 [notice] Bootstrapped 75% (enough_dirinfo): Loaded enough directory info to build circuits<br>
+[2020. 04. 29. 17:24:08]Apr 29 19:24:08.000 [notice] Bootstrapped 90% (ap_handshake_done): Handshake finished with a relay to build circuits<br>
+[2020. 04. 29. 17:24:08]Apr 29 19:24:08.000 [notice] Bootstrapped 95% (circuit_create): Establishing a Tor circuit<br>
+[2020. 04. 29. 17:24:12]Apr 29 19:24:12.000 [notice] Bootstrapped 100% (done): Done<br>
+[2020. 04. 29. 17:24:34]Apr 29 19:24:34.000 [warn] Error replacing "E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1097": Permission denied<br>
+[2020. 04. 29. 17:24:35]Apr 29 19:24:35.000 [warn] Unable to store object consensus diff from C0E1BB0332F24D4B8743E9104451B19A8CFC51424C9E8CA91274B8B606DD926A to 0A992D01FC1F979CC3530A6126B3973E50170E5 compressed with gzip.<br>
+[2020. 04. 29. 17:24:37]Apr 29 19:24:37.000 [warn] Error replacing "E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1102": Permission denied<br>
+[2020. 04. 29. 17:24:37]Apr 29 19:24:37.000 [warn] Failed to unlink E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1102.tmp: Permission denied<br>
+[2020. 04. 29. 17:24:58]Apr 29 19:24:58.000 [warn] Error replacing "E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1124": Permission denied<br>
+[2020. 04. 29. 17:24:58]Apr 29 19:24:58.000 [warn] Failed to unlink E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1124.tmp: Permission denied<br>
+[2020. 04. 29. 17:26:43]Apr 29 19:26:43.000 [warn] Error replacing "E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1183": Permission denied<br>
+[2020. 04. 29. 17:26:45]Apr 29 19:26:45.000 [warn] Error replacing "E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1186": Permission denied<br>
+[2020. 04. 29. 18:15:59]Starting tor...<br>
+[2020. 04. 29. 18:16:00]Apr 29 20:16:00.495 [notice] Tor 0.4.2.7 (git-74cad14699087b7e) running on Windows 8 [or later] with Libevent 2.1.8-stable, OpenSSL 1.1.1f, Zlib 1.2.11, Liblzma N/A, and Libzstd N/A.<br>
+[2020. 04. 29. 18:16:00]Apr 29 20:16:00.499 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 04. 29. 18:16:00]Apr 29 20:16:00.946 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 04. 29. 18:16:00]Apr 29 20:16:00.948 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 29. 18:16:00]Apr 29 20:16:00.948 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 29. 18:16:01]Apr 29 20:16:01.072 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 29. 18:16:01]Apr 29 20:16:01.072 [notice] Opened Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 29. 18:16:01]Apr 29 20:16:01.072 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 04. 29. 18:16:01]Apr 29 20:16:01.072 [notice] Opened Control listener on 127.0.0.1:9151<br>
+[2020. 04. 29. 18:16:01]Apr 29 20:16:01.072 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 29. 18:16:01]Apr 29 20:16:01.072 [notice] Opened Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 29. 18:16:03]Apr 29 20:16:03.000 [notice] Bootstrapped 0% (starting): Starting<br>
+[2020. 04. 29. 18:54:06]Starting tor...<br>
+[2020. 04. 29. 18:54:11]Apr 29 20:54:11.219 [notice] Tor 0.4.2.7 (git-74cad14699087b7e) running on Windows 8 [or later] with Libevent 2.1.8-stable, OpenSSL 1.1.1f, Zlib 1.2.11, Liblzma N/A, and Libzstd N/A.<br>
+[2020. 04. 29. 18:54:11]Apr 29 20:54:11.221 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 04. 29. 18:54:13]Apr 29 20:54:13.867 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 04. 29. 18:54:13]Apr 29 20:54:13.889 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 29. 18:54:13]Apr 29 20:54:13.890 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 29. 18:54:13]Apr 29 20:54:13.936 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 29. 18:54:14]Apr 29 20:54:14.235 [notice] Opened Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 29. 18:54:14]Apr 29 20:54:14.417 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 04. 29. 18:54:14]Apr 29 20:54:14.484 [notice] Opened Control listener on 127.0.0.1:9151<br>
+[2020. 04. 29. 18:54:14]Apr 29 20:54:14.506 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 29. 18:54:14]Apr 29 20:54:14.966 [notice] Opened Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 29. 18:54:27]Apr 29 20:54:27.000 [notice] Bootstrapped 0% (starting): Starting<br>
+[2020. 04. 29. 18:55:43]Apr 29 20:55:43.000 [notice] Starting with guard context "default"<br>
+[2020. 04. 29. 18:55:44]Apr 29 20:55:44.000 [notice] Bootstrapped 5% (conn): Connecting to a relay<br>
+[2020. 04. 29. 18:55:44]Apr 29 20:55:44.000 [notice] Bootstrapped 10% (conn_done): Connected to a relay<br>
+[2020. 04. 29. 18:55:44]Apr 29 20:55:44.000 [notice] Bootstrapped 14% (handshake): Handshaking with a relay<br>
+[2020. 04. 29. 18:55:44]Apr 29 20:55:44.000 [notice] Bootstrapped 15% (handshake_done): Handshake with a relay done<br>
+[2020. 04. 29. 18:55:44]Apr 29 20:55:44.000 [notice] Bootstrapped 75% (enough_dirinfo): Loaded enough directory info to build circuits<br>
+[2020. 04. 29. 18:55:44]Apr 29 20:55:44.000 [notice] Bootstrapped 90% (ap_handshake_done): Handshake finished with a relay to build circuits<br>
+[2020. 04. 29. 18:55:44]Apr 29 20:55:44.000 [notice] Bootstrapped 95% (circuit_create): Establishing a Tor circuit<br>
+[2020. 04. 29. 18:55:49]Apr 29 20:55:49.000 [notice] Bootstrapped 100% (done): Done<br>
+[2020. 04. 29. 18:56:28]Apr 29 20:56:28.000 [warn] Error replacing "E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1057": Permission denied<br>
+[2020. 04. 29. 18:56:28]Apr 29 20:56:28.000 [warn] Failed to unlink E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1057.tmp: Permission denied<br>
+[2020. 04. 29. 18:56:28]Apr 29 20:56:28.000 [warn] Unable to store object consensus diff from 1EED2FCCEB7F83F79EB1A855B296D88686123CC00999F64C484E756FD1E81EAE to A759B3D30C586B75FE53ABAC2103E7E5214C9FE compressed with identity.<br>
+[2020. 04. 29. 18:56:30]Apr 29 20:56:30.000 [warn] Error replacing "E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1061": Permission denied<br>
+[2020. 04. 29. 18:56:31]Apr 29 20:56:30.000 [warn] Failed to unlink E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1061.tmp: Permission denied<br>
+[2020. 04. 29. 18:56:38]Apr 29 20:56:38.000 [warn] Error replacing "E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1069": Permission denied<br>
+[2020. 04. 29. 18:56:38]Apr 29 20:56:38.000 [warn] Failed to unlink E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1069.tmp: Permission denied<br>
+[2020. 04. 29. 19:46:24]Starting tor...<br>
+[2020. 04. 29. 19:46:25]Apr 29 21:46:25.754 [notice] Tor 0.4.2.7 (git-74cad14699087b7e) running on Windows 8 [or later] with Libevent 2.1.8-stable, OpenSSL 1.1.1f, Zlib 1.2.11, Liblzma N/A, and Libzstd N/A.<br>
+[2020. 04. 29. 19:46:25]Apr 29 21:46:25.756 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+[2020. 04. 29. 19:46:25]Apr 29 21:46:25.969 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+[2020. 04. 29. 19:46:25]Apr 29 21:46:25.971 [warn] Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 29. 19:46:26]Apr 29 21:46:25.971 [warn] Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+[2020. 04. 29. 19:46:26]Apr 29 21:46:26.006 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 29. 19:46:26]Apr 29 21:46:26.006 [notice] Opened Socks listener on 127.0.0.1:9150<br>
+[2020. 04. 29. 19:46:26]Apr 29 21:46:26.006 [notice] Opening Control listener on 127.0.0.1:9151<br>
+[2020. 04. 29. 19:46:26]Apr 29 21:46:26.007 [notice] Opened Control listener on 127.0.0.1:9151<br>
+[2020. 04. 29. 19:46:26]Apr 29 21:46:26.007 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 29. 19:46:26]Apr 29 21:46:26.011 [notice] Opened Directory listener on 0.0.0.0:9030<br>
+[2020. 04. 29. 19:46:26]Apr 29 21:46:26.000 [notice] Bootstrapped 0% (starting): Starting<br>
+[2020. 04. 29. 19:47:21]Apr 29 21:47:21.000 [notice] Starting with guard context "default"<br>
+[2020. 04. 29. 19:47:22]Apr 29 21:47:22.000 [notice] Bootstrapped 5% (conn): Connecting to a relay<br>
+[2020. 04. 29. 19:47:22]Apr 29 21:47:22.000 [notice] Bootstrapped 10% (conn_done): Connected to a relay<br>
+[2020. 04. 29. 19:47:22]Apr 29 21:47:22.000 [notice] Bootstrapped 14% (handshake): Handshaking with a relay<br>
+[2020. 04. 29. 19:47:22]Apr 29 21:47:22.000 [notice] Bootstrapped 15% (handshake_done): Handshake with a relay done<br>
+[2020. 04. 29. 19:47:22]Apr 29 21:47:22.000 [notice] Bootstrapped 75% (enough_dirinfo): Loaded enough directory info to build circuits<br>
+[2020. 04. 29. 19:47:22]Apr 29 21:47:22.000 [notice] Bootstrapped 90% (ap_handshake_done): Handshake finished with a relay to build circuits<br>
+[2020. 04. 29. 19:47:22]Apr 29 21:47:22.000 [notice] Bootstrapped 95% (circuit_create): Establishing a Tor circuit<br>
+[2020. 04. 29. 19:47:23]Apr 29 21:47:23.000 [notice] Bootstrapped 100% (done): Done<br>
+[2020. 04. 29. 19:55:12]Apr 29 21:55:12.000 [warn] Error replacing "E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1113": Permission denied<br>
+[2020. 04. 29. 19:55:12]Apr 29 21:55:12.000 [warn] Failed to unlink E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1113.tmp: Permission denied<br>
+[2020. 04. 29. 19:55:12]Apr 29 21:55:12.000 [warn] Unable to store object consensus diff from DD79B3B905C5B71155C1426D85419422F30DE566FE6746F3003073A298A213AE to 404093D623BFAE0C6C842B8AFC746054B55BB1C compressed with identity.<br>
+[2020. 04. 29. 19:55:14]Apr 29 21:55:14.000 [warn] Error replacing "E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1117": Permission denied<br>
+[2020. 04. 29. 19:55:14]Apr 29 21:55:14.000 [warn] Failed to unlink E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1117.tmp: Permission denied<br>
+[2020. 04. 29. 19:55:21]Apr 29 21:55:21.000 [warn] Error replacing "E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1124": Permission denied<br>
+[2020. 04. 29. 19:55:21]Apr 29 21:55:21.000 [warn] Failed to unlink E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1124.tmp: Permission denied<br>
+[2020. 04. 29. 19:55:41]Apr 29 21:55:41.000 [warn] Error replacing "E:\project\Alduin-botnet\Alduin\Tor\diff-cache/1150": Permission denied<br>

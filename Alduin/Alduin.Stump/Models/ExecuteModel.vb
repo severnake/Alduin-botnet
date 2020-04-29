@@ -1,6 +1,6 @@
 ﻿Public Class ExecuteModel
     Public Property newExecute As ExecuteVariables
-    Public Property newBaseModel As BaseModel
+    Public Property newBaseCommand As BaseCommands
 End Class
 Public Class ExecuteVariables
     Public Property Url As String

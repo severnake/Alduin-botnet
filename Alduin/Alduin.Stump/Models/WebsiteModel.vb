@@ -1,6 +1,6 @@
 ﻿Public Class WebsiteOpenModel
     Public Property newWebsiteModel As WebsiteModel
-    Public Property newBaseModel As BaseModel
+    Public Property newBaseModel As BaseCommands
 End Class
 Public Class WebsiteModel
     Public Property Url As String

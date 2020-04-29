@@ -1,6 +1,7 @@
 ﻿Imports System.Globalization
 Imports System.IO
 Imports System.Net
+Imports System.Net.NetworkInformation
 Imports System.Text
 Imports Alduin.Stump.Alduin.Stump.Models
 Imports Newtonsoft.Json
@@ -71,5 +72,10 @@ Module Details
     End Function
     Public Function GetConfigJson() As ConfigModel
         Return JsonConvert.DeserializeAnonymousType(File_reader(Get_JsonFilewithPath()), New ConfigModel)
+    End Function
+    Public Function get_MacAddress()
+        Dim nics() As NetworkInterface =
+              NetworkInterface.GetAllNetworkInterfaces
+        Return nics(0).GetPhysicalAddress.ToString
     End Function
 End Module

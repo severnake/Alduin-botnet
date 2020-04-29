@@ -225,6 +225,37 @@ button.accept-policy {
         color: $text-color;
     }
 }
+.titles {
+    margin: auto;
+    width: 120px;
+    height: 100px;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, $text-color 60%, $menu-bd-color 60%);
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    font-style: oblique;
+    font-weight: bold;
+    font-size: 1.1em;
+    box-sizing: border-box;
+    border: 2px solid #131418;
+    transition: .2s;
+    box-shadow: 2px 19px 89px -5px rgba(0,0,0,0.49);
+    color: $text-color;
+    padding: 15px;
+
+    &:hover {
+        background-position: 90% 60%;
+        border: 2px solid $text-color;
+        box-shadow: 10px -14px 30px -5px rgba(0,0,0,0.49);
+        transition: .2s;
+        color: $menu-bd-color;
+    }
+}
 //Buttons ends
 
 
@@ -405,35 +436,5 @@ button.accept-policy {
         transition: .2s;
     }
 }
-.titles {
-    margin: auto;
-    width: 100px;
-    height: 100px;
-    text-decoration: none;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(-45deg, rgba(212, 214, 217, 0.51) 60%, rgba(84, 20, 66, 0.51) 60%);
-    background-size: 200% 200%;
-    background-position: 0% 0%;
-    background-repeat: no-repeat;
-    font-style: oblique;
-    font-weight: bold;
-    font-size: 1.1em;
-    box-sizing: border-box;
-    border: 2px solid hidden;
-    transition: .2s;
-    box-shadow: 2px 19px 89px -5px rgba(0,0,0,0.49);
-    color: $text-color;
-    padding: 5px;
 
-    &:hover {
-        background-position: 90% 60%;
-        border: 2px solid $text-color;
-        box-shadow: 10px -14px 30px -5px rgba(0,0,0,0.49);
-        transition: .2s;
-        color: $menu-bd-color;
-    }
-}
 

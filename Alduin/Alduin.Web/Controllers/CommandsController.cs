@@ -60,19 +60,28 @@ namespace Alduin.Web.Controllers
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
-            var command = new ExecuteCommand
+
+            var Method = new BaseCommands
             {
-                Method = "Execute",
+                Method = "Execute"
+            };
+            var ExecuteVariables = new ExecuteVariables
+            {
                 Url = model.Url,
                 Name = model.Name,
                 Proxy = model.Proxy,
                 Run = model.Run,
             };
+            var ExecuteCommand = new ExecuteCommand
+            {
+                newBaseCommand = Method,
+                newExecute = ExecuteVariables 
+            };
             var bots = new GetBotsByStatusQuery { 
                 status = model.Force
             };
             var botlist = await _mediator.Send(bots);
-            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(command));
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(ExecuteCommand).Replace(@"\", ""));
             return Json(response);
         }
         [Authorize]

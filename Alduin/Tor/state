@@ -1,28 +1,40 @@
-# Tor state file last generated on 2020-04-24 19:28:08 local time
+# Tor state file last generated on 2020-04-28 22:14:39 local time
 # Other times below are in UTC
 # You *do not* need to edit this file.
 
 CircuitBuildTimeBin 225 3
 CircuitBuildTimeBin 275 16
-CircuitBuildTimeBin 325 13
-CircuitBuildTimeBin 375 15
-CircuitBuildTimeBin 425 5
+CircuitBuildTimeBin 325 15
+CircuitBuildTimeBin 375 16
+CircuitBuildTimeBin 425 6
 CircuitBuildTimeBin 475 1
-CircuitBuildTimeBin 525 4
-CircuitBuildTimeBin 575 2
-CircuitBuildTimeBin 625 2
+CircuitBuildTimeBin 525 5
+CircuitBuildTimeBin 575 3
+CircuitBuildTimeBin 625 5
 CircuitBuildTimeBin 725 1
-CircuitBuildTimeBin 775 1
+CircuitBuildTimeBin 775 2
 CircuitBuildTimeBin 825 2
-CircuitBuildTimeBin 875 2
+CircuitBuildTimeBin 875 3
+CircuitBuildTimeBin 925 1
 CircuitBuildTimeBin 975 1
 CircuitBuildTimeBin 1025 2
 CircuitBuildTimeBin 1275 1
+CircuitBuildTimeBin 1375 1
 CircuitBuildTimeBin 1425 1
+CircuitBuildTimeBin 1525 1
+CircuitBuildTimeBin 1925 1
+CircuitBuildTimeBin 2025 1
 CircuitBuildTimeBin 2125 1
 CircuitBuildTimeBin 2775 1
-CircuitBuildTimeBin 4925 1
+CircuitBuildTimeBin 4725 1
+CircuitBuildTimeBin 4775 1
+CircuitBuildTimeBin 4875 1
+CircuitBuildTimeBin 4925 2
+CircuitBuildTimeBin 4975 2
+CircuitBuildTimeBin 5025 1
+CircuitBuildTimeBin 5625 1
 CircuitBuildTimeBin 5675 1
+CircuitBuildTimeBin 5875 1
 CircuitBuildTimeBin 10225 1
 CircuitBuildTimeBin 10375 1
 CircuitBuildTimeBin 10575 1
@@ -42,7 +54,9 @@ CircuitBuildTimeBin 22375 1
 CircuitBuildTimeBin 23075 1
 CircuitBuildTimeBin 23325 1
 CircuitBuildTimeBin 27425 1
+CircuitBuildTimeBin 33025 3
 CircuitBuildTimeBin 36225 1
+CircuitBuildTimeBin 36475 4
 CircuitBuildTimeBin 38275 1
 CircuitBuildTimeBin 45725 1
 CircuitBuildTimeBin 46375 1
@@ -50,7 +64,13 @@ CircuitBuildTimeBin 46475 1
 CircuitBuildTimeBin 46725 1
 CircuitBuildTimeBin 56875 1
 CircuitBuildTimeBin 66425 1
-CircuitBuildAbandonedCount 1
+CircuitBuildTimeBin 128125 1
+CircuitBuildTimeBin 128175 1
+CircuitBuildTimeBin 128325 1
+CircuitBuildTimeBin 128375 1
+CircuitBuildTimeBin 128425 1
+CircuitBuildTimeBin 128475 1
+CircuitBuildAbandonedCount 13
 Dormant 0
 EntryGuard rspn1 4EC778981DCB09705E834C08F2A35B3B2ADEF512 DirCache
 EntryGuardDownSince 2020-04-10 08:10:25 2020-04-10 08:10:25
@@ -106,13 +126,13 @@ Guard in=default rsa_id=1850585BE9BCA1F80D0A051909C94E49D1C49ED3 nickname=xmtx s
 Guard in=default rsa_id=78BC2254D3B31CD865F7682633AA438212132532 nickname=dc6jgk9barm64 sampled_on=2020-04-10T07:00:57 sampled_by=0.4.2.7 listed=1
 Guard in=default rsa_id=1B959E07DF0C33C1E956C8D8FA415AB52F076FB7 nickname=kouettng sampled_on=2020-04-09T01:59:54 sampled_by=0.4.2.7 listed=1
 Guard in=default rsa_id=BF735F669481EE1CCC348F0731551C933D1E2278 nickname=freeway sampled_on=2020-04-08T17:02:46 sampled_by=0.4.2.7 listed=1
-Guard in=default rsa_id=24F97F98C45E4754655BE66799049763DAEE99CE nickname=cosimaniehaus sampled_on=2020-04-09T11:29:53 sampled_by=0.4.2.7 listed=1 confirmed_on=2020-04-03T02:42:14 confirmed_idx=1 pb_use_attempts=19.000000 pb_use_successes=19.000000 pb_circ_attempts=50.000000 pb_circ_successes=50.000000 pb_successful_circuits_closed=50.000000 pb_timeouts=2.000000
+Guard in=default rsa_id=24F97F98C45E4754655BE66799049763DAEE99CE nickname=cosimaniehaus sampled_on=2020-04-09T11:29:53 sampled_by=0.4.2.7 listed=1 confirmed_on=2020-04-03T02:42:14 confirmed_idx=1 pb_use_attempts=20.000000 pb_use_successes=20.000000 pb_circ_attempts=51.000000 pb_circ_successes=51.000000 pb_successful_circuits_closed=51.000000 pb_timeouts=2.000000
 Guard in=default rsa_id=8EB722FA1AE9DDE1914BC21FEA22819D4DE99DB4 nickname=Enos sampled_on=2020-04-02T02:52:42 sampled_by=0.4.2.7 listed=1 confirmed_on=2020-04-08T13:06:21 confirmed_idx=2 pb_use_attempts=1.000000 pb_use_successes=1.000000 pb_circ_attempts=3.000000 pb_circ_successes=3.000000 pb_successful_circuits_closed=3.000000
 Guard in=default rsa_id=42EFF3531952A7AF86F67B6749F0D8C7E5EB2B70 nickname=lftor1 sampled_on=2020-04-04T01:08:33 sampled_by=0.4.2.7 listed=1
-Guard in=default rsa_id=4FDDFAD51B24DDABB62FB59071F4DC421E76C685 nickname=FissionEx3 sampled_on=2020-04-01T01:06:22 sampled_by=0.4.2.7 listed=1 confirmed_on=2020-04-05T07:45:10 confirmed_idx=0 pb_use_attempts=60.390625 pb_use_successes=60.390625 pb_circ_attempts=226.937500 pb_circ_successes=218.312500 pb_successful_circuits_closed=216.875000 pb_collapsed_circuits=1.437500 pb_timeouts=24.875000
+Guard in=default rsa_id=4FDDFAD51B24DDABB62FB59071F4DC421E76C685 nickname=FissionEx3 sampled_on=2020-04-01T01:06:22 sampled_by=0.4.2.7 listed=1 confirmed_on=2020-04-05T07:45:10 confirmed_idx=0 pb_use_attempts=71.390625 pb_use_successes=71.390625 pb_circ_attempts=263.937500 pb_circ_successes=255.312500 pb_successful_circuits_closed=251.875000 pb_collapsed_circuits=3.437500 pb_timeouts=37.875000
 Guard in=default rsa_id=EBE76802D098FF6FA226F60C2D0B0C098F367AF1 nickname=JdMtOrReLaY2 sampled_on=2020-03-31T23:56:09 sampled_by=0.4.2.7 listed=1
 Guard in=default rsa_id=7D31D5118D47BF86C550ABB79EDDE865EC31B67F nickname=21b sampled_on=2020-04-02T01:28:23 sampled_by=0.4.2.7 listed=1
 Guard in=default rsa_id=C680718A6F51A8F7C5D4E68269ED5B2C07FE531B nickname=badgercomb sampled_on=2020-03-30T11:34:36 sampled_by=0.4.2.7 listed=1
-LastWritten 2020-04-24 17:28:08
+LastWritten 2020-04-28 20:14:39
 TorVersion Tor 0.4.2.7 (git-74cad14699087b7e)
-TotalBuildTimes 104
+TotalBuildTimes 154

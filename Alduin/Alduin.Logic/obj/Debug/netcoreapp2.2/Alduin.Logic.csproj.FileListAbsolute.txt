@@ -24,3 +24,4 @@ E:\project\Alduin-botnet\Alduin\Alduin.Logic\bin\Debug\netcoreapp2.2\starksoft.a
 E:\project\Alduin-botnet\Alduin\Alduin.Logic\bin\Debug\netcoreapp2.2\Config.json
 E:\project\Alduin-botnet\Alduin\Alduin.Logic\bin\Debug\netcoreapp2.2\SocksWebProxy.dll
 E:\project\Alduin-botnet\Alduin\Alduin.Logic\bin\Debug\netcoreapp2.2\Org.Mentalis.dll
+E:\project\Alduin-botnet\Alduin\Alduin.Logic\bin\Debug\netcoreapp2.2\NAudio.dll

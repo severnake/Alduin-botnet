@@ -26,7 +26,11 @@ namespace Alduin.Web.Controllers
             ViewData["Welcome"] = _localizer["Welcome"];
             return View();
         }
-
+        public IActionResult Settings()
+        {
+            ViewData["Settings"] = _localizer["Settings"];
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

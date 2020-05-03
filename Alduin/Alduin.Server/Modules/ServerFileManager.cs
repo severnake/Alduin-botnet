@@ -21,7 +21,7 @@ namespace Alduin.Server.Modules
         }
         public static void FileAppendTextWithDate(string path, string data)
         {
-            File.AppendAllText(path, "[" + DateTime.UtcNow + "]" + data);
+            File.AppendAllText(path, "<b>" + DateTime.Now.Year + ".</b> " + data.Replace("[warn]", "<span style='background-color: red'>[warn]</span>").Replace("(done)", "<span style='background-color: green'>(done)</span>"));
         }
         public static void FileDelete(string file)
         {

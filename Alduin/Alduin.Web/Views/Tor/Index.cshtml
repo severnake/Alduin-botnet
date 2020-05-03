@@ -6,11 +6,14 @@
         </div>
         <div class="row mt-5 border border-info py-1">
             <div class="col-12 col-md-6 text-center mt-3"><span id="AddressTitle" class="h4">@Localizer["Server onion address"]: <b id="OnionAddress" class="border border-secondary">@ViewData["OnionAddress"]</b></span></div>
-            <div class="col-12 col-md-6 text-center mt-1"><button id="new-address" class="invitation-btn">@Localizer["Generate new address"]</button></div>
+            <div class="col-12 col-md-6 text-center mt-1"><button id="new-address" class="default-btn">@Localizer["Generate new address"]</button></div>
         </div>
         <div class="row mt-3">
-            <div class="col-6"><h4>Tor console log:</h4></div>
-            <div class="col-6"><button class="logclear-btn">@Localizer["Clear"]</button></div>
+            <div class="col-4"><h4>Tor console log:</h4></div>
+            <div class="col-4"><button id="logclear-btn" class="default-min-btn">@Localizer["Clear"]</button></div>
+            <div class="col-4"><button id="Restart-Tor" class="default-min-btn">@Localizer["Restart Tor"]</button></div>
+        </div>
+        <div class="row mt-3">
             <div class="tor-console">
                 <p id="tor-console"></p>
             </div>
@@ -42,7 +45,7 @@
            setTimeout(refleshlog, 30000);  
         });
     }
-    $(".logclear-btn").click(function () {
+    $("#logclear-btn").click(function () {
         $.ajax({
             type: "GET",
             url: "/Tor/DeleteLog",
@@ -73,6 +76,25 @@
             },
             success: function (data) {
                  $('#OnionAddress').text(data);
+            },
+            error: function () {
+                console.log("Error");
+            }
+        });
+    });
+    $("#Restart-Tor").click(function () {
+        $.ajax({
+            type: "GET",
+            url: "/Tor/RestartTor",
+            beforeSend: function () {
+                $('.tor-console').append("<div class='ajax-loading'></div>");
+            },
+            complete: function () {
+                $('.ajax-loading').remove();
+            },
+            success: function (data) {
+                if (data == "Ok")
+                    $('#tor-console').text("Restart Tor...");
             },
             error: function () {
                 console.log("Error");

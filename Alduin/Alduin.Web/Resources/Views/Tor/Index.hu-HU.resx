@@ -123,6 +123,9 @@
   <data name="Generate new address" xml:space="preserve">
     <value>Új cím generálása</value>
   </data>
+  <data name="Restart Tor" xml:space="preserve">
+    <value>Tor újraindítása</value>
+  </data>
   <data name="Server onion address" xml:space="preserve">
     <value>Server Onion címe</value>
   </data>

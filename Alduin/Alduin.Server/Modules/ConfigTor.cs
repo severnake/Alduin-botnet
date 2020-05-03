@@ -18,10 +18,7 @@ namespace Alduin.Server.Modules
         
         public static void StartTor()
         {
-            foreach (Process proc in Process.GetProcessesByName(Tor))
-            {
-                proc.Kill();
-            }
+            KillTor();
             if (!File.Exists(TorrcPath))
             {
                 CreateTorrc();
@@ -31,7 +28,20 @@ namespace Alduin.Server.Modules
             if (!(p.Length > 0))
                 StartTorProccess();
         }
+        public static void KillTor()
+        {
+            foreach (Process proc in Process.GetProcessesByName(Tor))
+            {
+                try
+                {
+                    proc.Kill();
+                }
+                catch(Exception e)
+                {
 
+                }
+            }
+        }
         private static void StartTorProccess()
         {
             Console.WriteLine("Starting tor...<br>\r\n");

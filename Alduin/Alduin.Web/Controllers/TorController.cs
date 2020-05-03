@@ -92,6 +92,17 @@ namespace Alduin.Web.Controllers
             ServerFileManager.FileWriter(ConfigTor.TorrcPath, model.Torch);
             return View(model);
         }
+        [Authorize]
+        public IActionResult RestartTor()
+        {
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "User")
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+            ConfigTor.KillTor();
+            ConfigTor.StartTor();
+            return Content("Ok");
+        }
         private string readTorch()
         {
             var OnionAddress = "";
@@ -111,6 +122,6 @@ namespace Alduin.Web.Controllers
                 OnionAddress = _localizer["Read error! Please reload page!"];
             };
             return OnionAddress;
-        } 
+        }
     }
 }

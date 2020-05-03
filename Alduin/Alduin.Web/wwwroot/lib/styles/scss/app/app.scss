@@ -204,7 +204,7 @@ button.accept-policy {
     font-size: 1rem;
     line-height: inherit;
 }
-.invitation-btn {
+.default-btn {
     text-decoration: none;
     background-color: transparent;
     border: $invitation-border;
@@ -220,7 +220,7 @@ button.accept-policy {
     }
 }
 .footer-btn {
-    @extend .invitation-btn;
+    @extend .default-btn;
     padding: 5px 5px;
     line-height: 5px;
     transform: rotate(180deg);
@@ -230,8 +230,8 @@ button.accept-policy {
     z-index: 2;
     transition: .4s;
 }
-.logclear-btn {
-    @extend .invitation-btn;
+.default-min-btn {
+    @extend .default-btn;
     padding: 10px 25px;
     line-height: 10px;
 }

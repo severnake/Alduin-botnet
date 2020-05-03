@@ -132,7 +132,7 @@ button.accept-policy {
   font-size: 1rem;
   line-height: inherit; }
 
-.invitation-btn, .footer-btn, .logclear-btn {
+.default-btn, .footer-btn, .default-min-btn {
   text-decoration: none;
   background-color: transparent;
   border: 2px solid white;
@@ -141,7 +141,7 @@ button.accept-policy {
   transition: .2s;
   font-size: 1.1em;
   font-weight: bold; }
-  .invitation-btn:hover, .footer-btn:hover, .logclear-btn:hover {
+  .default-btn:hover, .footer-btn:hover, .default-min-btn:hover {
     background-color: white;
     color: black; }
 
@@ -155,7 +155,7 @@ button.accept-policy {
   z-index: 2;
   transition: .4s; }
 
-.logclear-btn {
+.default-min-btn {
   padding: 10px 25px;
   line-height: 10px; }
 

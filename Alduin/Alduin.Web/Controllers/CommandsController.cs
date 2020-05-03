@@ -39,6 +39,19 @@ namespace Alduin.Web.Controllers
             
         }
         [Authorize]
+        public IActionResult Stream()
+        {
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value != "User")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+
+        }
+        [Authorize]
         [HttpGet]
         public IActionResult ExecuteFile()
         {

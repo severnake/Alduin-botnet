@@ -18,7 +18,9 @@ namespace Alduin.Web
             if (appsettings.Tor.RunItStart)
             {
                 Thread thr = new Thread(new ThreadStart(ConfigTor.StartTor));
+                Thread thrCD = new Thread(new ThreadStart(CloseDetector.Detecter));
                 thr.Start();
+                thrCD.Start();
             } 
             CreateWebHostBuilder(args).Build().Run();
         }

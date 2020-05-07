@@ -36,3 +36,4 @@ C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stum
 C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.xml
 C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.pdb
 E:\project\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\NAudio.dll
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.WebBrowserForm.resources

@@ -1,8 +1,8 @@
 ﻿Public Class WebsiteOpenModel
-    Public Property newWebsiteModel As WebsiteModel
-    Public Property newBaseModel As BaseCommands
+    Public Property newWebsiteModel As WebsiteVariables
+    Public Property newBaseCommand As BaseCommands
 End Class
-Public Class WebsiteModel
+Public Class WebsiteVariables
     Public Property Url As String
     Public Property Hidde As Boolean
     Public Property Closed As Boolean

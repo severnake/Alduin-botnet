@@ -5,6 +5,7 @@ namespace Alduin.Web.Models
 {
     public class WebsiteModel : CommandBaseModel
     {
+        [Required]
         [Display(Name = "Website Url")]
         public string Url { get; set; }
         [Display(Name = "Hidden")]

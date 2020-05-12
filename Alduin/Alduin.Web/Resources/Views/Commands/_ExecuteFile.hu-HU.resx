@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Also use a proxy" xml:space="preserve">
-    <value>Proxy-t is használjon?</value>
+    <value>Proxy-t is használjon</value>
   </data>
   <data name="Execute or download file" xml:space="preserve">
     <value>Végre hajt vagy Fájl letöltése</value>

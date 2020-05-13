@@ -77,6 +77,16 @@ namespace Alduin.Web.Infrastructure
             //Bot
             services.AddTransient<IValidator<BotRegisterModel>, BotRegistrationModelValidator>();
             services.AddTransient<IValidator<BotDeatilsModel>, BotDeatilsModelValidator>();
+            //Floods
+            services.AddTransient<IValidator<ArmeModel>, ArmeModelValidator>();
+            services.AddTransient<IValidator<HttpBandWidthModel>, HttpBandWidthModelValidator>();
+            services.AddTransient<IValidator<HulkModel>, HulkModelValidator>();
+            services.AddTransient<IValidator<IcmpModel>, IcmpModelValidator>();
+            services.AddTransient<IValidator<RudyModel>, RudyModelValidator>();
+            services.AddTransient<IValidator<SlowLorisModel>, SlowLorisModelValidator>();
+            services.AddTransient<IValidator<TcpModel>, TcpModelValidator>();
+            services.AddTransient<IValidator<UdpModel>, UdpModelValidator>();
+            services.AddTransient<IValidator<TorLorisModel>, TorLorisModelValidator>();
         }
     }
 }

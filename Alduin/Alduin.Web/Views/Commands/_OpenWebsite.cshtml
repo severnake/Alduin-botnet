@@ -40,6 +40,15 @@
             </div>
         </div>
     </div>
+    <div class="ondisplay">
+        <section title="@Localizer["Force execute command"]?">
+            <div class="form-check slideTwo">
+                <span asp-validation-for="Force"></span>
+                <input asp-for="Force" class="form-check-input" type="checkbox" id="Force">
+                <label class="form-check-label" for="Force"></label>
+            </div>
+        </section>
+    </div>
     <div class="row">
         <div class="col-12">
             <button>@Localizer["Submit"]</button>

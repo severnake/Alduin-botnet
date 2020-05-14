@@ -96,3 +96,11 @@ E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\C
 E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\Commands\_Message.cshtml.g.cs
 E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Alduin.Web.Resources.Views.Commands._Message.hu-HU.resources
 E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\Commands\_ARME.cshtml.g.cs
+E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\Commands\_Hulk.cshtml.g.cs
+E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\Commands\_SlowLoris.cshtml.g.cs
+E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\Commands\_HttpBandWidth.cshtml.g.cs
+E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\Commands\_Icmp.cshtml.g.cs
+E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\Commands\_Rudy.cshtml.g.cs
+E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\Commands\_Tcp.cshtml.g.cs
+E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\Commands\_TorLoris.cshtml.g.cs
+E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\Commands\_Udp.cshtml.g.cs

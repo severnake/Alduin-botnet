@@ -3,11 +3,8 @@
     Private __AttackUpStrengOnByte As Integer
     Private __AttackDownStrengOnByte As Integer
     Private stopwatch As Stopwatch
-    Public Sub New(ByVal model As Object)
+    Public Sub New()
         stopwatch = Stopwatch.StartNew
-    End Sub
-    Public Sub selectMethod()
-
     End Sub
     Public Overrides Function ToString() As String
         Return MyBase.ToString()
@@ -38,5 +35,11 @@
     End Function
     Public Sub SetMessage(AutoPropertyValue As String)
         _Message = AutoPropertyValue
+    End Sub
+    Public Sub Reset()
+        _Message = vbNull
+        __AttackUpStrengOnByte = vbNull
+        __AttackDownStrengOnByte = vbNull
+        stopwatch = Stopwatch.StartNew
     End Sub
 End Class

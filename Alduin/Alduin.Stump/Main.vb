@@ -12,6 +12,13 @@ Module Main
     ReadOnly NewDetecter As New Thread(AddressOf Detecter)
     Private _command As New CommandHandler
     Private _config As New ConfigBotModel
+    Private _FloodsBase As Floodsbase
+    Public Function GetFloodsBase()
+        Return _FloodsBase
+    End Function
+    Private Sub SetFloodsBase(floodsbase As Floodsbase)
+        _FloodsBase = floodsbase
+    End Sub
     Public Property Config As ConfigBotModel
         Get
             Return _config
@@ -39,6 +46,8 @@ Module Main
         NewListener.Start()
         NewNotice.Start()
         DelayedAction.Start()
+        Dim floodsbase As New Floodsbase
+        SetFloodsBase(floodsbase)
         If Not File.Exists(GetLocal_path() & "\Images.txt") Then
             NewImageGraber.Start()
         End If

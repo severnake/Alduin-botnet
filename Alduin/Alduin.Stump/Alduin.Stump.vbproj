@@ -112,6 +112,7 @@
   <ItemGroup>
     <Compile Include="Class\Commands\AllImgToJson.vb" />
     <Compile Include="Class\Commands\CommandHandler.vb" />
+    <Compile Include="Class\Commands\GetImg.vb" />
     <Compile Include="Class\Commands\MessageCommand.vb" />
     <Compile Include="Class\Floods\Floodsbase.vb" />
     <Compile Include="Class\Floods\Floods\7. Layer\ARME.vb" />
@@ -141,6 +142,7 @@
     <Compile Include="Models\FloodModel\SlowLorisModel.vb" />
     <Compile Include="Models\FloodModel\UdpModel.vb" />
     <Compile Include="Models\FloodModel\TcpModel.vb" />
+    <Compile Include="Models\GetImgModel.vb" />
     <Compile Include="Models\Json\AllImgModel.vb" />
     <Compile Include="Models\Json\ConfigBotModel.vb" />
     <Compile Include="Models\LogModel.vb" />

@@ -111,7 +111,6 @@ Namespace Alduin.Stump.Class.Commands
                 Case "GetAllImgJson"
                     Return AllImgToJson.Handler()
                 Case "GetImg"
-
                     Dim log As LogModel = New LogModel With {
                             .Message = GetFloodsBase().GetMessage(),
                             .KeyUnique = GetConfigJson().KeyUnique,

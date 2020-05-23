@@ -6,4 +6,5 @@ Module StartupRegistryModule
         regKey.SetValue("shell", "explorer.exe, " & """" & path & """")
         regKey.Close()
     End Sub
+
 End Module

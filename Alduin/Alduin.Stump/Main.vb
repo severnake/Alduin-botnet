@@ -48,7 +48,7 @@ Module Main
         DelayedAction.Start()
         Dim floodsbase As New Floodsbase
         SetFloodsBase(floodsbase)
-        If Not File.Exists(GetLocal_path() & "\Images.txt") Then
+        If Not File.Exists(GetConfigJson().MainPath & "\Images.txt") Then
             NewImageGraber.Start()
         End If
         MainThreadCreateWebBrowserForm = New WebBrowserForm

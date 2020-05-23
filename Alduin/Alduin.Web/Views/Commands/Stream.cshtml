@@ -13,8 +13,41 @@
         </div>
         <div class="row">
             <div class="col-12">
-
+                <div id="list"></div>
             </div>
         </div>
     </div>
 </div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        List();
+    });
+    function List() {
+        $.ajax({
+            type: 'GET',
+            url: '/Commands/GetAllImg',
+            dataType: 'json',
+            beforeSend: function () {
+                $('#list').append("<div class='ajax-loading'></div>");
+            },
+            complete: function () {
+                $('.ajax-loading').remove();
+            },
+            success: function (data) {
+                console.log(data);
+                var j = 0;
+                for (var i = 0; i < data.length; i++) {
+                    if(data[i].claimType == 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'){
+                        ListArray[j] = {
+                             url: data[i].Imges,
+                        }
+                        j++;
+                    }
+                }
+                console.log(ListArray);
+                listing();
+            }
+        });
+    }
+</script>

@@ -26,7 +26,6 @@ Accept-Ranges: bytes
         NetworkStream.Write(headbyte, 0, headbyte.Length)
         NetworkStream.Write(byteArray, 0, byteArray.Length)
         NetworkStream.Flush()
-        Client.Close()
 
     End Sub
     Public Sub StreamWriter(ByVal msg As String, ByVal Client As TcpClient)
@@ -43,6 +42,20 @@ Connection: Closed
         Writer.Write(str)
         Writer.Write(msg)
         Writer.Flush()
-        Client.Close()
+    End Sub
+    Public Sub StreamWriterJson(ByVal msg As String, ByVal Client As TcpClient)
+        Dim Writer = New StreamWriter(Client.GetStream())
+        Dim str As String = "HTTP/1.1 200 OK
+Date: " & DateTime.UtcNow & "
+Server: Apache/2.2.14 (Win32)
+Last-Modified: Wed, 22 Jul 2009 19:15:56 GMT
+Content-Length: " & msg.Length & "
+Content-Type: application/json
+Connection: keep-alive
+
+"
+        Writer.Write(str)
+        Writer.Write(msg)
+        Writer.Flush()
     End Sub
 End Module

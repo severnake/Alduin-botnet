@@ -4,10 +4,10 @@ Imports Newtonsoft.Json
 
 Public Class GetImg : Implements ICommand
     <STAThread()>
-    Public Shared Function Handler(ByVal model As GetImgModel, ByVal client As TcpClient)
+    Public Shared Function Handler(ByVal path As String, ByVal client As TcpClient)
         Dim result As LogModel
         Try
-            Dim image As Bitmap = New Bitmap(model.newImgModel.ImgUrl, True)
+            Dim image As Bitmap = New Bitmap(path, True)
             StreamWriterImg(image, client)
             result = New LogModel With {
                     .KeyUnique = GetConfigJson().KeyUnique,

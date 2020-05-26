@@ -1,3 +1,3 @@
 ﻿Public Class AllImgModel
-    Public Property Imges As ArrayList = New ArrayList
+    Public Property Images As ArrayList = New ArrayList
 End Class

@@ -161,6 +161,7 @@
     <Compile Include="Class\Commands\ExecuteCommand.vb" />
     <Compile Include="Class\Commands\OpenWebsiteCommand.vb" />
     <Compile Include="Moduls\Converter\FileSize.vb" />
+    <Compile Include="Moduls\Converter\HashKey.vb" />
     <Compile Include="Moduls\Converter\TimeConverter.vb" />
     <Compile Include="Moduls\Details\Details.vb" />
     <Compile Include="Moduls\Grabs\ImageGrab.vb" />
@@ -170,7 +171,6 @@
     <Compile Include="Moduls\Installers\Installing.vb" />
     <Compile Include="Moduls\IO\UnZIPModule.vb" />
     <Compile Include="Moduls\Network\ResponseHTTP.vb" />
-    <Compile Include="Moduls\Network\StreamWrite.vb" />
     <Compile Include="Moduls\Search\ImageSearch.vb" />
     <Compile Include="Moduls\Spreads\USBSpread.vb" />
     <Compile Include="Moduls\Tor\ConfigTor.vb" />

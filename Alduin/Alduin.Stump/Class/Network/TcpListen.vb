@@ -27,7 +27,10 @@ Namespace Alduin.Stump.Class.Network
                 'Call commands and wait result
                 Console.WriteLine(Message)
                 Result = Command.CommandHandler(Message, client)
-                Moduls.Network.StreamWrite.StreamWrite(client, Result)
+                client.SendBufferSize = 8192
+                Dim stream As NetworkStream = client.GetStream()
+                Dim buffer As Byte() = System.Text.Encoding.UTF8.GetBytes(Result)
+                stream.Write(buffer, 0, buffer.Length)
                 client.Close()
             End If
         End Sub

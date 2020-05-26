@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Alduin.Logic.Mediator.Queries;
+using Alduin.Server.Modules;
 using Alduin.Web.Models;
 using Alduin.Web.Models.Bot;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using Newtonsoft.Json;
 
 namespace Alduin.Web.Controllers
 {
@@ -40,7 +42,8 @@ namespace Alduin.Web.Controllers
         public async Task<IActionResult> Bot(int id)
         {
             try
-            { 
+            {
+                appsettingsModel appsettings = JsonConvert.DeserializeAnonymousType(ServerFileManager.FileReader(GetPathes.Get_SolutionMainPath() + "/Alduin.Web/appsettings.json"), new appsettingsModel());
                 var query = new GetBotByIdQuery
                 {
                     Id = id
@@ -56,7 +59,9 @@ namespace Alduin.Web.Controllers
                     Domain = bot.Domain,
                     LastIPAddress = bot.LastIPAddress,
                     LastLoggedInUTC = bot.LastLoggedInUTC,
-                    Status = status
+                    Status = status,
+                    KeyCertified = bot.KeyCertified,
+                    KeyUnique = appsettings.Stump.KeyCertified
                 };
                 return View(botDeatils);
             }

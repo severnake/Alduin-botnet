@@ -336,6 +336,9 @@ button.accept-policy {
     transform: rotate3d(1, 1, 0, 25deg);
     transition: .2s; }
 
+.screenshot {
+  width: 50%; }
+
 .slideTwo {
   width: 80px;
   height: 30px;

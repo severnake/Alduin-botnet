@@ -1,22 +1,9 @@
-﻿<b>2020.</b> Starting tor...<br>
-<b>2020.</b> May 26 21:12:46.065 [notice] Tor 0.4.2.7 (git-74cad14699087b7e) running on Windows 8 [or later] with Libevent 2.1.8-stable, OpenSSL 1.1.1f, Zlib 1.2.11, Liblzma N/A, and Libzstd N/A.<br>
-<b>2020.</b> May 26 21:12:46.067 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
-<b>2020.</b> May 26 21:12:46.091 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
-<b>2020.</b> May 26 21:12:46.092 <span style='background-color: red'>[warn]</span> Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
-<b>2020.</b> May 26 21:12:46.092 <span style='background-color: red'>[warn]</span> Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
-<b>2020.</b> May 26 21:12:46.101 [notice] Opening Socks listener on 127.0.0.1:9150<br>
-<b>2020.</b> May 26 21:12:46.101 [notice] Opened Socks listener on 127.0.0.1:9150<br>
-<b>2020.</b> May 26 21:12:46.101 [notice] Opening Control listener on 127.0.0.1:9151<br>
-<b>2020.</b> May 26 21:12:46.101 [notice] Opened Control listener on 127.0.0.1:9151<br>
-<b>2020.</b> May 26 21:12:46.101 [notice] Opening Directory listener on 0.0.0.0:9030<br>
-<b>2020.</b> May 26 21:12:46.101 [notice] Opened Directory listener on 0.0.0.0:9030<br>
-<b>2020.</b> May 26 21:12:46.000 [notice] Bootstrapped 0% (starting): Starting<br>
-<b>2020.</b> May 26 21:13:37.000 [notice] Starting with guard context "default"<br>
-<b>2020.</b> May 26 21:13:38.000 [notice] Bootstrapped 5% (conn): Connecting to a relay<br>
-<b>2020.</b> May 26 21:13:38.000 [notice] Bootstrapped 10% (conn_done): Connected to a relay<br>
-<b>2020.</b> May 26 21:13:38.000 [notice] Bootstrapped 14% (handshake): Handshaking with a relay<br>
-<b>2020.</b> May 26 21:13:38.000 [notice] Bootstrapped 15% (handshake_done): Handshake with a relay done<br>
-<b>2020.</b> May 26 21:13:38.000 [notice] Bootstrapped 75% (enough_dirinfo): Loaded enough directory info to build circuits<br>
-<b>2020.</b> May 26 21:13:38.000 [notice] Bootstrapped 90% (ap_handshake_done): Handshake finished with a relay to build circuits<br>
-<b>2020.</b> May 26 21:13:38.000 [notice] Bootstrapped 95% (circuit_create): Establishing a Tor circuit<br>
-<b>2020.</b> May 26 21:13:39.000 [notice] Bootstrapped 100% <span style='background-color: green'>(done)</span>: Done<br>
+﻿<b>2020.</b> May 28 18:04:34.000 [notice] Starting with guard context "default"<br>
+<b>2020.</b> May 28 18:04:35.000 [notice] Bootstrapped 5% (conn): Connecting to a relay<br>
+<b>2020.</b> May 28 18:04:35.000 [notice] Bootstrapped 10% (conn_done): Connected to a relay<br>
+<b>2020.</b> May 28 18:04:35.000 [notice] Bootstrapped 14% (handshake): Handshaking with a relay<br>
+<b>2020.</b> May 28 18:04:35.000 [notice] Bootstrapped 15% (handshake_done): Handshake with a relay done<br>
+<b>2020.</b> May 28 18:04:35.000 [notice] Bootstrapped 75% (enough_dirinfo): Loaded enough directory info to build circuits<br>
+<b>2020.</b> May 28 18:04:35.000 [notice] Bootstrapped 90% (ap_handshake_done): Handshake finished with a relay to build circuits<br>
+<b>2020.</b> May 28 18:04:35.000 [notice] Bootstrapped 95% (circuit_create): Establishing a Tor circuit<br>
+<b>2020.</b> May 28 18:04:41.000 [notice] Bootstrapped 100% <span style='background-color: green'>(done)</span>: Done<br>

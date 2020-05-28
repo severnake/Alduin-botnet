@@ -21,6 +21,7 @@ using Alduin.Logic.Mediator.Handlers.QueryHandlers;
 using Alduin.Web.Infrastructure;
 using Alduin.Web.SharedResource;
 using Alduin.Logic.Services;
+using Alduin.Server.Services;
 
 namespace Alduin.Web
 {
@@ -124,6 +125,7 @@ namespace Alduin.Web
 
             services.AddAutoMapper(cfg => SetupAutoMapperConfiguration(cfg), GetAutoMapperProfileAssemblies());
             services.AddScoped<RegisterService>();
+            services.AddScoped<GetBotImagesJsonServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

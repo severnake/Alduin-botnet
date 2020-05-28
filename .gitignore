@@ -1,2 +1,6 @@
 
 Alduin/Alduin.Stump/bin/Debug/
+
+Alduin/Alduin.Web/obj/Debug/netcoreapp2.2/Alduin.Web.csprojAssemblyReference.cache
+
+*.cache

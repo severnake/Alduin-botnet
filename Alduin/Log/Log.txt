@@ -1,9 +1,39 @@
-﻿<b>2020.</b> May 28 18:04:34.000 [notice] Starting with guard context "default"<br>
-<b>2020.</b> May 28 18:04:35.000 [notice] Bootstrapped 5% (conn): Connecting to a relay<br>
-<b>2020.</b> May 28 18:04:35.000 [notice] Bootstrapped 10% (conn_done): Connected to a relay<br>
-<b>2020.</b> May 28 18:04:35.000 [notice] Bootstrapped 14% (handshake): Handshaking with a relay<br>
-<b>2020.</b> May 28 18:04:35.000 [notice] Bootstrapped 15% (handshake_done): Handshake with a relay done<br>
-<b>2020.</b> May 28 18:04:35.000 [notice] Bootstrapped 75% (enough_dirinfo): Loaded enough directory info to build circuits<br>
-<b>2020.</b> May 28 18:04:35.000 [notice] Bootstrapped 90% (ap_handshake_done): Handshake finished with a relay to build circuits<br>
-<b>2020.</b> May 28 18:04:35.000 [notice] Bootstrapped 95% (circuit_create): Establishing a Tor circuit<br>
-<b>2020.</b> May 28 18:04:41.000 [notice] Bootstrapped 100% <span style='background-color: green'>(done)</span>: Done<br>
+﻿<b>2020.</b> Starting tor...<br>
+<b>2020.</b> May 30 19:32:13.136 [notice] Tor 0.4.2.7 (git-74cad14699087b7e) running on Windows 8 [or later] with Libevent 2.1.8-stable, OpenSSL 1.1.1f, Zlib 1.2.11, Liblzma N/A, and Libzstd N/A.<br>
+<b>2020.</b> May 30 19:32:13.137 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning<br>
+<b>2020.</b> May 30 19:32:13.366 [notice] Read configuration file "E:\project\Alduin-botnet\Alduin\Tor\Data\Tor\torrc".<br>
+<b>2020.</b> May 30 19:32:13.373 <span style='background-color: red'>[warn]</span> Path for GeoIPFile (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+<b>2020.</b> May 30 19:32:13.373 <span style='background-color: red'>[warn]</span> Path for GeoIPv6File (<default>) is relative and will resolve to E:\project\Alduin-botnet\Alduin\Tor\<default>. Is this what you wanted?<br>
+<b>2020.</b> May 30 19:32:13.385 [notice] Opening Socks listener on 127.0.0.1:9150<br>
+<b>2020.</b> May 30 19:32:13.386 [notice] Opened Socks listener on 127.0.0.1:9150<br>
+<b>2020.</b> May 30 19:32:13.386 [notice] Opening Control listener on 127.0.0.1:9151<br>
+<b>2020.</b> May 30 19:32:13.386 [notice] Opened Control listener on 127.0.0.1:9151<br>
+<b>2020.</b> May 30 19:32:13.386 [notice] Opening Directory listener on 0.0.0.0:9030<br>
+<b>2020.</b> May 30 19:32:13.388 [notice] Opened Directory listener on 0.0.0.0:9030<br>
+<b>2020.</b> May 30 19:32:13.000 [notice] Bootstrapped 0% (starting): Starting<br>
+<b>2020.</b> May 30 19:33:18.000 [notice] Starting with guard context "default"<br>
+<b>2020.</b> May 30 19:33:19.000 [notice] Bootstrapped 5% (conn): Connecting to a relay<br>
+<b>2020.</b> May 30 19:33:19.000 [notice] Bootstrapped 10% (conn_done): Connected to a relay<br>
+<b>2020.</b> May 30 19:33:19.000 [notice] Bootstrapped 14% (handshake): Handshaking with a relay<br>
+<b>2020.</b> May 30 19:33:19.000 [notice] Bootstrapped 15% (handshake_done): Handshake with a relay done<br>
+<b>2020.</b> May 30 19:33:19.000 [notice] Bootstrapped 75% (enough_dirinfo): Loaded enough directory info to build circuits<br>
+<b>2020.</b> May 30 19:33:19.000 [notice] Bootstrapped 90% (ap_handshake_done): Handshake finished with a relay to build circuits<br>
+<b>2020.</b> May 30 19:33:19.000 [notice] Bootstrapped 95% (circuit_create): Establishing a Tor circuit<br>
+<b>2020.</b> May 30 19:33:20.000 [notice] Bootstrapped 100% <span style='background-color: green'>(done)</span>: Done<br>
+<b>2020.</b> May 30 19:33:28.000 <span style='background-color: red'>[warn]</span> Hidden service u3pnecjj63qycnhl exceeded launch limit with 10 intro points in the last 75 seconds. Intro circuit launches are limited to 10 per 300 seconds.<br>
+<b>2020.</b> May 30 19:33:28.000 <span style='background-color: red'>[warn]</span> Service configured in "E:\\project\\Alduin-botnet\\Alduin\\Tor":<br>
+<b>2020.</b> May 30 19:33:28.000 <span style='background-color: red'>[warn]</span>   Intro point 0 at [scrubbed]: circuit is open<br>
+<b>2020.</b> May 30 19:33:28.000 <span style='background-color: red'>[warn]</span>   Intro point 1 at [scrubbed]: circuit is open<br>
+<b>2020.</b> May 30 19:33:28.000 <span style='background-color: red'>[warn]</span>   Intro point 2 at [scrubbed]: circuit is open<br>
+<b>2020.</b> May 30 19:33:28.000 <span style='background-color: red'>[warn]</span>   Intro point 3 at [scrubbed]: circuit is doing handshakes<br>
+<b>2020.</b> May 30 19:38:23.000 [notice] Extremely large value for circuit build timeout: 137s. Assuming clock jump. Purpose 14 (Measuring circuit timeout)<br>
+<b>2020.</b> May 30 19:38:23.000 [notice] Extremely large value for circuit build timeout: 137s. Assuming clock jump. Purpose 14 (Measuring circuit timeout)<br>
+<b>2020.</b> May 30 19:38:23.000 [notice] Extremely large value for circuit build timeout: 137s. Assuming clock jump. Purpose 14 (Measuring circuit timeout)<br>
+<b>2020.</b> May 30 19:38:23.000 [notice] Extremely large value for circuit build timeout: 137s. Assuming clock jump. Purpose 14 (Measuring circuit timeout)<br>
+<b>2020.</b> May 30 19:38:23.000 [notice] Extremely large value for circuit build timeout: 137s. Assuming clock jump. Purpose 14 (Measuring circuit timeout)<br>
+<b>2020.</b> May 30 19:38:23.000 [notice] Extremely large value for circuit build timeout: 138s. Assuming clock jump. Purpose 14 (Measuring circuit timeout)<br>
+<b>2020.</b> May 30 19:38:23.000 [notice] Extremely large value for circuit build timeout: 138s. Assuming clock jump. Purpose 14 (Measuring circuit timeout)<br>
+<b>2020.</b> May 30 19:38:23.000 [notice] Extremely large value for circuit build timeout: 138s. Assuming clock jump. Purpose 14 (Measuring circuit timeout)<br>
+<b>2020.</b> May 30 19:38:23.000 [notice] Extremely large value for circuit build timeout: 140s. Assuming clock jump. Purpose 14 (Measuring circuit timeout)<br>
+<b>2020.</b> May 30 19:38:23.000 [notice] Extremely large value for circuit build timeout: 140s. Assuming clock jump. Purpose 14 (Measuring circuit timeout)<br>
+<b>2020.</b> May 30 19:39:21.000 [notice] Your network connection speed appears to have changed. Resetting timeout to 60s after 18 timeouts and 1000 buildtimes.<br>

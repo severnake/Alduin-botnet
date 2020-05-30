@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = Localizer["Bot Deatils"];
 }
+<link type="text/css" href="~/css/lightbox.css" rel="stylesheet" />
 <div class="container d-flex justify-content-center">
     <div class="wide-board">
         <div class="row">
@@ -33,18 +34,26 @@
             <div class="col-12"><hr /></div>
             <div class="col-12">
                 <div class="row text-center">
-                    <div class="col-12 mb-2"><img class="screenshot" src="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetScreenShot" /></div>
+                    <div class="col-12 mb-2">
+                        <a href="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetScreenShot" data-lightbox="screenshot">
+                            <img class="screenshot" src="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetScreenShot" />
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-12"><h2>@Localizer["Images"]</h2></div>
             <div class="col-12"><hr /></div>
-            <div class="col-12" id="list">
-                <div class="row">
-                    @foreach (string i in Model.newImagesJsonModel.Images)
+            <div class="col-12">
+                <div class="row" id="list">
+                   @foreach (string i in Model.newImagesJsonModel.Images)
                     {
-                        <div class="col-2 mt-2"><img width="120" src="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" /></div>
+                        <div class="col-2 mt-2">
+                            <a href="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" data-lightbox="BotImages">
+                                <img width="120" src="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" />
+                            </a>
+                        </div>
                     }
                 </div>
             </div>
@@ -52,5 +61,19 @@
     </div>
 </div>
 <script src="~/lib/jquery/dist/jquery.js"></script>
-<script>
+<script src="~/js/lightbox.js"></script>
+<script type="text/javascript">
+    @*$(document).ready(function () {
+        var ImagesList = [];*/
+        @foreach (string i in Model.newImagesJsonModel.Images)
+        {
+            @:ImagesList.push("http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i");
+        }
+        /*var ImagesList = @Model.newImagesJsonModel.Images;
+        for (var i = 0; i < ImageList.length; i ++) {
+            $.get(ImagesList[i], function( data ) {
+                $( "#list" ).html( '<div class="col-2 mt-2"><img width="120" src="' + data + '" /></div>');
+            });
+        }
+    });*@
 </script>

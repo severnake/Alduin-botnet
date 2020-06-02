@@ -9,8 +9,6 @@ using MediatR;
 using Alduin.Logic.Mediator.Queries;
 using Newtonsoft.Json;
 using Alduin.Server.Commands.Floods;
-using Alduin.Web.Models.Commands.Commands;
-using System.Text;
 
 namespace Alduin.Web.Controllers
 {
@@ -36,19 +34,7 @@ namespace Alduin.Web.Controllers
             }
             
         }
-        [Authorize]
-        public IActionResult Stream()
-        {
-            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value != "User")
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
-            }
-
-        }
+        
         //Commands///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         [Authorize]
         [HttpGet]

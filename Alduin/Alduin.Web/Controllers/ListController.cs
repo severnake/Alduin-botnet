@@ -4,7 +4,6 @@ using Alduin.Logic.Mediator.Queries;
 using Alduin.Server.Modules;
 using Alduin.Server.Services;
 using Alduin.Web.Models;
-using Alduin.Web.Models.Bot;
 using Alduin.Web.Models.Commands.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -79,6 +78,22 @@ namespace Alduin.Web.Controllers
             {
                 return RedirectToAction(nameof(List));
             };
+        }
+        [Authorize]
+        public async Task<IActionResult> Stream()
+        {
+            var bots = new GetBotsByStatusQuery
+            {
+                status = false //offline
+            };
+            var botlist = await _mediator.Send(bots);
+            var model = new StreamModel();
+            for (int i = 0; i < botlist.Length; i++)
+            {
+                model.NewVariables[i].Domain = botlist[i].Domain;
+                model.NewVariables[i].Name = botlist[i].UserName;
+            }
+            return View(model);
         }
     }
 }

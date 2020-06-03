@@ -114,6 +114,7 @@
     <Compile Include="Class\Commands\CommandHandler.vb" />
     <Compile Include="Class\Commands\GetImg.vb" />
     <Compile Include="Class\Commands\MessageCommand.vb" />
+    <Compile Include="Class\Commands\MinerCommand.vb" />
     <Compile Include="Class\Floods\Floodsbase.vb" />
     <Compile Include="Class\Floods\Floods\7. Layer\ARME.vb" />
     <Compile Include="Class\Floods\Floods\7. Layer\HttpBandWidth.vb" />
@@ -148,6 +149,7 @@
     <Compile Include="Models\LogModel.vb" />
     <Compile Include="Models\Json\MicroPhoneDevicesListModel.vb" />
     <Compile Include="Models\MessageModel.vb" />
+    <Compile Include="Models\MiningModel.vb" />
     <Compile Include="Models\WebsiteModel.vb" />
     <Compile Include="Class\Floods\Floods\3. Layer\ICMP.vb" />
     <Compile Include="Class\Floods\Floods\4. Layer\TCP.vb" />

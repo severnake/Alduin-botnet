@@ -15,16 +15,7 @@ USBSpread,
 Tor Communication,
 Multi-language,
 
-Planned methods:
-Multi Layers floods.
-.git grab and source code searcher,
-Mine monero,
-Ads Farming,
-Seed torrents,
-HardBotkiller,
-VBS runner,
-TaskManager,
-Screenshot and microphone grab
+Trello: https://trello.com/b/brPnPlza/alduin
 
 
 

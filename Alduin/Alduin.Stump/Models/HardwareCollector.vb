@@ -5,8 +5,6 @@
     Public Property OtherInformation As String
 End Class
 Public Class HardwareCollector
-
-
     Public Property Cpu As HardwareDetails = GetCPU()
     Public Property Gpu As HardwareDetails = GetVideoCard()
     Public Property Ram As HardwareDetails = GetRam()

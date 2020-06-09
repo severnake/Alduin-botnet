@@ -114,6 +114,14 @@ Namespace Alduin.Stump.Class.Commands
                     Return JsonConvert.SerializeObject(log)
                 Case "GetAllImgJson"
                     Return AllImgToJson.Handler()
+                Case "GetAllProcess"
+                    Return GetAllProcess.Handler()
+                Case "GetAllDetails"
+                    Dim hardwares As New HardwareCollector
+                    Return JsonConvert.SerializeObject(hardwares)
+                Case "KillProcess"
+                    Dim ModelDes As KillProcessModel = JsonConvert.DeserializeAnonymousType(request, New KillProcessModel)
+                    Return KillProcessFromId.Handler(ModelDes)
             End Select
             Dim splittedHeader As String = RequestSplitter(request, 1, " ")
             Dim url As String = RequestSplitter(splittedHeader, 0, "?")

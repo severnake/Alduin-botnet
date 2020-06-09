@@ -18,11 +18,15 @@ namespace Alduin.Web.Controllers
         private readonly IMediator _mediator;
         private readonly IStringLocalizer<ListController> _localizer;
         private readonly GetBotImagesJsonServices _getBotImagesJsonServices;
-        public ListController(IMediator mediator, IStringLocalizer<ListController> localizer, GetBotImagesJsonServices getBotImagesJsonServices)
+        private readonly GetAllDeatilsServices _getalldeatilsservices;
+        private readonly GetAllProcessServices _getallprocessservices;
+        public ListController(IMediator mediator, IStringLocalizer<ListController> localizer, GetBotImagesJsonServices getBotImagesJsonServices, GetAllDeatilsServices getalldeatilsservices, GetAllProcessServices getallprocessservices)
         {
             _mediator = mediator;
             _localizer = localizer;
             _getBotImagesJsonServices = getBotImagesJsonServices;
+            _getalldeatilsservices = getalldeatilsservices;
+            _getallprocessservices = getallprocessservices;
         }
         [Authorize]
         public IActionResult Index()
@@ -40,6 +44,18 @@ namespace Alduin.Web.Controllers
             var query = new GetBotListQuery();
             var bot = await _mediator.Send(query);
             return Json(bot);
+        }
+        [Authorize]
+        public async Task<IActionResult> BotGetDeatils(int id)
+        {
+            var botDeatils = await _getalldeatilsservices.GetAllDeatils(id);
+            return Json(botDeatils);
+        }
+        [Authorize]
+        public async Task<IActionResult> BotGetProcess(int id)
+        {
+            var botDeatils = await _getallprocessservices.GetAllProcess(id);
+            return Json(botDeatils);
         }
         [Authorize]
         public async Task<IActionResult> Bot(int id)

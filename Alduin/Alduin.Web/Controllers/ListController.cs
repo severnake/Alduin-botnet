@@ -88,6 +88,7 @@ namespace Alduin.Web.Controllers
                     newImagesJsonModel = ImagesJsonModel,
                     newBotDeatilsInquiryModel = botInquiryDeatils
                 };
+                ViewData["ID"] = id;
                 return View(botmodel);
             }
             catch

@@ -104,4 +104,5 @@ E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\C
 E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\Commands\_TorLoris.cshtml.g.cs
 E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\Commands\_Udp.cshtml.g.cs
 E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\List\Stream.cshtml.g.cs
+E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Alduin.Web.Resources.Views.Commands.Mining.hu-HU.resources
 E:\project\Alduin-botnet\Alduin\Alduin.Web\obj\Debug\netcoreapp2.2\Razor\Views\Commands\Mining.cshtml.g.cs

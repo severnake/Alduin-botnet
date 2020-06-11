@@ -6,7 +6,7 @@ namespace Alduin.Web.Models
     public class MiningModel
     {
         [Required]
-        [Display(Name = "GitHub Realese link (.zip)")]
+        [Display(Name = "GitHub Release link (.zip)")]
         public string Link { get; set; }
         [Required]
         [Display(Name = "Config arguments")]

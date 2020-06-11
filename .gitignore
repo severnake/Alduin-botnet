@@ -5,4 +5,22 @@ Alduin/Alduin.Web/obj/Debug/netcoreapp2.2/Alduin.Web.csprojAssemblyReference.cac
 
 *.cache
 
+<<<<<<< Updated upstream
 Alduin/Tor/
+=======
+Alduin/Alduin.Stump/obj/Debug/Alduin.Stump.pdb
+
+Alduin/Alduin.Stump/obj/Debug/Alduin.Stump.exe
+>>>>>>> Stashed changes
+
+Alduin/Alduin.Web/bin/Debug/netcoreapp2.2/
+
+Alduin/Alduin.Web/obj/Debug/netcoreapp2.2/Razor/Views/UserSettings/
+
+Alduin/Alduin.Web/obj/Debug/netcoreapp2.2/Razor/Views/UserAccount/
+
+Alduin/Alduin.Web/obj/Debug/netcoreapp2.2/Razor/Views/Shared/
+
+Alduin/Alduin.Web/obj/Debug/netcoreapp2.2/Razor/Views/Statics/
+
+Alduin/Alduin.Web/obj/Debug/netcoreapp2.2/Razor/Views/Tor/

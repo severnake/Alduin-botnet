@@ -18,20 +18,28 @@ Namespace Alduin.Stump.Class.Network
             Dim Message As String
             Dim Result
             If listener.Pending = True Then
-                client = listener.AcceptTcpClient
-                Message = ""
-                Dim Reader As New StreamReader(client.GetStream())
-                While Reader.Peek > -1
-                    Message += Convert.ToChar(Reader.Read())
-                End While
-                'Call commands and wait result
-                Console.WriteLine(Message)
-                Result = Command.CommandHandler(Message, client)
-                client.SendBufferSize = 8192
-                Dim stream As NetworkStream = client.GetStream()
-                Dim buffer As Byte() = System.Text.Encoding.UTF8.GetBytes(Result)
-                stream.Write(buffer, 0, buffer.Length)
-                client.Close()
+                Try
+                    client = listener.AcceptTcpClient
+                    Message = ""
+                    Dim Reader As New StreamReader(client.GetStream())
+                    While Reader.Peek > -1
+                        Message += Convert.ToChar(Reader.Read())
+                    End While
+                    'Call commands and wait result
+                    Result = Command.CommandHandler(Message, client)
+                    Dim buffer As Byte() = System.Text.Encoding.UTF8.GetBytes(Result)
+                    Dim writer As New StreamWriter(client.GetStream())
+                    writer.Write(buffer.Length)
+                    writer.Flush()
+                    'client.SendBufferSize = buffer.Length
+                    Dim stream As NetworkStream = client.GetStream()
+                    stream.Write(buffer, 0, buffer.Length)
+                    client.Close()
+                Catch ex As Exception
+                    If Config.Variables.Debug Then
+                        Console.WriteLine("Network error: " & ex.ToString)
+                    End If
+                End Try
             End If
         End Sub
 

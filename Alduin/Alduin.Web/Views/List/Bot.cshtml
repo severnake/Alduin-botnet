@@ -42,6 +42,15 @@
                 </div>
             </div>
         </div>
+        <div class="row mt-3 bg-head-color mb-2 font-weight-bold">
+            <div class="col-4 text-center text-truncate">@Localizer["Hardware Name"]</div>
+            <div class="col-1 text-center">@Localizer["Hardware Type"]</div>
+            <div class="col-2 text-center">@Localizer["Performance"]</div>
+            <div class="col-5 text-center">@Localizer["Other information"]</div>
+        </div>
+        <div class="row" id="deatils">
+            
+        </div>
         <div class="row mt-3">
             <div class="col-12"><h2>@Localizer["Images"]</h2></div>
             <div class="col-12"><hr /></div>
@@ -63,17 +72,31 @@
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/js/lightbox.js"></script>
 <script type="text/javascript">
-    @*$(document).ready(function () {
-        var ImagesList = [];*/
-        @foreach (string i in Model.newImagesJsonModel.Images)
-        {
-            @:ImagesList.push("http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i");
-        }
-        /*var ImagesList = @Model.newImagesJsonModel.Images;
-        for (var i = 0; i < ImageList.length; i ++) {
-            $.get(ImagesList[i], function( data ) {
-                $( "#list" ).html( '<div class="col-2 mt-2"><img width="120" src="' + data + '" /></div>');
-            });
-        }
-    });*@
+    $(document).ready(function () {
+        $.get("/List/BotGetDeatils?=" + @ViewData["ID"], function (data, status) {
+            console.log(data);
+            $("#deatils").append('<div class="col-4 text-center text-truncate">' + data.Cpu.HardwareName + '</div>' +
+                '<div class="col-1 text-center">' + data[0].Cpu.HardwareType + '</div>' +
+                '<div class="col-2 text-center">' + data[0].Cpu.Performance + '</div>' +
+                '<div class="col-5 text-center">' + data[0].Cpu.OtherInformation + '</div>');
+             $("#deatils").append('<div class="col-4 text-center text-truncate">' + data.Cpu.HardwareName + '</div>' + 
+                                        '<div class="col-1 text-center">' + data[0].Gpu.HardwareType + '</div>' +
+                                        '<div class="col-2 text-center">' + data[0].Gpu.Performance + '</div>' +
+                 '<div class="col-5 text-center">' + data[0].Gpu.OtherInformation + '</div>');
+            $("#deatils").append('<div class="col-4 text-center text-truncate">' + data[0].Ram.HardwareName + '</div>' + 
+                                        '<div class="col-1 text-center">' + data[0].Ram.HardwareType + '</div>' +
+                                        '<div class="col-2 text-center">' + data[0].Ram.Performance + '</div>' +
+                '<div class="col-5 text-center">' + data[0].Ram.OtherInformation + '</div>');
+            $("#deatils").append('<div class="col-4 text-center text-truncate">' + data[0].OS.HardwareName + '</div>' + 
+                                        '<div class="col-1 text-center">' + data[0].OS.HardwareType + '</div>' +
+                                        '<div class="col-2 text-center">' + data[0].OS.Performance + '</div>' +
+                                        '<div class="col-5 text-center">' + data[0].OS.OtherInformation + '</div>');
+            for (i = 0; i < data.OtherHarwares.length; i++) {
+                $("#deatils").append('<div class="col-4 text-center text-truncate">' + data[i].OtherHarwares.HardwareName + '</div>' + 
+                                        '<div class="col-1 text-center">' + data[i].OtherHarwares.HardwareType + '</div>' +
+                                        '<div class="col-2 text-center">' + data[i].OtherHarwares.Performance + '</div>' +
+                                        '<div class="col-5 text-center">' + data[i].OtherHarwares.OtherInformation + '</div>');
+            }
+        });
+    });
 </script>

@@ -126,6 +126,8 @@ namespace Alduin.Web
             services.AddAutoMapper(cfg => SetupAutoMapperConfiguration(cfg), GetAutoMapperProfileAssemblies());
             services.AddScoped<RegisterService>();
             services.AddScoped<GetBotImagesJsonServices>();
+            services.AddScoped<GetAllDeatilsServices>();
+            services.AddScoped<GetAllProcessServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

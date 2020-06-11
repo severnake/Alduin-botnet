@@ -6,3 +6,5 @@ Alduin/Alduin.Web/obj/Debug/netcoreapp2.2/Alduin.Web.csprojAssemblyReference.cac
 *.cache
 
 Alduin/Tor/
+
+Alduin/Log/

@@ -23,15 +23,20 @@ namespace Alduin.Server.Modules
                 proxyClient.ProxyUserName = "";
                 proxyClient.ProxyPassword = "";
                 TCP = proxyClient.CreateConnection(Address, ReachPort);
-                //TCP.SendBufferSize = 1024;
                 Write = new StreamWriter(TCP.GetStream());
                 Write.Write(model);
                 Write.Flush();
+                StreamReader reader = new StreamReader(TCP.GetStream());
+                var RespondSize = "";
+                while(reader.Peek() > -1){
+                    RespondSize += Convert.ToChar(reader.Read());
+                }
                 NetworkStream stream = TCP.GetStream();
-                int messageSize = TCP.ReceiveBufferSize;
                 int readSoFar = 0;
+                //int messageSize = TCP.ReceiveBufferSize;
+                int messageSize = Int32.Parse(RespondSize);
                 byte[] msg = new byte[messageSize];
-
+                
                 while (readSoFar < messageSize)
                 {
                     var read = stream.Read(msg, readSoFar, msg.Length - readSoFar);

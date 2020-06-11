@@ -126,6 +126,9 @@
   <data name="Commands" xml:space="preserve">
     <value>Parancsok</value>
   </data>
+  <data name="Crypto Mining" xml:space="preserve">
+    <value>Crypto bányászás</value>
+  </data>
   <data name="Edit Torrc file" xml:space="preserve">
     <value>Torrc fájl szerkesztése</value>
   </data>

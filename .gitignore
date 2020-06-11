@@ -24,3 +24,11 @@ Alduin/Alduin.Web/obj/Debug/netcoreapp2.2/Razor/Views/Shared/
 Alduin/Alduin.Web/obj/Debug/netcoreapp2.2/Razor/Views/Statics/
 
 Alduin/Alduin.Web/obj/Debug/netcoreapp2.2/Razor/Views/Tor/
+
+Alduin/Alduin.TestDatabaseCreator/bin/Debug/
+
+Alduin/Alduin.Web/obj/Debug/
+
+Alduin/Alduin.DataAccess/bin/Debug/
+
+Alduin/Alduin.Logic.Test/bin/Debug/

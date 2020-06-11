@@ -96,5 +96,4 @@ Module Main
         Dim configjson = JsonConvert.DeserializeAnonymousType(File_reader("Config.json"), New ConfigBotModel)
         Config = configjson
     End Sub
-
 End Module

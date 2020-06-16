@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Server\\Alduin.Server.csproj": {}
+    "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Server\\Alduin.Server.csproj": {}
   },
   "projects": {
-    "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Common\\Alduin.Common.csproj": {
+    "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Common\\Alduin.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Common\\Alduin.Common.csproj",
+        "projectUniqueName": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Common\\Alduin.Common.csproj",
         "projectName": "Alduin.Common",
-        "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Common\\Alduin.Common.csproj",
-        "packagesPath": "C:\\Users\\Mate\\.nuget\\packages\\",
-        "outputPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Common\\obj\\",
+        "projectPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Common\\Alduin.Common.csproj",
+        "packagesPath": "C:\\Users\\Fanni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Common\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Mate\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fanni\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -30,8 +27,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj": {
-                "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj"
+              "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj": {
+                "projectPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj"
               }
             }
           }
@@ -62,24 +59,21 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\project\\Alduin-botnet\\Alduin\\Alduin.DataAccess\\Alduin.DataAccess.csproj": {
+    "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.DataAccess\\Alduin.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.DataAccess\\Alduin.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.DataAccess\\Alduin.DataAccess.csproj",
         "projectName": "Alduin.DataAccess",
-        "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.DataAccess\\Alduin.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\Mate\\.nuget\\packages\\",
-        "outputPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.DataAccess\\Alduin.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\Fanni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Mate\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fanni\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,11 +86,11 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Common\\Alduin.Common.csproj": {
-                "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Common\\Alduin.Common.csproj"
+              "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Common\\Alduin.Common.csproj": {
+                "projectPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Common\\Alduin.Common.csproj"
               },
-              "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj": {
-                "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj"
+              "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj": {
+                "projectPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj"
               }
             }
           }
@@ -139,24 +133,21 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Logic\\Alduin.Logic.csproj": {
+    "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Logic\\Alduin.Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Logic\\Alduin.Logic.csproj",
+        "projectUniqueName": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Logic\\Alduin.Logic.csproj",
         "projectName": "Alduin.Logic",
-        "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Logic\\Alduin.Logic.csproj",
-        "packagesPath": "C:\\Users\\Mate\\.nuget\\packages\\",
-        "outputPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Logic\\obj\\",
+        "projectPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Logic\\Alduin.Logic.csproj",
+        "packagesPath": "C:\\Users\\Fanni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Logic\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Mate\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fanni\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -169,14 +160,14 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "E:\\project\\Alduin-botnet\\Alduin\\Alduin.DataAccess\\Alduin.DataAccess.csproj": {
-                "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.DataAccess\\Alduin.DataAccess.csproj"
+              "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.DataAccess\\Alduin.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.DataAccess\\Alduin.DataAccess.csproj"
               },
-              "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj": {
-                "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj"
+              "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj": {
+                "projectPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj"
               },
-              "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj": {
-                "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj"
+              "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj": {
+                "projectPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj"
               }
             }
           }
@@ -247,24 +238,21 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Server\\Alduin.Server.csproj": {
+    "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Server\\Alduin.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Server\\Alduin.Server.csproj",
+        "projectUniqueName": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Server\\Alduin.Server.csproj",
         "projectName": "Alduin.Server",
-        "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Server\\Alduin.Server.csproj",
-        "packagesPath": "C:\\Users\\Mate\\.nuget\\packages\\",
-        "outputPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Server\\obj\\",
+        "projectPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Server\\Alduin.Server.csproj",
+        "packagesPath": "C:\\Users\\Fanni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Server\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Mate\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fanni\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -277,8 +265,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Logic\\Alduin.Logic.csproj": {
-                "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Logic\\Alduin.Logic.csproj"
+              "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Logic\\Alduin.Logic.csproj": {
+                "projectPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Logic\\Alduin.Logic.csproj"
               }
             }
           }
@@ -317,24 +305,21 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj": {
+    "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj",
         "projectName": "Alduin.Shared",
-        "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj",
-        "packagesPath": "C:\\Users\\Mate\\.nuget\\packages\\",
-        "outputPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Shared\\obj\\",
+        "projectPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Shared\\Alduin.Shared.csproj",
+        "packagesPath": "C:\\Users\\Fanni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Shared\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Mate\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fanni\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -379,16 +364,16 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj": {
+    "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj",
+        "projectUniqueName": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj",
         "projectName": "Alduin.Stump",
-        "projectPath": "E:\\project\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj"
+        "projectPath": "C:\\Users\\Fanni\\Documents\\Alduin-botnet\\Alduin\\Alduin.Stump\\Alduin.Stump.vbproj"
       },
       "frameworks": {
         "net472": {}

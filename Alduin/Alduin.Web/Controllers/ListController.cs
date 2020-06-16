@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Alduin.Logic.Mediator.Commands;
 using Alduin.Logic.Mediator.Queries;
 using Alduin.Server.Modules;
 using Alduin.Server.Services;
 using Alduin.Web.Models;
+using Alduin.Web.Models.Bot;
 using Alduin.Web.Models.Commands.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -20,13 +22,15 @@ namespace Alduin.Web.Controllers
         private readonly GetBotImagesJsonServices _getBotImagesJsonServices;
         private readonly GetAllDeatilsServices _getalldeatilsservices;
         private readonly GetAllProcessServices _getallprocessservices;
-        public ListController(IMediator mediator, IStringLocalizer<ListController> localizer, GetBotImagesJsonServices getBotImagesJsonServices, GetAllDeatilsServices getalldeatilsservices, GetAllProcessServices getallprocessservices)
+        private readonly UpdateBotDeatilsService _updatebotdeatilsservice;
+        public ListController(IMediator mediator, IStringLocalizer<ListController> localizer, GetBotImagesJsonServices getBotImagesJsonServices, GetAllDeatilsServices getalldeatilsservices, GetAllProcessServices getallprocessservices, UpdateBotDeatilsService updatebotdeatilsservice)
         {
             _mediator = mediator;
             _localizer = localizer;
             _getBotImagesJsonServices = getBotImagesJsonServices;
             _getalldeatilsservices = getalldeatilsservices;
             _getallprocessservices = getallprocessservices;
+            _updatebotdeatilsservice = updatebotdeatilsservice;
         }
         [Authorize]
         public IActionResult Index()
@@ -48,14 +52,28 @@ namespace Alduin.Web.Controllers
         [Authorize]
         public async Task<IActionResult> BotGetDeatils(int id)
         {
-            var botDeatils = await _getalldeatilsservices.GetAllDeatils(id);
-            return Json(botDeatils);
+            var query = new GetBotInfoByBotIdQuery
+            {
+                BotId = id
+            };
+            
+            var result = await _mediator.Send(query);
+            if(result.Length == 0)
+            {
+                var botDeatils = await _getalldeatilsservices.GetAllDeatils(id);
+                await _updatebotdeatilsservice.Update(botDeatils, id);
+                return Json(botDeatils);
+            }
+            else{
+                return Json(result);
+            }
+            
         }
         [Authorize]
         public async Task<IActionResult> BotGetProcess(int id)
         {
-            var botDeatils = await _getallprocessservices.GetAllProcess(id);
-            return Json(botDeatils);
+            var botProcess = await _getallprocessservices.GetAllProcess(id);
+            return Json(botProcess);
         }
         [Authorize]
         public async Task<IActionResult> Bot(int id)
@@ -67,7 +85,15 @@ namespace Alduin.Web.Controllers
                 {
                     Id = id
                 };
-                GetImgJsonModel ImagesJsonModel = JsonConvert.DeserializeAnonymousType(await _getBotImagesJsonServices.GetAllImg(id), new GetImgJsonModel());
+                GetImgJsonModel ImagesJsonModel;
+                try
+                {
+                    ImagesJsonModel = JsonConvert.DeserializeAnonymousType(await _getBotImagesJsonServices.GetAllImg(id), new GetImgJsonModel());
+                }
+                catch
+                {
+                    ImagesJsonModel = JsonConvert.DeserializeAnonymousType("{'Images':[]}", new GetImgJsonModel()); ;
+                };
                 var bot = await _mediator.Send(query);
                 DateTime DateNowUTC = DateTime.UtcNow.AddMinutes(-5);
                 var status = _localizer["Offline"];
@@ -91,9 +117,9 @@ namespace Alduin.Web.Controllers
                 ViewData["ID"] = id;
                 return View(botmodel);
             }
-            catch
+            catch (Exception e)
             {
-                return RedirectToAction(nameof(List));
+                return Content(e.ToString());
             };
         }
         [Authorize]

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 E:\project\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\Alduin.Stump.exe.config
 E:\project\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\Alduin.Stump.exe
 E:\project\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\Alduin.Stump.pdb
@@ -19,3 +20,24 @@ E:\project\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.vbprojAssemb
 E:\project\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\Config.json
 E:\project\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\NAudio.dll
 E:\project\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.WebBrowserForm.resources
+=======
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\Config.json
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\Alduin.Stump.exe.config
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\Alduin.Stump.exe
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\Alduin.Stump.pdb
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\Alduin.Stump.xml
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\starksoft.aspen.dll
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\starksoft.aspen.pdb
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\bin\Debug\starksoft.aspen.xml
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.vbprojAssemblyReference.cache
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.Resources.resources
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.vbproj.GenerateResource.cache
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.vbproj.CoreCompileInputs.cache
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.vbproj.CopyComplete
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.exe
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.xml
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.pdb
+C:\Users\Fanni\Documents\Alduin-botnet\Alduin\Alduin.Stump\obj\Debug\Alduin.Stump.WebBrowserForm.resources
+>>>>>>> Dev

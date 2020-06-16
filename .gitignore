@@ -53,3 +53,14 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
+Alduin/Alduin.Common/bin/
+
+Alduin/Alduin.Common/obj/
+
+Alduin/Alduin.DataAccess/obj/
+
+Alduin/Alduin.Shared/obj/
+
+Alduin/Alduin.TestDatabaseCreator/obj/
+
+Alduin/Log/Log.txt

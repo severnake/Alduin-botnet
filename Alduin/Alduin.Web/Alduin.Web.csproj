@@ -29,4 +29,9 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\img\Bots\" />
+  </ItemGroup>
 </Project>

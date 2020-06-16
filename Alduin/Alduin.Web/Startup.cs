@@ -128,6 +128,7 @@ namespace Alduin.Web
             services.AddScoped<GetBotImagesJsonServices>();
             services.AddScoped<GetAllDeatilsServices>();
             services.AddScoped<GetAllProcessServices>();
+            services.AddScoped<UpdateBotDeatilsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

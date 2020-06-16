@@ -6,5 +6,6 @@ namespace Alduin.Logic.Interfaces.Repositories
 {
     public interface IBotInfoRepository : IRepository<BotInfoEntity, BotInfoDTO>
     {
+        BotInfoDTO[] FindBotInfoByBotId(int BotId);
     }
 }

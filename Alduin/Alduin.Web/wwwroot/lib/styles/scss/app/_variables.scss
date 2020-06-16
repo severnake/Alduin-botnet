@@ -10,3 +10,26 @@ $yellow:  #ffc107 !default;
 $green:   #28a745 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
+//Colors
+$text-color: #d4d6d9;
+$menu-bg-color: #272A31;
+$menu-bd-color: #131418;
+$active-color: #15A0BF;
+$body-bg-color: #1C1E23;
+$menu-hv-color: rgba(21, 159, 190, 0.5);
+$head-color: rgb(21, 159, 190);
+$console-color: #C0C0C0;
+$console-bg-color: #343434;
+
+//Fonts
+$font-family: 'Roboto', sans-serif;
+$console-font-family: 'Cousine', 'monospace';
+
+//Borders
+$default-border: 1px solid $menu-bd-color;
+$invitation-border: 2px solid white;
+$border-left: 3px solid $active-color;
+
+//Responsives limit
+$break-small: 768px;
+$break-large: 1200px;

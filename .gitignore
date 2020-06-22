@@ -44,3 +44,23 @@ Alduin/Alduin.Server/obj/
 Alduin/Alduin.Logic/obj/
 
 Alduin/Alduin.Common/bin/Debug/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+Alduin/Alduin.Common/bin/
+
+Alduin/Alduin.Common/obj/
+
+Alduin/Alduin.DataAccess/obj/
+
+Alduin/Alduin.Shared/obj/
+
+Alduin/Alduin.TestDatabaseCreator/obj/
+
+Alduin/Log/Log.txt

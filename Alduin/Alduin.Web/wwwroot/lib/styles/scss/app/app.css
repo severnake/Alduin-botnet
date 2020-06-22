@@ -128,6 +128,15 @@ body {
   .form-check .form-check-input {
     margin-left: 5px; }
 
+.close-btn {
+  border: none;
+  color: white;
+  transition: .2s;
+  color: white;
+  background-color: transparent; }
+  .close-btn:hover {
+    color: #d4d6d9; }
+
 button.accept-policy {
   font-size: 1rem;
   line-height: inherit; }
@@ -174,32 +183,35 @@ button.accept-policy {
 
 .titles {
   margin: auto;
-  width: 120px;
+  width: 100px;
   height: 100px;
   text-decoration: none;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(-45deg, #d4d6d9 60%, #131418 60%);
-  background-size: 200% 200%;
+  background: linear-gradient(-45deg, #d4d6d9 60%, white 10%, transparent 60%);
+  background-size: 300% 300%;
   background-position: 0% 0%;
   background-repeat: no-repeat;
   font-style: oblique;
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: 3em;
   box-sizing: border-box;
-  border: 2px solid #131418;
-  transition: .2s;
+  border-radius: 50%;
+  border: 5px solid #15A0BF;
+  transition: .4s;
   box-shadow: 2px 19px 89px -5px rgba(0, 0, 0, 0.49);
   color: #d4d6d9;
-  padding: 15px; }
+  text-align: center;
+  text-decoration: none !important; }
   .titles:hover {
     background-position: 90% 60%;
-    border: 2px solid #d4d6d9;
+    border: 5px solid black;
     box-shadow: 10px -14px 30px -5px rgba(0, 0, 0, 0.49);
-    transition: .2s;
-    color: #131418; }
+    font-size: 3.2em;
+    color: #131418;
+    text-underline-position: left; }
 
 .medium-board {
   padding: 20px;
@@ -345,9 +357,13 @@ button.accept-policy {
 .screenshot {
   width: 50%; }
 
-#deatils {
+.BotDeatils {
   max-height: 200px;
   overflow: scroll; }
+
+.command-log {
+  width: 100%;
+  position: relative; }
 
 .slideTwo {
   width: 80px;

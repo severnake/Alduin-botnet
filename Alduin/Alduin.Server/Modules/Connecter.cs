@@ -4,6 +4,8 @@ using Starksoft.Aspen.Proxy;
 using System.Net.Sockets;
 using System.Text;
 using System.Collections.Generic;
+using Alduin.Stump;
+using Newtonsoft.Json;
 
 namespace Alduin.Server.Modules
 {
@@ -57,12 +59,20 @@ namespace Alduin.Server.Modules
                 stream.Close();
                 TCP.Close();
                 string responseData = Reverse(System.Text.Encoding.UTF8.GetString(cutByte(MessageFront), 0, cutByte(MessageFront).Length));
-                responseData += System.Text.Encoding.UTF8.GetString(cutByte(msg), 0, cutByte(msg).Length);
+                try
+                {
+                    responseData += System.Text.Encoding.UTF8.GetString(cutByte(msg), 0, cutByte(msg).Length);
+                }catch{ };
                 return responseData;
             }
             catch (Exception ex)
             {
-                return "Error: " + ex;
+                var log = new LogModel
+                {
+                    Message = "Error: " + ex,
+                    Type = "Error",
+                };
+                return JsonConvert.SerializeObject(log);
             }
         }
         private static Byte[] cutByte(Byte[] inputByte)

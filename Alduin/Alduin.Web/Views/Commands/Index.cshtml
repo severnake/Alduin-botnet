@@ -45,6 +45,11 @@
         </div>
     </div>
 </div>
+<div class="row container d-flex justify-content-center">
+    <div class="log wide-board">
+
+    </div>
+</div>
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script>
     function getFile(file) {
@@ -52,7 +57,7 @@
             url: file,
             Type: "Get",
             beforeSend: function () {
-                $('.Commands').append("<div class='ajax-loading'></div>");
+                $('#Commands').append("<div class='ajax-loading'></div>");
             },
             complete: function () {
                 $('.ajax-loading').remove();
@@ -69,5 +74,35 @@
             getFile($(this).val());
         });
     });
-
+    $("#Commands").on('submit', '.Form-action', function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            beforeSend: function () {
+                $('#Commands').append("<div class='ajax-loading'></div>");
+            },
+            complete: function () {
+                $('.ajax-loading').remove();
+            },
+            success: function (data) {
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    var LogClass = "";
+                    if (data[i].type == "Error") {
+                        LogClass = "bg-danger";
+                    } else if (data[i].type == "Success") {
+                        LogClass = "bg-success";
+                    } else {
+                        LogClass = "bg-info";
+                    }
+                    $(".log").append("<div class='mt-1 command-log " + LogClass +"'>" + data[i].keyUnique + ": " + data[i].message + "</div>"); 
+                }
+            },
+            error: function(data){
+                console.log("Error: " + data);
+            }
+        });
+    });
 </script>

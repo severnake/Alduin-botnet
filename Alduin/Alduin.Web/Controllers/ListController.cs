@@ -62,7 +62,8 @@ namespace Alduin.Web.Controllers
             {
                 var botDeatils = await _getalldeatilsservices.GetAllDeatils(id);
                 await _updatebotdeatilsservice.Update(botDeatils, id);
-                return Json(botDeatils);
+                result = await _mediator.Send(query);
+                return Json(result);
             }
             else{
                 return Json(result);

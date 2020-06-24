@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using Alduin.Logic.Mediator.Commands;
 using Alduin.Logic.Mediator.Queries;
@@ -9,6 +12,7 @@ using Alduin.Web.Models.Bot;
 using Alduin.Web.Models.Commands.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
@@ -23,7 +27,9 @@ namespace Alduin.Web.Controllers
         private readonly GetAllDeatilsServices _getalldeatilsservices;
         private readonly GetAllProcessServices _getallprocessservices;
         private readonly UpdateBotDeatilsService _updatebotdeatilsservice;
-        public ListController(IMediator mediator, IStringLocalizer<ListController> localizer, GetBotImagesJsonServices getBotImagesJsonServices, GetAllDeatilsServices getalldeatilsservices, GetAllProcessServices getallprocessservices, UpdateBotDeatilsService updatebotdeatilsservice)
+        private readonly IHostingEnvironment _env;
+        private readonly DownloadFileServices _client;
+        public ListController(IMediator mediator, IStringLocalizer<ListController> localizer, GetBotImagesJsonServices getBotImagesJsonServices, GetAllDeatilsServices getalldeatilsservices, GetAllProcessServices getallprocessservices, UpdateBotDeatilsService updatebotdeatilsservice, IHostingEnvironment env, DownloadFileServices client)
         {
             _mediator = mediator;
             _localizer = localizer;
@@ -31,6 +37,8 @@ namespace Alduin.Web.Controllers
             _getalldeatilsservices = getalldeatilsservices;
             _getallprocessservices = getallprocessservices;
             _updatebotdeatilsservice = updatebotdeatilsservice;
+            _env = env;
+            _client = client;
         }
         [Authorize]
         public IActionResult Index()
@@ -82,10 +90,6 @@ namespace Alduin.Web.Controllers
             try
             {
                 appsettingsModel appsettings = JsonConvert.DeserializeAnonymousType(ServerFileManager.FileReader(GetPathes.Get_SolutionMainPath() + "/Alduin.Web/appsettings.json"), new appsettingsModel());
-                var query = new GetBotByIdQuery
-                {
-                    Id = id
-                };
                 GetImgJsonModel ImagesJsonModel;
                 try
                 {
@@ -93,9 +97,20 @@ namespace Alduin.Web.Controllers
                 }
                 catch
                 {
-                    ImagesJsonModel = JsonConvert.DeserializeAnonymousType("{'Images':[]}", new GetImgJsonModel()); ;
+                    
+                        
+                    ImagesJsonModel = JsonConvert.DeserializeAnonymousType("{'Images':[]}", new GetImgJsonModel());
+                };
+                var query = new GetBotByIdQuery
+                {
+                    Id = id
                 };
                 var bot = await _mediator.Send(query);
+                if (_env.WebRootFileProvider.GetDirectoryContents("img/Bots/" + bot.UserName + "_" + id ).Exists) 
+                {
+                    var fullpath = _env.WebRootFileProvider.GetFileInfo("img/Bots")?.PhysicalPath + "/" + bot.UserName + "_" + id;
+                    var files = Directory.GetFiles(fullpath);//Wait to test
+                }
                 DateTime DateNowUTC = DateTime.UtcNow.AddMinutes(-5);
                 var status = _localizer["Offline"];
                 if (bot.LastLoggedInUTC >= DateNowUTC)
@@ -122,6 +137,56 @@ namespace Alduin.Web.Controllers
             {
                 return Content(e.ToString());
             };
+        }
+        [Authorize]
+        public async Task<IActionResult> DownloadAllImg(int id)
+        {
+            var query = new GetBotByIdQuery
+            {
+                Id = id
+            };
+            var bot = await _mediator.Send(query);
+            var log = new LogModel(); 
+            GetImgJsonModel ImagesJsonModel;
+            try
+            {
+                var fullpath = "";
+                if (!_env.WebRootFileProvider.GetDirectoryContents("img/Bots/" + bot.UserName + "_" + id).Exists)
+                {
+                    var path = _env.WebRootFileProvider.GetFileInfo("img/Bots")?.PhysicalPath;
+                    Directory.CreateDirectory(path + "/" + bot.UserName + "_" + id);
+                }
+                else
+                {
+                    fullpath = _env.WebRootFileProvider.GetFileInfo("img/Bots")?.PhysicalPath + "/" + bot.UserName + "_" + id;
+                }
+                ImagesJsonModel = JsonConvert.DeserializeAnonymousType(await _getBotImagesJsonServices.GetAllImg(id), new GetImgJsonModel());
+                var client = new DownloadFileServices();
+                for (var i = 0; i < ImagesJsonModel.Images.Count; i++)
+                {
+                    StringBuilder FileName = new StringBuilder();
+                    for(var j = ImagesJsonModel.Images[i].LastIndexOf("/"); j < ImagesJsonModel.Images[i].Length; j++)
+                    {
+                        FileName.Append(ImagesJsonModel.Images[i][j]);
+                    }
+                   _client.DownLoadFileByWebRequest("http://" + bot.Domain + ":50371/GetImg?" + ImagesJsonModel.Images[i], fullpath + "/" + FileName.ToString());
+                }
+                log = new LogModel()
+                {
+                    KeyUnique = bot.KeyUnique,
+                    Message = "Download Sucess",
+                    Type = "Sucess"
+                };
+            }
+            catch{
+                log = new LogModel()
+                {
+                    KeyUnique = bot.KeyUnique,
+                    Message = "Download Failed",
+                    Type = "Error"
+                };
+            };
+            return Json(log);
         }
         [Authorize]
         public async Task<IActionResult> Stream()

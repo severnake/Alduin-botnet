@@ -88,31 +88,53 @@
     $("#process").on('click',".close-btn", function (event) {
         console.log($(this).attr('alt-href'));
         event.preventDefault();
-        $.get($(this).attr('alt-href'), function (data, status) {
-            console.log(data);
-            data = JSON.parse(data);
-            //$.notify("Access granted", "success", { position:"right" });
+        $.ajax({
+            url: $(this).attr('alt-href'),
+            method: "GET",
+            success: function (data) {
+                console.log(data);
+                data = JSON.parse(data);
+                //$.notify("Access granted", "success", { position:"right" });
+            },
+            error: function (data) {
+                console.log("Error: " + data);
+            }
         });
     });
     function process() {
-        $.get("/List/BotGetProcess?=" + @ViewData["ID"], function (data, status) {
-            data = JSON.parse(data);
-            for (i = 0; i < data.length; i++) {
-                $("#process").append('<div class="col-1 text-truncate font-size-down">' + data[i].Id + '</div>' + 
-                                        '<div class="col-4 text-left text-truncate font-size-down">' + data[i].ProcessName + '</div>' +
-                    '<div class="col-6 text-truncate text-right font-size-down" title="' + data[i].description + '">' + data[i].description + '</div>' + 
-                    '<div class="col-1 text-center"><button class="close-btn" alt-href="/Commands/KillProcess?=' + data[i].Id + '"><img src="/img/LightBoxImages/close.png" width="10"></button></div>');
+        $.ajax({
+            method: "GET",
+            url: "/List/BotGetProcess?=" + @ViewData["ID"],
+
+            success: function (data) {
+                data = JSON.parse(data);
+                for (i = 0; i < data.length; i++) {
+                    $("#process").append('<div class="col-1 text-truncate font-size-down">' + data[i].Id + '</div>' +
+                        '<div class="col-4 text-left text-truncate font-size-down">' + data[i].ProcessName + '</div>' +
+                        '<div class="col-6 text-truncate text-right font-size-down" title="' + data[i].description + '">' + data[i].description + '</div>' +
+                        '<div class="col-1 text-center"><button class="close-btn" alt-href="/Commands/KillProcess?=' + data[i].Id + '"><img src="/img/LightBoxImages/close.png" width="10"></button></div>');
+                }
+            },
+            error: function (data) {
+                console.log("Error: " + data);
             }
         });
     }
     function deatils() {
-        $.get("/List/BotGetDeatils?=" + @ViewData["ID"], function (data, status) {
-            //console.log(data);
-            for (i = 0; i < data.length; i++) {
-                $("#deatils").append('<div class="col-3 text-truncate font-size-down" title="' + data[i].hardwareName.replace("Name:", "") + '">' + data[i].hardwareName.replace("Name:", "") + '</div>' + 
-                                        '<div class="col-2 text-left text-truncate font-size-down">' + data[i].hardwareType.replace("Type:", "") + '</div>' +
-                                        '<div class="col-2 text-truncate text-center font-size-down">' + data[i].performance + '</div>' +
-                                        '<div class="col-5 text-truncate text-right font-size-down" title="' + data[i].otherInformation + '">' + data[i].otherInformation + '</div>');
+        $.ajax({
+            method: "GET",
+            url: "/List/BotGetDeatils?=" + @ViewData["ID"],
+
+            success: function (data) {
+                for (i = 0; i < data.length; i++) {
+                    $("#deatils").append('<div class="col-3 text-truncate font-size-down" title="' + data[i].hardwareName.replace("Name:", "") + '">' + data[i].hardwareName.replace("Name:", "") + '</div>' +
+                        '<div class="col-2 text-left text-truncate font-size-down">' + data[i].hardwareType.replace("Type:", "") + '</div>' +
+                        '<div class="col-2 text-truncate text-center font-size-down">' + data[i].performance + '</div>' +
+                        '<div class="col-5 text-truncate text-right font-size-down" title="' + data[i].otherInformation + '">' + data[i].otherInformation + '</div>');
+                }
+            },
+            error: function (data) {
+                console.log("Error: " + data);
             }
         });
     }

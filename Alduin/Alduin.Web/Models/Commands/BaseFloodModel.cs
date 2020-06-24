@@ -13,7 +13,7 @@ namespace Alduin.Web.Models
         [Display(Name = "Host")]
         public string Host { get; set; }
         [Required]
-        [Display(Name = "Time to Attack")]
+        [Display(Name = "Attack time")]
         public int Time { get; set; }
         [Required]
         [Display(Name = "Thread Use")]

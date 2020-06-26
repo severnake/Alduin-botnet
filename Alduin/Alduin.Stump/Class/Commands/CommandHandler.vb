@@ -122,6 +122,10 @@ Namespace Alduin.Stump.Class.Commands
                 Case "KillProcess"
                     Dim ModelDes As KillProcessModel = JsonConvert.DeserializeAnonymousType(request, New KillProcessModel)
                     Return KillProcessFromId.Handler(ModelDes)
+                Case "GetImg"
+                    Dim ModelDes As GetImageModel = JsonConvert.DeserializeAnonymousType(request, New GetImageModel)
+                    GetImg.Handler(ModelDes, client)
+                    Return ""
             End Select
             Dim splittedHeader As String = RequestSplitter(request, 1, " ")
             Dim url As String = RequestSplitter(splittedHeader, 0, "?")
@@ -140,13 +144,7 @@ Namespace Alduin.Stump.Class.Commands
                     Return JsonConvert.SerializeObject(log)
                 Case "GetImg"
                     GetImg.Handler(Attr, client)
-                    Dim log As LogModel = New LogModel With {
-                            .Message = "ok",
-                            .KeyUnique = GetConfigJson().KeyUnique,
-                            .Type = "Success"
-                    }
-                    Return JsonConvert.SerializeObject(log)
-
+                    Return ""
 
             End Select
             Dim invalidcommandlog As LogModel = New LogModel With {

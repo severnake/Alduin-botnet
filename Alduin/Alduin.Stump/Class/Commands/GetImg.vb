@@ -5,23 +5,21 @@ Imports Newtonsoft.Json
 Public Class GetImg : Implements ICommand
     <STAThread()>
     Public Shared Function Handler(ByVal path As String, ByVal client As TcpClient)
-        Dim result As LogModel
         Try
             Dim img As Image = Bitmap.FromFile(path)
-            'Dim image As Bitmap = New Bitmap(img, True)
             StreamWriterImg(img, client)
-            result = New LogModel With {
-                    .KeyUnique = GetConfigJson().KeyUnique,
-                    .Message = "Executed",
-                    .Type = "Success"
-                }
         Catch ex As Exception
-            result = New LogModel With {
-                    .KeyUnique = GetConfigJson().KeyUnique,
-                    .Message = ex.ToString,
-                    .Type = "Error"
-                }
+
         End Try
-        Return JsonConvert.SerializeObject(result)
+        Return ""
+    End Function
+    Public Shared Function Handler(ByVal model As GetImageModel, ByVal client As TcpClient)
+        Try
+            Dim img As Image = Bitmap.FromFile(model.newVariables.imagePath)
+            StreamWriterImgToTCP(img, client)
+        Catch ex As Exception
+
+        End Try
+        Return ""
     End Function
 End Class

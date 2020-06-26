@@ -145,6 +145,7 @@
     <Compile Include="Models\FloodModel\SlowLorisModel.vb" />
     <Compile Include="Models\FloodModel\UdpModel.vb" />
     <Compile Include="Models\FloodModel\TcpModel.vb" />
+    <Compile Include="Models\GetImageModel.vb" />
     <Compile Include="Models\GetImgModel.vb" />
     <Compile Include="Models\HardwareCollector.vb" />
     <Compile Include="Models\Json\AllImgModel.vb" />

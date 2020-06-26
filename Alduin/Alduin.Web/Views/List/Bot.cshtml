@@ -61,17 +61,36 @@
 
         </div>
         <div class="row mt-3">
-            <div class="col-12"><h2>@Localizer["Images"]</h2></div>
+            <div class="col-6"><h2>@Localizer["Images"]</h2></div>
+            <div class="col-6"><button id="downloadimg" class="btn btn-primary mt-2 w-100">@Localizer["Download Images"]</button></div>
             <div class="col-12"><hr /></div>
             <div class="col-12">
                 <div class="row" id="list">
-                    @foreach (string i in Model.newImagesJsonModel.Images)
+                    @if (ViewData["ImageGetMode"] == "network")
                     {
-                        <div class="col-2 mt-2">
-                            <a href="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" data-lightbox="BotImages">
-                                <img width="120" src="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" />
-                            </a>
-                        </div>
+                        @foreach (string i in Model.newImagesJsonModel.Images)
+                        {
+                            <div class="col-2 mt-2">
+                                <a href="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" data-lightbox="BotImages">
+                                    <img width="120" src="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" />
+                                </a>
+                            </div>
+                        }
+                    }
+                    else if(ViewData["ImageGetMode"] == "local")
+                    {
+                        @foreach (string i in Model.newImagesJsonModel.Images)
+                        {
+                            <div class="col-2 mt-2">
+                                <a href="/list/GetImage?=@i" data-lightbox="BotImages">
+                                    <img width="120" src="/list/GetImage?=@i" />
+                                </a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <h3>Error: Images not load</h3>
                     }
                 </div>
             </div>
@@ -97,6 +116,27 @@
                 //$.notify("Access granted", "success", { position:"right" });
             },
             error: function (data) {
+                console.log("Error: " + data);
+            }
+        });
+    });
+    $("#downloadimg").click(function () {
+        $.ajax({
+            url: "/List/DownloadAllImg?=" + @ViewData["ID"],
+            method: "GET",
+            beforeSend: function () {
+                $('#list').append("<div class='ajax-loading'></div>");
+            },
+            complete: function () {
+                $('.ajax-loading').remove();
+            },
+            success: function (data) {
+                console.log(data);
+                //data = JSON.parse(data);
+                $.notify(data.message, data.type, { position:"right" });
+            },
+            error: function (data) {
+                $.notify(data.message, data.type, { position:"right" });
                 console.log("Error: " + data);
             }
         });

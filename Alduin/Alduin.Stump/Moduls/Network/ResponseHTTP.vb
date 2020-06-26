@@ -28,6 +28,18 @@ Accept-Ranges: bytes
         NetworkStream.Flush()
 
     End Sub
+    Public Sub StreamWriterImgToTCP(ByVal msg As Bitmap, ByVal Client As TcpClient)
+        Dim MemoryStream = New MemoryStream()
+        msg.RawFormat.GetType().ToString()
+        msg.Save(MemoryStream, ImageFormat.Jpeg)
+        Dim byteArray = MemoryStream.ToArray()
+        Dim NetworkStream = Client.GetStream()
+        Console.Write(byteArray)
+        NetworkStream.Write(byteArray, 0, byteArray.Length)
+        NetworkStream.Flush()
+        NetworkStream.Close()
+        Client.Close()
+    End Sub
     Public Sub StreamWriter(ByVal msg As String, ByVal Client As TcpClient)
         Dim Writer = New StreamWriter(Client.GetStream())
         Dim str As String = "HTTP/1.1 200 OK

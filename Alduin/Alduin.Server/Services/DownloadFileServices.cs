@@ -1,50 +1,92 @@
-﻿using com.LandonKey.SocksWebProxy;
+﻿using Alduin.Server.Commands;
+using Newtonsoft.Json;
+using Starksoft.Aspen.Proxy;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Text;
+using System.Net.Sockets;
 
 namespace Alduin.Server.Services
 {
     public class DownloadFileServices
     {
-        public void DownLoadFileByWebRequest(string urlAddress, string filePath)
+        public static TcpClient TCP;
+        public static StreamWriter Write;
+        public static StreamReader Reader;
+        private static Socks5ProxyClient proxyClient;
+        public void DownLoadFileByWebRequest(string host,string path, string filePath)
         {
+            int ReachPort = 50371; //ReachPort
+            GetImagesVariables variables = new GetImagesVariables
+            {
+                imagePath = path
+            };
+            BaseCommands command = new BaseCommands
+            {
+                Method = "GetImg"
+            };
+            GetImagesCommand model = new GetImagesCommand
+            {
+                newBaseCommand = command,
+                newVariables = variables
+            };
+            string json = JsonConvert.SerializeObject(model);
             try
             {
-                System.Net.HttpWebRequest request = null;
-                System.Net.HttpWebResponse response = null;
-                com.LandonKey.SocksWebProxy.Proxy.ProxyConfig socket5 = new com.LandonKey.SocksWebProxy.Proxy.ProxyConfig(IPAddress.Loopback, 8181, IPAddress.Loopback, 9150, com.LandonKey.SocksWebProxy.Proxy.ProxyConfig.SocksVersion.Five);
-                request = (HttpWebRequest)WebRequest.Create(urlAddress);
-                request.Proxy = new SocksWebProxy(socket5);
-                request.Timeout = 30000;
-                request.Method = "GET";
-                request.KeepAlive = true;
-                response = (System.Net.HttpWebResponse)request.GetResponse();
-                Stream s = response.GetResponseStream();
+                proxyClient = new Socks5ProxyClient("127.0.0.1", 9150);
+                proxyClient.ProxyUserName = "";
+                proxyClient.ProxyPassword = "";
+                TCP = proxyClient.CreateConnection(host, ReachPort);
+                Write = new StreamWriter(TCP.GetStream());
+                Write.Write(json);
+                Write.Flush();
+                //Read
+                NetworkStream stream = TCP.GetStream();
+                int readSoFar = 0;
+                int messageSize = 20000000;
+                byte[] msg = new byte[messageSize];
+                while (readSoFar < messageSize)
+                {
+                    var read = stream.Read(msg, readSoFar, msg.Length - readSoFar);
+                    readSoFar += read;
+                    if (read == 0)
+                        break;
+                }
+                stream.Close();
+                TCP.Close();
 
                 if (File.Exists(filePath))
                     File.Delete(filePath);
 
-                byte[] inBuf = new byte[100000];
-                int bytesToRead = System.Convert.ToInt32(inBuf.Length);
-                int bytesRead = 0;
-
-                while (bytesToRead > 0)
-                {
-                    int n = s.Read(inBuf, bytesRead, bytesToRead);
-                    if (n == 0)
-                        break;
-                    bytesRead += n;
-                    bytesToRead -= n;
-                }
                 FileStream fstr = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
-                fstr.Write(inBuf, 0, bytesRead);
-                s.Close();
+                fstr.Write(cutByte(msg), 0, readSoFar);
                 fstr.Close();
             }
-            catch {};
+            catch(Exception e) {
+                Console.WriteLine(e.ToString());
+            };
+        }
+        private static Byte[] cutByte(Byte[] inputByte)
+        {
+            int i = inputByte.Length - 1;
+            while (inputByte[i] == 0)
+                --i;
+
+            byte[] bar = new byte[i + 1];
+            Array.Copy(inputByte, bar, i + 1);
+            return bar;
+        }
+        public static byte[] addByteToArray(byte[] bArray, byte newByte)
+        {
+            byte[] newArray = new byte[bArray.Length + 1];
+            bArray.CopyTo(newArray, 1);
+            newArray[0] = newByte;
+            return newArray;
+        }
+        public static string Reverse(string s)
+        {
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -91,26 +92,37 @@ namespace Alduin.Web.Controllers
             {
                 appsettingsModel appsettings = JsonConvert.DeserializeAnonymousType(ServerFileManager.FileReader(GetPathes.Get_SolutionMainPath() + "/Alduin.Web/appsettings.json"), new appsettingsModel());
                 GetImgJsonModel ImagesJsonModel;
-                try
-                {
-                    ImagesJsonModel = JsonConvert.DeserializeAnonymousType(await _getBotImagesJsonServices.GetAllImg(id), new GetImgJsonModel());
-                }
-                catch
-                {
-                    
-                        
-                    ImagesJsonModel = JsonConvert.DeserializeAnonymousType("{'Images':[]}", new GetImgJsonModel());
-                };
                 var query = new GetBotByIdQuery
                 {
                     Id = id
                 };
                 var bot = await _mediator.Send(query);
-                if (_env.WebRootFileProvider.GetDirectoryContents("img/Bots/" + bot.UserName + "_" + id ).Exists) 
+                if (_env.WebRootFileProvider.GetDirectoryContents("img/Bots/" + bot.UserName + "_" + id).Exists)
                 {
                     var fullpath = _env.WebRootFileProvider.GetFileInfo("img/Bots")?.PhysicalPath + "/" + bot.UserName + "_" + id;
                     var files = Directory.GetFiles(fullpath);//Wait to test
+                    List<string> images = new List<string>(files);
+                    ImagesJsonModel = new GetImgJsonModel() {
+                        Images = images
+                    };
+                    ViewData["ImageGetMode"] = "local"; 
                 }
+                else
+                {
+                    try
+                    {
+                        ImagesJsonModel = JsonConvert.DeserializeAnonymousType(await _getBotImagesJsonServices.GetAllImg(id), new GetImgJsonModel());
+                        ViewData["ImageGetMode"] = "network";
+                    }
+                    catch
+                    {
+                        ImagesJsonModel = JsonConvert.DeserializeAnonymousType("{'Images':[]}", new GetImgJsonModel());
+                        ViewData["ImageGetMode"] = "nothing";
+                    };
+                }
+                
+                
+                
                 DateTime DateNowUTC = DateTime.UtcNow.AddMinutes(-5);
                 var status = _localizer["Offline"];
                 if (bot.LastLoggedInUTC >= DateNowUTC)
@@ -165,11 +177,11 @@ namespace Alduin.Web.Controllers
                 for (var i = 0; i < ImagesJsonModel.Images.Count; i++)
                 {
                     StringBuilder FileName = new StringBuilder();
-                    for(var j = ImagesJsonModel.Images[i].LastIndexOf("/"); j < ImagesJsonModel.Images[i].Length; j++)
+                    for(var j = ImagesJsonModel.Images[i].LastIndexOf(@"\") + 1; j < ImagesJsonModel.Images[i].Length; j++)
                     {
                         FileName.Append(ImagesJsonModel.Images[i][j]);
                     }
-                   _client.DownLoadFileByWebRequest("http://" + bot.Domain + ":50371/GetImg?" + ImagesJsonModel.Images[i], fullpath + "/" + FileName.ToString());
+                   _client.DownLoadFileByWebRequest(bot.Domain,ImagesJsonModel.Images[i], fullpath + "/" + FileName.ToString());
                 }
                 log = new LogModel()
                 {
@@ -203,6 +215,12 @@ namespace Alduin.Web.Controllers
                 model.NewVariables[i].Name = botlist[i].UserName;
             }
             return View(model);
+        }
+        [HttpGet]
+        public IActionResult GetImage(string path)
+        {
+            var image = System.IO.File.OpenRead(path);
+            return File(image, "image/jpeg");
         }
     }
 }

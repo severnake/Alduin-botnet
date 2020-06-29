@@ -19,14 +19,4 @@ Module IOModule
     Public Sub CreateDirectory(ByVal path As String)
         Directory.CreateDirectory(path)
     End Sub
-
-
-    Public Sub Starter(ByVal exe_file_path As String, ByVal argumentums As String)
-        Dim startInfo As New ProcessStartInfo With {
-            .FileName = exe_file_path,
-            .Arguments = argumentums,
-            .WindowStyle = ProcessWindowStyle.Hidden
-        }
-        Process.Start(startInfo)
-    End Sub
 End Module

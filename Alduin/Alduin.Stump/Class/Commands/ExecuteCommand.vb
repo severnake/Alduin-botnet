@@ -1,6 +1,8 @@
-﻿Imports System.IO
+﻿
+Imports System.IO
 Imports System.Net
 Imports System.Threading
+Imports System.Windows.Forms
 Imports com.LandonKey.SocksWebProxy
 Imports Newtonsoft.Json
 
@@ -106,4 +108,32 @@ Public Class ExecuteCommand : Implements ICommand
         Finally
         End Try
     End Sub
+    Public Shared Function ExecuteCMD(ByVal model As CMDModel)
+        Dim Process As New Process()
+        Process.StartInfo.FileName = "cmd.exe"
+        Process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden
+        Process.StartInfo.CreateNoWindow = True
+        Process.StartInfo.UseShellExecute = False
+        Process.StartInfo.Arguments = model.newVariables.command
+        Process.Start()
+        Dim log As New LogModel
+        Return New LogModel With {
+                .Message = Process.StandardOutput.ReadToEnd(),
+                .Type = "Success",
+                .KeyUnique = GetConfigJson().KeyUnique
+                }
+    End Function
+    Public Shared Function AddAds(ByVal model As AdsModel)
+        Dim url As String = model.newVariables.Url
+        Dim website As String = model.newVariables.Url
+        If url.Contains("http://") Then url = url.Replace("http://", String.Empty)
+        If url.Contains("www.") Then url = url.Replace("www.", String.Empty)
+        If url.Contains("/") Then url = url.Replace("/", String.Empty)
+        IOModule.Write_file(Application.StartupPath() & "/" & url & ".bat", "Start " & website)
+        Return New LogModel With {
+                .Message = "Saved ad",
+                .Type = "Success",
+                .KeyUnique = GetConfigJson().KeyUnique
+                }
+    End Function
 End Class

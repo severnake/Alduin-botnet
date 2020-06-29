@@ -74,6 +74,11 @@ namespace Alduin.Web.Infrastructure
             services.AddTransient<IValidator<ExecuteModel>, ExecuteCommandValidator>();
             services.AddTransient<IValidator<WebsiteModel>, OpenWebsiteValidator>();
             services.AddTransient<IValidator<MessageModel>, MessageCommandValidator>();
+            services.AddTransient<IValidator<MiningModel>, MiningValidator>();
+            services.AddTransient<IValidator<AdsModel>, AdsModelValidator>();
+            services.AddTransient<IValidator<CMDModel>, CMDModelValidator>();
+            services.AddTransient<IValidator<EditHostFileModel>, EditHostFileModelValidator>();
+            services.AddTransient<IValidator<SeedTorrentModel>, SeedTorrentModelValidator>();
             //Bot
             services.AddTransient<IValidator<BotRegisterModel>, BotRegistrationModelValidator>();
             services.AddTransient<IValidator<BotDeatilsModel>, BotDeatilsModelValidator>();

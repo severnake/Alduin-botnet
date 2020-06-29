@@ -42,7 +42,6 @@ Namespace Alduin.Stump.Class.Network
                 End Try
             End If
         End Sub
-
     End Class
 End Namespace
 

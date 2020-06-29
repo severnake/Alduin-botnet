@@ -1,0 +1,26 @@
+﻿@model SeedTorrentModel
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+@{
+    ViewData["Title"] = Localizer["Seed Torrent"];
+}
+<form asp-controller="Commands" asp-action="SeedTorrent" method="post" class="Form-action">
+    <h2>@Localizer["Seed torrent magnet link or Torrent file direct link"]</h2>
+    <hr />
+    <div class="form-group">
+        <label asp-for="Url"></label>
+        <input asp-for="Url" />
+        <span asp-validation-for="Url"></span>
+    </div>
+    <div class="ondisplay">
+        <section title="@Localizer["Force execute command"]?">
+            <div class="form-check slideTwo">
+                <span asp-validation-for="Force"></span>
+                <input asp-for="Force" class="form-check-input" type="checkbox" id="Force">
+                <label class="form-check-label" for="Force"></label>
+            </div>
+        </section>
+    </div>
+    <button class="btn btn-primary mt-2 w-100">@Localizer["Submit"]</button>
+</form>

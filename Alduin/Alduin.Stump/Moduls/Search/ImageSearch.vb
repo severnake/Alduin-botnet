@@ -15,7 +15,7 @@ Module ImageSearch
                     For Each files As String In GetFiles(dir)
                         If extensions.ToArray().Any(Function(x) x.ToString().Contains(IO.Path.GetExtension(files).ToLower)) Then
                             If File.Exists(files) Then
-                                Console.WriteLine(files.Chars(files.Length - 4))
+                                'Console.WriteLine(files.Chars(files.Length - 4))
                                 If files.Chars(files.Length - 4) = "." Then
                                     Dim info As New FileInfo(files)
                                     If ByteToKbyte(info.Length) > 100 Then

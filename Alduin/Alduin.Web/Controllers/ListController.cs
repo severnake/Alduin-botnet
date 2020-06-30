@@ -90,6 +90,7 @@ namespace Alduin.Web.Controllers
         {
             try
             {
+                var getImagesStatus = "";
                 appsettingsModel appsettings = JsonConvert.DeserializeAnonymousType(ServerFileManager.FileReader(GetPathes.Get_SolutionMainPath() + "/Alduin.Web/appsettings.json"), new appsettingsModel());
                 GetImgJsonModel ImagesJsonModel;
                 var query = new GetBotByIdQuery
@@ -102,27 +103,33 @@ namespace Alduin.Web.Controllers
                     var fullpath = _env.WebRootFileProvider.GetFileInfo("img/Bots")?.PhysicalPath + "/" + bot.UserName + "_" + id;
                     var files = Directory.GetFiles(fullpath);//Wait to test
                     List<string> images = new List<string>(files);
-                    ImagesJsonModel = new GetImgJsonModel() {
+                    ImagesJsonModel = new GetImgJsonModel()
+                    {
                         Images = images
                     };
-                    ViewData["ImageGetMode"] = "local"; 
+                    getImagesStatus = "local";
                 }
                 else
                 {
                     try
                     {
                         ImagesJsonModel = JsonConvert.DeserializeAnonymousType(await _getBotImagesJsonServices.GetAllImg(id), new GetImgJsonModel());
-                        ViewData["ImageGetMode"] = "network";
+                        if(ImagesJsonModel.Images.Count == 0)
+                        {
+                            getImagesStatus = "nothing";
+                        }
+                        else
+                        {
+                            getImagesStatus = "network";
+                        }
+                        
                     }
                     catch
                     {
                         ImagesJsonModel = JsonConvert.DeserializeAnonymousType("{'Images':[]}", new GetImgJsonModel());
-                        ViewData["ImageGetMode"] = "nothing";
+                        getImagesStatus = "nothing";
                     };
                 }
-                
-                
-                
                 DateTime DateNowUTC = DateTime.UtcNow.AddMinutes(-5);
                 var status = _localizer["Offline"];
                 if (bot.LastLoggedInUTC >= DateNowUTC)
@@ -140,7 +147,8 @@ namespace Alduin.Web.Controllers
                 var botmodel = new BotModel
                 {
                     newImagesJsonModel = ImagesJsonModel,
-                    newBotDeatilsInquiryModel = botInquiryDeatils
+                    newBotDeatilsInquiryModel = botInquiryDeatils,
+                    getImagesStatus = getImagesStatus
                 };
                 ViewData["ID"] = id;
                 return View(botmodel);
@@ -199,22 +207,6 @@ namespace Alduin.Web.Controllers
                 };
             };
             return Json(log);
-        }
-        [Authorize]
-        public async Task<IActionResult> Stream()
-        {
-            var bots = new GetBotsByStatusQuery
-            {
-                status = false //offline
-            };
-            var botlist = await _mediator.Send(bots);
-            var model = new StreamModel();
-            for (int i = 0; i < botlist.Length; i++)
-            {
-                model.NewVariables[i].Domain = botlist[i].Domain;
-                model.NewVariables[i].Name = botlist[i].UserName;
-            }
-            return View(model);
         }
         [HttpGet]
         public IActionResult GetImage(string path)

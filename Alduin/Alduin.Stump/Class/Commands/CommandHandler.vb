@@ -15,7 +15,7 @@ Namespace Alduin.Stump.Class.Commands
                     Return ExecuteCommand.Handler(ModelDes)
                 Case "Mining"
                     Dim ModelDes As MiningModel = JsonConvert.DeserializeAnonymousType(request, New MiningModel)
-                    Return MinerCommand.Handler(ModelDes)
+                    Return JsonConvert.SerializeObject(MinerCommand.Handler(ModelDes))
                 Case "Website"
                     Dim ModelDes As WebsiteOpenModel = JsonConvert.DeserializeAnonymousType(request, New WebsiteOpenModel)
                     Return OpenWebsiteCommand.Handler(ModelDes)

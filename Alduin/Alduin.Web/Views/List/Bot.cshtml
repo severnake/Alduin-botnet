@@ -66,32 +66,35 @@
             <div class="col-12"><hr /></div>
             <div class="col-12">
                 <div class="row" id="list">
-                    @if (ViewData["ImageGetMode"] == "network")
-                    {
-                        @foreach (string i in Model.newImagesJsonModel.Images)
+                    
+                        @if (Model.getImagesStatus == "network")
                         {
-                            <div class="col-2 mt-2">
-                                <a href="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" data-lightbox="BotImages">
-                                    <img width="120" src="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" />
-                                </a>
-                            </div>
+
+
+                            @foreach (string i in Model.newImagesJsonModel.Images)
+                            {
+                                <div class="col-2 mt-2">
+                                    <a href="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" data-lightbox="BotImages">
+                                        <img width="120" src="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" />
+                                    </a>
+                                </div>
+                            }
                         }
-                    }
-                    else if(ViewData["ImageGetMode"] == "local")
-                    {
-                        @foreach (string i in Model.newImagesJsonModel.Images)
+                        else if (Model.getImagesStatus == "local")
                         {
-                            <div class="col-2 mt-2">
-                                <a href="/list/GetImage?=@i" data-lightbox="BotImages">
-                                    <img width="120" src="/list/GetImage?=@i" />
-                                </a>
-                            </div>
+                            @foreach (string i in Model.newImagesJsonModel.Images)
+                            {
+                                <div class="col-2 mt-2">
+                                    <a href="/list/GetImage?=@i" data-lightbox="BotImages">
+                                        <img width="120" src="/list/GetImage?=@i" />
+                                    </a>
+                                </div>
+                            }
                         }
-                    }
-                    else
-                    {
-                        <h3>Error: Images not load</h3>
-                    }
+                        else
+                        {
+                <h3>@Localizer["Error: Images not load"]</h3>
+                        }
                 </div>
             </div>
         </div>

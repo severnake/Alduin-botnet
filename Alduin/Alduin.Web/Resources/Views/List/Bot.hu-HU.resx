@@ -120,13 +120,49 @@
   <data name="Bot Deatils" xml:space="preserve">
     <value>Bot részletei</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Bezár</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Leírás</value>
+  </data>
   <data name="Domain" xml:space="preserve">
     <value>Tartománynév(Domain)</value>
+  </data>
+  <data name="Download Images" xml:space="preserve">
+    <value>Képek letöltése</value>
+  </data>
+  <data name="Error: Images not load" xml:space="preserve">
+    <value>Hiba: Képek betöltése sikertelen</value>
+  </data>
+  <data name="Hardware Name" xml:space="preserve">
+    <value>Hardware név</value>
+  </data>
+  <data name="Hardware Type" xml:space="preserve">
+    <value>Hardware típus</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>Azonosító</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>Képek</value>
   </data>
   <data name="Last IP address" xml:space="preserve">
     <value>Utolsó IP cím</value>
   </data>
   <data name="Last seen" xml:space="preserve">
     <value>Utoljára látva</value>
+  </data>
+  <data name="Other information" xml:space="preserve">
+    <value>Egyéb információk</value>
+  </data>
+  <data name="Performance" xml:space="preserve">
+    <value>Teljesítmény</value>
+  </data>
+  <data name="Process Name" xml:space="preserve">
+    <value>Folyamat neve</value>
+  </data>
+  <data name="ScreenShot" xml:space="preserve">
+    <value>Képernyő kép</value>
   </data>
 </root>

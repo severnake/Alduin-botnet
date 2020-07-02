@@ -69,6 +69,7 @@ namespace Alduin.Server.Modules
             {
                 var log = new LogModel
                 {
+                    KeyUnique = "ServerError",
                     Message = "Error: " + ex,
                     Type = "Error",
                 };

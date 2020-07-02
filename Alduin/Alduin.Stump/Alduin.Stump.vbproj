@@ -112,8 +112,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\Commands\AllImgToJson.vb" />
+    <Compile Include="Class\Commands\AllSourceFileToJson.vb" />
     <Compile Include="Class\Commands\CommandHandler.vb" />
     <Compile Include="Class\Commands\GetAllProcess.vb" />
+    <Compile Include="Class\Commands\GetSourceFile.vb" />
     <Compile Include="Class\Commands\GetImg.vb" />
     <Compile Include="Class\Commands\KillProcessFromId.vb" />
     <Compile Include="Class\Commands\MessageCommand.vb" />
@@ -151,9 +153,11 @@
     <Compile Include="Models\FloodModel\TcpModel.vb" />
     <Compile Include="Models\GetImageModel.vb" />
     <Compile Include="Models\GetImgModel.vb" />
+    <Compile Include="Models\GetSourceFileModel.vb" />
     <Compile Include="Models\HardwareCollector.vb" />
     <Compile Include="Models\Json\AllImgModel.vb" />
     <Compile Include="Models\Json\ConfigBotModel.vb" />
+    <Compile Include="Models\Json\GetAllSourceFileModel.vb" />
     <Compile Include="Models\KillProcessModel.vb" />
     <Compile Include="Models\LogModel.vb" />
     <Compile Include="Models\Json\MicroPhoneDevicesListModel.vb" />

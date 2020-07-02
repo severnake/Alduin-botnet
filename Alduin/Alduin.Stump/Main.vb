@@ -95,8 +95,9 @@ Module Main
                             }
                 Dim http As New SendHTTPonTor
                 http.TalkChannelHTTP(model, _config.UrlVariables.RegistrationUrl, Config.Variables.Address, Config.Variables.ServerReachPort)
-                Thread.Sleep(SectoMs(200))
+
             Catch : End Try
+            Thread.Sleep(SectoMs(200))
         End While
     End Sub
     Public Sub DelayedActions()

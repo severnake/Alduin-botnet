@@ -1,4 +1,5 @@
-﻿Imports System.Net.Sockets
+﻿Imports System.IO
+Imports System.Net.Sockets
 Imports System.Security.Cryptography
 Imports Newtonsoft.Json
 
@@ -117,11 +118,17 @@ Namespace Alduin.Stump.Class.Commands
                     Return JsonConvert.SerializeObject(log)
                 Case "GetAllImgJson"
                     Return AllImgToJson.Handler()
+                Case "GetAllFileJson"
+                    Return AllSourceFileToJson.Handler()
                 Case "GetAllProcess"
                     Return GetAllProcess.Handler()
                 Case "GetAllDetails"
-                    Dim hardwares As New HardwareCollector
-                    Return JsonConvert.SerializeObject(hardwares)
+                    If File.Exists(GetConfigJson().MainPath & "\hardwares.json") Then
+                        Return JsonConvert.SerializeObject(File_reader(GetConfigJson().MainPath & "\hardwares.json"))
+                    Else
+                        Dim hardwares As New HardwareCollector
+                        Return JsonConvert.SerializeObject(hardwares)
+                    End If
                 Case "KillProcess"
                     Dim ModelDes As KillProcessModel = JsonConvert.DeserializeAnonymousType(request, New KillProcessModel)
                     Return KillProcessFromId.Handler(ModelDes)
@@ -174,6 +181,9 @@ Namespace Alduin.Stump.Class.Commands
                     }
                     Return JsonConvert.SerializeObject(log)
                 Case "GetImg"
+                    GetImg.Handler(Attr, client)
+                    Return ""
+                Case "GetFile"
                     GetImg.Handler(Attr, client)
                     Return ""
 

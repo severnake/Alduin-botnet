@@ -9,17 +9,23 @@ Partial Friend Module ConfigTor
     Private Property TorPath As String
 
     Public Sub StartTor()
-        TorrcPath = GetConfigJson().MainPath & "\Tor\Data\Tor\torrc"
-        TorFolder = GetConfigJson().MainPath & "\Tor"
-        TorPath = GetConfigJson().MainPath & "\Tor\tor.exe"
+        Try
+            TorrcPath = GetConfigJson().MainPath & "\Tor\Data\Tor\torrc"
+            TorFolder = GetConfigJson().MainPath & "\Tor"
+            TorPath = GetConfigJson().MainPath & "\Tor\tor.exe"
 
-        If Not File.Exists(TorrcPath) Then
-            CreateTorrc()
-        End If
+            If Not File.Exists(TorrcPath) Then
+                CreateTorrc()
+            End If
 
-        Dim p As Process()
-        p = Process.GetProcessesByName(Tor)
-        If Not (p.Length > 0) Then StartTorProccess()
+            Dim p As Process()
+            p = Process.GetProcessesByName(Tor)
+            If Not (p.Length > 0) Then StartTorProccess()
+        Catch ex As Exception
+            If Config.Variables.Debug Then
+                Console.WriteLine("Tor error: " & ex.ToString)
+            End If
+        End Try
     End Sub
     Public Sub KillTor()
         For Each proc As Process In Process.GetProcessesByName(Tor)

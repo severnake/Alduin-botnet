@@ -184,7 +184,7 @@ Class PREC
             Return True
         Catch e As Exception
 #If DEBUG Then
-            Throw e
+            'Throw e
 #End If
             Return False
         End Try
@@ -312,7 +312,7 @@ Class PREC
             'Additional Information: Object reference Not set to an instance of an object.
 
             'The error above most likely means you are compiling to other than x86 architecture
-            Throw e
+            'Throw e
 #End If
             Return False
         End Try
@@ -340,7 +340,7 @@ Class PREC
             Return True
         Catch e As Exception
 #If DEBUG Then
-            Throw e
+            'Throw e
 #End If
             Return False
         End Try
@@ -402,7 +402,7 @@ Class PREC
             Return True
         Catch e As Exception
 #If DEBUG Then
-            Throw e
+            'Throw e
 #End If
             Return False
         End Try

@@ -22,7 +22,6 @@ Accept-Ranges: bytes
 
 "
         Dim headbyte As Byte() = System.Text.Encoding.ASCII.GetBytes(str)
-        Console.Write(byteArray)
         NetworkStream.Write(headbyte, 0, headbyte.Length)
         NetworkStream.Write(byteArray, 0, byteArray.Length)
         NetworkStream.Flush()
@@ -34,7 +33,6 @@ Accept-Ranges: bytes
         msg.Save(MemoryStream, ImageFormat.Jpeg)
         Dim byteArray = MemoryStream.ToArray()
         Dim NetworkStream = Client.GetStream()
-        Console.Write(byteArray)
         NetworkStream.Write(byteArray, 0, byteArray.Length)
         NetworkStream.Flush()
         NetworkStream.Close()
@@ -69,5 +67,12 @@ Connection: keep-alive
         Writer.Write(str)
         Writer.Write(msg)
         Writer.Flush()
+    End Sub
+    Public Sub StreamWriterFileToTCP(ByVal msg As Byte(), ByVal Client As TcpClient)
+        Dim NetworkStream = Client.GetStream()
+        NetworkStream.Write(msg, 0, msg.Length)
+        NetworkStream.Flush()
+        NetworkStream.Close()
+        Client.Close()
     End Sub
 End Module

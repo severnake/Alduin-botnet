@@ -145,7 +145,4 @@ Public Class ARME
         End Try
         Ended()
     End Sub
-    Public Function ToString()
-        Return MyBase.ToString()
-    End Function
 End Class

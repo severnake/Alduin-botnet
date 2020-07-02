@@ -38,7 +38,7 @@ namespace Alduin.Server.Modules
                 }
                 catch(Exception e)
                 {
-
+                    WriteOutput("Tor error: " + e.ToString());
                 }
             }
         }

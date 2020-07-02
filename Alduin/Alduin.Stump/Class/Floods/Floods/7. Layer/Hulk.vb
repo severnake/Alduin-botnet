@@ -100,7 +100,7 @@ Public Class Hulk
     End Function
 
     Function buildblock(size)
-        Dim out_str
+        Dim out_str As String = ""
         Dim r As Random = New Random
         For i As Integer = 0 To size
             out_str += Chr(r.Next(110, 120))

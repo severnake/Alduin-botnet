@@ -9,6 +9,9 @@ Namespace Alduin.Stump.Class.Commands
         End Sub
         Public Function CommandHandler(ByVal request As String, ByVal client As TcpClient) As String
             Dim method As String = JsonMethodSelector(request) 'Handle TCP request
+            If Config.Variables.Debug Then
+                Console.WriteLine("Method: " & method)
+            End If
             Select Case method
                 Case "Execute"
                     Dim ModelDes As ExecuteModel = JsonConvert.DeserializeAnonymousType(request, New ExecuteModel)

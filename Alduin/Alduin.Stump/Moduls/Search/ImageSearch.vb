@@ -13,7 +13,7 @@ Module ImageSearch
             Using sw As New IO.StreamWriter(path & "\Images.txt")
                 For Each dir As String In GetDirectories(disc)
                     If Directory.Exists(dir) Then
-                        For Each files As String In GetSourceFile(dir)
+                        For Each files As String In GetFiles(dir)
                             If extensions.ToArray().Any(Function(x) x.ToString().Contains(IO.Path.GetExtension(files).ToLower)) Then
                                 If File.Exists(files) Then
                                     'Console.WriteLine(files.Chars(files.Length - 4))

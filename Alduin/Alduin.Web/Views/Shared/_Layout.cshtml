@@ -35,7 +35,7 @@
                 </button>
             </div>
             <div class="col-2 text-center">
-                M/byte
+                <h6 id="speed"></h6>
             </div>
             <div class="col-4 align-middle text-center">
                 <span class="h3">Alduin</span>
@@ -289,6 +289,7 @@
         $(document).ready(function () {
             setUrlactive();
             hidder();
+            loopedAjax();
         });
         $(".mini-menu-btn").click(function () {
             if ($(".menu-container").width() < 100) {
@@ -309,6 +310,15 @@
                 hidder();
             }
         });
+        function loopedAjax()
+        {
+            setInterval(function(){ 
+                $.get( "/Commands/GetSpeed", function( data ) {
+                  $( "#speed" ).text( data );
+                });
+            }, 20000);
+        }
+
     </script>
     @RenderSection("Scripts", required: false)
 </body>

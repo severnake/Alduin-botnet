@@ -13,16 +13,18 @@ using Alduin.Server.Commands.Commands;
 using System.Collections.Generic;
 using Alduin.Shared.DTOs;
 using Alduin.Web.Models.Bot;
+using Alduin.Server.Services;
 
 namespace Alduin.Web.Controllers
 {
     public class CommandsController : ControllerBase
     {
         private readonly IMediator _mediator;
-
-        public CommandsController(IMediator mediator)
+        private readonly GetAttackDeatilsService _speed;
+        public CommandsController(IMediator mediator, GetAttackDeatilsService speed)
         {
             _mediator = mediator;
+            _speed = speed;
         }
 
         [Authorize]
@@ -53,6 +55,12 @@ namespace Alduin.Web.Controllers
                 model.NewVariables[i].Name = botlist[i].UserName;
             }
             return View(model);
+        }
+        [Authorize]
+        public async Task<IActionResult> GetSpeed()
+        {
+            var result = await _speed.GetSpeedAsync();
+            return Content(result);
         }
         [Authorize]
         public IActionResult Mining()

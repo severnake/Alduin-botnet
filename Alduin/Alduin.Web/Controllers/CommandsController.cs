@@ -10,7 +10,6 @@ using Alduin.Logic.Mediator.Queries;
 using Newtonsoft.Json;
 using Alduin.Server.Commands.Floods;
 using Alduin.Server.Commands.Commands;
-using System.Collections.Generic;
 using Alduin.Shared.DTOs;
 using Alduin.Web.Models.Bot;
 using Alduin.Server.Services;
@@ -59,6 +58,7 @@ namespace Alduin.Web.Controllers
         [Authorize]
         public async Task<IActionResult> GetSpeed()
         {
+
             var result = await _speed.GetSpeedAsync();
             return Content(result);
         }

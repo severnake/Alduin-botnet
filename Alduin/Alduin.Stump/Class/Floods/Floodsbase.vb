@@ -2,15 +2,15 @@
     Private _Message As String
     Private __AttackUpStrengOnByte As Integer
     Private __AttackDownStrengOnByte As Integer
-    Private stopwatch As Stopwatch
+    Private _stopwatch As Stopwatch
     Public Sub New()
-        stopwatch = Stopwatch.StartNew
+        _stopwatch = Stopwatch.StartNew
     End Sub
     Public Overrides Function ToString() As String
         Return MyBase.ToString()
     End Function
     Public Function GetStopWatch() As Stopwatch
-        Return stopwatch
+        Return _stopwatch
     End Function
     Public Function Get_AttackUpStrengOnByte() As Integer
         Return __AttackUpStrengOnByte
@@ -40,6 +40,11 @@
         _Message = vbNull
         __AttackUpStrengOnByte = vbNull
         __AttackDownStrengOnByte = vbNull
-        stopwatch = Stopwatch.StartNew
+        _stopwatch = Stopwatch.StartNew
+    End Sub
+    Public Sub SetEnd()
+        _Message = vbNull
+        __AttackUpStrengOnByte = vbNull
+        __AttackDownStrengOnByte = vbNull
     End Sub
 End Class

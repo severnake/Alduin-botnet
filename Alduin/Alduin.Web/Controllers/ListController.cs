@@ -74,6 +74,7 @@ namespace Alduin.Web.Controllers
             if(result.Length == 0)
             {
                 var botDeatils = await _getalldeatilsservices.GetAllDeatils(id);
+                Console.Write(botDeatils);
                 await _updatebotdeatilsservice.Update(botDeatils, id);
                 result = await _mediator.Send(query);
                 return Json(result);
@@ -91,7 +92,7 @@ namespace Alduin.Web.Controllers
                 return Json(botDeatils);
             } catch 
             {
-                return Json();
+                return Json("");
             };
             
         }
@@ -100,6 +101,16 @@ namespace Alduin.Web.Controllers
         {
             var botProcess = await _getallprocessservices.GetAllProcess(id);
             return Json(botProcess);
+        }
+        [Authorize]
+        public async Task<IActionResult> GetBotlog(int id)
+        {
+            var query = new GetBotLogByBotIdQuery
+            {
+                BotId = id
+            };
+            var result = await _mediator.Send(query);
+            return Json(result);
         }
         [Authorize]
         public async Task<IActionResult> Bot(int id)

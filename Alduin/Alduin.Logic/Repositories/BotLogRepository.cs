@@ -14,5 +14,18 @@ namespace Alduin.Logic.Repositories
         public BotLogRepository(ISession session, IMapper mapper) : base(session, mapper)
         {
         }
+
+        public BotLogDTO[] FindByBotId(int botid)
+        {
+            var result = _session.QueryOver<BotLogEntity>()
+                .Where(x => x.Bot.Id == botid)
+                .List();
+
+            if (result == null)
+                return null;
+
+            var dto = _mapper.Map<BotLogDTO[]>(result);
+            return dto;
+        }
     }
 }

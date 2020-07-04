@@ -49,7 +49,7 @@
             <div class="col-5 text-right">@Localizer["Other information"]</div>
         </div>
         <div class="row BotDeatils" id="deatils">
-            
+
         </div>
         <div class="row mt-3 bg-head-color mb-2 font-weight-bold">
             <div class="col-1 text-truncate">@Localizer["ID"]</div>
@@ -60,41 +60,50 @@
         <div class="row BotDeatils" id="process">
 
         </div>
+        <div class="row mt-3 bg-head-color mb-2 font-weight-bold">
+            <div class="col-1 text-truncate">@Localizer["ID"]</div>
+            <div class="col-8 text-left">@Localizer["Message"]</div>
+            <div class="col-2 text-right">@Localizer["Type"]</div>
+            <div class="col-1 text-center">@Localizer["CreationDateUTC"]</div>
+        </div>
+        <div class="row BotDeatils" id="log">
+
+        </div>
         <div class="row mt-3">
             <div class="col-6"><h2>@Localizer["Images"]</h2></div>
             <div class="col-6"><button id="downloadimg" class="btn btn-primary mt-2 w-100">@Localizer["Download Images"]</button></div>
             <div class="col-12"><hr /></div>
             <div class="col-12">
                 <div class="row" id="list">
-                    
-                        @if (Model.getImagesStatus == "network")
-                        {
+
+                    @if (Model.getImagesStatus == "network")
+                    {
 
 
-                            @foreach (string i in Model.newImagesJsonModel.Images)
-                            {
-                                <div class="col-2 mt-2">
-                                    <a href="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" data-lightbox="BotImages">
-                                        <img width="120" src="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" />
-                                    </a>
-                                </div>
-                            }
-                        }
-                        else if (Model.getImagesStatus == "local")
+                        @foreach (string i in Model.newImagesJsonModel.Images)
                         {
-                            @foreach (string i in Model.newImagesJsonModel.Images)
-                            {
-                                <div class="col-2 mt-2">
-                                    <a href="/list/GetImage?=@i" data-lightbox="BotImages">
-                                        <img width="120" src="/list/GetImage?=@i" />
-                                    </a>
-                                </div>
-                            }
+                            <div class="col-2 mt-2">
+                                <a href="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" data-lightbox="BotImages">
+                                    <img width="120" src="http://@Model.newBotDeatilsInquiryModel.Domain:50371/GetImg?@i" />
+                                </a>
+                            </div>
                         }
-                        else
+                    }
+                    else if (Model.getImagesStatus == "local")
+                    {
+                        @foreach (string i in Model.newImagesJsonModel.Images)
                         {
-                <h3>@Localizer["Error: Images not load"]</h3>
+                            <div class="col-2 mt-2">
+                                <a href="/list/GetImage?=@i" data-lightbox="BotImages">
+                                    <img width="120" src="/list/GetImage?=@i" />
+                                </a>
+                            </div>
                         }
+                    }
+                    else
+                    {
+                        <h3>@Localizer["Error: Images not load"]</h3>
+                    }
                 </div>
             </div>
         </div>
@@ -174,6 +183,24 @@
                         '<div class="col-2 text-left text-truncate font-size-down">' + data[i].hardwareType.replace("Type:", "") + '</div>' +
                         '<div class="col-2 text-truncate text-center font-size-down">' + data[i].performance + '</div>' +
                         '<div class="col-5 text-truncate text-right font-size-down" title="' + data[i].otherInformation + '">' + data[i].otherInformation + '</div>');
+                }
+            },
+            error: function (data) {
+                console.log("Error: " + data);
+            }
+        });
+    }
+    function botlog() {
+        $.ajax({
+            method: "GET",
+            url: "/List/GetBotlog?=" + @ViewData["ID"],
+
+            success: function (data) {
+                for (i = 0; i < data.length; i++) {
+                    $("#deatils").append('<div class="col-3 text-truncate font-size-down">' + data[i].id + '</div>' +
+                        '<div class="col-2 text-left text-truncate font-size-down" title="' + data[i].message + '">' + data[i].message + '</div>' +
+                        '<div class="col-2 text-truncate text-center font-size-down">' + data[i].type + '</div>' +
+                        '<div class="col-5 text-truncate text-right font-size-down" title="' + data[i].CreationDateUTC + '">' + data[i].CreationDateUTC + '</div>');
                 }
             },
             error: function (data) {

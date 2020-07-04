@@ -1,6 +1,6 @@
 # Alduin-botnet
 ![alt text](https://i.imgur.com/NhruoLf.png)
-## Realese: (Comming soon) :)
+## Release: (Comming soon) :)
 ## Donation
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mogyiii)
 
@@ -34,6 +34,15 @@ Methods:
 9. ScreenShots
 10. Get Computer All hardware and deatils
 11. Send Message
+12. Seed Torrent
+13. Support fallback panel
+14. SourceCode/Git grabber
+15. FireFox, Chrome, FileZilla account grabber
+16. CMD executter
+17. Host file editor
+18. Process show and kill
+19. Ads miner
+20. Show attack speed
 ## **Trello**: https://trello.com/b/brPnPlza/alduin
 
 

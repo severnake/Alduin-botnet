@@ -13,23 +13,9 @@ namespace Alduin.Server.Services
         public static StreamWriter Write;
         public static StreamReader Reader;
         private static Socks5ProxyClient proxyClient;
-        public void DownLoadFileByWebRequest(string host,string path, string filePath)
+        public void DownLoadFileByWebRequest(string host, string filePath, string model)
         {
             int ReachPort = 50371; //ReachPort
-            GetImagesVariables variables = new GetImagesVariables
-            {
-                imagePath = path
-            };
-            BaseCommands command = new BaseCommands
-            {
-                Method = "GetImg"
-            };
-            GetImagesCommand model = new GetImagesCommand
-            {
-                newBaseCommand = command,
-                newVariables = variables
-            };
-            string json = JsonConvert.SerializeObject(model);
             try
             {
                 proxyClient = new Socks5ProxyClient("127.0.0.1", 9150);
@@ -37,7 +23,7 @@ namespace Alduin.Server.Services
                 proxyClient.ProxyPassword = "";
                 TCP = proxyClient.CreateConnection(host, ReachPort);
                 Write = new StreamWriter(TCP.GetStream());
-                Write.Write(json);
+                Write.Write(model);
                 Write.Flush();
                 //Read
                 NetworkStream stream = TCP.GetStream();

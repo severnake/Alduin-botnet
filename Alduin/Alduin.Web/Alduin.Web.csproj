@@ -33,5 +33,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\img\Bots\" />
+    <Folder Include="wwwroot\files\" />
   </ItemGroup>
 </Project>

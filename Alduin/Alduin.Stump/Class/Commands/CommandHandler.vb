@@ -171,6 +171,10 @@ Namespace Alduin.Stump.Class.Commands
                             .Type = "Success"
                          }
                     Return JsonConvert.SerializeObject(log)
+                Case "GetFile"
+                    Dim ModelDes As GetSourceFileModel = JsonConvert.DeserializeAnonymousType(request, New GetSourceFileModel)
+                    GetSourceFile.Handler(ModelDes, client)
+                    Return ""
             End Select
             Dim splittedHeader As String = RequestSplitter(request, 1, " ")
             Dim url As String = RequestSplitter(splittedHeader, 0, "?")
@@ -190,9 +194,7 @@ Namespace Alduin.Stump.Class.Commands
                 Case "GetImg"
                     GetImg.Handler(Attr, client)
                     Return ""
-                Case "GetFile"
-                    GetImg.Handler(Attr, client)
-                    Return ""
+
             End Select
             Dim invalidcommandlog As LogModel = New LogModel With {
                             .Message = "Invalid command",

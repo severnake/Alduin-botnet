@@ -58,7 +58,11 @@ namespace Alduin.Server.Modules
                 }
                 stream.Close();
                 TCP.Close();
-                string responseData = Reverse(System.Text.Encoding.UTF8.GetString(cutByte(MessageFront), 0, cutByte(MessageFront).Length));
+                string responseData = "";
+                if (MessageFront.Length != 0)
+                {
+                    responseData = Reverse(System.Text.Encoding.UTF8.GetString(cutByte(MessageFront), 0, cutByte(MessageFront).Length));
+                }
                 try
                 {
                     responseData += System.Text.Encoding.UTF8.GetString(cutByte(msg), 0, cutByte(msg).Length);
@@ -70,7 +74,7 @@ namespace Alduin.Server.Modules
                 var log = new LogModel
                 {
                     KeyUnique = "ServerError",
-                    Message = "Error: " + ex,
+                    Message = "Error: " + ex.ToString(),
                     Type = "Error",
                 };
                 return JsonConvert.SerializeObject(log);

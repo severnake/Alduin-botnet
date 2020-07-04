@@ -29,7 +29,8 @@ Public Class ARME
 
 
             Threads = New Thread(ThreadstoUse - 1) {}
-            GetFloodsBase().SetMessage("A.R.M.E attack")
+            GetFloodsBase().Reset()
+            GetFloodsBase().SetMessage("A.R.M.E attack started")
             For i As Integer = 0 To ThreadstoUse - 1
                 Threads(i) = New Thread(AddressOf DoWork)
                 Threads(i).IsBackground = True
@@ -50,6 +51,7 @@ Public Class ARME
             ThreadsEnded = 0
             ThreadstoUse = 0
             AttackRunning = False
+            GetFloodsBase().SetEnd()
         End If
 
     End Sub

@@ -3,7 +3,7 @@ Imports System.Text
 
 Module IOModule
 
-    Public Function File_reader(ByVal files As String)
+    Public Function File_reader(ByVal files As String) As String
         Return File.ReadAllText(files, System.Text.Encoding.UTF8)
     End Function
     Public Sub Delete_file(ByVal files As String)

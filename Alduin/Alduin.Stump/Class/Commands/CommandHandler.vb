@@ -123,12 +123,7 @@ Namespace Alduin.Stump.Class.Commands
                 Case "GetAllProcess"
                     Return GetAllProcess.Handler()
                 Case "GetAllDetails"
-                    If File.Exists(GetConfigJson().MainPath & "\hardwares.json") Then
-                        Return JsonConvert.SerializeObject(File_reader(GetConfigJson().MainPath & "\hardwares.json"))
-                    Else
-                        Dim hardwares As New HardwareCollector
-                        Return JsonConvert.SerializeObject(hardwares)
-                    End If
+                    Return GetDetails.Handler()
                 Case "KillProcess"
                     Dim ModelDes As KillProcessModel = JsonConvert.DeserializeAnonymousType(request, New KillProcessModel)
                     Return KillProcessFromId.Handler(ModelDes)

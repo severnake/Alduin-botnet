@@ -115,6 +115,7 @@
     <Compile Include="Class\Commands\AllSourceFileToJson.vb" />
     <Compile Include="Class\Commands\CommandHandler.vb" />
     <Compile Include="Class\Commands\GetAllProcess.vb" />
+    <Compile Include="Class\Commands\GetDetails.vb" />
     <Compile Include="Class\Commands\GetSourceFile.vb" />
     <Compile Include="Class\Commands\GetImg.vb" />
     <Compile Include="Class\Commands\KillProcessFromId.vb" />

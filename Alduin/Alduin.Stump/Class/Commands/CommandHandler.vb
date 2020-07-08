@@ -165,6 +165,9 @@ Namespace Alduin.Stump.Class.Commands
                             .KeyUnique = GetConfigJson().KeyUnique,
                             .Type = "Success"
                          }
+                    If Config.Variables.Debug Then
+                        Console.WriteLine(GetFloodsBase().GetAttackDownStrengOnByteOnSec() & "/" & GetFloodsBase().GetAttackUpStrengOnByteOnSec() & "/" & GetFloodsBase().GetMessage())
+                    End If
                     Return JsonConvert.SerializeObject(log)
                 Case "GetFile"
                     Dim ModelDes As GetSourceFileModel = JsonConvert.DeserializeAnonymousType(request, New GetSourceFileModel)

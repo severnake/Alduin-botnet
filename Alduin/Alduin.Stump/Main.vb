@@ -16,7 +16,7 @@ Module Main
     Private _command As New CommandHandler
     Private _config As New ConfigBotModel
     Private _FloodsBase As Floodsbase
-    Public Function GetFloodsBase()
+    Public Function GetFloodsBase() As Floodsbase
         Return _FloodsBase
     End Function
     Private Sub SetFloodsBase(floodsbase As Floodsbase)

